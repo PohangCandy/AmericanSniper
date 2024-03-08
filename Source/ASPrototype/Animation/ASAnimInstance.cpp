@@ -22,7 +22,7 @@ void UASAnimInstance::StateHandler(State NewState)
 	case State::Crawl:
 		break;
 	case State::Hurt:
-		//bIsHurt = true;
+		bIsHurt = 1;
 		UE_LOG(LogTemp, Log, TEXT("HURT"));
 		//절뚝거림 구현
 	case State::Hidden:
