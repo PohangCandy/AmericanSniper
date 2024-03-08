@@ -48,8 +48,8 @@ AASCharacterBase::AASCharacterBase()
 
 	MaxHp = 100;
 	CurHp = MaxHp;
-	LowHp = 30;
-	Damage = 30;
+	LowHp = 40;
+	Damage = 10;
 	CurState = State::None;
 }
 
