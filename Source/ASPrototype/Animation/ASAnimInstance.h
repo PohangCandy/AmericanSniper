@@ -18,6 +18,9 @@ public:
 	UASAnimInstance();
 	State state;
 	void StateHandler(State NewState);
+	//void SetCurrentHp(int NewHp);
+	//int Hp = 100;
+
 protected:
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
