@@ -5,6 +5,8 @@
 //충돌,움직임 헤더파일
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+//AnimInstance클래스와 연결
+#include "Animation/ASAnimInstance.h"
 
 // Sets default values
 AASCharacterBase::AASCharacterBase()
@@ -46,10 +48,14 @@ AASCharacterBase::AASCharacterBase()
 
 	MaxHp = 100;
 	CurHp = MaxHp;
+	LowHp = 30;
+	Damage = 30;
+	CurState = State::None;
 }
 
 void AASCharacterBase::SetDead()
-{
+{	
+	SetState(State::Dead);
 	GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_None);
 	SetActorEnableCollision(false);
 
@@ -61,7 +67,7 @@ void AASCharacterBase::SetDead()
 	GetWorld()->GetTimerManager().SetTimer(DeadTimerHandle, FTimerDelegate::CreateLambda([&]()
 		{
 			Destroy();
-		}), 3.0f, false);
+		}), 2.0f, false);
 }
 
 int AASCharacterBase::GetHp()
@@ -72,4 +78,16 @@ int AASCharacterBase::GetHp()
 void AASCharacterBase::SetHp(int Hp)
 {
 	CurHp = Hp;
+}
+
+void AASCharacterBase::SetState(State NewState)
+{
+	CurState = NewState;
+	UASAnimInstance* animinstance = Cast<UASAnimInstance>(GetOwner());
+	animinstance->StateHandler(NewState);
+}
+
+State AASCharacterBase::GetState()
+{
+	return CurState;
 }

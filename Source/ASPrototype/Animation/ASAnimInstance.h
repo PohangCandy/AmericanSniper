@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "Character/ASCharacterBase.h" //ÀÇÁ¸
 #include "ASAnimInstance.generated.h"
-
 /**
  * 
  */
@@ -16,7 +16,8 @@ class ASPROTOTYPE_API UASAnimInstance : public UAnimInstance
 
 public:
 	UASAnimInstance();
-
+	State state;
+	void StateHandler(State NewState);
 protected:
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
@@ -44,6 +45,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	uint8 bIsFalling : 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	uint8 bIsHurt : 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	float JumpeThreadshold;

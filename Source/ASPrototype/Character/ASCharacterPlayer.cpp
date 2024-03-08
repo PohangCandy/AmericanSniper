@@ -150,8 +150,12 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 		SetHp(Hp);
 		FString text = FString::Printf(TEXT("Player Hp : %d"), Hp);
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, text);
+		if (Hp > 0 && Hp <= LowHp)
+		{
+			SetState(State::Hurt);
+		}
 		if (Hp <= 0)
-		{	
+		{
 			SetDead();
 		}
 	}

@@ -14,7 +14,7 @@ class ASPROTOTYPE_API ATestEnemy : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ATestEnemy();
-	int damage = 30;
+	int damage = 10;
 protected:
 	//UFUNCTION()
 	//virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;

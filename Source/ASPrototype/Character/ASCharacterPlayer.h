@@ -42,7 +42,6 @@ private:
 	void SprintStart(const FInputActionValue& Value);
 	void SprinEnd(const FInputActionValue& Value);
 	void Wear(const FInputActionValue& Value);
-	void ChangeOutfit();
 	void UpdateSoundRange();
 	float CurrentSpeed;
 

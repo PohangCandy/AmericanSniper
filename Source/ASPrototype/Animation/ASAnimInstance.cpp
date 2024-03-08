@@ -11,6 +11,29 @@ UASAnimInstance::UASAnimInstance()
 	JumpeThreadshold = 30.0f;
 }
 
+void UASAnimInstance::StateHandler(State NewState)
+{
+	switch (NewState)
+	{
+	case State::None:
+		break;
+	case State::Prone:
+		break;
+	case State::Crawl:
+		break;
+	case State::Hurt:
+		//bIsHurt = true;
+		UE_LOG(LogTemp, Log, TEXT("HURT"));
+		//절뚝거림 구현
+	case State::Hidden:
+		break;
+	case State::Dead:
+		break;
+	default:
+		break;
+	}
+}
+
 void UASAnimInstance::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
