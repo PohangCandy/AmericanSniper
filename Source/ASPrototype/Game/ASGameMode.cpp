@@ -2,6 +2,7 @@
 
 
 #include "Game/ASGameMode.h"
+#include "Blueprint/UserWidget.h"
 
 AASGameMode::AASGameMode()
 {
@@ -18,3 +19,29 @@ AASGameMode::AASGameMode()
 		PlayerControllerClass = PlayerControllerClassRef.Class;
 	}
 }
+
+void AASGameMode::ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass)
+{
+	if (CurrentWidget != nullptr)
+	{
+		CurrentWidget->RemoveFromViewport();
+		CurrentWidget = nullptr;
+	}
+
+	if (NewWidgetClass != nullptr)
+	{
+		CurrentWidget = CreateWidget(GetWorld(), NewWidgetClass);
+		if (CurrentWidget != nullptr)
+		{
+			CurrentWidget->AddToViewport();
+		}
+	}
+}
+
+void AASGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+	ChangeMenuWidget(StartingWidgetClass);
+}
+
+

@@ -16,4 +16,15 @@ class ASPROTOTYPE_API AASGameMode : public AGameModeBase
 
 public:
 	AASGameMode();
+	UFUNCTION(BlueprintCallable, Category = "UMG_Game")
+	void ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass);
+
+protected:
+	virtual void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UMG_Game")
+	TSubclassOf<UUserWidget> StartingWidgetClass;
+
+	UPROPERTY()
+	UUserWidget* CurrentWidget;
 };
