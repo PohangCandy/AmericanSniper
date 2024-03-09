@@ -18,8 +18,6 @@ public:
 	UASAnimInstance();
 	State state;
 	void StateHandler(State NewState);
-	//void SetCurrentHp(int NewHp);
-	//int Hp = 100;
 
 protected:
 	virtual void NativeInitializeAnimation() override;
@@ -32,7 +30,7 @@ protected:
 	TObjectPtr<class UCharacterMovementComponent> Movement;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
-	uint8 bIsIdle : 1;
+	bool bIsIdle;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	float GroundSpeed;
@@ -41,18 +39,19 @@ protected:
 	float MoveThreadshold; //임계값 (특정수치가 올라가면 움직임)
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
-	uint8 bIsRunning : 1;
+	bool bIsRunning;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
-	uint8 bIsJumping : 1;
+	bool bIsJumping;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
-	uint8 bIsFalling : 1;
+	bool bIsFalling;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
-	uint8 bIsHurt : 1;
+	bool bIsHurt;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	float JumpeThreadshold;
 
+	//trigger 참고 
 };
