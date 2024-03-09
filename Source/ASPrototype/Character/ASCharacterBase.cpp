@@ -83,9 +83,8 @@ void AASCharacterBase::SetHp(int Hp)
 void AASCharacterBase::SetState(State NewState)
 {
 	CurState = NewState;
-	UASAnimInstance* animinstance = Cast<UASAnimInstance>(GetOwner());
+	UASAnimInstance* animinstance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
 	animinstance->StateHandler(NewState);
-	//animinstance->SetCurrentHp(CurHp);
 }
 
 State AASCharacterBase::GetState()

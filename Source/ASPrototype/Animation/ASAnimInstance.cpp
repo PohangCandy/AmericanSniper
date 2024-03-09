@@ -12,7 +12,7 @@ UASAnimInstance::UASAnimInstance()
 }
 
 void UASAnimInstance::StateHandler(State NewState)
-{
+{	
 	switch (NewState)
 	{
 	case State::None:
@@ -22,9 +22,8 @@ void UASAnimInstance::StateHandler(State NewState)
 	case State::Crawl:
 		break;
 	case State::Hurt:
-		//bIsHurt=true; //Null의 내부 변수를 참조해서 에러 발생
+		bIsHurt = 1;
 		UE_LOG(LogTemp, Log, TEXT("HURT"));
-		//절뚝거림 구현
 	case State::Hidden:
 		break;
 	case State::Dead:
@@ -60,9 +59,9 @@ void UASAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bIsIdle = GroundSpeed < MoveThreadshold;
 
 		bIsFalling = Movement->IsFalling();
-		bIsJumping = bIsFalling & (Movement->Velocity.Z > JumpeThreadshold);
+		bIsJumping = bIsFalling && (Movement->Velocity.Z > JumpeThreadshold);
 
-		bIsRunning = (Owner->GetCharacterMovement()->MaxWalkSpeed > 500) & !bIsIdle & !bIsJumping;
+		bIsRunning = (Owner->GetCharacterMovement()->MaxWalkSpeed > 500) && !bIsIdle && !bIsJumping;
 
 		//bIsHurt = Hp < 50;
 	}

@@ -90,6 +90,8 @@ AASCharacterPlayer::AASCharacterPlayer()
 		RunAction = InputActionRunRef.Object;
 	}
 
+	SoundRangeCapsule->SetVisibility(true);
+	SoundRangeCapsule->SetHiddenInGame(false);
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -111,6 +113,23 @@ void AASCharacterPlayer::BeginPlay()
 	{
 		Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		//Subsystem->RemoveMappingContext(DefaultMappingContext); 필요 시 연결 끊기도 가능 
+	}
+
+	// SoundRangeCapsule의 머티리얼을 가져옴
+	UMaterialInterface* Material = SoundRangeCapsule->GetMaterial(0);
+
+	// 머티리얼이 유효한지 확인 후 색상 변경
+	if (Material)
+	{
+		// 색상을 빨간색으로 설정
+		FLinearColor NewColor = FLinearColor::Red;
+
+		// 머티리얼 인스턴스 생성 및 속성 설정
+		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
+		DynamicMaterial->SetVectorParameterValue(TEXT("Color"), NewColor);
+
+		// 머티리얼 적용
+		SoundRangeCapsule->SetMaterial(0, DynamicMaterial);
 	}
 }
 
@@ -230,13 +249,12 @@ void AASCharacterPlayer::UpdateSoundRange()
 	float NewSoundRange = MinSoundRange + (MaxSoundRange - MinSoundRange) * SpeedMultiplier;
 	FVector TargetSize = FVector(NewSoundRange, NewSoundRange, Height); // 높이는 고정값으로 유지
 	
-
 	// 선형 보간으로 사이즈 부드럽게 조절  
 	FVector LerpedSize = FMath::Lerp(CurrentSize, TargetSize, GetWorld()->DeltaTimeSeconds * 1.0);
 
 	// 크기 설정
 	SoundRangeCapsule->SetCapsuleSize(LerpedSize.X, LerpedSize.Y);
-
+	
 }
 
 
