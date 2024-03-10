@@ -2,6 +2,7 @@
 
 
 #include "Game/ASGameMode.h"
+#include "Player/ASPlayerState.h"
 #include "Blueprint/UserWidget.h"
 
 AASGameMode::AASGameMode()
@@ -18,7 +19,11 @@ AASGameMode::AASGameMode()
 	{
 		PlayerControllerClass = PlayerControllerClassRef.Class;
 	}
+
+	PlayerStateClass = AASPlayerState::StaticClass();
+	//PlayerStateClass = PlayerStateClass;
 }
+
 
 void AASGameMode::ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass)
 {
@@ -36,6 +41,14 @@ void AASGameMode::ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass)
 			CurrentWidget->AddToViewport();
 		}
 	}
+}
+
+void AASGameMode::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+
+	auto ASPlayerState = Cast<AASPlayerState>(NewPlayer->PlayerState);
+	ASPlayerState->initPlayerData();
 }
 
 void AASGameMode::BeginPlay()

@@ -8,6 +8,6 @@ void AASPlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	FInputModeGameOnly GameOnlyInputMode;
-	//SetInputMode(GameOnlyInputMode);
-	SetInputMode(FInputModeGameAndUI());
+	SetInputMode(GameOnlyInputMode);
+	//SetInputMode(FInputModeGameAndUI());
 }

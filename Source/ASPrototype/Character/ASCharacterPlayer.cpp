@@ -2,6 +2,7 @@
 
 
 #include "Character/ASCharacterPlayer.h"
+#include "Player/ASPlayerState.h"
 //카메라 헤더파일
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
