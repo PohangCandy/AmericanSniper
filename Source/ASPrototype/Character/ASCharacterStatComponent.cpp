@@ -25,10 +25,5 @@ void UASCharacterStatComponent::BeginPlay()
 
 
 // Called every frame
-void UASCharacterStatComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
-}
 
