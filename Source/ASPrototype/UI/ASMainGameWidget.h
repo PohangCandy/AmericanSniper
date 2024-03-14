@@ -15,13 +15,13 @@ class ASPROTOTYPE_API UASMainGameWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void BindCharacterStat(class UASCharacterStatComponent* CharacterStat);
-	void BindPlayerState(class AASPlayerState);
+	//void BindCharacterStat(class UASCharacterStatComponent* CharacterStat);
+	//void BindPlayerState(class AASPlayerState);
 
 protected:
-	virtual void NativeConstruct() override;
-	void UpdateCharacterStat();
-	void UpdatePlayerState();
+	//virtual void NativeConstruct() override;
+	//void UpdateCharacterStat();
+	//void UpdatePlayerState();
 
 private:
 	TWeakObjectPtr<class UASCharacterStatComponent> CurrentCharacterStat;
