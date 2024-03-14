@@ -14,5 +14,19 @@ class ASPROTOTYPE_API AASPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+public: 
+	AASPlayerController();
+
+	class UASMainGameWidget* GetHUDWidget();
+
+protected:
+	
 	virtual void BeginPlay() override;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
+	TSubclassOf<class UASMainGameWidget> HUDWidgetClass;
+
+private:
+	UPROPERTY()
+	class UASMainGameWidget* HUDWidget;
 };
