@@ -137,7 +137,7 @@ void AASCharacterPlayer::BeginPlay()
 void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+	
 	//향상된 입력 시스템 사용
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 	//입력 맵핑컨텍스트에서의 액션이랑 함수랑 연결
@@ -166,8 +166,10 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 
 	if(EnemyRef)
 	{
-		int Hp = FMath::Clamp(GetHp() - (EnemyRef->damage), 0, 100);
-		SetHp(Hp);
+		//int Hp = FMath::Clamp(GetHp() - (EnemyRef->damage), 0, 100);
+		//SetHp(Hp);
+		GetDamaged(EnemyRef->damage);
+		int Hp = GetHp();
 		FString text = FString::Printf(TEXT("Player Hp : %d"), Hp);
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, text);
 		if (Hp > 0 && Hp <= LowHp)

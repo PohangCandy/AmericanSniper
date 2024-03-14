@@ -75,9 +75,27 @@ int AASCharacterBase::GetHp()
 	return CurHp;
 }
 
+float AASCharacterBase::GetHpratio()
+{
+	if (CurHp <= 0)
+	{
+		return 0.0f;
+	}
+	float HpRatio = (float)CurHp / (float)MaxHp;
+	return HpRatio;
+}
+
 void AASCharacterBase::SetHp(int Hp)
 {
 	CurHp = Hp;
+}
+
+void AASCharacterBase::GetDamaged(int damage)
+{
+	int Hp = GetHp() - damage;
+	SetHp(Hp);
+
+	OnHpChanged.Broadcast();
 }
 
 void AASCharacterBase::SetState(State NewState)

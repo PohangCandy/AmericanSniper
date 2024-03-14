@@ -20,6 +20,16 @@ int32 AASPlayerState::GetPlayerCurHp()
 	return CurPlayerHp;
 }
 
+float AASPlayerState::GetPlayerHpratio()
+{
+	if (CurPlayerHp <= 0)
+	{
+		return 0.0f;
+	}
+	float HpRatio = (float)CurPlayerHp / (float)MaxPlayerHp;
+	return HpRatio;
+}
+
 void AASPlayerState::SetPlayerCurHp(int32 ChangedPlayerHp)
 {
 	CurPlayerHp = ChangedPlayerHp;

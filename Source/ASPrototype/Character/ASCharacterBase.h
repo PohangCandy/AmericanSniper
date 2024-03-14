@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "ASCharacterBase.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FOnStateChangeDelegate);
+
 UENUM()
 enum class State
 {
@@ -16,6 +18,7 @@ enum class State
 	Hidden, //숨은 상태
 	Dead
 };
+
 
 UCLASS()
 class ASPROTOTYPE_API AASCharacterBase : public ACharacter
@@ -33,9 +36,13 @@ public:
 	AASCharacterBase();
 	void SetDead();
 	int GetHp();
+	float GetHpratio();
 	void SetHp(int Hp);
+	void GetDamaged(int damage);
 	void SetState(State NewState);
 	State GetState();
+	FOnStateChangeDelegate OnHpChanged;
+
 
 protected:
 	uint8 LowHp; // LowHp 이하면 절뚝거림 

@@ -3,6 +3,7 @@
 
 #include "Player/ASPlayerController.h"
 #include "UI/ASMainGameWidget.h"
+#include "Character/ASCharacterBase.h"
 
 AASPlayerController::AASPlayerController()
 {
@@ -22,6 +23,7 @@ void AASPlayerController::BeginPlay()
 
 	HUDWidget = CreateWidget<UASMainGameWidget>(this, HUDWidgetClass);
 	HUDWidget->AddToViewport();
+
 }
 
 UASMainGameWidget* AASPlayerController::GetHUDWidget()

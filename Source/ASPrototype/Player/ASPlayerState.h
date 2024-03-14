@@ -19,11 +19,13 @@ public:
 	
 	int32 GetPlayerMaxHp();
 	int32 GetPlayerCurHp();
+	float GetPlayerHpratio();
 	void SetPlayerCurHp(int32 ChangedPlayerHp);
 	void SetBulletCurNum(int32 ChangedBulletNum);
 	void SetMaganizeCurNum(int32 ChangedMaganizeNum);
 
 	void initPlayerData();
+
 
 protected:
 	UPROPERTY(Transient)
