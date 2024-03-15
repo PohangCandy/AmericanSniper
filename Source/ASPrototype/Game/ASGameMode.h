@@ -19,7 +19,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "UMG_Game")
 	void ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass);
 
-	void PostLogin(APlayerController* NewPlayer);
+	virtual void PostLogin(APlayerController* NewPlayer) override;
 
 protected:
 	virtual void BeginPlay() override;

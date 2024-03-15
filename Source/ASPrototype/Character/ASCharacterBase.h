@@ -34,6 +34,7 @@ private:
 public:
 	// Sets default values for this character's properties
 	AASCharacterBase();
+	virtual void PostInitializeComponents() override;
 	void SetDead();
 	int GetHp();
 	float GetHpratio();

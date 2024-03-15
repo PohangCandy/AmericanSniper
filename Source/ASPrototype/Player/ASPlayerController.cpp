@@ -2,14 +2,24 @@
 
 
 #include "Player/ASPlayerController.h"
+#include "Components/WidgetComponent.h"
 #include "UI/ASMainGameWidget.h"
 #include "Character/ASCharacterBase.h"
+
 
 AASPlayerController::AASPlayerController()
 {
 	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/WB_GameBase_UI.WB_GameBase_UI_C"));
 	//static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Script/ASPrototype.ASMainGameWidget_C"));
 	HUDWidgetClass = UI_HUD_C.Class;
+}
+
+void AASPlayerController::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	auto CharacterWidget = Cast<UASMainGameWidget>(HUDWidgetClass);
+	//CharacterWidget->BindPlayerBase(AASCharacterBase);
 }
 
 

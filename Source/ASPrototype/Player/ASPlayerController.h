@@ -17,6 +17,8 @@ class ASPROTOTYPE_API AASPlayerController : public APlayerController
 public: 
 	AASPlayerController();
 
+	virtual void PostInitializeComponents() override;
+
 	class UASMainGameWidget* GetHUDWidget();
 
 protected:

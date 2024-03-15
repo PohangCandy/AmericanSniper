@@ -53,6 +53,11 @@ AASCharacterBase::AASCharacterBase()
 	CurState = State::None;
 }
 
+void AASCharacterBase::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+}
+
 void AASCharacterBase::SetDead()
 {	
 	SetState(State::Dead);
