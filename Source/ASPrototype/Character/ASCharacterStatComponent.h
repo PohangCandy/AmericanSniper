@@ -19,12 +19,19 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	virtual void InitializeComponent() override;
 
 protected:
 	UPROPERTY(VisibleInstanceOnly, Category = Stat)
 	float MaxHp;
 
 	UPROPERTY(Transient,VisibleInstanceOnly,Category = Stat)
-	float CurrentHp;
+	float CurHp;
+
+private:
+	struct FABCharacterData* CurrentStatData = nullptr;
+
+	UPROPERTY(Transient, VisibleInstanceOnly, Category = Stat, Meta = (AllowPrivateAcess = true))
+	float CurrentHP;
 		
 };

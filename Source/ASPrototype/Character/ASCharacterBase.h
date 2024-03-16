@@ -30,8 +30,8 @@ private:
 	uint32 CurHp;
 	uint8 Damage;
 	State CurState;
-	UPROPERTY()
-	class AASPlayerController* PlayerController;
+	//UPROPERTY()
+	//class AASPlayerController* PlayerController;
 
 public:
 	// Sets default values for this character's properties
@@ -47,7 +47,13 @@ public:
 	FOnStateChangeDelegate OnHpChanged;
 
 
+	UPROPERTY(VisibleAnywhere, Category = Stat)
+	class UASCharacterStatComponent* CharacterStat;
+
+
 protected:
+	virtual void BeginPlay() override;
+
 	uint8 LowHp; // LowHp 이하면 절뚝거림 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> DeadMontage;
@@ -57,6 +63,6 @@ protected:
 
 	FTimerHandle DeadTimerHandle;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
-	TSubclassOf<class AASPlayerController> CurplayerController;
+	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
+	//TSubclassOf<class AASPlayerController> CurplayerControllerClass;
 };

@@ -2,15 +2,18 @@
 
 
 #include "Character/ASCharacterBase.h"
+#include "Player/ASPlayerController.h"
+#include "Character/ASCharacterStatComponent.h"
 //충돌,움직임 헤더파일
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 //AnimInstance클래스와 연결
 #include "Animation/ASAnimInstance.h"
 
+
 // Sets default values
 AASCharacterBase::AASCharacterBase()
-{	
+{
 	//Pawn
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -52,7 +55,12 @@ AASCharacterBase::AASCharacterBase()
 	Damage = 10;
 	CurState = State::None;
 
+	//static ConstructorHelpers::FClassFinder<AASPlayerController> Controll_C(TEXT("/Script/ASPrototype.ASPlayerController_C"));
+	//CurplayerControllerClass = Controll_C.Class;
+	//PlayerController = Cast<AASPlayerController>(GetWorld()->GetFirstPlayerController());
+	//PlayerController->ConnectUIwithData();
 
+	CharacterStat = CreateDefaultSubobject<UASCharacterStatComponent>(TEXT("CHARACTERSTAT"));
 }
 
 void AASCharacterBase::PostInitializeComponents()
@@ -117,4 +125,9 @@ void AASCharacterBase::SetState(State NewState)
 State AASCharacterBase::GetState()
 {
 	return CurState;
+}
+
+void AASCharacterBase::BeginPlay()
+{
+	Super::BeginPlay();
 }
