@@ -29,7 +29,7 @@ protected:
 	float CurHp;
 
 private:
-	struct FABCharacterData* CurrentStatData = nullptr;
+	struct FASCharacterData* CurrentStatData = nullptr;
 
 	UPROPERTY(Transient, VisibleInstanceOnly, Category = Stat, Meta = (AllowPrivateAcess = true))
 	float CurrentHP;
