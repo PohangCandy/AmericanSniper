@@ -17,9 +17,6 @@ AASPlayerController::AASPlayerController()
 void AASPlayerController::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-
-	auto CharacterWidget = Cast<UASMainGameWidget>(HUDWidgetClass);
-	//CharacterWidget->BindPlayerBase(AASCharacterBase);
 }
 
 
@@ -39,6 +36,14 @@ void AASPlayerController::BeginPlay()
 UASMainGameWidget* AASPlayerController::GetHUDWidget()
 {
 	return HUDWidget;
+}
+
+void AASPlayerController::ConnectUIwithData()
+{
+	auto CharacterWidget = Cast<UASMainGameWidget>(HUDWidget);
+	AActor* ControllerOwner = this->GetOwner();
+	CharacterWidget->BindPlayerBase(Cast<AASCharacterBase>(ControllerOwner));
+
 }
 
 

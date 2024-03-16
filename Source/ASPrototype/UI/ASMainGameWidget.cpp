@@ -13,6 +13,7 @@ void UASMainGameWidget::BindPlayerBase(class AASCharacterBase* PlayerBase)
 	CurrentPlayerBase->OnHpChanged.AddUObject(this, &UASMainGameWidget::UpdatePlayerState);
 }
 
+
 void UASMainGameWidget::NativeConstruct()
 {
 	Super::NativeConstruct();

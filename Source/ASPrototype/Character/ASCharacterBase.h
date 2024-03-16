@@ -30,6 +30,8 @@ private:
 	uint32 CurHp;
 	uint8 Damage;
 	State CurState;
+	UPROPERTY()
+	class AASPlayerController* PlayerController;
 
 public:
 	// Sets default values for this character's properties
@@ -54,4 +56,7 @@ protected:
 	TObjectPtr<class UAnimMontage> SearchMontage;
 
 	FTimerHandle DeadTimerHandle;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
+	TSubclassOf<class AASPlayerController> CurplayerController;
 };

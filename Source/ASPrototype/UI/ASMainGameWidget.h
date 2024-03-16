@@ -18,6 +18,7 @@ public:
 	//void BindCharacterStat(class UASCharacterStatComponent* CharacterStat);
 	//void BindPlayerState(class AASPlayerState);
 	void BindPlayerBase(class AASCharacterBase* PlayerBase);
+	void ConnectUIwithData();
 
 protected:
 	virtual void NativeConstruct() override;

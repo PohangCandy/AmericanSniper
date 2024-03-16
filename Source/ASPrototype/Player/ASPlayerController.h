@@ -21,6 +21,8 @@ public:
 
 	class UASMainGameWidget* GetHUDWidget();
 
+	void ConnectUIwithData();
+
 protected:
 	
 	virtual void BeginPlay() override;

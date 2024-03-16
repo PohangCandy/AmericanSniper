@@ -51,11 +51,14 @@ AASCharacterBase::AASCharacterBase()
 	LowHp = 40;
 	Damage = 10;
 	CurState = State::None;
+
+
 }
 
 void AASCharacterBase::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
+	OnHpChanged.Broadcast();
 }
 
 void AASCharacterBase::SetDead()
@@ -109,6 +112,7 @@ void AASCharacterBase::SetState(State NewState)
 	UASAnimInstance* animinstance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
 	animinstance->StateHandler(NewState);
 }
+
 
 State AASCharacterBase::GetState()
 {
