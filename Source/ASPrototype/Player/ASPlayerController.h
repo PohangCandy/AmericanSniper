@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Game/ASGameMode.h"
 #include "GameFramework/PlayerController.h"
 #include "ASPlayerController.generated.h"
 
@@ -19,6 +19,8 @@ public:
 
 	virtual void PostInitializeComponents() override;
 
+	virtual void OnPossess(APawn* aPawn) override;
+
 	class UASMainGameWidget* GetHUDWidget();
 
 	void ConnectUIwithData();
@@ -33,4 +35,7 @@ protected:
 private:
 	UPROPERTY()
 	class UASMainGameWidget* HUDWidget;
+
+	UPROPERTY()
+	class AActor* ControllerOwner;
 };
