@@ -130,4 +130,5 @@ State AASCharacterBase::GetState()
 void AASCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
+	OnHpChanged.Broadcast();
 }

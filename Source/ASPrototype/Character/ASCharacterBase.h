@@ -62,7 +62,6 @@ protected:
 	TObjectPtr<class UAnimMontage> SearchMontage;
 
 	FTimerHandle DeadTimerHandle;
-
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
 	//TSubclassOf<class AASPlayerController> CurplayerControllerClass;
 };
