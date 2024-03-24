@@ -51,6 +51,12 @@ AASCharacterBase::AASCharacterBase()
 
 	MaxHp = 100;
 	CurHp = MaxHp;
+	MaxBulletNum = 98;
+	CurBulletNum = MaxBulletNum;
+	MaxMagazineNum = 8;
+	CurMagazineNum = MaxMagazineNum;
+	MaxItemNum = 98;
+	CurItemNum = MaxItemNum;
 	LowHp = 40;
 	Damage = 10;
 	CurState = State::None;
@@ -91,6 +97,21 @@ int AASCharacterBase::GetHp()
 	return CurHp;
 }
 
+int AASCharacterBase::GetBulletNum()
+{
+	return CurBulletNum;
+}
+
+int AASCharacterBase::GetMagazineNum()
+{
+	return CurMagazineNum;
+}
+
+int AASCharacterBase::GetItemNum()
+{
+	return CurItemNum;
+}
+
 float AASCharacterBase::GetHpratio()
 {
 	if (CurHp <= 0)
@@ -104,6 +125,21 @@ float AASCharacterBase::GetHpratio()
 void AASCharacterBase::SetHp(int Hp)
 {
 	CurHp = Hp;
+}
+
+void AASCharacterBase::SetBulletNum(int Num)
+{
+	CurBulletNum = Num;
+}
+
+void AASCharacterBase::SetMagazineNum(int Num)
+{
+	CurMagazineNum = Num;
+}
+
+void AASCharacterBase::SetItem(int Num)
+{
+	CurItemNum = Num;
 }
 
 void AASCharacterBase::GetDamaged(int damage)
@@ -131,4 +167,5 @@ void AASCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	OnHpChanged.Broadcast();
+	NumBulletChanged.Broadcast();
 }

@@ -18,12 +18,14 @@ public:
 	//void BindCharacterStat(class UASCharacterStatComponent* CharacterStat);
 	//void BindPlayerState(class AASPlayerState);
 	void BindPlayerBase(class AASCharacterBase* PlayerBase);
+	void BindPlayerBaseForBullet(class AASCharacterBase* PlayerBase);
 	void ConnectUIwithData();
 
 protected:
 	virtual void NativeConstruct() override;
 	//void UpdateCharacterStat();
 	void UpdatePlayerState();
+	void UpdateBulletUI();
 
 private:
 	TWeakObjectPtr<class UASCharacterStatComponent> CurrentCharacterStat;
@@ -34,7 +36,7 @@ private:
 	class UProgressBar* HpBar;
 
 	UPROPERTY()
-	class UTextBlock* BulletNum;
+	class UTextBlock* BulletNumUI;
 
 	UPROPERTY()
 	class UTextBlock* MagazineNum;

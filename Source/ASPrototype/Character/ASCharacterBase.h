@@ -28,6 +28,12 @@ class ASPROTOTYPE_API AASCharacterBase : public ACharacter
 private:
 	uint32 MaxHp;
 	uint32 CurHp;
+	uint32 MaxBulletNum;
+	uint32 CurBulletNum;
+	uint32 MaxMagazineNum;
+	uint32 CurMagazineNum;
+	uint32 MaxItemNum;
+	uint32 CurItemNum;
 	uint8 Damage;
 	State CurState;
 	//UPROPERTY()
@@ -39,12 +45,21 @@ public:
 	virtual void PostInitializeComponents() override;
 	void SetDead();
 	int GetHp();
+	int GetBulletNum();
+	int GetMagazineNum();
+	int GetItemNum();
 	float GetHpratio();
 	void SetHp(int Hp);
+	void SetBulletNum(int Num);
+	void SetMagazineNum(int Num);
+	void SetItem(int Num);
 	void GetDamaged(int damage);
 	void SetState(State NewState);
 	State GetState();
 	FOnStateChangeDelegate OnHpChanged;
+	FOnStateChangeDelegate NumBulletChanged;
+	FOnStateChangeDelegate NumMagazineChanged;
+	FOnStateChangeDelegate NumItemChanged;
 
 
 	UPROPERTY(VisibleAnywhere, Category = Stat)

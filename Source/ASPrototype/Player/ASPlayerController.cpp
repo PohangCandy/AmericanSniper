@@ -51,6 +51,7 @@ void AASPlayerController::ConnectUIwithData()
 {
 	auto CharacterWidget = Cast<UASMainGameWidget>(HUDWidget);
 	CharacterWidget->BindPlayerBase(Cast<AASCharacterBase>(ControllerOwner));
+	CharacterWidget->BindPlayerBaseForBullet(Cast<AASCharacterBase>(ControllerOwner));
 
 }
 
