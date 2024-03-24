@@ -51,11 +51,11 @@ AASCharacterBase::AASCharacterBase()
 
 	MaxHp = 100;
 	CurHp = MaxHp;
-	MaxBulletNum = 98;
+	MaxBulletNum = 8;
 	CurBulletNum = MaxBulletNum;
-	MaxMagazineNum = 8;
+	MaxMagazineNum = 77;
 	CurMagazineNum = MaxMagazineNum;
-	MaxItemNum = 98;
+	MaxItemNum = 55;
 	CurItemNum = MaxItemNum;
 	LowHp = 40;
 	Damage = 10;
@@ -168,4 +168,6 @@ void AASCharacterBase::BeginPlay()
 	Super::BeginPlay();
 	OnHpChanged.Broadcast();
 	NumBulletChanged.Broadcast();
+	NumMagazineChanged.Broadcast();
+	NumItemChanged.Broadcast();
 }

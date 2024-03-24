@@ -19,6 +19,8 @@ public:
 	//void BindPlayerState(class AASPlayerState);
 	void BindPlayerBase(class AASCharacterBase* PlayerBase);
 	void BindPlayerBaseForBullet(class AASCharacterBase* PlayerBase);
+	void BindPlayerBaseForMagazine(class AASCharacterBase* PlayerBase);
+	void BindPlayerBaseForItem(class AASCharacterBase* PlayerBase);
 	void ConnectUIwithData();
 
 protected:
@@ -26,6 +28,8 @@ protected:
 	//void UpdateCharacterStat();
 	void UpdatePlayerState();
 	void UpdateBulletUI();
+	void UpdateMagazineUI();
+	void UpdateItemUI();
 
 private:
 	TWeakObjectPtr<class UASCharacterStatComponent> CurrentCharacterStat;
@@ -36,12 +40,11 @@ private:
 	class UProgressBar* HpBar;
 
 	UPROPERTY()
-	class UTextBlock* BulletNumUI;
+	class UEditableTextBox* BulletNumUI;
 
 	UPROPERTY()
-	class UTextBlock* MagazineNum;
+	class UEditableTextBox* MagazineNum;
 
 	UPROPERTY()
 	class UTextBlock* ItemNum;
-
 };
