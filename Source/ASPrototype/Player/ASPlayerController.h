@@ -25,6 +25,8 @@ public:
 
 	void ConnectUIwithData();
 
+	class AActor* GetPlayerActor();
+
 protected:
 	
 	virtual void BeginPlay() override;

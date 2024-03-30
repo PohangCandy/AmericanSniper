@@ -54,7 +54,11 @@ void AASPlayerController::ConnectUIwithData()
 	CharacterWidget->BindPlayerBaseForBullet(Cast<AASCharacterBase>(ControllerOwner));
 	CharacterWidget->BindPlayerBaseForMagazine(Cast<AASCharacterBase>(ControllerOwner));
 	CharacterWidget->BindPlayerBaseForItem(Cast<AASCharacterBase>(ControllerOwner));
+}
 
+class AActor* AASPlayerController::GetPlayerActor()
+{
+	return ControllerOwner;
 }
 
 
