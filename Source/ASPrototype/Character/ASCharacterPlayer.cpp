@@ -138,6 +138,10 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
+	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
+	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Reload);
+
+
 	//향상된 입력 시스템 사용
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 	//입력 맵핑컨텍스트에서의 액션이랑 함수랑 연결
@@ -148,6 +152,9 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	EnhancedInputComponent->BindAction(WearAction, ETriggerEvent::Triggered, this, &AASCharacterPlayer::Wear);
 	EnhancedInputComponent->BindAction(RunAction, ETriggerEvent::Triggered, this, &AASCharacterPlayer::SprintStart);
 	EnhancedInputComponent->BindAction(RunAction, ETriggerEvent::Completed, this, &AASCharacterPlayer::SprinEnd);
+	
+	//PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Released, this, &AASCharacterPlayer::Reload);
+	//PlayerInputComponent->BindAction(TEXT("Heal"), EInputEvent::IE_Released, this, &AASCharacterPlayer::Heal);
 }
 
 void AASCharacterPlayer::NotifyActorBeginOverlap(AActor* OtherActor)
@@ -259,5 +266,7 @@ void AASCharacterPlayer::UpdateSoundRange()
 	SoundRangeCapsule->SetCapsuleSize(LerpedSize.X, LerpedSize.Y);
 	
 }
+
+
 
 

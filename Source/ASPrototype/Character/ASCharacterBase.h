@@ -55,6 +55,9 @@ public:
 	void SetItem(int Num);
 	void GetDamaged(int damage);
 	void SetState(State NewState);
+	void Shoot();
+	void Reload();
+	void Heal();
 	State GetState();
 	FOnStateChangeDelegate OnHpChanged;
 	FOnStateChangeDelegate NumBulletChanged;

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "InputActionValue.h"
 #include "Character/ASCharacterBase.h"
 #include "ASCharacterPlayer.generated.h"
@@ -45,6 +45,9 @@ private:
 	void Wear(const FInputActionValue& Value);
 	void UpdateSoundRange();
 	float CurrentSpeed;
+	void Shoot(class AASCharacterBase* PlayerBase);
+	//void Reload(class AASCharacterBase* PlayerBase);
+	//void Heal(class AASCharacterBase* PlayerBase);
 
 protected:
 	virtual void BeginPlay() override;

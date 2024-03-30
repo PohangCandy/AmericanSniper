@@ -157,6 +157,34 @@ void AASCharacterBase::SetState(State NewState)
 	animinstance->StateHandler(NewState);
 }
 
+void AASCharacterBase::Shoot()
+{
+	int lastBullet = GetBulletNum();
+	if (lastBullet > 0)
+	{
+		SetBulletNum(lastBullet - 1);
+	}
+	NumBulletChanged.Broadcast();
+}
+
+void AASCharacterBase::Reload()
+{
+	int lastMagazine = GetMagazineNum();
+	if (lastMagazine - (MaxBulletNum - GetBulletNum()) < 0)
+	{
+		SetBulletNum(GetBulletNum() + lastMagazine);
+		SetMagazineNum(0);
+	}
+	else 
+	{
+		lastMagazine = GetMagazineNum() - (MaxBulletNum - GetBulletNum());
+		SetMagazineNum(lastMagazine);
+		SetBulletNum(MaxBulletNum);
+	}
+	NumBulletChanged.Broadcast();
+	NumMagazineChanged.Broadcast();
+}
+
 
 State AASCharacterBase::GetState()
 {
