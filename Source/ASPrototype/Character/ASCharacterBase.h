@@ -52,7 +52,7 @@ public:
 	void SetHp(int Hp);
 	void SetBulletNum(int Num);
 	void SetMagazineNum(int Num);
-	void SetItem(int Num);
+	void SetItemNum(int Num);
 	void GetDamaged(int damage);
 	void SetState(State NewState);
 	void Shoot();

@@ -53,9 +53,9 @@ AASCharacterBase::AASCharacterBase()
 	CurHp = MaxHp;
 	MaxBulletNum = 8;
 	CurBulletNum = MaxBulletNum;
-	MaxMagazineNum = 77;
+	MaxMagazineNum = 24;
 	CurMagazineNum = MaxMagazineNum;
-	MaxItemNum = 55;
+	MaxItemNum = 20;
 	CurItemNum = MaxItemNum;
 	LowHp = 40;
 	Damage = 10;
@@ -137,7 +137,7 @@ void AASCharacterBase::SetMagazineNum(int Num)
 	CurMagazineNum = Num;
 }
 
-void AASCharacterBase::SetItem(int Num)
+void AASCharacterBase::SetItemNum(int Num)
 {
 	CurItemNum = Num;
 }
@@ -159,30 +159,44 @@ void AASCharacterBase::SetState(State NewState)
 
 void AASCharacterBase::Shoot()
 {
-	int lastBullet = GetBulletNum();
-	if (lastBullet > 0)
+	int lastBulletNum = GetBulletNum();
+	if (lastBulletNum > 0)
 	{
-		SetBulletNum(lastBullet - 1);
+		SetBulletNum(lastBulletNum - 1);
 	}
 	NumBulletChanged.Broadcast();
 }
 
 void AASCharacterBase::Reload()
 {
-	int lastMagazine = GetMagazineNum();
-	if (lastMagazine - (MaxBulletNum - GetBulletNum()) < 0)
+	int lastMagazineNum = GetMagazineNum();
+	if (lastMagazineNum > 0)
 	{
-		SetBulletNum(GetBulletNum() + lastMagazine);
-		SetMagazineNum(0);
+		if (lastMagazineNum - (MaxBulletNum - GetBulletNum()) < 0)
+		{
+			SetBulletNum(GetBulletNum() + lastMagazineNum);
+			SetMagazineNum(0);
+		}
+		else
+		{
+			lastMagazineNum = GetMagazineNum() - (MaxBulletNum - GetBulletNum());
+			SetMagazineNum(lastMagazineNum);
+			SetBulletNum(MaxBulletNum);
+		}
 	}
-	else 
-	{
-		lastMagazine = GetMagazineNum() - (MaxBulletNum - GetBulletNum());
-		SetMagazineNum(lastMagazine);
-		SetBulletNum(MaxBulletNum);
-	}
+	
 	NumBulletChanged.Broadcast();
 	NumMagazineChanged.Broadcast();
+}
+
+void AASCharacterBase::Heal()
+{
+	int lastItemNum = GetItemNum();
+	if (lastItemNum > 0)
+	{
+		SetItemNum(lastItemNum - 1);
+	}
+	NumItemChanged.Broadcast();
 }
 
 

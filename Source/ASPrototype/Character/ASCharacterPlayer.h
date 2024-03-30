@@ -46,8 +46,6 @@ private:
 	void UpdateSoundRange();
 	float CurrentSpeed;
 	void Shoot(class AASCharacterBase* PlayerBase);
-	//void Reload(class AASCharacterBase* PlayerBase);
-	//void Heal(class AASCharacterBase* PlayerBase);
 
 protected:
 	virtual void BeginPlay() override;
