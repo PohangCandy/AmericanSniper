@@ -2,6 +2,7 @@
 
 
 #include "Character/ASCharacterStatComponent.h"
+#include "Game/ASGameInstance.h"
 
 // Sets default values for this component's properties
 UASCharacterStatComponent::UASCharacterStatComponent()

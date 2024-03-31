@@ -19,6 +19,12 @@ void AASPlayerController::PostInitializeComponents()
 	Super::PostInitializeComponents();
 }
 
+void AASPlayerController::OnPossess(APawn* aPawn)
+{
+	Super::OnPossess(aPawn);
+	ControllerOwner = aPawn;
+}
+
 
 void AASPlayerController::BeginPlay()
 {
@@ -31,6 +37,7 @@ void AASPlayerController::BeginPlay()
 	HUDWidget = CreateWidget<UASMainGameWidget>(this, HUDWidgetClass);
 	HUDWidget->AddToViewport();
 
+	ConnectUIwithData();
 }
 
 UASMainGameWidget* AASPlayerController::GetHUDWidget()
@@ -38,12 +45,20 @@ UASMainGameWidget* AASPlayerController::GetHUDWidget()
 	return HUDWidget;
 }
 
+
+
 void AASPlayerController::ConnectUIwithData()
 {
 	auto CharacterWidget = Cast<UASMainGameWidget>(HUDWidget);
-	AActor* ControllerOwner = this->GetOwner();
 	CharacterWidget->BindPlayerBase(Cast<AASCharacterBase>(ControllerOwner));
+	CharacterWidget->BindPlayerBaseForBullet(Cast<AASCharacterBase>(ControllerOwner));
+	CharacterWidget->BindPlayerBaseForMagazine(Cast<AASCharacterBase>(ControllerOwner));
+	CharacterWidget->BindPlayerBaseForItem(Cast<AASCharacterBase>(ControllerOwner));
+}
 
+class AActor* AASPlayerController::GetPlayerActor()
+{
+	return ControllerOwner;
 }
 
 

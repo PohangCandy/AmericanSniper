@@ -50,6 +50,12 @@ AASCharacterBase::AASCharacterBase()
 
 	MaxHp = 100;
 	CurHp = MaxHp;
+	MaxBulletNum = 8;
+	CurBulletNum = 3;
+	MaxMagazineNum = 24;
+	CurMagazineNum = 4;
+	MaxItemNum = 20;
+	CurItemNum = MaxItemNum;
 	LowHp = 40;
 	Damage = 10;
 	CurState = State::None;
@@ -91,6 +97,22 @@ int AASCharacterBase::GetHp()
 	return CurHp;
 }
 
+int AASCharacterBase::GetBulletNum()
+{
+	UE_LOG(AS, Warning, TEXT("GetBulletNumFunc Act"));
+	return CurBulletNum;
+}
+
+int AASCharacterBase::GetMagazineNum()
+{
+	return CurMagazineNum;
+}
+
+int AASCharacterBase::GetItemNum()
+{
+	return CurItemNum;
+}
+
 float AASCharacterBase::GetHpratio()
 {
 	if (CurHp <= 0)
@@ -104,6 +126,21 @@ float AASCharacterBase::GetHpratio()
 void AASCharacterBase::SetHp(int Hp)
 {
 	CurHp = Hp;
+}
+
+void AASCharacterBase::SetBulletNum(int Num)
+{
+	CurBulletNum = Num;
+}
+
+void AASCharacterBase::SetMagazineNum(int Num)
+{
+	CurMagazineNum = Num;
+}
+
+void AASCharacterBase::SetItemNum(int Num)
+{
+	CurItemNum = Num;
 }
 
 void AASCharacterBase::GetDamaged(int damage)
@@ -121,6 +158,60 @@ void AASCharacterBase::SetState(State NewState)
 	animinstance->StateHandler(NewState);
 }
 
+void AASCharacterBase::Shoot()
+{
+	
+	//int lastBulletNum = GetBulletNum();
+	int lastBulletNum = CurBulletNum;
+	if (lastBulletNum > 0)
+	{
+		SetBulletNum(lastBulletNum - 1);
+	}
+	NumBulletChanged.Broadcast();
+}
+
+void AASCharacterBase::Reload()
+{
+	int lastMagazineNum = GetMagazineNum();
+	int i = 0;
+	if (lastMagazineNum > 0)
+	{	
+		UE_LOG(AS, Warning, TEXT("Reload fuc Start"));
+		int ReloadableBulletNum = MaxBulletNum - GetBulletNum();
+		//GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, FString::Printf(TEXT("bullet : %d"), ReloadableBulletNum));
+		//GEngine->AddOnScreenDebugMessage(-1,4.0f,FColor::Red, FString::Printf(TEXT("bullet : %d"), lastMagazineNum - (MaxBulletNum - GetBulletNum())));
+		//if (lastMagazineNum - (MaxBulletNum - GetBulletNum()) < 0)
+		if ((lastMagazineNum - ReloadableBulletNum) < 0)
+		{
+			UE_LOG(AS, Warning, TEXT("Reload if Start"));
+			SetBulletNum(GetBulletNum() + lastMagazineNum);
+			SetMagazineNum(0);
+			UE_LOG(AS, Warning,TEXT("Set lastMagazineNum zero"));
+		}
+		else
+		{
+			UE_LOG(AS, Warning, TEXT("Reload else Start"));
+			lastMagazineNum = GetMagazineNum() - ReloadableBulletNum;
+			SetMagazineNum(lastMagazineNum);
+			SetBulletNum(MaxBulletNum);
+		}
+		//GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, FString::Printf(TEXT("bullet : %d"), i));
+	}
+	
+	NumBulletChanged.Broadcast();
+	NumMagazineChanged.Broadcast();
+}
+
+void AASCharacterBase::Heal()
+{
+	int lastItemNum = GetItemNum();
+	if (lastItemNum > 0)
+	{
+		SetItemNum(lastItemNum - 1);
+	}
+	NumItemChanged.Broadcast();
+}
+
 
 State AASCharacterBase::GetState()
 {
@@ -132,4 +223,8 @@ State AASCharacterBase::GetState()
 void AASCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
+	OnHpChanged.Broadcast();
+	NumBulletChanged.Broadcast();
+	NumMagazineChanged.Broadcast();
+	NumItemChanged.Broadcast();
 }

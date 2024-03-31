@@ -2,9 +2,11 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "ASGameMode.generated.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(AS, Log, All);
 
 /**
  * 

@@ -5,6 +5,8 @@
 #include "Player/ASPlayerState.h"
 #include "Blueprint/UserWidget.h"
 
+DEFINE_LOG_CATEGORY(AS);
+
 AASGameMode::AASGameMode()
 {
 	static ConstructorHelpers::FClassFinder<APawn> DefaultPawnClassRef(TEXT("/Script/Engine.Blueprint'/Game/ASPrototype/BluePrint/BP_Player.BP_Player_C'"));

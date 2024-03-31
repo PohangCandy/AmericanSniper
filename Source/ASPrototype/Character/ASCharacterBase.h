@@ -2,9 +2,11 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "GameFramework/Character.h"
 #include "ASCharacterBase.generated.h"
+
+
 
 DECLARE_MULTICAST_DELEGATE(FOnStateChangeDelegate);
 
@@ -12,10 +14,10 @@ UENUM()
 enum class State
 {
 	None,
-	Prone, //¾É±â
-	Crawl, //¾þµå¸®±â
-	Hurt,  //Àý¶Ò°Å¸®±â
-	Hidden, //¼ûÀº »óÅÂ
+	Prone, //ï¿½É±ï¿½
+	Crawl, //ï¿½ï¿½ï¿½å¸®ï¿½ï¿½
+	Hurt,  //ï¿½ï¿½ï¿½Ò°Å¸ï¿½ï¿½ï¿½
+	Hidden, //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	Dead
 };
 
@@ -28,6 +30,12 @@ class ASPROTOTYPE_API AASCharacterBase : public ACharacter
 private:
 	uint32 MaxHp;
 	uint32 CurHp;
+	uint32 MaxBulletNum;
+	uint32 CurBulletNum;
+	uint32 MaxMagazineNum;
+	uint32 CurMagazineNum;
+	uint32 MaxItemNum;
+	uint32 CurItemNum;
 	uint8 Damage;
 	State CurState;
 	//UPROPERTY()
@@ -40,12 +48,24 @@ public:
 	virtual void PostInitializeComponents() override;
 	void SetDead();
 	int GetHp();
+	int GetBulletNum();
+	int GetMagazineNum();
+	int GetItemNum();
 	float GetHpratio();
 	void SetHp(int Hp);
+	void SetBulletNum(int Num);
+	void SetMagazineNum(int Num);
+	void SetItemNum(int Num);
 	void GetDamaged(int damage);
 	void SetState(State NewState);
+	void Shoot();
+	void Reload();
+	void Heal();
 	State GetState();
 	FOnStateChangeDelegate OnHpChanged;
+	FOnStateChangeDelegate NumBulletChanged;
+	FOnStateChangeDelegate NumMagazineChanged;
+	FOnStateChangeDelegate NumItemChanged;
 
 
 	UPROPERTY(VisibleAnywhere, Category = Stat)
@@ -55,7 +75,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	uint8 LowHp; // LowHp ÀÌÇÏ¸é Àý¶Ò°Å¸² 
+	uint8 LowHp; // LowHp ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ò°Å¸ï¿½ 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> DeadMontage;
 
@@ -63,9 +83,6 @@ protected:
 	TObjectPtr<class UAnimMontage> SearchMontage;
 
 	FTimerHandle DeadTimerHandle;
-
-
-
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
 	//TSubclassOf<class AASPlayerController> CurplayerControllerClass;
 };

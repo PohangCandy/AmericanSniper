@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "InputActionValue.h"
 #include "Character/ASCharacterBase.h"
 #include "ASCharacterPlayer.generated.h"
