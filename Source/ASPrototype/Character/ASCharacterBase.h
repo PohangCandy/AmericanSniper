@@ -2,9 +2,11 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "GameFramework/Character.h"
 #include "ASCharacterBase.generated.h"
+
+
 
 DECLARE_MULTICAST_DELEGATE(FOnStateChangeDelegate);
 

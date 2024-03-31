@@ -52,9 +52,9 @@ AASCharacterBase::AASCharacterBase()
 	MaxHp = 100;
 	CurHp = MaxHp;
 	MaxBulletNum = 8;
-	CurBulletNum = MaxBulletNum;
+	CurBulletNum = 3;
 	MaxMagazineNum = 24;
-	CurMagazineNum = MaxMagazineNum;
+	CurMagazineNum = 4;
 	MaxItemNum = 20;
 	CurItemNum = MaxItemNum;
 	LowHp = 40;
@@ -99,6 +99,7 @@ int AASCharacterBase::GetHp()
 
 int AASCharacterBase::GetBulletNum()
 {
+	UE_LOG(AS, Warning, TEXT("GetBulletNumFunc Act"));
 	return CurBulletNum;
 }
 
@@ -159,7 +160,9 @@ void AASCharacterBase::SetState(State NewState)
 
 void AASCharacterBase::Shoot()
 {
-	int lastBulletNum = GetBulletNum();
+	
+	//int lastBulletNum = GetBulletNum();
+	int lastBulletNum = CurBulletNum;
 	if (lastBulletNum > 0)
 	{
 		SetBulletNum(lastBulletNum - 1);
@@ -170,19 +173,29 @@ void AASCharacterBase::Shoot()
 void AASCharacterBase::Reload()
 {
 	int lastMagazineNum = GetMagazineNum();
+	int i = 0;
 	if (lastMagazineNum > 0)
-	{
-		if (lastMagazineNum - (MaxBulletNum - GetBulletNum()) < 0)
+	{	
+		UE_LOG(AS, Warning, TEXT("Reload fuc Start"));
+		int ReloadableBulletNum = MaxBulletNum - GetBulletNum();
+		//GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, FString::Printf(TEXT("bullet : %d"), ReloadableBulletNum));
+		//GEngine->AddOnScreenDebugMessage(-1,4.0f,FColor::Red, FString::Printf(TEXT("bullet : %d"), lastMagazineNum - (MaxBulletNum - GetBulletNum())));
+		//if (lastMagazineNum - (MaxBulletNum - GetBulletNum()) < 0)
+		if ((lastMagazineNum - ReloadableBulletNum) < 0)
 		{
+			UE_LOG(AS, Warning, TEXT("Reload if Start"));
 			SetBulletNum(GetBulletNum() + lastMagazineNum);
 			SetMagazineNum(0);
+			UE_LOG(AS, Warning,TEXT("Set lastMagazineNum zero"));
 		}
 		else
 		{
-			lastMagazineNum = GetMagazineNum() - (MaxBulletNum - GetBulletNum());
+			UE_LOG(AS, Warning, TEXT("Reload else Start"));
+			lastMagazineNum = GetMagazineNum() - ReloadableBulletNum;
 			SetMagazineNum(lastMagazineNum);
 			SetBulletNum(MaxBulletNum);
 		}
+		//GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, FString::Printf(TEXT("bullet : %d"), i));
 	}
 	
 	NumBulletChanged.Broadcast();

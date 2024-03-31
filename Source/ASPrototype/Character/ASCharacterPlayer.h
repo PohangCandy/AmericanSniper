@@ -45,7 +45,6 @@ private:
 	void Wear(const FInputActionValue& Value);
 	void UpdateSoundRange();
 	float CurrentSpeed;
-	void Shoot();
 
 protected:
 	virtual void BeginPlay() override;
