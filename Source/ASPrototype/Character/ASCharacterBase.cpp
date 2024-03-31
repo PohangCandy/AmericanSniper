@@ -146,10 +146,14 @@ void AASCharacterBase::SetItemNum(int Num)
 void AASCharacterBase::GetDamaged(int damage)
 {
 	int Hp = GetHp() - damage;
-	SetHp(Hp);
+	if (Hp >= 0)
+	{
+		SetHp(Hp);
+	}
 
 	OnHpChanged.Broadcast();
 }
+
 
 void AASCharacterBase::SetState(State NewState)
 {
@@ -210,6 +214,11 @@ void AASCharacterBase::Heal()
 		SetItemNum(lastItemNum - 1);
 	}
 	NumItemChanged.Broadcast();
+}
+
+void AASCharacterBase::TestingGetDamage()
+{
+	GetDamaged(10);
 }
 
 
