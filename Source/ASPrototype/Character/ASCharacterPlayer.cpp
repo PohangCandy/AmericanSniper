@@ -17,8 +17,8 @@
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
 
-//테스트(임시)
-#include "TestEnemy.h"
+//테스트(임시) 델리게이트 사용하기 
+#include "TestEnemy.h" 
 
 AASCharacterPlayer::AASCharacterPlayer()
 {
@@ -128,7 +128,7 @@ void AASCharacterPlayer::BeginPlay()
 		// 머티리얼 인스턴스 생성 및 속성 설정
 		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
 		DynamicMaterial->SetVectorParameterValue(TEXT("Color"), NewColor);
-
+	
 		// 머티리얼 적용
 		SoundRangeCapsule->SetMaterial(0, DynamicMaterial);
 	}
@@ -153,10 +153,8 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 void AASCharacterPlayer::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
-
 	FString text = FString::Printf(TEXT("Enemy Find You!"));
 	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Yellow, text);
-
 }
 
 void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)

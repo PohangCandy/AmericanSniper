@@ -10,7 +10,6 @@
 //AnimInstance클래스와 연결
 #include "Animation/ASAnimInstance.h"
 
-
 // Sets default values
 AASCharacterBase::AASCharacterBase()
 {
@@ -61,6 +60,7 @@ AASCharacterBase::AASCharacterBase()
 	//PlayerController->ConnectUIwithData();
 
 	CharacterStat = CreateDefaultSubobject<UASCharacterStatComponent>(TEXT("CHARACTERSTAT"));
+
 }
 
 void AASCharacterBase::PostInitializeComponents()
@@ -126,6 +126,8 @@ State AASCharacterBase::GetState()
 {
 	return CurState;
 }
+
+
 
 void AASCharacterBase::BeginPlay()
 {

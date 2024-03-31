@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "TestEnemy.generated.h"
 
+
+
 UCLASS()
 class ASPROTOTYPE_API ATestEnemy : public ACharacter
 {

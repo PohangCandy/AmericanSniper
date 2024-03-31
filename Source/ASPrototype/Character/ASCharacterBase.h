@@ -32,6 +32,7 @@ private:
 	State CurState;
 	//UPROPERTY()
 	//class AASPlayerController* PlayerController;
+	
 
 public:
 	// Sets default values for this character's properties
@@ -49,7 +50,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = Stat)
 	class UASCharacterStatComponent* CharacterStat;
-
+	
 
 protected:
 	virtual void BeginPlay() override;
@@ -62,6 +63,8 @@ protected:
 	TObjectPtr<class UAnimMontage> SearchMontage;
 
 	FTimerHandle DeadTimerHandle;
+
+
 
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
 	//TSubclassOf<class AASPlayerController> CurplayerControllerClass;
