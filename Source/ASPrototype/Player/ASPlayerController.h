@@ -34,6 +34,19 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
 	TSubclassOf<class UASMainGameWidget> HUDWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
+	TSubclassOf<class UASMainGameWidget> SnipHUDWidgetClass;
+
+	enum class EscreenMode
+	{
+		Basic,
+		Sniping
+	};
+
+	void SetScreenMode(EscreenMode NewScreenMode);
+	EscreenMode CurrentScreenMode = EscreenMode::Basic;
+	void UIScreenChange();
+
 private:
 	UPROPERTY()
 	class UASMainGameWidget* HUDWidget;

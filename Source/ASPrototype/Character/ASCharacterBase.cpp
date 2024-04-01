@@ -10,6 +10,7 @@
 //AnimInstance클래스와 연결
 #include "Animation/ASAnimInstance.h"
 
+
 // Sets default values
 AASCharacterBase::AASCharacterBase()
 {
@@ -51,9 +52,9 @@ AASCharacterBase::AASCharacterBase()
 	MaxHp = 100;
 	CurHp = MaxHp;
 	MaxBulletNum = 8;
-	CurBulletNum = 3;
+	CurBulletNum = MaxBulletNum;
 	MaxMagazineNum = 24;
-	CurMagazineNum = 4;
+	CurMagazineNum = MaxMagazineNum;
 	MaxItemNum = 20;
 	CurItemNum = MaxItemNum;
 	LowHp = 40;
@@ -101,10 +102,12 @@ int AASCharacterBase::GetBulletNum()
 {
 	UE_LOG(AS, Warning, TEXT("GetBulletNumFunc Act"));
 	return CurBulletNum;
+	//return 3;
 }
 
 int AASCharacterBase::GetMagazineNum()
 {
+	UE_LOG(AS, Warning, TEXT("GetMagazineNumFunc Act"));
 	return CurMagazineNum;
 }
 
@@ -185,7 +188,8 @@ void AASCharacterBase::Reload()
 		//GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, FString::Printf(TEXT("bullet : %d"), ReloadableBulletNum));
 		//GEngine->AddOnScreenDebugMessage(-1,4.0f,FColor::Red, FString::Printf(TEXT("bullet : %d"), lastMagazineNum - (MaxBulletNum - GetBulletNum())));
 		//if (lastMagazineNum - (MaxBulletNum - GetBulletNum()) < 0)
-		if ((lastMagazineNum - ReloadableBulletNum) < 0)
+		//if ((lastMagazineNum - (MaxBulletNum - GetBulletNum())) < 0)
+		if (lastMagazineNum - ReloadableBulletNum < 0)
 		{
 			UE_LOG(AS, Warning, TEXT("Reload if Start"));
 			SetBulletNum(GetBulletNum() + lastMagazineNum);

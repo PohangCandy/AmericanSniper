@@ -8,6 +8,7 @@
 #include "Player/ASPlayerState.h"
 #include "Character/ASCharacterBase.h"
 
+
 void UASMainGameWidget::BindPlayerBase(class AASCharacterBase* PlayerBase)
 {
 	CurrentPlayerBase = PlayerBase;

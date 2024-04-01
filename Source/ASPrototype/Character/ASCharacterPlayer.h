@@ -45,6 +45,7 @@ private:
 	void Wear(const FInputActionValue& Value);
 	void UpdateSoundRange();
 	float CurrentSpeed;
+	//void UIScreenChange();
 
 protected:
 	virtual void BeginPlay() override;
