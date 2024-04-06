@@ -8,8 +8,7 @@
 #include "AI/ASAIController.h"
 #include "ASDetectWidget.generated.h"
 
-DECLARE_MULTICAST_DELEGATE_OneParam(FASDetectWidgetOnChangedSignature, bool b);
-
+//DECLARE_MULTICAST_DELEGATE_OneParam(FUASDetectWidgetOnChangedSignature, bool b)
 /**
  * 
  */
@@ -26,9 +25,13 @@ public:
 	void SetPercent(float NewPercent);
 	UFUNCTION()
 	void RunTimeline(float Value);
-	void StartChasing(bool b);
+	//void StartChasing(bool b);
 
-	FASDetectWidgetOnChangedSignature OnChanged;
+	void SetAngle(float angle);
+
+	//FUASDetectWidgetOnChangedSignature OnChanged;
+
+	//AASAIController* GetAIRef(AASAIController* ref);
 
 protected:
 	virtual void NativeConstruct() override;
@@ -45,5 +48,8 @@ protected:
 private:
 	float CurPercent;
 	float MaxPercent;
-	float timeDeltaTime;
+	bool isReverse;
+	float DetectOffTime;
+	float DetectOnTime;
+
 };

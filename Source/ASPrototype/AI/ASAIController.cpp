@@ -10,8 +10,13 @@
 #include "Perception/AISenseConfig_Sight.h"
 #include "Enemy/ASEnemyCharacter.h"
 #include "Character/ASCharacterPlayer.h"
-#include "UI/ASDetectWidget.h"
+#include "Kismet/KismetMathLibrary.h" //charactor의 움직임 
+
+//탐지 위젯 추가
 #include "Components/WidgetComponent.h"
+#include "UI/ASDetectWidget.h"
+
+
 
 AASAIController::AASAIController()
 {	
@@ -28,6 +33,25 @@ AASAIController::AASAIController()
 	{
 		BTAsset = BTAssetRef.Object;
 	}
+
+
+	//Widget Component Setting 
+	DetectBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("DetectWidget"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> DetectBarRef(TEXT("/Game/UI/WB_DetectBar_UI.WB_DetectBar_UI_C"));
+	if (DetectBarRef.Class)
+	{
+		DetectBar->SetWidgetClass(DetectBarRef.Class);
+		DetectBar->SetWidgetSpace(EWidgetSpace::Screen);
+		DetectBar->SetDrawSize(FVector2D(150.0f, 15.0f));
+		DetectBar->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
+	//ID 세팅 
+	//AASEnemyBase* EnemyRef = Cast<AASEnemyBase>(GetPawn());
+	//if (EnemyRef)
+	//{
+	//	TeamId = FGenericTeamId(EnemyRef->ID);
+	//}
+
 }
 
 void AASAIController::RunAI()
@@ -52,45 +76,140 @@ void AASAIController::StopAI()
 
 void AASAIController::CheckPlayer(AActor* player)
 {	
-	//UASDetectWidget* DetectWidget = Cast<UASDetectWidget>(Widget); 
-	ensure(player);
-	AASEnemyCharacter* Enemy = Cast<AASEnemyCharacter>(GetPawn());
-	ensure(Enemy);
-	UASDetectWidget* DetectWidget = Cast<UASDetectWidget>(Enemy->GetWidget()->GetUserWidgetObject());
-	ensure(DetectWidget);
-	if (GetBlackboardComponent()->GetValueAsObject(BBKEY_TARGET)->IsValidLowLevel())
+	
+	//임시 : 오직 플레이어만 인식 (적끼리 인식X)
+	if (player==NULL){return;}
+	Pass = true;
+	//DetectBar->SetRelativeLocation(FVector(0.0f, 0.0f, 200.0f));
+
+
+	//UI를 Player에 부착 (에러 발생)
+	//USkeletalMeshComponent* mesh = Cast<USkeletalMeshComponent>(playerRef->GetMesh());
+	//ensure(mesh);
+	//DetectWidgetComponet->SetupAttachment(mesh);
+	UiRef = Cast<UASDetectWidget>(DetectBar->GetWidget());
+	ensure(UiRef);
+	//UiRef->OnChanged.AddUObject(this, &AASAIController::SetBB_IsDetect);
+	UiRef->AddToViewport();
+
+	if (GetBB_Target()->IsValidLowLevel())
 	{
-		GetBlackboardComponent()->SetValueAsObject(BBKEY_TARGET, nullptr); //나가야 하는 상황 
-		//SetDetectState(false); 
-		DetectWidget->StopDetection();
+		SetBB_Target(nullptr); //나가야 하는 상황 
+		UiRef->StopDetection();
 	}
 	else
 	{
-		GetBlackboardComponent()->SetValueAsObject(BBKEY_TARGET, player); //들어가야 하는 상황 
-		//SetDetectState(true);
-		DetectWidget->StartDetection();
+		SetBB_Target(player); //들어가야 하는 상황
+		UiRef->StartDetection();
 	}
 }
 
-void AASAIController::SetDetectState(bool b)
+
+//BB 데이터 접근 
+void AASAIController::SetBB_Target(UObject* actor)
+{
+	GetBlackboardComponent()->SetValueAsObject(BBKEY_TARGET, actor);
+}
+
+UObject* AASAIController::GetBB_Target()
+{
+	return GetBlackboardComponent()->GetValueAsObject(BBKEY_TARGET);
+}
+
+void AASAIController::SetBB_IsDetect(bool b)
 {	
 	GetBlackboardComponent()->SetValueAsBool(BBKEY_IsDetect, b);
 }
 
-bool AASAIController::GetDetectState()
+bool AASAIController::GetBB_IsDetect()
 {	
 	return GetBlackboardComponent()->GetValueAsBool(BBKEY_IsDetect);
 }
 
+void AASAIController::SetBB_PatrolLoc(FVector vector)
+{
+	GetBlackboardComponent()->SetValueAsVector(BBKEY_PATROLLOC, vector);
+}
 
-void AASAIController::OnPawnDetected(const TArray<AActor*>& DetectedPawns)
+FVector AASAIController::GetBB_PatrolLoc()
+{
+	return GetBlackboardComponent()->GetValueAsVector(BBKEY_PATROLLOC);
+}
+
+void AASAIController::SetBB_PathLoc(FVector vector)
+{
+	GetBlackboardComponent()->SetValueAsVector(BBKEY_PathLOC, vector);
+}
+
+FVector AASAIController::GetBB_PathLoc()
+{
+	return GetBlackboardComponent()->GetValueAsVector(BBKEY_PathLOC);
+}
+
+
+
+void AASAIController::OnPawnDetected(const TArray<AActor*>& DetectedPawns) //적 둘이 마주보면 문제 발생 
 {	
 	for (int32 i = 0; i < DetectedPawns.Num(); ++i)
 	{
-		AASCharacterPlayer* DetectedPawn = Cast<AASCharacterPlayer>(DetectedPawns[i]);
-		CheckPlayer(DetectedPawn);
+		PlayerRef = Cast<AASCharacterPlayer>(DetectedPawns[i]);
+		ensure(DetectedPawns[i]);
+		CheckPlayer(PlayerRef);
 	}
 }
+
+void AASAIController::Tick(float DeltaTime)
+{	
+	if (Pass) // 시작 시 바로 들어오는 거 방지
+	{
+		if (PlayerRef!=nullptr) //StartDetection() 호출 시 -> 동작   ,   StopDetection() 호출 후 UI 사라지면 -> 정지
+		{
+
+
+			//UI 위치 조정
+			FRotator ControlRotator = GetControlRotation();
+			FVector PlayerLoc = PlayerRef->GetActorLocation(); 
+			FVector EnemyLoc = EnemyRef->GetActorLocation();
+			FRotator ControllerRotator = UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetControlRotation();
+			FRotator IntervalRotator = UKismetMathLibrary::FindLookAtRotation(PlayerLoc, EnemyLoc);
+			FRotator AngleRotator = UKismetMathLibrary::NormalizedDeltaRotator(IntervalRotator, ControllerRotator);
+			float Angle = AngleRotator.Yaw;
+			UiRef->SetAngle(Angle);
+
+		}
+
+	}
+}
+
+void AASAIController::RangeSizeDown()
+{
+	FAISenseID Id = UAISense::GetSenseID(UAISense_Sight::StaticClass());
+
+	auto Config = GetPerceptionComponent()->GetSenseConfig(Id);
+
+	auto ConfigSight = Cast<UAISenseConfig_Sight>(Config);
+	SightConfig->SightRadius = 500.f;
+	SightConfig->LoseSightRadius = SightConfig->SightRadius + 25.f;
+	GetPerceptionComponent()->RequestStimuliListenerUpdate();
+}
+
+void AASAIController::RangeSizeUP()
+{
+	FAISenseID Id = UAISense::GetSenseID(UAISense_Sight::StaticClass());
+
+	auto Config = GetPerceptionComponent()->GetSenseConfig(Id);
+
+	auto ConfigSight = Cast<UAISenseConfig_Sight>(Config);
+	SightConfig->SightRadius = 1000.0f;
+	SightConfig->LoseSightRadius = SightConfig->SightRadius + 25.f;
+	GetPerceptionComponent()->RequestStimuliListenerUpdate();
+}
+
+//AASAIController* AASAIController::ReturnAIRef(AASAIController* ref)
+//{
+//	AIOnChanged.Broadcast(ref);
+//	return this;
+//}
 
 void AASAIController::SetupPerception()
 {
@@ -112,14 +231,16 @@ void AASAIController::SetupPerception()
 	}
 }
 
+//ETeamAttitude::Type AASAIController::GetTeamAttitudeTowards(const AActor& Other) const
+//{
+//	return ETeamAttitude::Type();
+//}
+
 
 //빙의 시작 시  
 void AASAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn); //에너미의 소유권은 AIController가 얻게 됨 .
+	EnemyRef = Cast<AASEnemyCharacter>(GetPawn());
 	RunAI();
-
-	// 월드의 타이머 매니저에 콜백을 등록
-	// GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AASAIController::RunAI(), 3.f, true);
-
 }
