@@ -27,12 +27,14 @@ public:
 
 	class AActor* GetPlayerActor();
 
+	void UIScreenChange();
+
 protected:
 	
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
-	TSubclassOf<class UASMainGameWidget> HUDWidgetClass;
+	TSubclassOf<class UASMainGameWidget> BasicHUDWidgetClass;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
 	TSubclassOf<class UASMainGameWidget> SnipHUDWidgetClass;
@@ -45,11 +47,11 @@ protected:
 
 	void SetScreenMode(EscreenMode NewScreenMode);
 	EscreenMode CurrentScreenMode = EscreenMode::Basic;
-	void UIScreenChange();
+	//void UIScreenChange();
 
 private:
 	UPROPERTY()
-	class UASMainGameWidget* HUDWidget;
+	class UASMainGameWidget* CurMainHUDWidget;
 
 	UPROPERTY()
 	class AActor* ControllerOwner;
