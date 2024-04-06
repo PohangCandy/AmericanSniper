@@ -5,8 +5,9 @@
 #include "EngineMinimal.h"
 #include "InputActionValue.h"
 #include "Character/ASCharacterBase.h"
-#include "ASCharacterPlayer.generated.h"
 #include "Player/ASPlayerController.h"
+#include "ASCharacterPlayer.generated.h"
+
 /**
  * 
  */
