@@ -3,6 +3,7 @@
 
 #include "Character/ASCharacterPlayer.h"
 #include "Player/ASPlayerState.h"
+#include "Player/ASPlayerController.h"
 //카메라 헤더파일
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -16,6 +17,7 @@
 #include "Components/CapsuleComponent.h"
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
+
 
 //테스트(임시) 델리게이트 사용하기 
 #include "TestEnemy.h" 
@@ -139,12 +141,14 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
+	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
 
 	//PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
 
 
 	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Reload);
 	PlayerInputComponent->BindAction(TEXT("Heal"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Heal);
+	PlayerInputComponent->BindAction(TEXT("GetDamage"), EInputEvent::IE_Pressed, this, &AASCharacterBase::TestingGetDamage);
 
 
 	//향상된 입력 시스템 사용
@@ -267,6 +271,8 @@ void AASCharacterPlayer::UpdateSoundRange()
 	SoundRangeCapsule->SetCapsuleSize(LerpedSize.X, LerpedSize.Y);
 	
 }
+
+
 
 
 

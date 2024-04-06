@@ -61,6 +61,7 @@ public:
 	void Shoot();
 	void Reload();
 	void Heal();
+	void TestingGetDamage();
 	State GetState();
 	FOnStateChangeDelegate OnHpChanged;
 	FOnStateChangeDelegate NumBulletChanged;

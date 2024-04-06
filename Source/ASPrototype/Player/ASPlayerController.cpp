@@ -10,8 +10,9 @@
 AASPlayerController::AASPlayerController()
 {
 	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/WB_GameBase_UI.WB_GameBase_UI_C"));
-	//static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Script/ASPrototype.ASMainGameWidget_C"));
+	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
 	HUDWidgetClass = UI_HUD_C.Class;
+	SnipHUDWidgetClass = UI_Snip_C.Class;
 }
 
 void AASPlayerController::PostInitializeComponents()
@@ -56,9 +57,41 @@ void AASPlayerController::ConnectUIwithData()
 	CharacterWidget->BindPlayerBaseForItem(Cast<AASCharacterBase>(ControllerOwner));
 }
 
+void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
+{
+	CurrentScreenMode = NewScreenMode;
+	switch (NewScreenMode)
+	{
+	case AASPlayerController::EscreenMode::Basic:
+		HUDWidget = CreateWidget<UASMainGameWidget>(this, HUDWidgetClass);
+		HUDWidget->AddToViewport();
+		break;
+	case AASPlayerController::EscreenMode::Sniping:
+		HUDWidget = CreateWidget<UASMainGameWidget>(this, SnipHUDWidgetClass);
+		HUDWidget->AddToViewport();
+		break;
+	}
+}
+
+
+
 class AActor* AASPlayerController::GetPlayerActor()
 {
 	return ControllerOwner;
 }
+
+void AASPlayerController::UIScreenChange()
+{
+	switch (CurrentScreenMode)
+	{
+	case AASPlayerController::EscreenMode::Basic:
+		SetScreenMode(EscreenMode::Sniping);
+		break;
+	case AASPlayerController::EscreenMode::Sniping:
+		SetScreenMode(EscreenMode::Basic);
+		break;
+	}
+}
+
 
 
