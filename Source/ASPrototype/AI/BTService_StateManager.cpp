@@ -18,13 +18,13 @@ void UBTService_StateManager::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());
 	AASEnemyBase* Enemy = Cast<AASEnemyBase>(ControllingPawn);
-	if (AI->GetDetectState()==true)
+	if (AI->GetBB_IsDetect()==true)
 	{
 		Enemy->SetStateAnimation(EState::Attack);
 	}
 	else
 	{
-		Enemy->SetStateAnimation(EState::None);
+		Enemy->SetStateAnimation(EState::Idle);
 	}
 	
 }

@@ -4,11 +4,9 @@
 #include "Enemy/ASEnemyBase.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
-//탐지 위젯 추가
-#include "Components/WidgetComponent.h"
-#include "UI/ASDetectWidget.h"
 //BB정보 얻기 위해 
 #include "AI/ASAIController.h"
+
 
 // Sets default values
 AASEnemyBase::AASEnemyBase()
@@ -30,7 +28,7 @@ AASEnemyBase::AASEnemyBase()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 	GetCharacterMovement()->JumpZVelocity = 700.f;
 	GetCharacterMovement()->AirControl = 0.35f;
-	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+	GetCharacterMovement()->MaxWalkSpeed = 300.f;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
@@ -39,9 +37,13 @@ AASEnemyBase::AASEnemyBase()
 	GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
 	GetMesh()->SetCollisionProfileName(TEXT("NoCollision"));
 
-	Gun = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Gun"));
-	Gun->SetupAttachment(RootComponent);
+	//Stats
+	MaxHp = 100;
+	CurHp = MaxHp;
+	Damage = 10;
+	CurState = EState::Idle;
 
+	//스켈레톤 + 애니메이션 적용 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CharaterMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/AnimStarterPack/UE4_Mannequin/Mesh/SK_Mannequin.SK_Mannequin'"));
 	if (CharaterMeshRef.Object)
 	{
@@ -54,42 +56,41 @@ AASEnemyBase::AASEnemyBase()
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
 	}
 
-	MaxHp = 100;
-	CurHp = MaxHp;
-	Damage = 10;
-	CurState = EState::None;
 
 
-	//Widget Component
-	DetectBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("DetectWidget"));
-	DetectBar->SetupAttachment(GetMesh());
-	DetectBar->SetRelativeLocation(FVector(0.0f, 0.0f, 200.0f));
-	static ConstructorHelpers::FClassFinder<UUserWidget> DetectBarRef(TEXT("/Game/UI/WB_DetectBar_UI.WB_DetectBar_UI_C"));
-	if (DetectBarRef.Class)
-	{
-		DetectBar->SetWidgetClass(DetectBarRef.Class);
-		DetectBar->SetWidgetSpace(EWidgetSpace::Screen);
-		DetectBar->SetDrawSize(FVector2D(150.0f, 15.0f));
-		DetectBar->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	}
+    //DetectBar->SetRelativeLocation(FVector(0.0f, 0.0f, 200.0f));
+
+
+	//Weapon Setting
+	Gun = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Gun"));
+	Gun->SetupAttachment(RootComponent);
+
+	//생성자에서 캐스팅 시 문제발생 (원인 모름) <-
+	//AActor* owner = GetOwner();
+	//ensure(owner);
+	//AiRef = Cast<AASAIController>(GetOwner());
+	//ensure(AiRef);
+
 }
 
 // Called when the game starts or when spawned
 void AASEnemyBase::BeginPlay()
-{
+{	
+	AiRef = Cast<AASAIController>(GetOwner());
 	Super::BeginPlay();
-	AASAIController* AiRef = Cast<AASAIController>(GetOwner());
-	ensure(AiRef);
-	UASDetectWidget* UiRef = Cast<UASDetectWidget>(DetectBar->GetWidget());
-	ensure(UiRef);
-	UiRef->OnChanged.AddUObject(AiRef, &AASAIController::SetDetectState);
 }
 
 // Called every frame
 void AASEnemyBase::Tick(float DeltaTime)
 {
+	
 	Super::Tick(DeltaTime);
 
+	//이 함수는 task에 넣는게 바람직해 보임 . enemy를 식별하지 못했을 때만 동작해야 하므로.
+	//DistanceAlongSpline = (SplineSpeed * DeltaTime) + DistanceAlongSpline;
+	//FVector NewLoc = Spline->GetLocationAtDistanceAlongSpline(DistanceAlongSpline, ESplineCoordinateSpace::Local);
+	//AiRef->SetBB_PathLoc(NewLoc);
+	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("LOCATION: %f"), DistanceAlongSpline));
 }
 
 // Called to bind functionality to input
@@ -97,6 +98,12 @@ void AASEnemyBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void AASEnemyBase::GetActorEyesViewPoint(FVector& OutLocation, FRotator& OutRotation) const
+{
+	OutLocation = GetMesh()->GetSocketLocation("HeadSocket");
+	OutRotation = GetMesh()->GetSocketRotation("HeadSocket");
 }
 
 void AASEnemyBase::SetState(EState NewState)
@@ -112,29 +119,40 @@ EState AASEnemyBase::GetState()
 
 void AASEnemyBase::SetStateAnimation(EState NewState)
 {
+	AiRef = Cast<AASAIController>(GetOwner());
 	switch (NewState)
 	{	
-	case EState::None:
+	case EState::Idle:
 		Gun->SetHiddenInGame(true);
-		GetCharacterMovement()->MaxWalkSpeed = 500.f;
+		GetCharacterMovement()->MaxWalkSpeed = 300.f;
+		AiRef->RangeSizeDown();
 		break;
+
+	case EState::Walk:
+		Gun->SetHiddenInGame(true);
+		GetCharacterMovement()->MaxWalkSpeed = 300.f; //이것만 상태변화에서 가장 의미있어보임.
+		AiRef->RangeSizeDown();
+		break;
+
 	case EState::Attack:
 		Gun->SetHiddenInGame(false);
-		GetCharacterMovement()->MaxWalkSpeed = 700.f;
+		GetCharacterMovement()->MaxWalkSpeed = 500.f;
+		AiRef->RangeSizeUP();
+
 		break;
+
 	case EState::Hurt:
 		break;
+
 	case EState::Hidden:
 		break;
+
 	case EState::Dead:
 		break;
+
 	default:
 		break;
 	}
 }
 
-class UWidgetComponent* AASEnemyBase::GetWidget()
-{	
-	return DetectBar;
-}
 
