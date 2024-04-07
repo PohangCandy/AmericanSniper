@@ -6,6 +6,7 @@
 #include "Math/UnrealMathUtility.h"
 //BB데이터 접근
 #include "AI/ASAIController.h"
+#include "Components/WidgetComponent.h"
 
 UASDetectWidget::UASDetectWidget(const FObjectInitializer& ObjectInitializer) :Super(ObjectInitializer)
 {
@@ -33,12 +34,22 @@ void UASDetectWidget::NativeConstruct()
 		timeline.SetLooping(false);
 	}
 	DetectBar->SetVisibility(ESlateVisibility::Hidden);
+	
+	//UWidgetComponent* WCref = Cast<UWidgetComponent>(this);  	ensure(WCref);
+	//AASAIController* aiRef = Cast<AASAIController>GetOwner());
+	//ensure(aiRef);
+
 }
 
 void UASDetectWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 	timeline.TickTimeline(InDeltaTime);
+	if (Owner!=nullptr)
+	{
+		AASAIController* AIController = Cast<AASAIController>(Owner);
+		ensure(AIController); //AI 객체 얻기
+	}
 }
 
 void UASDetectWidget::SetPercent(float NewPercent)

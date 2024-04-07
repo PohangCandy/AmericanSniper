@@ -23,6 +23,7 @@ EBTNodeResult::Type UBTTask_FindPatrolLocation::ExecuteTask(UBehaviorTreeCompone
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
 	AASEnemyBase* Enemy = Cast<AASEnemyBase>(ControllingPawn);
 	APatrolPath* PatrolpathActor = Cast<APatrolPath>(Enemy->PatrolPath);
+	if (PatrolpathActor == nullptr) { return EBTNodeResult::Failed; }
 	ensure(PatrolpathActor);
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());
 	int length;
@@ -39,8 +40,8 @@ EBTNodeResult::Type UBTTask_FindPatrolLocation::ExecuteTask(UBehaviorTreeCompone
 	{
 		PatrolpathActor->idx = 0;
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("Name: %s || curIdx : %d "),*Enemy->Name, PatrolpathActor->idx));
+	//출력 인덱스 테스트
+	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("Name: %s || curIdx : %d "),*Enemy->Name, PatrolpathActor->idx));
 	return EBTNodeResult::Succeeded;
 }
 
-//		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("curIdx : %d "), curIdx));

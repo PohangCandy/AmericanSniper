@@ -23,6 +23,7 @@ public:
 	void StartDetection();
 	void StopDetection();
 	void SetPercent(float NewPercent);
+
 	UFUNCTION()
 	void RunTimeline(float Value);
 	//void StartChasing(bool b);
@@ -33,7 +34,12 @@ public:
 
 	//AASAIController* GetAIRef(AASAIController* ref);
 
+	FORCEINLINE AActor* GetOwner() { return Owner; }
+	FORCEINLINE void SetOwner(AActor* newOwner) { Owner = newOwner; }
+
 protected:
+	AActor* Owner;
+
 	virtual void NativeConstruct() override;
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime);
 

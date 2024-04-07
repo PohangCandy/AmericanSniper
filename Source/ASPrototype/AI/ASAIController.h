@@ -19,6 +19,7 @@ class ASPROTOTYPE_API AASAIController : public AAIController
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	virtual void BeginPlay() override;
 
 	AASAIController();
 	virtual void OnPossess(APawn* InPawn) override;
@@ -51,6 +52,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widget)
 	TObjectPtr<class UWidgetComponent> DetectBar;
+
+	class UASDetectWidget* getWidget();
 
 	
 	//virtual FGenericTeamId GetGenericTeamId() const override { return TeamId; }

@@ -18,10 +18,6 @@
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
 
-
-//테스트(임시) 델리게이트 사용하기 
-#include "TestEnemy.h" 
-
 AASCharacterPlayer::AASCharacterPlayer()
 {
 	//카메라
@@ -174,25 +170,24 @@ void AASCharacterPlayer::NotifyActorBeginOverlap(AActor* OtherActor)
 void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {	
 	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-	ATestEnemy* EnemyRef = Cast<ATestEnemy>(Other);
 
-	if(EnemyRef)
-	{
-		//int Hp = FMath::Clamp(GetHp() - (EnemyRef->damage), 0, 100);
-		//SetHp(Hp);
-		GetDamaged(EnemyRef->damage);
-		int Hp = GetHp();
-		FString text = FString::Printf(TEXT("Player Hp : %d"), Hp);
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, text);
-		if (Hp > 0 && Hp <= LowHp)
-		{
-			SetState(State::Hurt);
-		}
-		if (Hp <= 0)
-		{
-			SetDead();
-		}
-	}
+	//if(EnemyRef)
+	//{
+	//	//int Hp = FMath::Clamp(GetHp() - (EnemyRef->damage), 0, 100);
+	//	//SetHp(Hp);
+	//	GetDamaged(EnemyRef->damage);
+	//	int Hp = GetHp();
+	//	FString text = FString::Printf(TEXT("Player Hp : %d"), Hp);
+	//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, text);
+	//	if (Hp > 0 && Hp <= LowHp)
+	//	{
+	//		SetState(State::Hurt);
+	//	}
+	//	if (Hp <= 0)
+	//	{
+	//		SetDead();
+	//	}
+	//}
 }
 
 

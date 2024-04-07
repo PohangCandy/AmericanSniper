@@ -10,6 +10,7 @@
 #include "Perception/AISenseConfig_Sight.h"
 #include "Enemy/ASEnemyCharacter.h"
 #include "Character/ASCharacterPlayer.h"
+
 #include "Kismet/KismetMathLibrary.h" //charactor의 움직임 
 
 //탐지 위젯 추가
@@ -45,13 +46,19 @@ AASAIController::AASAIController()
 		DetectBar->SetDrawSize(FVector2D(150.0f, 15.0f));
 		DetectBar->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
+
+	//생성자에서만 Casting 안됨 
+	//TSubclassOf<UUserWidget> WidgetObject = DetectBar->GetWidgetClass();
+	//UASDetectWidget* uiRef = Cast<UASDetectWidget>(WidgetObject);
+	//ensure(UiRef);
+	//UiRef->SetOwner(this);
+
 	//ID 세팅 
 	//AASEnemyBase* EnemyRef = Cast<AASEnemyBase>(GetPawn());
 	//if (EnemyRef)
 	//{
 	//	TeamId = FGenericTeamId(EnemyRef->ID);
 	//}
-
 }
 
 void AASAIController::RunAI()
@@ -80,15 +87,7 @@ void AASAIController::CheckPlayer(AActor* player)
 	//임시 : 오직 플레이어만 인식 (적끼리 인식X)
 	if (player==NULL){return;}
 	Pass = true;
-	//DetectBar->SetRelativeLocation(FVector(0.0f, 0.0f, 200.0f));
 
-
-	//UI를 Player에 부착 (에러 발생)
-	//USkeletalMeshComponent* mesh = Cast<USkeletalMeshComponent>(playerRef->GetMesh());
-	//ensure(mesh);
-	//DetectWidgetComponet->SetupAttachment(mesh);
-	UiRef = Cast<UASDetectWidget>(DetectBar->GetWidget());
-	ensure(UiRef);
 	//UiRef->OnChanged.AddUObject(this, &AASAIController::SetBB_IsDetect);
 	UiRef->AddToViewport();
 
@@ -181,6 +180,17 @@ void AASAIController::Tick(float DeltaTime)
 	}
 }
 
+void AASAIController::BeginPlay()
+{
+	Super::BeginPlay();
+	UiRef = Cast<UASDetectWidget>(DetectBar->GetUserWidgetObject());
+	ensure(UiRef);
+	UiRef->SetOwner(this);
+	EnemyRef = Cast<AASEnemyCharacter>(GetPawn());
+	ensure(EnemyRef);
+
+}
+
 void AASAIController::RangeSizeDown()
 {
 	FAISenseID Id = UAISense::GetSenseID(UAISense_Sight::StaticClass());
@@ -203,6 +213,11 @@ void AASAIController::RangeSizeUP()
 	SightConfig->SightRadius = 1000.0f;
 	SightConfig->LoseSightRadius = SightConfig->SightRadius + 25.f;
 	GetPerceptionComponent()->RequestStimuliListenerUpdate();
+}
+
+UASDetectWidget* AASAIController::getWidget()
+{
+	return UiRef;
 }
 
 //AASAIController* AASAIController::ReturnAIRef(AASAIController* ref)
@@ -241,6 +256,5 @@ void AASAIController::SetupPerception()
 void AASAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn); //에너미의 소유권은 AIController가 얻게 됨 .
-	EnemyRef = Cast<AASEnemyCharacter>(GetPawn());
 	RunAI();
 }

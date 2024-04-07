@@ -13,5 +13,14 @@ UCLASS()
 class ASPROTOTYPE_API UASAIAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
-	
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Enemy)
+	bool bIsIdle;
+	float Speed;
+
+protected:
+	virtual void NativeInitializeAnimation() override;
+	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+
 };

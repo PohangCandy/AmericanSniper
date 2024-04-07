@@ -7,6 +7,7 @@
 //BB정보 얻기 위해 
 #include "AI/ASAIController.h"
 
+#include "UI/ASDetectWidget.h"
 
 // Sets default values
 AASEnemyBase::AASEnemyBase()
@@ -44,13 +45,13 @@ AASEnemyBase::AASEnemyBase()
 	CurState = EState::Idle;
 
 	//스켈레톤 + 애니메이션 적용 
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CharaterMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/AnimStarterPack/UE4_Mannequin/Mesh/SK_Mannequin.SK_Mannequin'"));
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CharaterMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/ASPrototype/Enemy/Enemy/Meshes/SK_HeavyGSoldier_simple.SK_HeavyGSoldier_simple'"));
 	if (CharaterMeshRef.Object)
 	{
 		GetMesh()->SetSkeletalMesh(CharaterMeshRef.Object);
 	}
 
-	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C'"));
+	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Script/Engine.AnimBlueprint'/Game/ASPrototype/Enemy/Enemy/ABP_TempEnemy.ABP_TempEnemy_C'"));
 	if (AnimInstanceClassRef.Class)
 	{
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
@@ -76,8 +77,11 @@ AASEnemyBase::AASEnemyBase()
 // Called when the game starts or when spawned
 void AASEnemyBase::BeginPlay()
 {	
-	AiRef = Cast<AASAIController>(GetOwner());
 	Super::BeginPlay();
+	AiRef = Cast<AASAIController>(GetOwner());
+	//UiRef = Cast<UASDetectWidget>(AiRef->getWidget());
+	//ensure(UiRef);
+	//UiRef->OnChanged.AddUObject(AiRef, &AASAIController::SetBB_IsDetect);
 }
 
 // Called every frame
