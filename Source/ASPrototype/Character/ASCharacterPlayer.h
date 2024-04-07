@@ -5,7 +5,9 @@
 #include "EngineMinimal.h"
 #include "InputActionValue.h"
 #include "Character/ASCharacterBase.h"
+#include "Player/ASPlayerController.h"
 #include "ASCharacterPlayer.generated.h"
+
 /**
  * 
  */
@@ -45,7 +47,7 @@ private:
 	void Wear(const FInputActionValue& Value);
 	void UpdateSoundRange();
 	float CurrentSpeed;
-	//void UIScreenChange();
+	void ChangeUI();
 
 protected:
 	virtual void BeginPlay() override;

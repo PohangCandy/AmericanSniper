@@ -3,7 +3,6 @@
 
 #include "Character/ASCharacterPlayer.h"
 #include "Player/ASPlayerState.h"
-#include "Player/ASPlayerController.h"
 //카메라 헤더파일
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -265,6 +264,11 @@ void AASCharacterPlayer::UpdateSoundRange()
 	// 크기 설정
 	SoundRangeCapsule->SetCapsuleSize(LerpedSize.X, LerpedSize.Y);
 	
+}
+
+void AASCharacterPlayer::ChangeUI()
+{
+
 }
 
 
