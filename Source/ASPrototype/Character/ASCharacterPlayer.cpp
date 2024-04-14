@@ -90,6 +90,8 @@ AASCharacterPlayer::AASCharacterPlayer()
 
 	SoundRangeCapsule->SetVisibility(true);
 	SoundRangeCapsule->SetHiddenInGame(false);
+
+	
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -112,7 +114,7 @@ void AASCharacterPlayer::BeginPlay()
 		Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		//Subsystem->RemoveMappingContext(DefaultMappingContext); 필요 시 연결 끊기도 가능 
 	}
-
+	playerController = CastChecked<AASPlayerController>(GetController());
 	// SoundRangeCapsule의 머티리얼을 가져옴
 	UMaterialInterface* Material = SoundRangeCapsule->GetMaterial(0);
 
@@ -137,6 +139,7 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
+	PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::ChangeUI);
 
 
 
@@ -268,7 +271,7 @@ void AASCharacterPlayer::UpdateSoundRange()
 
 void AASCharacterPlayer::ChangeUI()
 {
-
+	playerController->UIScreenChange();
 }
 
 
