@@ -73,7 +73,7 @@ AASCharacterBase::AASCharacterBase()
 void AASCharacterBase::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	OnHpChanged.Broadcast();
+	//OnHpChanged.Broadcast();
 }
 
 void AASCharacterBase::SetDead()
@@ -225,6 +225,14 @@ void AASCharacterBase::TestingGetDamage()
 	GetDamaged(10);
 }
 
+void AASCharacterBase::InitUIData()
+{
+	OnHpChanged.Broadcast();
+	NumBulletChanged.Broadcast();
+	NumMagazineChanged.Broadcast();
+	NumItemChanged.Broadcast();
+}
+
 
 State AASCharacterBase::GetState()
 {
@@ -236,8 +244,5 @@ State AASCharacterBase::GetState()
 void AASCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	OnHpChanged.Broadcast();
-	NumBulletChanged.Broadcast();
-	NumMagazineChanged.Broadcast();
-	NumItemChanged.Broadcast();
+	InitUIData();
 }

@@ -54,5 +54,5 @@ private:
 	class UASMainGameWidget* CurMainHUDWidget;
 
 	UPROPERTY()
-	class AActor* ControllerOwner;
+	class AASCharacterBase* ControllerOwner;
 };

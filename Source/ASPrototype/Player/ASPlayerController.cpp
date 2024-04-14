@@ -23,7 +23,7 @@ void AASPlayerController::PostInitializeComponents()
 void AASPlayerController::OnPossess(APawn* aPawn)
 {
 	Super::OnPossess(aPawn);
-	ControllerOwner = aPawn;
+	ControllerOwner = Cast<AASCharacterBase>(aPawn);
 }
 
 
@@ -50,11 +50,15 @@ UASMainGameWidget* AASPlayerController::GetHUDWidget()
 
 void AASPlayerController::ConnectUIwithData()
 {
-	auto CharacterWidget = Cast<UASMainGameWidget>(CurMainHUDWidget);
-	CharacterWidget->BindPlayerBase(Cast<AASCharacterBase>(ControllerOwner));
-	CharacterWidget->BindPlayerBaseForBullet(Cast<AASCharacterBase>(ControllerOwner));
-	CharacterWidget->BindPlayerBaseForMagazine(Cast<AASCharacterBase>(ControllerOwner));
-	CharacterWidget->BindPlayerBaseForItem(Cast<AASCharacterBase>(ControllerOwner));
+	//auto CharacterWidget = Cast<UASMainGameWidget>(CurMainHUDWidget);
+	//CharacterWidget->BindPlayerBase(Cast<AASCharacterBase>(ControllerOwner));
+	//CharacterWidget->BindPlayerBaseForBullet(Cast<AASCharacterBase>(ControllerOwner));
+	//CharacterWidget->BindPlayerBaseForMagazine(Cast<AASCharacterBase>(ControllerOwner));
+	//CharacterWidget->BindPlayerBaseForItem(Cast<AASCharacterBase>(ControllerOwner));
+	CurMainHUDWidget->BindPlayerBase(ControllerOwner);
+	CurMainHUDWidget->BindPlayerBaseForBullet(ControllerOwner);
+	CurMainHUDWidget->BindPlayerBaseForMagazine(ControllerOwner);
+	CurMainHUDWidget->BindPlayerBaseForItem(ControllerOwner);
 }
 
 void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
@@ -63,12 +67,20 @@ void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
 	switch (NewScreenMode)
 	{
 	case AASPlayerController::EscreenMode::Basic:
+		CurMainHUDWidget->RemoveFromParent();
 		CurMainHUDWidget = CreateWidget<UASMainGameWidget>(this, BasicHUDWidgetClass);
+		ConnectUIwithData();
 		CurMainHUDWidget->AddToViewport();
+		ControllerOwner->InitUIData();
+		
 		break;
 	case AASPlayerController::EscreenMode::Sniping:
+		CurMainHUDWidget->RemoveFromParent();
 		CurMainHUDWidget = CreateWidget<UASMainGameWidget>(this, SnipHUDWidgetClass);
+		ConnectUIwithData();
 		CurMainHUDWidget->AddToViewport();
+		ControllerOwner->InitUIData();
+		
 		break;
 	}
 }
