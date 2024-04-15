@@ -33,6 +33,12 @@ void UASMainGameWidget::BindPlayerBaseForItem(AASCharacterBase* PlayerBase)
 	CurrentPlayerBase->NumItemChanged.AddUObject(this, &UASMainGameWidget::UpdateItemUI);
 }
 
+void UASMainGameWidget::BindPlayerBaseForMagnification(AASCharacterBase* PlayerBase)
+{
+	CurrentPlayerBase = PlayerBase;
+	CurrentPlayerBase->NumMagnificationChanged.AddUObject(this, &UASMainGameWidget::UpdateMagnificationUI);
+}
+
 
 
 void UASMainGameWidget::NativeConstruct()
@@ -42,6 +48,7 @@ void UASMainGameWidget::NativeConstruct()
 	BulletNumUI = Cast<UEditableTextBox>(GetWidgetFromName(TEXT("LastBulletNum")));
 	MagazineNum = Cast<UEditableTextBox>(GetWidgetFromName(TEXT("TB_LastMagazineNum")));
 	ItemNum = Cast<UTextBlock>(GetWidgetFromName(TEXT("T_LastItem")));
+	MagnificationNum = Cast<UTextBlock>(GetWidgetFromName(TEXT("Num_Magnification")));
 }
 
 void UASMainGameWidget::UpdatePlayerState()
@@ -64,4 +71,13 @@ void UASMainGameWidget::UpdateItemUI()
 {
 	ItemNum->SetText(FText::FromString(FString::FromInt(CurrentPlayerBase->GetItemNum())));
 }
+
+void UASMainGameWidget::UpdateMagnificationUI()
+{
+	if(MagnificationNum != nullptr)
+	MagnificationNum->SetText(FText::FromString(FString::FromInt(CurrentPlayerBase->GetMagnificationNum())));
+}
+
+
+
 

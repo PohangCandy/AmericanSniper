@@ -21,7 +21,8 @@ public:
 	void BindPlayerBaseForBullet(class AASCharacterBase* PlayerBase);
 	void BindPlayerBaseForMagazine(class AASCharacterBase* PlayerBase);
 	void BindPlayerBaseForItem(class AASCharacterBase* PlayerBase);
-	void ConnectUIwithData();
+	void BindPlayerBaseForMagnification(class AASCharacterBase* PlayerBase);
+	//void ConnectUIwithData();
 
 protected:
 	virtual void NativeConstruct() override;
@@ -30,6 +31,7 @@ protected:
 	void UpdateBulletUI();
 	void UpdateMagazineUI();
 	void UpdateItemUI();
+	void UpdateMagnificationUI();
 
 private:
 	TWeakObjectPtr<class UASCharacterStatComponent> CurrentCharacterStat;
@@ -47,4 +49,10 @@ private:
 
 	UPROPERTY()
 	class UTextBlock* ItemNum;
+
+	UPROPERTY()
+	class UTextBlock* MagnificationNum;
+
+	UPROPERTY()
+	class UProgressBar* MagnificationBar;
 };

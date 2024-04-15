@@ -141,8 +141,11 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, playerController, &AASPlayerController::UIScreenChange);
+	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
 	
 	PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::ChangeUI);
+	PlayerInputComponent->BindAction(TEXT("ZoomIn"), EInputEvent::IE_Pressed, this, &AASCharacterBase::ZoomIn);
+	PlayerInputComponent->BindAction(TEXT("ZoomOut"), EInputEvent::IE_Pressed, this, &AASCharacterBase::ZoomOut);
 
 
 

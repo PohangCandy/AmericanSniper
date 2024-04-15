@@ -36,6 +36,7 @@ void AASPlayerController::BeginPlay()
 	//SetInputMode(FInputModeGameAndUI());
 
 	CurMainHUDWidget = CreateWidget<UASMainGameWidget>(this, BasicHUDWidgetClass);
+	//CurMainHUDWidget = CreateWidget<UASMainGameWidget>(this, SnipHUDWidgetClass);
 	CurMainHUDWidget->AddToViewport();
 
 	ConnectUIwithData();
@@ -59,6 +60,7 @@ void AASPlayerController::ConnectUIwithData()
 	CurMainHUDWidget->BindPlayerBaseForBullet(ControllerOwner);
 	CurMainHUDWidget->BindPlayerBaseForMagazine(ControllerOwner);
 	CurMainHUDWidget->BindPlayerBaseForItem(ControllerOwner);
+	CurMainHUDWidget->BindPlayerBaseForMagnification(ControllerOwner);
 }
 
 void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
