@@ -10,14 +10,25 @@
 /**
  * 
  */
+UENUM()
+enum class CurDetectSituation
+{
 
+	NoneInRange, //범위안에 없는 상황
+	PlayerInRange, // 범위안에 있는 상황
+	PlayerGetOutOfRange, // 범위안에 들어갔다 나간 상황
+	PlayerIsDetected,  // 발각된 상황
 
+};
 UCLASS()
 class ASPROTOTYPE_API AASAIController : public AAIController
 {
 	GENERATED_BODY()
 
 public:
+	CurDetectSituation CurSituation;
+	AActor* GetDetectedPlayer();
+
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
 
@@ -40,6 +51,11 @@ public:
 	void SetBB_PathLoc(FVector vector);
 	FVector GetBB_PathLoc();
 
+	void SetBB_AttackRange(FVector vector);
+	FVector GetBB_AttackRange();
+
+	void StartDetection();
+	void StopDetection();
 	UFUNCTION()
 	void OnPawnDetected(const TArray<AActor*>& DetectedPawns);
 
@@ -53,13 +69,22 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widget)
 	TObjectPtr<class UWidgetComponent> DetectBar;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = AttackRange);
+	float AttackRange;
+
 	class UASDetectWidget* getWidget();
 
-	
+	float DistanceDifference_Value;
 	//virtual FGenericTeamId GetGenericTeamId() const override { return TeamId; }
 
 	//FInitAIOnChanged AIOnChanged;
 	//AASAIController* ReturnAIRef(AASAIController*ref);
+
+	//전방선언
+	class AASCharacterPlayer* PlayerRef;
+
+	float DetectionLevel;
+	float MaxLevel;
 
 private:
 	class UAISenseConfig_Sight* SightConfig;
@@ -75,10 +100,9 @@ private:
 
 	//전방선언
 	class UASDetectWidget* UiRef;
-	class AASCharacterPlayer* PlayerRef;
 	class AASEnemyCharacter* EnemyRef;
 
-	bool Pass;
+	bool IsTargetInRange;
 
 protected:
 

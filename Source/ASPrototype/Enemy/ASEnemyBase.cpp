@@ -6,7 +6,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 //BB정보 얻기 위해 
 #include "AI/ASAIController.h"
-
 #include "UI/ASDetectWidget.h"
 
 // Sets default values
@@ -27,9 +26,9 @@ AASEnemyBase::AASEnemyBase()
 	//Movement
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
-	GetCharacterMovement()->JumpZVelocity = 700.f;
+	//GetCharacterMovement()->JumpZVelocity = 700.f;
 	GetCharacterMovement()->AirControl = 0.35f;
-	GetCharacterMovement()->MaxWalkSpeed = 300.f;
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
@@ -64,7 +63,9 @@ AASEnemyBase::AASEnemyBase()
 
 	//Weapon Setting
 	Gun = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Gun"));
-	Gun->SetupAttachment(RootComponent);
+	Gun->SetupAttachment(GetMesh(), FName(TEXT("Weapon_Socket")));
+
+	//Gun->SetupAttachment(RootComponent);
 
 	//생성자에서 캐스팅 시 문제발생 (원인 모름) <-
 	//AActor* owner = GetOwner();
@@ -72,6 +73,25 @@ AASEnemyBase::AASEnemyBase()
 	//AiRef = Cast<AASAIController>(GetOwner());
 	//ensure(AiRef);
 
+	WalkSpeed = 300.0f;
+	RunSpeed = 500.0f;
+}
+
+void AASEnemyBase::Attack()
+{
+	const float DelayTime = PlayAnimMontage(AttackMontage);
+	AttackEnd(DelayTime);
+}
+
+void AASEnemyBase::AttackEnd(const float InDelayTime)
+{
+	FTimerHandle myTimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(myTimerHandle, FTimerDelegate::CreateLambda([&]()
+		{
+			OnAttackEnd.Broadcast();
+			// 타이머 초기화
+			GetWorld()->GetTimerManager().ClearTimer(myTimerHandle);
+		}), InDelayTime, false);
 }
 
 // Called when the game starts or when spawned
@@ -110,6 +130,12 @@ void AASEnemyBase::GetActorEyesViewPoint(FVector& OutLocation, FRotator& OutRota
 	OutRotation = GetMesh()->GetSocketRotation("HeadSocket");
 }
 
+void AASEnemyBase::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+	
+}
+
 void AASEnemyBase::SetState(EState NewState)
 {
 	CurState = NewState;
@@ -128,21 +154,20 @@ void AASEnemyBase::SetStateAnimation(EState NewState)
 	{	
 	case EState::Idle:
 		Gun->SetHiddenInGame(true);
-		GetCharacterMovement()->MaxWalkSpeed = 300.f;
-		AiRef->RangeSizeDown();
+		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+		//AiRef->RangeSizeDown();
 		break;
 
-	case EState::Walk:
-		Gun->SetHiddenInGame(true);
-		GetCharacterMovement()->MaxWalkSpeed = 300.f; //이것만 상태변화에서 가장 의미있어보임.
-		AiRef->RangeSizeDown();
+	case EState::Chasing:
+		Gun->SetHiddenInGame(false);
+		GetCharacterMovement()->MaxWalkSpeed = RunSpeed; //이것만 상태변화에서 가장 의미있어보임.
+		//AiRef->RangeSizeUP();
 		break;
 
 	case EState::Attack:
 		Gun->SetHiddenInGame(false);
-		GetCharacterMovement()->MaxWalkSpeed = 500.f;
-		AiRef->RangeSizeUP();
-
+		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
+		//AiRef->RangeSizeUP();
 		break;
 
 	case EState::Hurt:

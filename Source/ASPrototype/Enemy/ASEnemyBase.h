@@ -16,12 +16,14 @@ UENUM()
 enum class EState
 {
 	Idle, 
-	Walk,
-	Attack, //돌격상태 
+	Chasing, //쫓는 상태
+	Attack, //공격상태 
 	Hurt,  //절뚝거리기
 	Hidden, //숨은 상태
 	Dead
 };
+
+DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
 
 
 UCLASS()
@@ -31,6 +33,8 @@ class ASPROTOTYPE_API AASEnemyBase : public ACharacter//, public IGenericTeamAge
 public:
 	// Sets default values for this character's properties
 	AASEnemyBase();
+
+	FOnAttackEndDelegate OnAttackEnd;
 
 	float SplineSpeed;
 	float DistanceAlongSpline;
@@ -50,20 +54,34 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual void GetActorEyesViewPoint(FVector& OutLocation, FRotator& OutRotation) const override;
+	virtual void OnConstruction(const FTransform& Transform) override;
 	void SetStateAnimation(EState NewState);
 
 	//TArray<FVector> 값을 가진 Actor 클래스 포인터 
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<class APatrolPath> PatrolPath;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stat)
+	float WalkSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stat)
+	float RunSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> DeadMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> AttackMontage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
 	TObjectPtr<class UStaticMeshComponent> Gun;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = name)
 	FString Name;
+
+	void Attack();
+
+	void AttackEnd(const float InDelyTime);
 
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AI)
 	//int32 ID = 0;

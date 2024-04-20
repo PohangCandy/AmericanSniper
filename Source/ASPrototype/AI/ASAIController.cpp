@@ -9,13 +9,15 @@
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
 #include "Enemy/ASEnemyCharacter.h"
-#include "Character/ASCharacterPlayer.h"
+#include "Character/ASCharacterPlayer.h" //SetAngle 때문에
 
 #include "Kismet/KismetMathLibrary.h" //charactor의 움직임 
 
 //탐지 위젯 추가
 #include "Components/WidgetComponent.h"
 #include "UI/ASDetectWidget.h"
+
+#include "Kismet/GameplayStatics.h"
 
 
 
@@ -59,6 +61,10 @@ AASAIController::AASAIController()
 	//{
 	//	TeamId = FGenericTeamId(EnemyRef->ID);
 	//}
+	AttackRange = 500.0f;
+	DetectionLevel=0.0f;
+	MaxLevel=1.0f;
+	CurSituation = CurDetectSituation::NoneInRange;
 }
 
 void AASAIController::RunAI()
@@ -83,24 +89,23 @@ void AASAIController::StopAI()
 
 void AASAIController::CheckPlayer(AActor* player)
 {	
-	
 	//임시 : 오직 플레이어만 인식 (적끼리 인식X)
-	if (player==NULL){return;}
-	Pass = true;
-
-	//UiRef->OnChanged.AddUObject(this, &AASAIController::SetBB_IsDetect);
+	if (player==NULL){ return; }
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, FString::Printf(TEXT("CheckPlayer")));
 	UiRef->AddToViewport();
 
-	if (GetBB_Target()->IsValidLowLevel())
+	//if (GetBB_IsDetect()) { return; }
+	if (GetBB_Target())
 	{
 		SetBB_Target(nullptr); //나가야 하는 상황 
-		UiRef->StopDetection();
+		StopDetection();
 	}
 	else
 	{
 		SetBB_Target(player); //들어가야 하는 상황
-		UiRef->StartDetection();
+		StartDetection();
 	}
+
 }
 
 
@@ -146,38 +151,88 @@ FVector AASAIController::GetBB_PathLoc()
 }
 
 
+void AASAIController::SetBB_AttackRange(FVector vector)
+{
+	GetBlackboardComponent()->SetValueAsVector(BBKEY_AttackRange, vector);
+}
+
+FVector AASAIController::GetBB_AttackRange()
+{
+	return GetBlackboardComponent()->GetValueAsVector(BBKEY_AttackRange);
+}
+
+
+
+
+void AASAIController::StartDetection()
+{
+	CurSituation = CurDetectSituation::PlayerInRange;
+}
+
+void AASAIController::StopDetection()
+{
+	CurSituation = CurDetectSituation::PlayerGetOutOfRange;
+}
+
 
 void AASAIController::OnPawnDetected(const TArray<AActor*>& DetectedPawns) //적 둘이 마주보면 문제 발생 
 {	
 	for (int32 i = 0; i < DetectedPawns.Num(); ++i)
 	{
-		PlayerRef = Cast<AASCharacterPlayer>(DetectedPawns[i]);
-		ensure(DetectedPawns[i]);
-		CheckPlayer(PlayerRef);
+		AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(DetectedPawns[i]);
+		//ensure(CurPlayer);
+		CheckPlayer(CurPlayer);
 	}
+}
+
+AActor* AASAIController::GetDetectedPlayer()
+{	
+	AActor* Actor = Cast<AActor>(PlayerRef);
+	return Actor;
 }
 
 void AASAIController::Tick(float DeltaTime)
 {	
-	if (Pass) // 시작 시 바로 들어오는 거 방지
+	ensure(PlayerRef);
+	if (CurSituation!=CurDetectSituation::NoneInRange)  //StartDetection() 호출 시 -> 동작   ,   StopDetection() 호출 후 UI 사라지면 -> 정지
 	{
-		if (PlayerRef!=nullptr) //StartDetection() 호출 시 -> 동작   ,   StopDetection() 호출 후 UI 사라지면 -> 정지
-		{
+		//UI 위치 조정
+		FRotator ControlRotator = GetControlRotation();
+		FVector PlayerLoc = PlayerRef->GetActorLocation();
+		FVector EnemyLoc = EnemyRef->GetActorLocation();
+			
+		FRotator ControllerRotator = UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetControlRotation();
+		FRotator IntervalRotator = UKismetMathLibrary::FindLookAtRotation(PlayerLoc, EnemyLoc);
+		FRotator AngleRotator = UKismetMathLibrary::NormalizedDeltaRotator(IntervalRotator, ControllerRotator);
+		float Angle = AngleRotator.Yaw;
+		UiRef->SetAngle(Angle);
 
-
-			//UI 위치 조정
-			FRotator ControlRotator = GetControlRotation();
-			FVector PlayerLoc = PlayerRef->GetActorLocation(); 
-			FVector EnemyLoc = EnemyRef->GetActorLocation();
-			FRotator ControllerRotator = UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetControlRotation();
-			FRotator IntervalRotator = UKismetMathLibrary::FindLookAtRotation(PlayerLoc, EnemyLoc);
-			FRotator AngleRotator = UKismetMathLibrary::NormalizedDeltaRotator(IntervalRotator, ControllerRotator);
-			float Angle = AngleRotator.Yaw;
-			UiRef->SetAngle(Angle);
-
-		}
-
+		//적과 플레이어 사이 거리 얻기
+		FVector Location_Between_Player_And_Enemy = EnemyLoc - PlayerLoc;
+		DistanceDifference_Value = Location_Between_Player_And_Enemy.Length();
 	}
+
+	if (DetectionLevel>=MaxLevel)
+	{
+		CurSituation = CurDetectSituation::PlayerIsDetected;
+		SetBB_IsDetect(true);
+	}
+
+	if (CurSituation==CurDetectSituation::PlayerInRange)
+	{
+		UiRef->IncreasePercent();
+	}
+	else if (CurSituation == CurDetectSituation::PlayerGetOutOfRange)
+	{
+		UiRef->DecreasePercent();
+	}
+	else if(CurSituation == CurDetectSituation::PlayerIsDetected)
+	{
+		//적들이 추적하는 상황 ( UI 는 사라짐 ) 
+	}
+
+
+
 }
 
 void AASAIController::BeginPlay()
@@ -189,6 +244,9 @@ void AASAIController::BeginPlay()
 	EnemyRef = Cast<AASEnemyCharacter>(GetPawn());
 	ensure(EnemyRef);
 
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	PlayerRef = Cast<AASCharacterPlayer>(PlayerPawn);
+	ensure(PlayerRef);
 }
 
 void AASAIController::RangeSizeDown()
@@ -220,11 +278,6 @@ UASDetectWidget* AASAIController::getWidget()
 	return UiRef;
 }
 
-//AASAIController* AASAIController::ReturnAIRef(AASAIController* ref)
-//{
-//	AIOnChanged.Broadcast(ref);
-//	return this;
-//}
 
 void AASAIController::SetupPerception()
 {
@@ -235,7 +288,7 @@ void AASAIController::SetupPerception()
 
 		SightConfig->SightRadius = 500.f;
 		SightConfig->LoseSightRadius = SightConfig->SightRadius + 25.f;
-		SightConfig->PeripheralVisionAngleDegrees = 60.f;
+		SightConfig->PeripheralVisionAngleDegrees = 90.f;
 		SightConfig->DetectionByAffiliation.bDetectEnemies = true;
 		SightConfig->DetectionByAffiliation.bDetectFriendlies = true;
 		SightConfig->DetectionByAffiliation.bDetectNeutrals = true;

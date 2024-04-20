@@ -2,9 +2,7 @@
 
 
 #include "AI/BTTask_FindPatrolLocation.h"
-#include "ASAI.h"
 #include "ASAIController.h"
-#include "BehaviorTree/BlackboardComponent.h"
 #include "Enemy/ASEnemyBase.h"
 //Enemy의 PatrolPath 객체 캐스팅을 위해
 #include "Enemy/PatrolPath.h"
@@ -13,7 +11,6 @@
 
 UBTTask_FindPatrolLocation::UBTTask_FindPatrolLocation()
 {
-	//curIdx = 0;
 	NodeName = TEXT("FindPatrolLocation");
 }
 

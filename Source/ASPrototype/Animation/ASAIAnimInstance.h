@@ -17,6 +17,7 @@ class ASPROTOTYPE_API UASAIAnimInstance : public UAnimInstance
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Enemy)
 	bool bIsIdle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Enemy)
 	float Speed;
 
 protected:

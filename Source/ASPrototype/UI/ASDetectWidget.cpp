@@ -10,15 +10,8 @@
 
 UASDetectWidget::UASDetectWidget(const FObjectInitializer& ObjectInitializer) :Super(ObjectInitializer)
 {
-	CurPercent = 0.0f;
-	MaxPercent = 1.0f;
-	
-}
 
-//AASAIController* UASDetectWidget::GetAIRef(AASAIController* ref)
-//{
-//	return ref;
-//}
+}
 
 void UASDetectWidget::NativeConstruct()
 {
@@ -26,77 +19,49 @@ void UASDetectWidget::NativeConstruct()
 	DetectBar = Cast<UProgressBar>(GetWidgetFromName(TEXT("DetectProgressBar")));
 	ensure(DetectBar);
 
-	if (CurveFloat)
-	{
-		FOnTimelineFloat BindTimeline;
-		BindTimeline.BindUFunction(this, FName("RunTimeline"));
-		timeline.AddInterpFloat(CurveFloat, BindTimeline);
-		timeline.SetLooping(false);
-	}
 	DetectBar->SetVisibility(ESlateVisibility::Hidden);
-	
-	//UWidgetComponent* WCref = Cast<UWidgetComponent>(this);  	ensure(WCref);
-	//AASAIController* aiRef = Cast<AASAIController>GetOwner());
-	//ensure(aiRef);
-
 }
 
 void UASDetectWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
-	timeline.TickTimeline(InDeltaTime);
-	if (Owner!=nullptr)
-	{
-		AASAIController* AIController = Cast<AASAIController>(Owner);
-		ensure(AIController); //AI 객체 얻기
+	//timeline.TickTimeline(InDeltaTime);
+
+	if (Owner!=nullptr) //이곳에 들어왔다는 건 AI의 Beginplay()가 호출됬음을 의미함 
+	{	
+		AiRef = Cast<AASAIController>(Owner);
+		ensure(AiRef); //AI 객체 얻기 성공
+		MaxPercent = AiRef->MaxLevel;
 	}
 }
 
-void UASDetectWidget::SetPercent(float NewPercent)
-{
-	DetectBar->SetPercent(NewPercent);
-}
-
-void UASDetectWidget::StartDetection()
+void UASDetectWidget::IncreasePercent()
 {	
-	//StartChasing(true);
-	timeline.Play();
 	DetectBar->SetVisibility(ESlateVisibility::Visible);
-}
 
-void UASDetectWidget::StopDetection()
-{		
-	timeline.Reverse();
-}
-
-
-void UASDetectWidget::RunTimeline(float Value) 
-{
-
-	//Setting ProgressBar 
-	float NewPercent = FMath::Lerp(0.0f, MaxPercent, Value);
-	CurPercent = FMath::Clamp(NewPercent, 0.0f, MaxPercent);
+	float value = 0.02f;
+	AiRef->DetectionLevel = AiRef->DetectionLevel + value;
+	CurPercent = FMath::Clamp(AiRef->DetectionLevel, 0.0f, MaxPercent);
 	DetectBar->SetPercent(CurPercent);
-
-	//ProgressBar limit
-	if (CurPercent >= MaxPercent)
-	{	
-		DetectBar->SetFillColorAndOpacity(FLinearColor::Red); //Change Color Red 
-
+	if (AiRef->DetectionLevel >= MaxPercent)
+	{
+		DetectBar->SetFillColorAndOpacity(FLinearColor::Red);
+		return;
 	}
-	else if(!timeline.IsPlaying())
-	{	
-		DetectBar->SetFillColorAndOpacity(FLinearColor::White);
-		DetectBar->SetVisibility(ESlateVisibility::Hidden);
-		//StartChasing(false);
-	}
-	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Black, FString::Printf(TEXT("CurPercent : %f"), CurPercent));
 }
 
-//void UASDetectWidget::StartChasing(bool b)
-//{
-//	OnChanged.Broadcast(b);
-//}
+void UASDetectWidget::DecreasePercent()
+{
+	float value = -0.01f;
+	AiRef->DetectionLevel = AiRef->DetectionLevel + value;
+	CurPercent = FMath::Clamp(AiRef->DetectionLevel, 0.0f, MaxPercent);
+	DetectBar->SetPercent(CurPercent);
+	if (AiRef->DetectionLevel <= 0.0f)
+	{
+		DetectBar->SetVisibility(ESlateVisibility::Hidden);
+		return;
+	}
+}
 
 
 void UASDetectWidget::SetAngle(float angle)
@@ -104,11 +69,3 @@ void UASDetectWidget::SetAngle(float angle)
 	SetRenderTransformAngle(angle);
 }
 
-
-
-//if (timeDeltaTime > 1.0f)
-//{
-//	GetWorldTimerManager().ClearTimer(fTimeHandler);
-//}
-
-//		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Black, FString::Printf(TEXT("when CurPercent : %f , STOP1 "), CurPercent));
