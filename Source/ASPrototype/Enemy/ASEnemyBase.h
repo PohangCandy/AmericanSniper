@@ -16,12 +16,13 @@ UENUM()
 enum class EState
 {
 	Idle, 
+	Alert, //의심 상태
 	Chasing, //쫓는 상태
 	Attack, //공격상태 
 	Hurt,  //절뚝거리기
 	Hidden, //숨은 상태
-	Dead
-};
+	Dead //사망
+}; 
 
 DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
 

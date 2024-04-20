@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AI/BTService_StateManager.h"
-#include "ASAI.h"
 #include "ASAIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Enemy/ASEnemyBase.h"
@@ -25,8 +24,7 @@ void UBTService_StateManager::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 	else 
 	{
 		Enemy->SetStateAnimation(EState::Idle);
-	}
-	
+	}	
 }
 
 

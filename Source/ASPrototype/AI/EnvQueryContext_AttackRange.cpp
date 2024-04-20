@@ -14,7 +14,7 @@ void UEnvQueryContext_AttackRange::ProvideContext(FEnvQueryInstance& QueryInstan
 	if (AIRef)
 	{
 		//Set the context SeeingPawn to the provided context data
-		UEnvQueryItemType_Actor::SetContextHelper(ContextData, AIRef->GetDetectedPlayer());
+		UEnvQueryItemType_Actor::SetContextHelper(ContextData, AIRef->GetPlayer());
 	}
 
 }

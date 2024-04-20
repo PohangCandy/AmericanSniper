@@ -18,7 +18,7 @@ enum class CurDetectSituation
 	PlayerInRange, // 범위안에 있는 상황
 	PlayerGetOutOfRange, // 범위안에 들어갔다 나간 상황
 	PlayerIsDetected,  // 발각된 상황
-
+	
 };
 UCLASS()
 class ASPROTOTYPE_API AASAIController : public AAIController
@@ -27,7 +27,7 @@ class ASPROTOTYPE_API AASAIController : public AAIController
 
 public:
 	CurDetectSituation CurSituation;
-	AActor* GetDetectedPlayer();
+	AActor* GetPlayer();
 
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
@@ -39,11 +39,17 @@ public:
 	void CheckPlayer(AActor* P);
 
 	//BB 데이터 정보 
+	void SetBB_LastKnownPosition(FVector vector);
+	FVector GetBB_LastKnownPosition();
+
 	void SetBB_Target(UObject* object);
 	UObject* GetBB_Target();
 
 	void SetBB_IsDetect(bool b);
 	bool GetBB_IsDetect();
+
+	void SetBB_IsAlert(bool b);
+	bool GetBB_IsAlert();
 
 	void SetBB_PatrolLoc(FVector vector);
 	FVector GetBB_PatrolLoc();

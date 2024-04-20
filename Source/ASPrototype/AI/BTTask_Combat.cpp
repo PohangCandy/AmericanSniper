@@ -31,7 +31,7 @@ EBTNodeResult::Type UBTTask_Combat::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 	Enemy->Attack();
 	IsAttacking = true;
 
-	Enemy->OnAttackEnd.AddLambda([this]()->void {IsAttacking = false; });
+	Enemy->OnAttackEnd.AddLambda([this]()->void {IsAttacking = false;});
 
 	return EBTNodeResult::InProgress;
 }

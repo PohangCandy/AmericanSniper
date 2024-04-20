@@ -41,7 +41,6 @@ protected:
 
 	virtual void NativeConstruct() override;
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime);
-	void CheckAndControll_UI();
 
 	UPROPERTY()
 	TObjectPtr<class UProgressBar> DetectBar;
@@ -52,9 +51,6 @@ protected:
 
 
 private:
-	bool isReverse;
-	float DetectOffTime;
-	float DetectOnTime;
 	class AASAIController* AiRef;
 
 };

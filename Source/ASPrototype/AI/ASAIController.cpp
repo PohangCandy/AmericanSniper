@@ -108,6 +108,16 @@ void AASAIController::CheckPlayer(AActor* player)
 
 }
 
+void AASAIController::SetBB_LastKnownPosition(FVector vector)
+{
+	GetBlackboardComponent()->SetValueAsVector(BBKEY_LastKnownPosition,vector);
+}
+
+FVector AASAIController::GetBB_LastKnownPosition()
+{
+	return GetBlackboardComponent()->GetValueAsVector(BBKEY_LastKnownPosition);
+}
+
 
 //BB 데이터 접근 
 void AASAIController::SetBB_Target(UObject* actor)
@@ -128,6 +138,16 @@ void AASAIController::SetBB_IsDetect(bool b)
 bool AASAIController::GetBB_IsDetect()
 {	
 	return GetBlackboardComponent()->GetValueAsBool(BBKEY_IsDetect);
+}
+
+void AASAIController::SetBB_IsAlert(bool b)
+{
+	GetBlackboardComponent()->SetValueAsBool(BBKEY_IsAlert,b);
+}
+
+bool AASAIController::GetBB_IsAlert()
+{
+	return GetBlackboardComponent()->GetValueAsBool(BBKEY_IsAlert);
 }
 
 void AASAIController::SetBB_PatrolLoc(FVector vector)
@@ -185,7 +205,7 @@ void AASAIController::OnPawnDetected(const TArray<AActor*>& DetectedPawns) //적 
 	}
 }
 
-AActor* AASAIController::GetDetectedPlayer()
+AActor* AASAIController::GetPlayer()
 {	
 	AActor* Actor = Cast<AActor>(PlayerRef);
 	return Actor;
@@ -246,7 +266,7 @@ void AASAIController::BeginPlay()
 
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	PlayerRef = Cast<AASCharacterPlayer>(PlayerPawn);
-	ensure(PlayerRef);
+	//ensure(PlayerRef);
 }
 
 void AASAIController::RangeSizeDown()
