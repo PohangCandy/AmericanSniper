@@ -40,7 +40,8 @@ private:
 	State CurState;
 	//UPROPERTY()
 	//class AASPlayerController* PlayerController;
-	
+	int MaxMagnification;
+	int CurMagnification;
 
 public:
 	// Sets default values for this character's properties
@@ -62,11 +63,18 @@ public:
 	void Reload();
 	void Heal();
 	void TestingGetDamage();
+	void InitUIData();
 	State GetState();
 	FOnStateChangeDelegate OnHpChanged;
 	FOnStateChangeDelegate NumBulletChanged;
 	FOnStateChangeDelegate NumMagazineChanged;
 	FOnStateChangeDelegate NumItemChanged;
+	FOnStateChangeDelegate NumMagnificationChanged;
+
+	int GetMagnificationNum();
+	void SetMagnificationNum(int newMag);
+	void ZoomIn();
+	void ZoomOut();
 
 
 	UPROPERTY(VisibleAnywhere, Category = Stat)
@@ -86,4 +94,6 @@ protected:
 	FTimerHandle DeadTimerHandle;
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
 	//TSubclassOf<class AASPlayerController> CurplayerControllerClass;
+
+	virtual void Tick(float DeltaTime) override;
 };

@@ -90,6 +90,8 @@ AASCharacterPlayer::AASCharacterPlayer()
 
 	SoundRangeCapsule->SetVisibility(true);
 	SoundRangeCapsule->SetHiddenInGame(false);
+
+	
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -112,7 +114,8 @@ void AASCharacterPlayer::BeginPlay()
 		Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		//Subsystem->RemoveMappingContext(DefaultMappingContext); 필요 시 연결 끊기도 가능 
 	}
-
+	UE_LOG(LogTemp, Warning, TEXT("GetController"));
+	playerController = CastChecked<AASPlayerController>(GetController());
 	// SoundRangeCapsule의 머티리얼을 가져옴
 	UMaterialInterface* Material = SoundRangeCapsule->GetMaterial(0);
 
@@ -133,12 +136,18 @@ void AASCharacterPlayer::BeginPlay()
 
 void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
+	UE_LOG(LogTemp,Warning,TEXT("SetUPInput"));
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
+	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, playerController, &AASPlayerController::UIScreenChange);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
+	
+	PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::ChangeUI);
+	PlayerInputComponent->BindAction(TEXT("ZoomIn"), EInputEvent::IE_Pressed, this, &AASCharacterBase::ZoomIn);
+	PlayerInputComponent->BindAction(TEXT("ZoomOut"), EInputEvent::IE_Pressed, this, &AASCharacterBase::ZoomOut);
 
-	//PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
+
 
 
 	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Reload);
@@ -268,7 +277,7 @@ void AASCharacterPlayer::UpdateSoundRange()
 
 void AASCharacterPlayer::ChangeUI()
 {
-
+	playerController->UIScreenChange();
 }
 
 

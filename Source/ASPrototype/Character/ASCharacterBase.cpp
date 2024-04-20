@@ -60,6 +60,9 @@ AASCharacterBase::AASCharacterBase()
 	LowHp = 40;
 	Damage = 10;
 	CurState = State::None;
+	MaxMagnification = 16;
+	CurMagnification = MaxMagnification;
+	
 
 	//static ConstructorHelpers::FClassFinder<AASPlayerController> Controll_C(TEXT("/Script/ASPrototype.ASPlayerController_C"));
 	//CurplayerControllerClass = Controll_C.Class;
@@ -73,7 +76,7 @@ AASCharacterBase::AASCharacterBase()
 void AASCharacterBase::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	OnHpChanged.Broadcast();
+	//OnHpChanged.Broadcast();
 }
 
 void AASCharacterBase::SetDead()
@@ -225,10 +228,51 @@ void AASCharacterBase::TestingGetDamage()
 	GetDamaged(10);
 }
 
+void AASCharacterBase::InitUIData()
+{
+	OnHpChanged.Broadcast();
+	NumBulletChanged.Broadcast();
+	NumMagazineChanged.Broadcast();
+	NumItemChanged.Broadcast();
+	NumMagnificationChanged.Broadcast();
+}
+
 
 State AASCharacterBase::GetState()
 {
 	return CurState;
+}
+
+int AASCharacterBase::GetMagnificationNum()
+{
+	return CurMagnification;
+}
+
+void AASCharacterBase::SetMagnificationNum(int newmag)
+{
+	CurMagnification = newmag;
+}
+
+void AASCharacterBase::ZoomOut()
+{
+	UE_LOG(AS, Warning, TEXT("ZoomOut Act"));
+	UE_LOG(AS, Warning, TEXT("%d"),CurMagnification);
+	if (GetMagnificationNum() > 0)
+	{
+		SetMagnificationNum(GetMagnificationNum() - 1);
+	}
+	NumMagnificationChanged.Broadcast();
+}
+
+void AASCharacterBase::ZoomIn()
+{
+	UE_LOG(AS, Warning, TEXT("ZoomIn Act"));
+	UE_LOG(AS, Warning, TEXT("%d"), CurMagnification);
+	if (GetMagnificationNum() < MaxMagnification)
+	{
+		SetMagnificationNum(GetMagnificationNum() + 1);
+	}
+	NumMagnificationChanged.Broadcast();
 }
 
 
@@ -236,8 +280,11 @@ State AASCharacterBase::GetState()
 void AASCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	OnHpChanged.Broadcast();
-	NumBulletChanged.Broadcast();
-	NumMagazineChanged.Broadcast();
-	NumItemChanged.Broadcast();
+	InitUIData();
+}
+
+void AASCharacterBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
 }

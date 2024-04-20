@@ -39,6 +39,7 @@ public:
 	class USkeletalMeshComponent* ClothesMesh;
 
 
+
 private:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
@@ -83,5 +84,8 @@ protected:
 
 	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = Input, Meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class UInputMappingContext> DefaultMappingContext;
+
+private:
+	class AASPlayerController* playerController;
 
 };
