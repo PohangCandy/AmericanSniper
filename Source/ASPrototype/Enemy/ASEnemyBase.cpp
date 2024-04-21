@@ -8,6 +8,8 @@
 #include "AI/ASAIController.h"
 #include "UI/ASDetectWidget.h"
 
+#include "Components/WidgetComponent.h"
+
 // Sets default values
 AASEnemyBase::AASEnemyBase()
 {
@@ -37,6 +39,23 @@ AASEnemyBase::AASEnemyBase()
 	GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
 	GetMesh()->SetCollisionProfileName(TEXT("NoCollision"));
 
+	//Widget
+	QuestionMark = CreateDefaultSubobject<UWidgetComponent>(TEXT("QuestionMarkWidget"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> QuestionMarkRef(TEXT("/Game/UI/WB_QuestionMark_UI.WB_QuestionMark_UI_C"));
+	ensure(QuestionMarkRef.Class);
+	if (QuestionMarkRef.Class)
+	{
+		QuestionMark->SetWidgetClass(QuestionMarkRef.Class);
+		QuestionMark->SetWidgetSpace(EWidgetSpace::Screen);
+		QuestionMark->SetDrawSize(FVector2D(30.0f, 30.0f));
+		QuestionMark->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		QuestionMark->SetupAttachment(GetMesh());
+		QuestionMark->AddRelativeRotation(FRotator(0.0f, 0.0f, 90.0f));
+		QuestionMark->SetRelativeLocation(FVector(0.0f, 0.0f, 210.0f));
+		QuestionMark->SetHiddenInGame(true);
+	}
+
+
 	//Stats
 	MaxHp = 100;
 	CurHp = MaxHp;
@@ -51,6 +70,7 @@ AASEnemyBase::AASEnemyBase()
 	}
 
 	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Script/Engine.AnimBlueprint'/Game/ASPrototype/Enemy/Enemy/ABP_TempEnemy.ABP_TempEnemy_C'"));
+	//ensure(AnimInstanceClassRef.Class);
 	if (AnimInstanceClassRef.Class)
 	{
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
@@ -93,6 +113,8 @@ void AASEnemyBase::AttackEnd(const float InDelayTime)
 			GetWorld()->GetTimerManager().ClearTimer(myTimerHandle);
 		}), InDelayTime, false);
 }
+
+
 
 // Called when the game starts or when spawned
 void AASEnemyBase::BeginPlay()
@@ -157,7 +179,9 @@ void AASEnemyBase::SetStateAnimation(EState NewState)
 		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 		//AiRef->RangeSizeDown();
 		break;
-
+	case EState::Alert:
+		GetCharacterMovement()->MaxWalkSpeed = 150.0f;
+		break;
 	case EState::Chasing:
 		Gun->SetHiddenInGame(false);
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed; //이것만 상태변화에서 가장 의미있어보임.

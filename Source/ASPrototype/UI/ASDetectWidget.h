@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-/*#include "Components/TimelineComponent.h" *///제거하시오
+
 #include "Blueprint/UserWidget.h"
 #include "AI/ASAIController.h"
 #include "ASDetectWidget.generated.h"
@@ -44,10 +44,6 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<class UProgressBar> DetectBar;
-
-	//FTimeline timeline;
-	//UPROPERTY(EditAnywhere,Category="Timeline")
-	//UCurveFloat* CurveFloat;
 
 
 private:

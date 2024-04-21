@@ -17,6 +17,7 @@
 #include "Components/WidgetComponent.h"
 #include "UI/ASDetectWidget.h"
 
+
 #include "Kismet/GameplayStatics.h"
 
 
@@ -38,7 +39,7 @@ AASAIController::AASAIController()
 	}
 
 
-	//Widget Component Setting 
+	//Detect Widget Component Setting 
 	DetectBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("DetectWidget"));
 	static ConstructorHelpers::FClassFinder<UUserWidget> DetectBarRef(TEXT("/Game/UI/WB_DetectBar_UI.WB_DetectBar_UI_C"));
 	if (DetectBarRef.Class)
@@ -232,25 +233,37 @@ void AASAIController::Tick(float DeltaTime)
 		DistanceDifference_Value = Location_Between_Player_And_Enemy.Length();
 	}
 
-	if (DetectionLevel>=MaxLevel)
+	if (DetectionLevel >= MaxLevel)
 	{
 		CurSituation = CurDetectSituation::PlayerIsDetected;
 		SetBB_IsDetect(true);
 	}
 
-	if (CurSituation==CurDetectSituation::PlayerInRange)
+	switch (CurSituation)
 	{
+	case CurDetectSituation::NoneInRange:
+		break;
+	case CurDetectSituation::PlayerInRange:
 		UiRef->IncreasePercent();
-	}
-	else if (CurSituation == CurDetectSituation::PlayerGetOutOfRange)
-	{
-		UiRef->DecreasePercent();
-	}
-	else if(CurSituation == CurDetectSituation::PlayerIsDetected)
-	{
+		break;
+	case CurDetectSituation::PlayerGetOutOfRange:
+		if (DetectionLevel > 0.5f)
+		{
+			SetBB_IsAlert(true);
+		}
+		else
+		{
+			UiRef->DecreasePercent();
+		}
+		break;
+	case CurDetectSituation::PlayerIsDetected:
 		//적들이 추적하는 상황 ( UI 는 사라짐 ) 
+		break;
+	default:
+		break;
 	}
 
+	//의심상태는 PlayerGetOutOfRange 상태에서 한번씩만 발동 
 
 
 }
@@ -263,6 +276,10 @@ void AASAIController::BeginPlay()
 	UiRef->SetOwner(this);
 	EnemyRef = Cast<AASEnemyCharacter>(GetPawn());
 	ensure(EnemyRef);
+
+	//다른 클래스에서 케릭터 객체는 잘 받아오지만, GetMesh() 호출 시 interface collision dataprovider에서  에러 발생. 
+	//USkeletalMeshComponent* mesh = EnemyRef->GetMesh();
+	//QuestionMark->SetupAttachment(mesh);
 
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	PlayerRef = Cast<AASCharacterPlayer>(PlayerPawn);

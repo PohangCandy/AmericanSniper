@@ -21,6 +21,9 @@ void UBTService_UpdateLastKnownPostion::TickNode(UBehaviorTreeComponent& OwnerCo
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());
 	AASCharacterPlayer* Player = Cast<AASCharacterPlayer>(AI->PlayerRef);
-	AI->SetBB_LastKnownPosition(Player->GetActorLocation());
+	if (AI->CurSituation == CurDetectSituation::PlayerGetOutOfRange)
+	{
+		AI->SetBB_LastKnownPosition(Player->GetActorLocation());
+	}
 }
 

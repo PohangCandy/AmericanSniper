@@ -20,6 +20,7 @@ void UASDetectWidget::NativeConstruct()
 	ensure(DetectBar);
 
 	DetectBar->SetVisibility(ESlateVisibility::Hidden);
+
 }
 
 void UASDetectWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)

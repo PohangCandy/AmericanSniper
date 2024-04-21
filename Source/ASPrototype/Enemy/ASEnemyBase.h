@@ -89,6 +89,10 @@ public:
 
 	//에너미가 적대적인 존재인지 아닌지 판단하기 위해 넣음
 	//virtual FGenericTeamId GetGenericTeamId() const override { return TeamId; }
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widget)
+	TObjectPtr<class UWidgetComponent> QuestionMark;
+
+	void SetVisible();
 
 protected:
 	// Called when the game starts or when spawned
