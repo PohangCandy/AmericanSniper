@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/TimelineComponent.h"
+
 #include "Blueprint/UserWidget.h"
 #include "AI/ASAIController.h"
 #include "ASDetectWidget.generated.h"
@@ -20,22 +20,21 @@ class ASPROTOTYPE_API UASDetectWidget : public UUserWidget
 	GENERATED_BODY()
 public:
 	UASDetectWidget(const FObjectInitializer& ObjectInitializer);
-	void StartDetection();
-	void StopDetection();
-	void SetPercent(float NewPercent);
+	void IncreasePercent();
+	void DecreasePercent();
 
 	UFUNCTION()
-	void RunTimeline(float Value);
+	/*void RunTimeline(float Value);*/
 	//void StartChasing(bool b);
 
 	void SetAngle(float angle);
 
-	//FUASDetectWidgetOnChangedSignature OnChanged;
-
-	//AASAIController* GetAIRef(AASAIController* ref);
-
 	FORCEINLINE AActor* GetOwner() { return Owner; }
 	FORCEINLINE void SetOwner(AActor* newOwner) { Owner = newOwner; }
+
+	float CurPercent;
+	float MaxPercent;
+	bool DetectOn;
 
 protected:
 	AActor* Owner;
@@ -46,16 +45,8 @@ protected:
 	UPROPERTY()
 	TObjectPtr<class UProgressBar> DetectBar;
 
-	FTimeline timeline;
-	UPROPERTY(EditAnywhere,Category="Timeline")
-	UCurveFloat* CurveFloat;
-
 
 private:
-	float CurPercent;
-	float MaxPercent;
-	bool isReverse;
-	float DetectOffTime;
-	float DetectOnTime;
+	class AASAIController* AiRef;
 
 };
