@@ -247,6 +247,15 @@ int AASCharacterBase::GetMagnificationNum()
 {
 	return CurMagnification;
 }
+float AASCharacterBase::GetMagnificationratio()
+{
+	if ( CurMagnification <= 0)
+	{
+		return 0.0f;
+	}
+	float MagnificationRatio = (float)CurMagnification / (float)MaxMagnification;
+	return MagnificationRatio;
+}
 
 void AASCharacterBase::SetMagnificationNum(int newmag)
 {

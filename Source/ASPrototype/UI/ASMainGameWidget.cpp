@@ -49,6 +49,7 @@ void UASMainGameWidget::NativeConstruct()
 	MagazineNum = Cast<UEditableTextBox>(GetWidgetFromName(TEXT("TB_LastMagazineNum")));
 	ItemNum = Cast<UTextBlock>(GetWidgetFromName(TEXT("T_LastItem")));
 	MagnificationNum = Cast<UTextBlock>(GetWidgetFromName(TEXT("Num_Magnification")));
+	MagnificationBar = Cast<UProgressBar>(GetWidgetFromName(TEXT("PB_Magnification")));
 }
 
 void UASMainGameWidget::UpdatePlayerState()
@@ -76,8 +77,9 @@ void UASMainGameWidget::UpdateMagnificationUI()
 {
 	if(MagnificationNum != nullptr)
 	MagnificationNum->SetText(FText::FromString(FString::FromInt(CurrentPlayerBase->GetMagnificationNum())));
+
+	if (MagnificationBar != nullptr)
+		MagnificationBar->SetPercent(CurrentPlayerBase->GetMagnificationratio());
 }
-
-
 
 

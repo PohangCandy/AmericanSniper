@@ -73,6 +73,7 @@ public:
 
 	int GetMagnificationNum();
 	void SetMagnificationNum(int newMag);
+	float GetMagnificationratio();
 	void ZoomIn();
 	void ZoomOut();
 
