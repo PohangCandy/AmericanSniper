@@ -70,6 +70,7 @@ public:
 	FOnStateChangeDelegate NumMagazineChanged;
 	FOnStateChangeDelegate NumItemChanged;
 	FOnStateChangeDelegate NumMagnificationChanged;
+	FOnStateChangeDelegate SwitchSnip;
 
 	int GetMagnificationNum();
 	void SetMagnificationNum(int newMag);

@@ -11,6 +11,9 @@
 /**
  * 
  */
+
+
+
 UCLASS()
 class ASPROTOTYPE_API AASCharacterPlayer : public AASCharacterBase
 {
@@ -37,6 +40,11 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Outfit")
 	class USkeletalMeshComponent* ClothesMesh;
+
+	UPROPERTY(VisibleAnywhere, Category = Weapon)
+	USkeletalMeshComponent* Weapon;
+
+
 
 
 

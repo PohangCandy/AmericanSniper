@@ -2,6 +2,7 @@
 
 
 #include "Character/ASCharacterPlayer.h"
+#include "Animation/ASAnimInstance.h"
 #include "Player/ASPlayerState.h"
 //카메라 헤더파일
 #include "Camera/CameraComponent.h"
@@ -16,6 +17,7 @@
 #include "Components/CapsuleComponent.h"
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
+
 
 AASCharacterPlayer::AASCharacterPlayer()
 {
@@ -91,7 +93,17 @@ AASCharacterPlayer::AASCharacterPlayer()
 	SoundRangeCapsule->SetVisibility(true);
 	SoundRangeCapsule->SetHiddenInGame(false);
 
-	
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	if (GetMesh()->DoesSocketExist(WeaponSocket))
+	{
+		Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
+		static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_Rifle_01(TEXT("/Game/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/01/SKM_Modern_Weapons_Rifle_01.SKM_Modern_Weapons_Rifle_01"));
+		if (SK_Rifle_01.Succeeded())
+		{
+			Weapon->SetSkeletalMesh(SK_Rifle_01.Object);
+		}
+		Weapon->SetupAttachment(GetMesh(), WeaponSocket);
+	}
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -267,7 +279,7 @@ void AASCharacterPlayer::UpdateSoundRange()
 	float NewSoundRange = MinSoundRange + (MaxSoundRange - MinSoundRange) * SpeedMultiplier;
 	FVector TargetSize = FVector(NewSoundRange, NewSoundRange, Height); // 높이는 고정값으로 유지
 	
-	// 선형 보간으로 사이즈 부드럽게 조절  
+	// 선형 보간으로 사이즈 부드럽게 조절  _
 	FVector LerpedSize = FMath::Lerp(CurrentSize, TargetSize, GetWorld()->DeltaTimeSeconds * 1.0);
 
 	// 크기 설정
@@ -278,6 +290,11 @@ void AASCharacterPlayer::UpdateSoundRange()
 void AASCharacterPlayer::ChangeUI()
 {
 	playerController->UIScreenChange();
+	auto AnimInstance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
+	if (nullptr == AnimInstance) return;
+
+	AnimInstance->SwitchSnipAnim();
+	//SwitchSnip.Broadcast();
 }
 
 

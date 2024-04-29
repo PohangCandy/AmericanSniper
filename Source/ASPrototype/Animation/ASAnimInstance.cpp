@@ -9,6 +9,7 @@ UASAnimInstance::UASAnimInstance()
 {
 	MoveThreadshold = 3.0f;
 	JumpeThreadshold = 30.0f;
+	DoSniping = false;
 }
 
 void UASAnimInstance::StateHandler(State NewState)
@@ -33,6 +34,15 @@ void UASAnimInstance::StateHandler(State NewState)
 	}
 }
 
+void UASAnimInstance::SwitchSnipAnim()
+{
+	if (DoSniping)
+	{
+		DoSniping = false;
+	}
+	else DoSniping = true;
+}
+
 //임시 함수
 //void UASAnimInstance::SetCurrentHp(int NewHp)
 //{
@@ -48,6 +58,8 @@ void UASAnimInstance::NativeInitializeAnimation()
 	{
 		Movement = Owner->GetCharacterMovement();
 	}
+
+	//OnHpChanged.AddUObject(this, &UASAnimInstance::SwitchSnipAnim);
 }
 
 void UASAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
