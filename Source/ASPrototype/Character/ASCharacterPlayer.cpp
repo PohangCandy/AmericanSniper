@@ -31,6 +31,14 @@ AASCharacterPlayer::AASCharacterPlayer()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 
+	//SnipSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SnipSpringArm"));
+	//SnipSpringArm->TargetArmLength = 50.0f;
+	//SnipSpringArm->bUsePawnControlRotation = true;
+
+	//SnipCam = CreateDefaultSubobject<UCameraComponent>(TEXT("SnipCam"));
+	//SnipCam->SetupAttachment(SnipSpringArm, USpringArmComponent::SocketName);
+	//SnipCam->bUsePawnControlRotation = false;
+
 	//사운드 범위 사이즈 변수들
 	MinSoundRange = 100.0f;
 	MaxSoundRange = 300.0f;
@@ -232,6 +240,9 @@ void AASCharacterPlayer::Look(const FInputActionValue& Value)
 
 	AddControllerYawInput(LookAxisVector.X);
 	AddControllerPitchInput(LookAxisVector.Y);
+
+	USkeletalMesh* PlayerMesh = GetMesh()->GetSkeletalMeshAsset();
+	//PlayerMesh->setbonetr
 }
 
 void AASCharacterPlayer::SprintStart(const FInputActionValue& Value)
@@ -292,7 +303,6 @@ void AASCharacterPlayer::ChangeUI()
 	playerController->UIScreenChange();
 	auto AnimInstance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
 	if (nullptr == AnimInstance) return;
-
 	AnimInstance->SwitchSnipAnim();
 	//SwitchSnip.Broadcast();
 }

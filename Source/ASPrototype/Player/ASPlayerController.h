@@ -55,4 +55,19 @@ private:
 
 	UPROPERTY()
 	class AASCharacterBase* ControllerOwner;
+
+	UPROPERTY()
+	class UCameraComponent* SnipCam;
+
+	UPROPERTY()
+	USpringArmComponent* SnipSpringArm;
+
+	UPROPERTY()
+	AASCharacterBase* PlayerCharacter;
+
+	UPROPERTY()
+	class UCameraComponent* MainCam;
+
+	UPROPERTY()
+	class ACharacter* ControlCharacter;
 };

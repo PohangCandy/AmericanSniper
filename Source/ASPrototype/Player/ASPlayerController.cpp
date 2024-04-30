@@ -9,10 +9,12 @@
 
 AASPlayerController::AASPlayerController()
 {
+	
 	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/WB_GameBase_UI.WB_GameBase_UI_C"));
 	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
 	BasicHUDWidgetClass = UI_HUD_C.Class;
 	SnipHUDWidgetClass = UI_Snip_C.Class;
+	
 }
 
 void AASPlayerController::PostInitializeComponents()
@@ -40,6 +42,10 @@ void AASPlayerController::BeginPlay()
 	CurMainHUDWidget->AddToViewport();
 
 	ConnectUIwithData();
+	PlayerCharacter = Cast<AASCharacterBase>(GetCharacter());
+	SnipSpringArm = Cast<USpringArmComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipSpringArm")));
+	SnipCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipCam")));
+	MainCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("FollowCamera")));
 }
 
 UASMainGameWidget* AASPlayerController::GetHUDWidget()
@@ -100,9 +106,18 @@ void AASPlayerController::UIScreenChange()
 	{
 	case AASPlayerController::EscreenMode::Basic:
 		SetScreenMode(EscreenMode::Sniping);
+		//SetViewTarget(SnipCam);
+		SnipCam->SetActive(true);
+		SnipSpringArm->bUsePawnControlRotation = true;
+		PlayerCharacter->bUseControllerRotationYaw = true;
+		//bUseControllerRotationYaw = true;
+		MainCam->SetActive(false);
 		break;
 	case AASPlayerController::EscreenMode::Sniping:
 		SetScreenMode(EscreenMode::Basic);
+		SnipCam->SetActive(false);
+		MainCam->SetActive(true);
+		PlayerCharacter->bUseControllerRotationYaw = false;
 		break;
 	}
 }
