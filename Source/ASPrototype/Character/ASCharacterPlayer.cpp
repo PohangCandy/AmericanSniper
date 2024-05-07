@@ -4,6 +4,7 @@
 #include "Character/ASCharacterPlayer.h"
 #include "Animation/ASAnimInstance.h"
 #include "Player/ASPlayerState.h"
+#include "ASWeapon.h"
 //카메라 헤더파일
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -101,17 +102,39 @@ AASCharacterPlayer::AASCharacterPlayer()
 	SoundRangeCapsule->SetVisibility(true);
 	SoundRangeCapsule->SetHiddenInGame(false);
 
+	
+	FName WeaponAttachmentSocket(TEXT("hand_rSocket_attachment"));
 	FName WeaponSocket(TEXT("hand_rSocket"));
-	if (GetMesh()->DoesSocketExist(WeaponSocket))
+	if (GetMesh()->DoesSocketExist(WeaponAttachmentSocket))
 	{
-		Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
-		static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_Rifle_01(TEXT("/Game/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/01/SKM_Modern_Weapons_Rifle_01.SKM_Modern_Weapons_Rifle_01"));
-		if (SK_Rifle_01.Succeeded())
+		//WeaponAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponAttachment"));
+		//static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_Sight(TEXT("/Game/BLS_Nomad_SMG_Content/Meshes/Attachments/SM_Reflex_Sight.SM_Reflex_Sight"));
+		//if (SK_Sight.Succeeded())
+		//{
+		//	WeaponAttachment->SetSkeletalMesh(SK_Sight.Object);
+		//}
+		//WeaponAttachment->SetupAttachment(GetMesh(), WeaponAttachmentSocket);
+
+		//if (GetMesh()->DoesSocketExist(WeaponSocket))
+		//{
+		//	Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
+		//	static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_Rifle_01(TEXT("/Game/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/01/SKM_Modern_Weapons_Rifle_01.SKM_Modern_Weapons_Rifle_01"));
+		//	if (SK_Rifle_01.Succeeded())
+		//	{
+		//		Weapon->SetSkeletalMesh(SK_Rifle_01.Object);
+		//	}
+		//	Weapon->SetupAttachment(GetMesh(), WeaponSocket);
+		//}
+
+		WeaponAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponAttachment"));
+		static ConstructorHelpers::FObjectFinder<UStaticMesh> SK_Sight(TEXT("/Game/BLS_Nomad_SMG_Content/Meshes/Attachments/SM_Reflex_Sight.SM_Reflex_Sight"));
+		if (SK_Sight.Succeeded())
 		{
-			Weapon->SetSkeletalMesh(SK_Rifle_01.Object);
+			WeaponAttachment->SetStaticMesh(SK_Sight.Object);
 		}
-		Weapon->SetupAttachment(GetMesh(), WeaponSocket);
+		WeaponAttachment->SetupAttachment(GetMesh(), WeaponAttachmentSocket);
 	}
+	
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -126,6 +149,14 @@ void AASCharacterPlayer::Tick(float DeltaTime)
 void AASCharacterPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	auto CurWeapon = GetWorld()->SpawnActor<AASWeapon>(FVector::ZeroVector, FRotator::ZeroRotator);
+	if (CurWeapon != nullptr)
+	{
+		CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, WeaponSocket);
+	}
+
 	//입력 매핑시스템을 컨트롤과 연결 
 	APlayerController* PlayerController = CastChecked<APlayerController>(GetController());
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());

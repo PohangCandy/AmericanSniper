@@ -29,6 +29,10 @@ public:
 
 	void UIScreenChange();
 
+	void SetZoom();
+
+	void BindZommin();
+
 protected:
 	
 	virtual void BeginPlay() override;
@@ -58,6 +62,9 @@ private:
 
 	UPROPERTY()
 	class UCameraComponent* SnipCam;
+
+	UPROPERTY()
+	class UCameraComponent* MagnificationCam;
 
 	UPROPERTY()
 	USpringArmComponent* SnipSpringArm;
