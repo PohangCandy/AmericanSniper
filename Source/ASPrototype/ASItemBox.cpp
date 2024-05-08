@@ -27,6 +27,8 @@ AASItemBox::AASItemBox()
 	Trigger->SetCollisionProfileName(TEXT("ItemBox"));
 	Box->SetCollisionProfileName(TEXT("NoCollision"));
 
+	UE_LOG(AS, Warning, TEXT("Make Item"));
+
 }
 
 // Called when the game starts or when spawned
@@ -40,7 +42,7 @@ void AASItemBox::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	Trigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnCharacterOverlap);
-	UE_LOG(LogTemp, Log, TEXT("Collision Item Login"));
+	UE_LOG(AS, Warning, TEXT("Post Item"));
 }
 
 // Called every frame
@@ -52,7 +54,6 @@ void AASItemBox::Tick(float DeltaTime)
 
 void AASItemBox::OnCharacterOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Log, TEXT("Collision with Item"));
-	FString text = FString::Printf(TEXT("Wearing.."));
+	UE_LOG(AS, Warning, TEXT("Collision with Item"));
 }
 
