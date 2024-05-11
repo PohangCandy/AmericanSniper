@@ -16,13 +16,23 @@ EBTNodeResult::Type UBTTaskNode_FocusOn::ExecuteTask(UBehaviorTreeComponent& Own
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());
 	AASEnemyBase* Enemy = Cast<AASEnemyBase>(ControllingPawn);
 	AASCharacterPlayer* Player = Cast<AASCharacterPlayer>(AI->PlayerRef); ensure(Player);
+
 	if (Player != nullptr)
 	{
 		//if (GetBB_IsDetect()) { SetFocus(player); }
 		FRotator EnemyRotation = Enemy->GetActorRotation();
 		FVector EnemyLocation = Enemy->GetActorLocation();
-		FVector PlayerLocation = Player->GetActorLocation();
-		FRotator RotationDifferenceValue = UKismetMathLibrary::FindLookAtRotation(EnemyLocation, PlayerLocation);
+		FVector AggroLocation;
+		if (AI->GetBB_IsDetect()) //공격상태일 경우
+		{
+			AggroLocation = Player->GetActorLocation();
+		}
+		else //의심상태일 경우
+		{
+			AggroLocation = AI->GetBB_LastKnownPosition();
+		}
+
+		FRotator RotationDifferenceValue = UKismetMathLibrary::FindLookAtRotation(EnemyLocation, AggroLocation);
 		FRotator ResultValue = FRotator(0.0f, RotationDifferenceValue.Yaw ,0.0f);
 		FRotator RotatorValue = FMath::RInterpTo(EnemyRotation, ResultValue,GetWorld()->GetDeltaSeconds(),0.0f);
 		Enemy->SetActorRotation(RotatorValue);

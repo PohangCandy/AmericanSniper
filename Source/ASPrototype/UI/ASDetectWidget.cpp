@@ -8,10 +8,36 @@
 #include "AI/ASAIController.h"
 #include "Components/WidgetComponent.h"
 
-UASDetectWidget::UASDetectWidget(const FObjectInitializer& ObjectInitializer) :Super(ObjectInitializer)
-{
 
+void UASDetectWidget::Onvisible()
+{
+	DetectBar->SetVisibility(ESlateVisibility::Visible);
 }
+
+void UASDetectWidget::OffVisible()
+{
+	DetectBar->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void UASDetectWidget::SetRedColor()
+{
+	DetectBar->SetFillColorAndOpacity(FLinearColor::Red);
+}
+
+void UASDetectWidget::SetPercent(float f)
+{
+	DetectBar->SetPercent(f);
+}
+
+void UASDetectWidget::BlinkBar()
+{
+	EndDelegate.BindDynamic(this, &UASDetectWidget::OffVisible);
+	if (Blink == nullptr) return;
+	BindToAnimationFinished(Blink, EndDelegate);
+	PlayAnimation(Blink,0.0f,3);
+}
+
+
 
 void UASDetectWidget::NativeConstruct()
 {
@@ -36,33 +62,7 @@ void UASDetectWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	}
 }
 
-void UASDetectWidget::IncreasePercent()
-{	
-	DetectBar->SetVisibility(ESlateVisibility::Visible);
 
-	float value = 0.02f;
-	AiRef->DetectionLevel = AiRef->DetectionLevel + value;
-	CurPercent = FMath::Clamp(AiRef->DetectionLevel, 0.0f, MaxPercent);
-	DetectBar->SetPercent(CurPercent);
-	if (AiRef->DetectionLevel >= MaxPercent)
-	{
-		DetectBar->SetFillColorAndOpacity(FLinearColor::Red);
-		return;
-	}
-}
-
-void UASDetectWidget::DecreasePercent()
-{
-	float value = -0.01f;
-	AiRef->DetectionLevel = AiRef->DetectionLevel + value;
-	CurPercent = FMath::Clamp(AiRef->DetectionLevel, 0.0f, MaxPercent);
-	DetectBar->SetPercent(CurPercent);
-	if (AiRef->DetectionLevel <= 0.0f)
-	{
-		DetectBar->SetVisibility(ESlateVisibility::Hidden);
-		return;
-	}
-}
 
 
 void UASDetectWidget::SetAngle(float angle)

@@ -28,6 +28,7 @@ void UBTService_StateManager::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 	if (AI->GetBB_IsDetect()==true)
 	{
 		Enemy->SetStateAnimation(EState::Chasing);
+		Enemy->QuestionMark->SetHiddenInGame(true);
 	}
 	else 
 	{
