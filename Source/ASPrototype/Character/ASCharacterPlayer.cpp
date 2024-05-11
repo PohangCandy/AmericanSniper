@@ -254,10 +254,20 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 void AASCharacterPlayer::OnFire()
 {
 
-	//FHitResult OutHit;
-	//FVector Start = CurrentWeapon->GetActorLocation();
+	FHitResult OutHit;
+	FVector Start = CurrentWeapon->GetActorForwardVector();
+	FVector End = ((Start * 1000.0f) + Start);
+	FCollisionQueryParams CollisionParams;
 
-	//FVector ForwardVector = 
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
+
+	bool isHit = (GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams));
+
+	if (isHit)
+	{
+		if (OutHit.bBlockingHit)
+			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
+	}
 }
 
 //움직임 구현
