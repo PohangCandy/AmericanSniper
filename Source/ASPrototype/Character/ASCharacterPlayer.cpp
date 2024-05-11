@@ -192,6 +192,7 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
+	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::OnFire);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, playerController, &AASPlayerController::UIScreenChange);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
 	
@@ -255,8 +256,14 @@ void AASCharacterPlayer::OnFire()
 {
 
 	FHitResult OutHit;
-	FVector Start = CurrentWeapon->GetActorForwardVector();
-	FVector End = ((Start * 1000.0f) + Start);
+	//FVector Start = CurrentWeapon->GetActorForwardVector();
+	//FVector Start = GetActorForwardVector();
+	FVector Start = GetActorLocation();
+
+	//UE_LOG(LogTemp, Log, TEXT("Character Location :: %s"), CurrentWeapon->GetActorForwardVector().ToString());
+	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
+
+	FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
 	FCollisionQueryParams CollisionParams;
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);

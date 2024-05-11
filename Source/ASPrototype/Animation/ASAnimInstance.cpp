@@ -54,6 +54,7 @@ void UASAnimInstance::NativeInitializeAnimation()
 	Super::NativeInitializeAnimation();
 
 	Owner = Cast<ACharacter>(GetOwningActor());
+	//Actor = Cast<AASCharacterBase>(Owner);
 	if (Owner)
 	{
 		Movement = Owner->GetCharacterMovement();
