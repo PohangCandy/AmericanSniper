@@ -170,7 +170,6 @@ void AASCharacterBase::SetState(State NewState)
 
 void AASCharacterBase::Shoot()
 {
-	
 	//int lastBulletNum = GetBulletNum();
 	int lastBulletNum = CurBulletNum;
 	if (lastBulletNum > 0)

@@ -155,6 +155,7 @@ void AASCharacterPlayer::BeginPlay()
 	if (CurWeapon != nullptr)
 	{
 		CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, WeaponSocket);
+		CurrentWeapon = CurWeapon;
 	}
 
 	//입력 매핑시스템을 컨트롤과 연결 
@@ -249,6 +250,15 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 	//}
 }
 
+
+void AASCharacterPlayer::OnFire()
+{
+
+	//FHitResult OutHit;
+	//FVector Start = CurrentWeapon->GetActorLocation();
+
+	//FVector ForwardVector = 
+}
 
 //움직임 구현
 void AASCharacterPlayer::Move(const FInputActionValue& Value) 

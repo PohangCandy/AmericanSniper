@@ -2,6 +2,7 @@
 
 
 #include "ASItemBox.h"
+#include "Character/ASCharacterPlayer.h"
 
 // Sets default values
 AASItemBox::AASItemBox()
@@ -29,6 +30,17 @@ AASItemBox::AASItemBox()
 
 	UE_LOG(AS, Warning, TEXT("Make Item"));
 
+
+	Effect = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("EFFECT"));
+	Effect->SetupAttachment(RootComponent);
+
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> P_OVERLAP(TEXT("/Game/InfinityBladeGrassLands/Effects/FX_Mobile/ICE/combat/P_Buff_ShoutFreeze_02.P_Buff_ShoutFreeze_02"));
+	if (P_OVERLAP.Succeeded())
+	{
+		Effect->SetTemplate(P_OVERLAP.Object);
+		Effect->bAutoActivate = false;
+	}
+
 }
 
 // Called when the game starts or when spawned
@@ -42,6 +54,7 @@ void AASItemBox::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	Trigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnCharacterOverlap);
+	Trigger->OnComponentEndOverlap.AddDynamic(this, &AASItemBox::OutCharacterOverlap);
 	UE_LOG(AS, Warning, TEXT("Post Item"));
 }
 
@@ -55,5 +68,23 @@ void AASItemBox::Tick(float DeltaTime)
 void AASItemBox::OnCharacterOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UE_LOG(AS, Warning, TEXT("Collision with Item"));
+
+	auto ABCharacter = Cast<AASCharacterPlayer>(OtherActor);
+	if (nullptr != ABCharacter )
+	{
+			Effect->Activate(true);
+			//Effect->OnSystemFinished.AddDynamic(this, &AASItemBox::OnEffectFinished);
+	}
 }
+
+void AASItemBox::OutCharacterOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	UE_LOG(AS, Warning, TEXT("Out from Collision"));
+	Effect->Deactivate();
+}
+
+void AASItemBox::OnEffectFinished(UParticleSystemComponent* PSystem)
+{
+}
+
 

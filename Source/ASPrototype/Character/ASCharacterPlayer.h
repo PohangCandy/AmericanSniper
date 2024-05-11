@@ -42,13 +42,13 @@ public:
 	class USkeletalMeshComponent* ClothesMesh;
 
 	UPROPERTY(VisibleAnywhere, Category = Weapon)
-	USkeletalMeshComponent* Weapon;
+	class AASWeapon* CurrentWeapon;
 
 	UPROPERTY(VisibleAnywhere, Category = Weapon)
 	UStaticMeshComponent* WeaponAttachment;
 
 
-
+	void OnFire();
 
 
 private:
