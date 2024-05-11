@@ -69,6 +69,7 @@ AASAIController::AASAIController()
 
 	AttackRange = 500.0f;
 	DetectionLevel=0.0f;
+	
 	MaxLevel=1.0f;
 	CurSituation = CurDetectSituation::NoneInRange;
 }

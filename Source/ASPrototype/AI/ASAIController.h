@@ -21,6 +21,16 @@ enum class CurDetectSituation
 	TargetIsDetected,  // 발각된 상황
 	
 };
+
+enum class AlertLvl
+{
+
+	Lvl1, // 적 처음 발견한 경우 ( 의심수치 +1 ) 
+	Lvl2, // 하나의 적 여러 번 발견한 경우, 또는 주변 총기 사운드 인식할 경우 ( 어그로 3번 끌림-> 의심 수치 3 초과할 경우, 주변 로밍 )
+	Lvl3, //  시체 발견한 경우 , 적의 총기 소리를 들을 경우 ( 주변 적들에게 연락 후 로밍, 연락 받은 적들도 로밍 )
+};
+
+
 UCLASS()
 class ASPROTOTYPE_API AASAIController : public AAIController
 {
@@ -29,7 +39,7 @@ class ASPROTOTYPE_API AASAIController : public AAIController
 public:
 	CurDetectSituation CurSituation;
 	AActor* GetPlayer();
-
+	
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
 
@@ -104,7 +114,7 @@ public:
 
 	float DetectionLevel;
 	float MaxLevel;
-	//bool EventOnBySound;
+	float Inc;
 
 	FVector LastKnownPosition;
 

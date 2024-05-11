@@ -16,7 +16,10 @@ class ASPROTOTYPE_API UBTTask_Combat : public UBTTaskNode
 
 public:
 	UBTTask_Combat();
-
+	class AASEnemyCharacter* Enemy;
+	class AASAIController* AI;
+	//bool IsAttacking;
+	//EState *state;
 protected:
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	EBTNodeResult::Type GetEndControl();
@@ -24,6 +27,6 @@ protected:
 	virtual void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds);
 
 private:
-	bool IsAttacking;
+
 
 };

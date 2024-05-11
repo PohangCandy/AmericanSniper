@@ -11,11 +11,15 @@ AASEnemyCharacter::AASEnemyCharacter()
 	
 }
 
+//Tick함수에서의 호출이 아닌, 적을 격발 시에만 호출하기
 void AASEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (CurState==EState::Attack)
+	{
+		CheckShootingTarget();
+	}
 	
-	CheckShootingTarget();
 
 }
 
@@ -35,13 +39,13 @@ bool AASEnemyCharacter::CheckShootingTarget()
 
 	if (OutHit.GetActor() == AiRef->GetPlayer())
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("you are hitting: %s"),
-			*OutHit.GetActor()->GetName()));
+		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("you are hitting: %s"),
+		//	*OutHit.GetActor()->GetName()));
 		return true;
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(TEXT("NO Target")));
+		/*GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(TEXT("NO Target")));*/
 		return false;
 	}
 

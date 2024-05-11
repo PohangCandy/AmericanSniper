@@ -43,10 +43,11 @@ private:
 	uint32 MaxHp;
 	uint32 CurHp;
 	uint8 Damage;
-	EState CurState;
+	
 
 
 public:	
+	EState CurState;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

@@ -12,18 +12,16 @@ UBTTask_Combat::UBTTask_Combat()
 {
 	NodeName = TEXT("CombatSystem");
 	bNotifyTick = true;
-	IsAttacking=false;
+	//IsAttacking=false;
 }
 
 EBTNodeResult::Type UBTTask_Combat::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {	
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
-	AASEnemyCharacter* Enemy = Cast<AASEnemyCharacter>(ControllingPawn);
+	Enemy = Cast<AASEnemyCharacter>(ControllingPawn);
 	ensure(Enemy);
-	AASAIController* AI = Cast<AASAIController>(Enemy->GetController());
+	AI = Cast<AASAIController>(Enemy->GetController());
 	ensure(AI);
-
-
 
 	if (Enemy==nullptr || AI==nullptr)
 	{
@@ -31,27 +29,43 @@ EBTNodeResult::Type UBTTask_Combat::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 	}
 	
 	Enemy->Attack();
-	IsAttacking = true;
-	
+	Enemy->CurState = EState::Attack;
+
+
+	//IsAttacking = true;
 	if (Enemy->CheckShootingTarget() == true)
 	{
 		AI->SetBB_CanShootTarget(true);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, FString::Printf(TEXT("CheckShootingTarget() == true")));
 	}
 	else
 	{
 		AI->SetBB_CanShootTarget(false);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Black, FString::Printf(TEXT("CheckShootingTarget() == false")));
 	}
 
-	Enemy->OnAttackEnd.AddLambda([this]()->void {IsAttacking = false;});
+	Enemy->OnAttackEnd.AddLambda([this]()->void {Enemy->CurState = EState::Chasing; });
 
 
+	//Enemy->CheckShootingTarget()==false 
 	return EBTNodeResult::InProgress;
+
 }
+
+
 
 void UBTTask_Combat::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
 {
+
 	Super::TickTask(OwnerComp, NodeMemory, DeltaSeconds);
-	if (!IsAttacking)
+
+	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
+	Enemy = Cast<AASEnemyCharacter>(ControllingPawn);
+	AI = Cast<AASAIController>(Enemy->GetController());
+	ensure(AI);
+
+	//Enemy->CheckShootingTarget();
+	if (!(Enemy->CurState == EState::Attack))
 	{
 		FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 	}
