@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "ASPlayerController.generated.h"
 
+
 /**
  * 
  */
@@ -28,6 +29,10 @@ public:
 	class AActor* GetPlayerActor();
 
 	void UIScreenChange();
+
+	void SetZoom();
+
+	void BindZommin();
 
 protected:
 	
@@ -55,4 +60,22 @@ private:
 
 	UPROPERTY()
 	class AASCharacterBase* ControllerOwner;
+
+	UPROPERTY()
+	class UCameraComponent* SnipCam;
+
+	UPROPERTY()
+	class UCameraComponent* MagnificationCam;
+
+	UPROPERTY()
+	USpringArmComponent* SnipSpringArm;
+
+	UPROPERTY()
+	AASCharacterBase* PlayerCharacter;
+
+	UPROPERTY()
+	class UCameraComponent* MainCam;
+
+	UPROPERTY()
+	class ACharacter* ControlCharacter;
 };

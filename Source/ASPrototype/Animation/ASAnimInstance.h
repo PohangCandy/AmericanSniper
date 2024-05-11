@@ -19,6 +19,8 @@ public:
 	State state;
 	void StateHandler(State NewState);
 
+	void SwitchSnipAnim();
+
 protected:
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
@@ -52,6 +54,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	float JumpeThreadshold;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	bool DoSniping;
 
 	//trigger Âü°í 
 };

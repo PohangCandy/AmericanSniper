@@ -5,14 +5,17 @@
 #include "Components/WidgetComponent.h"
 #include "UI/ASMainGameWidget.h"
 #include "Character/ASCharacterBase.h"
+#include "DrawDebugHelpers.h"
 
 
 AASPlayerController::AASPlayerController()
 {
+	
 	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/WB_GameBase_UI.WB_GameBase_UI_C"));
 	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
 	BasicHUDWidgetClass = UI_HUD_C.Class;
 	SnipHUDWidgetClass = UI_Snip_C.Class;
+	
 }
 
 void AASPlayerController::PostInitializeComponents()
@@ -40,6 +43,13 @@ void AASPlayerController::BeginPlay()
 	CurMainHUDWidget->AddToViewport();
 
 	ConnectUIwithData();
+	PlayerCharacter = Cast<AASCharacterBase>(GetCharacter());
+	SnipSpringArm = Cast<USpringArmComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipSpringArm")));
+	SnipCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipCam")));
+	//SnipSpringArm = Cast<USpringArmComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("MagSpringArm")));
+	//SnipCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("OrthCamera")));
+	//MagnificationCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("OrthCamera")));
+	MainCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("FollowCamera")));
 }
 
 UASMainGameWidget* AASPlayerController::GetHUDWidget()
@@ -61,6 +71,7 @@ void AASPlayerController::ConnectUIwithData()
 	CurMainHUDWidget->BindPlayerBaseForMagazine(ControllerOwner);
 	CurMainHUDWidget->BindPlayerBaseForItem(ControllerOwner);
 	CurMainHUDWidget->BindPlayerBaseForMagnification(ControllerOwner);
+	BindZommin();
 }
 
 void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
@@ -100,12 +111,41 @@ void AASPlayerController::UIScreenChange()
 	{
 	case AASPlayerController::EscreenMode::Basic:
 		SetScreenMode(EscreenMode::Sniping);
+		//SetViewTarget(SnipCam);
+		SnipCam->SetActive(true);
+		//MagnificationCam->SetActive(false);
+		SnipSpringArm->bUsePawnControlRotation = true;
+		SnipSpringArm->bInheritPitch = false;
+		SnipSpringArm->bDoCollisionTest = false;
+		//SnipSpringArm->bInheritYaw = true;
+		//SnipSpringArm->bInheritRoll = true;
+		PlayerCharacter->bUseControllerRotationYaw = true;
+		//bUseControllerRotationYaw = true;
+		MainCam->SetActive(false);
 		break;
 	case AASPlayerController::EscreenMode::Sniping:
 		SetScreenMode(EscreenMode::Basic);
+		SnipCam->SetActive(false);
+		//MagnificationCam->SetActive(false);
+		MainCam->SetActive(true);
+		PlayerCharacter->bUseControllerRotationYaw = false;
 		break;
 	}
 }
+
+void AASPlayerController::SetZoom()
+{
+	
+	SnipCam->SetFieldOfView(90 - ControllerOwner->GetMagnificationratio()*50);
+	//MagnificationCam->SetFieldOfView(90 - ControllerOwner->GetMagnificationratio() * 50);
+}
+
+void AASPlayerController::BindZommin()
+{
+	ControllerOwner->NumMagnificationChanged.AddUObject(this, &AASPlayerController::SetZoom);
+}
+
+
 
 
 

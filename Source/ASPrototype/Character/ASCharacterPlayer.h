@@ -11,6 +11,9 @@
 /**
  * 
  */
+
+
+
 UCLASS()
 class ASPROTOTYPE_API AASCharacterPlayer : public AASCharacterBase
 {
@@ -38,6 +41,14 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Outfit")
 	class USkeletalMeshComponent* ClothesMesh;
 
+	UPROPERTY(VisibleAnywhere, Category = Weapon)
+	class AASWeapon* CurrentWeapon;
+
+	UPROPERTY(VisibleAnywhere, Category = Weapon)
+	UStaticMeshComponent* WeaponAttachment;
+
+
+	void OnFire();
 
 
 private:
@@ -64,6 +75,13 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, Meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, Meta = (AllowPrivateAccess = "true"))
+	//TObjectPtr<class USpringArmComponent> SnipSpringArm;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, Meta = (AllowPrivateAccess = "true"))
+	//TObjectPtr<class UCameraComponent> SnipCam;
+
 
 
 	//Input Section

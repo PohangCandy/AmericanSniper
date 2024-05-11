@@ -2,7 +2,9 @@
 
 
 #include "Character/ASCharacterPlayer.h"
+#include "Animation/ASAnimInstance.h"
 #include "Player/ASPlayerState.h"
+#include "ASWeapon.h"
 //카메라 헤더파일
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -17,6 +19,7 @@
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
 
+
 AASCharacterPlayer::AASCharacterPlayer()
 {
 	//카메라
@@ -28,6 +31,14 @@ AASCharacterPlayer::AASCharacterPlayer()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
+
+	//SnipSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SnipSpringArm"));
+	//SnipSpringArm->TargetArmLength = 50.0f;
+	//SnipSpringArm->bUsePawnControlRotation = true;
+
+	//SnipCam = CreateDefaultSubobject<UCameraComponent>(TEXT("SnipCam"));
+	//SnipCam->SetupAttachment(SnipSpringArm, USpringArmComponent::SocketName);
+	//SnipCam->bUsePawnControlRotation = false;
 
 	//사운드 범위 사이즈 변수들
 	MinSoundRange = 100.0f;
@@ -92,6 +103,38 @@ AASCharacterPlayer::AASCharacterPlayer()
 	SoundRangeCapsule->SetHiddenInGame(false);
 
 	
+	FName WeaponAttachmentSocket(TEXT("hand_rSocket_attachment"));
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	if (GetMesh()->DoesSocketExist(WeaponAttachmentSocket))
+	{
+		//WeaponAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponAttachment"));
+		//static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_Sight(TEXT("/Game/BLS_Nomad_SMG_Content/Meshes/Attachments/SM_Reflex_Sight.SM_Reflex_Sight"));
+		//if (SK_Sight.Succeeded())
+		//{
+		//	WeaponAttachment->SetSkeletalMesh(SK_Sight.Object);
+		//}
+		//WeaponAttachment->SetupAttachment(GetMesh(), WeaponAttachmentSocket);
+
+		//if (GetMesh()->DoesSocketExist(WeaponSocket))
+		//{
+		//	Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
+		//	static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_Rifle_01(TEXT("/Game/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/01/SKM_Modern_Weapons_Rifle_01.SKM_Modern_Weapons_Rifle_01"));
+		//	if (SK_Rifle_01.Succeeded())
+		//	{
+		//		Weapon->SetSkeletalMesh(SK_Rifle_01.Object);
+		//	}
+		//	Weapon->SetupAttachment(GetMesh(), WeaponSocket);
+		//}
+
+		WeaponAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponAttachment"));
+		static ConstructorHelpers::FObjectFinder<UStaticMesh> SK_Sight(TEXT("/Game/BLS_Nomad_SMG_Content/Meshes/Attachments/SM_Reflex_Sight.SM_Reflex_Sight"));
+		if (SK_Sight.Succeeded())
+		{
+			WeaponAttachment->SetStaticMesh(SK_Sight.Object);
+		}
+		WeaponAttachment->SetupAttachment(GetMesh(), WeaponAttachmentSocket);
+	}
+	
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -106,6 +149,15 @@ void AASCharacterPlayer::Tick(float DeltaTime)
 void AASCharacterPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	auto CurWeapon = GetWorld()->SpawnActor<AASWeapon>(FVector::ZeroVector, FRotator::ZeroRotator);
+	if (CurWeapon != nullptr)
+	{
+		CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, WeaponSocket);
+		CurrentWeapon = CurWeapon;
+	}
+
 	//입력 매핑시스템을 컨트롤과 연결 
 	APlayerController* PlayerController = CastChecked<APlayerController>(GetController());
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());
@@ -199,6 +251,15 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 }
 
 
+void AASCharacterPlayer::OnFire()
+{
+
+	//FHitResult OutHit;
+	//FVector Start = CurrentWeapon->GetActorLocation();
+
+	//FVector ForwardVector = 
+}
+
 //움직임 구현
 void AASCharacterPlayer::Move(const FInputActionValue& Value) 
 {
@@ -220,6 +281,9 @@ void AASCharacterPlayer::Look(const FInputActionValue& Value)
 
 	AddControllerYawInput(LookAxisVector.X);
 	AddControllerPitchInput(LookAxisVector.Y);
+
+	USkeletalMesh* PlayerMesh = GetMesh()->GetSkeletalMeshAsset();
+	//PlayerMesh->setbonetr
 }
 
 void AASCharacterPlayer::SprintStart(const FInputActionValue& Value)
@@ -267,7 +331,7 @@ void AASCharacterPlayer::UpdateSoundRange()
 	float NewSoundRange = MinSoundRange + (MaxSoundRange - MinSoundRange) * SpeedMultiplier;
 	FVector TargetSize = FVector(NewSoundRange, NewSoundRange, Height); // 높이는 고정값으로 유지
 	
-	// 선형 보간으로 사이즈 부드럽게 조절  
+	// 선형 보간으로 사이즈 부드럽게 조절  _
 	FVector LerpedSize = FMath::Lerp(CurrentSize, TargetSize, GetWorld()->DeltaTimeSeconds * 1.0);
 
 	// 크기 설정
@@ -278,6 +342,10 @@ void AASCharacterPlayer::UpdateSoundRange()
 void AASCharacterPlayer::ChangeUI()
 {
 	playerController->UIScreenChange();
+	auto AnimInstance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
+	if (nullptr == AnimInstance) return;
+	AnimInstance->SwitchSnipAnim();
+	//SwitchSnip.Broadcast();
 }
 
 
