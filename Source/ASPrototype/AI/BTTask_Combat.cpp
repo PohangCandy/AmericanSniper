@@ -18,20 +18,32 @@ UBTTask_Combat::UBTTask_Combat()
 EBTNodeResult::Type UBTTask_Combat::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {	
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
-	AASEnemyBase* Enemy = Cast<AASEnemyBase>(ControllingPawn);
+	AASEnemyCharacter* Enemy = Cast<AASEnemyCharacter>(ControllingPawn);
 	ensure(Enemy);
 	AASAIController* AI = Cast<AASAIController>(Enemy->GetController());
 	ensure(AI);
+
+
 
 	if (Enemy==nullptr || AI==nullptr)
 	{
 		return EBTNodeResult::Failed;
 	}
-
+	
 	Enemy->Attack();
 	IsAttacking = true;
+	
+	if (Enemy->CheckShootingTarget() == true)
+	{
+		AI->SetBB_CanShootTarget(true);
+	}
+	else
+	{
+		AI->SetBB_CanShootTarget(false);
+	}
 
 	Enemy->OnAttackEnd.AddLambda([this]()->void {IsAttacking = false;});
+
 
 	return EBTNodeResult::InProgress;
 }

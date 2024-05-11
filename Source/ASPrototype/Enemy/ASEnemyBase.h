@@ -11,7 +11,6 @@
 //#include "GenericTeamAgentInterface.h"
 
 #include "ASEnemyBase.generated.h"
-
 UENUM()
 enum class EState
 {
@@ -46,8 +45,7 @@ private:
 	uint8 Damage;
 	EState CurState;
 
-	class AASAIController* AiRef;
-	class UASDetectWidget* UiRef;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -95,6 +93,9 @@ public:
 	void SetVisible();
 
 protected:
+	class AASAIController* AiRef;
+	class UASDetectWidget* UiRef;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

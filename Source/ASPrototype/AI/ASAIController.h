@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
+#include "Perception/AISense.h"
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "ASAIController.generated.h"
@@ -15,9 +15,10 @@ enum class CurDetectSituation
 {
 
 	NoneInRange, //범위안에 없는 상황
-	PlayerInRange, // 범위안에 있는 상황
-	PlayerGetOutOfRange, // 범위안에 들어갔다 나간 상황
-	PlayerIsDetected,  // 발각된 상황
+	TargetInRange, // 범위안에 있는 상황
+	TargetGetOutOfRange, // 범위안에 들어갔다 나간 상황
+	TargetIsSuspected, //의심 받는 상황
+	TargetIsDetected,  // 발각된 상황
 	
 };
 UCLASS()
@@ -37,6 +38,9 @@ public:
 	void RunAI();
 	void StopAI();
 	void CheckPlayer(AActor* P);
+
+	void IncreaseDetectionLVL();
+	void DecreaseDetectionLVL();
 
 	//BB 데이터 정보 
 	void SetBB_LastKnownPosition(FVector vector);
@@ -60,11 +64,20 @@ public:
 	void SetBB_AttackRange(FVector vector);
 	FVector GetBB_AttackRange();
 
+	void SetBB_CanShootTarget(bool b);
+	bool GetBB_CanShootTarget();
+
+
+
 	void StartDetection();
 	void StopDetection();
 	UFUNCTION()
-	void OnPawnDetected(const TArray<AActor*>& DetectedPawns);
-
+	void OnPawnDetected(AActor* DetectedPawn, const  FAIStimulus Stimulus);
+	//void OnSoundDetected(const AActor* Actor, const FAIStimulus Stimulus);
+	UFUNCTION()
+	//void OnTargetPerceptionUpdated_Delegate(AActor* Actor, const  FAIStimulus Stimulus);
+	//void On_Updated(TArray<AActor*> const& updated_Actors);
+	void On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimulus);
 	float AISightRadius = 400.f;
 	float LoseSightRadius = 500.f;
 	float AIFieldOfView = 90.f;
@@ -91,12 +104,18 @@ public:
 
 	float DetectionLevel;
 	float MaxLevel;
+	//bool EventOnBySound;
+
+	FVector LastKnownPosition;
 
 private:
+	// AI구현을 위한 AIPerceptionComponent 선언
+	UPROPERTY(VisibleDefaultsOnly, Category = Enemy)
+	class UAIPerceptionComponent* AIPerComp;
 	class UAISenseConfig_Sight* SightConfig;
-	
+	class UAISenseConfig_Hearing* HearingConfig;
 	void SetupPerception();
-
+	
 
 	UPROPERTY()
 	TObjectPtr<class UBlackboardData> BBAsset;
@@ -111,7 +130,6 @@ private:
 	bool IsTargetInRange;
 
 protected:
-
 	//FGenericTeamId TeamId;
 	////각 Actor의 id를 비교하여, 현재 Actor가 적인지 사물인지 팀인지 알려준다. 
 	//virtual ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;

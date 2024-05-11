@@ -19,10 +19,18 @@ class ASPROTOTYPE_API UASDetectWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
-	UASDetectWidget(const FObjectInitializer& ObjectInitializer);
-	void IncreasePercent();
-	void DecreasePercent();
 
+	FWidgetAnimationDynamicEvent EndDelegate;
+
+
+	void Onvisible();
+
+	UFUNCTION()
+	void OffVisible();
+
+	void SetRedColor();
+	void SetPercent(float f);
+	void BlinkBar();
 	UFUNCTION()
 	/*void RunTimeline(float Value);*/
 	//void StartChasing(bool b);
@@ -35,6 +43,9 @@ public:
 	float CurPercent;
 	float MaxPercent;
 	bool DetectOn;
+
+	UPROPERTY(EditAnywhere ,BlueprintReadWrite ,meta = (BindWidgetAnim), Transient)
+	class UWidgetAnimation* Blink;
 
 protected:
 	AActor* Owner;

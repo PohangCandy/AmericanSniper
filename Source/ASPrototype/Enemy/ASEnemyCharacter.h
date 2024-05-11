@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Enemy/ASEnemyBase.h"
 #include "ASEnemyCharacter.generated.h"
-
 /**
  * 
  */
@@ -16,13 +15,12 @@ class ASPROTOTYPE_API AASEnemyCharacter : public AASEnemyBase
 public:
 	AASEnemyCharacter();
 
+	virtual void Tick(float DeltaTime) override;
+	bool CheckShootingTarget();
+
 private:
-	//void Move(const FInputActionValue& Value);
-	//void Look(const FInputActionValue& Value);
-	//void SprintStart(const FInputActionValue& Value);
-	//void SprinEnd(const FInputActionValue& Value);
+
 
 protected:
 	virtual void BeginPlay() override;
-
 };

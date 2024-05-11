@@ -23,7 +23,7 @@ AASEnemyBase::AASEnemyBase()
 
 	//Capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.f);
-	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Pawn"));
+	GetCapsuleComponent()->SetCollisionProfileName(TEXT("ASEnemy"));
 
 	//Movement
 	GetCharacterMovement()->bOrientRotationToMovement = true;

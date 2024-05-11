@@ -5,9 +5,15 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardData.h"
 #include "BehaviorTree/BlackboardComponent.h"
+
 #include "ASAI.h"
+#include "Sound_tags.h"
+//탐지 기능
 #include "Perception/AIPerceptionComponent.h"
-#include "Perception/AISenseConfig_Sight.h"
+#include "Perception/AISenseConfig_Sight.h" //시야
+#include "Perception/AISenseConfig_Hearing.h" //사운드
+#include "Perception/AISense_Touch.h"//감각
+
 #include "Enemy/ASEnemyCharacter.h"
 #include "Character/ASCharacterPlayer.h" //SetAngle 때문에
 
@@ -17,9 +23,7 @@
 #include "Components/WidgetComponent.h"
 #include "UI/ASDetectWidget.h"
 
-
 #include "Kismet/GameplayStatics.h"
-
 
 
 AASAIController::AASAIController()
@@ -62,6 +66,7 @@ AASAIController::AASAIController()
 	//{
 	//	TeamId = FGenericTeamId(EnemyRef->ID);
 	//}
+
 	AttackRange = 500.0f;
 	DetectionLevel=0.0f;
 	MaxLevel=1.0f;
@@ -90,12 +95,13 @@ void AASAIController::StopAI()
 
 void AASAIController::CheckPlayer(AActor* player)
 {	
+	
 	//임시 : 오직 플레이어만 인식 (적끼리 인식X)
 	if (player==NULL){ return; }
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, FString::Printf(TEXT("CheckPlayer")));
-	UiRef->AddToViewport();
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, FString::Printf(TEXT("CheckPlayer")));
 
-	//if (GetBB_IsDetect()) { return; }
+	
+	UiRef->AddToViewport();
 	if (GetBB_Target())
 	{
 		SetBB_Target(nullptr); //나가야 하는 상황 
@@ -108,6 +114,42 @@ void AASAIController::CheckPlayer(AActor* player)
 	}
 
 }
+
+void AASAIController::IncreaseDetectionLVL()
+{
+	if (GetBB_IsDetect())
+	{
+		return;
+	}
+
+	if (DetectionLevel >= MaxLevel)
+	{
+		UiRef->SetRedColor();
+		UiRef->BlinkBar(); 
+		// delay 
+		CurSituation = CurDetectSituation::TargetIsDetected;
+		return;
+	}
+	float value = 0.01f;
+	DetectionLevel = FMath::Clamp(DetectionLevel + value, 0.0f, MaxLevel);
+	UiRef->SetPercent(DetectionLevel);
+}
+
+void AASAIController::DecreaseDetectionLVL()
+{
+
+	if (DetectionLevel <= 0.0f)
+	{
+		UiRef->OffVisible();
+		CurSituation = CurDetectSituation::NoneInRange;
+		//SetBB_IsDetect(false);
+		return;
+	}
+	float value = -0.005f;
+	DetectionLevel = FMath::Clamp(DetectionLevel + value, 0.0f, MaxLevel);
+	UiRef->SetPercent(DetectionLevel);
+}
+
 
 void AASAIController::SetBB_LastKnownPosition(FVector vector)
 {
@@ -171,7 +213,6 @@ FVector AASAIController::GetBB_PathLoc()
 	return GetBlackboardComponent()->GetValueAsVector(BBKEY_PathLOC);
 }
 
-
 void AASAIController::SetBB_AttackRange(FVector vector)
 {
 	GetBlackboardComponent()->SetValueAsVector(BBKEY_AttackRange, vector);
@@ -184,27 +225,124 @@ FVector AASAIController::GetBB_AttackRange()
 
 
 
+void AASAIController::SetBB_CanShootTarget(bool b)
+{
+	GetBlackboardComponent()->SetValueAsBool(BBKEY_CanShootTarget, b);
+}
+
+bool AASAIController::GetBB_CanShootTarget()
+{
+	return GetBlackboardComponent()->GetValueAsBool(BBKEY_CanShootTarget);
+}
+
 
 void AASAIController::StartDetection()
 {
-	CurSituation = CurDetectSituation::PlayerInRange;
+	//UiRef->Onvisible();
+	if (!GetBB_IsDetect()){ UiRef->Onvisible(); }
+	CurSituation = CurDetectSituation::TargetInRange;
 }
 
 void AASAIController::StopDetection()
-{
-	CurSituation = CurDetectSituation::PlayerGetOutOfRange;
-}
-
-
-void AASAIController::OnPawnDetected(const TArray<AActor*>& DetectedPawns) //적 둘이 마주보면 문제 발생 
 {	
-	for (int32 i = 0; i < DetectedPawns.Num(); ++i)
+	if (GetBB_IsDetect() == false) //식별 안된 상태에서만  
 	{
-		AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(DetectedPawns[i]);
-		//ensure(CurPlayer);
-		CheckPlayer(CurPlayer);
+		CurSituation = CurDetectSituation::TargetGetOutOfRange;
 	}
 }
+
+void AASAIController::On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimulus)
+{
+	//if (GetBB_IsDetect()) return;
+
+	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("On_Updated , EventOnBySound is %d"), EventOnBySound));
+	
+	auto SensedClass = UAIPerceptionSystem::GetSenseClassForStimulus(this, Stimulus);
+
+	if (SensedClass== UAISense_Sight::StaticClass())
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Sight Sense")));
+
+		AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(DetectedPawn);
+		CheckPlayer(CurPlayer);
+	}
+	else if (SensedClass == UAISense_Hearing::StaticClass())
+	{
+		if (Stimulus.Tag == tags::lvl1_Sound_tag) //작은 소리는 의심상태 
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Hearing Sense")));
+		}
+		else if (Stimulus.Tag == tags::lvl2_Sound_tag) //큰 소리는 경계상태 ,AlretLVL =2
+		{
+			//300m반경에 있는 근처 적들 최대 3명에게 명령을 내림 ( 사운드 위치 + 의심 상태 )
+		}
+		SetBB_IsAlert(false);  SetBB_IsAlert(true);
+		LastKnownPosition = Stimulus.StimulusLocation;
+	}
+	else if (SensedClass == UAISense_Touch::StaticClass())
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Touch Sense"))); 
+		//터치된 상대가 Player 캐스팅 성공 한 경우, 바로 Player에게 Focus On이 됨. ( UI바 상승 스피드 2배 UP )
+		//캐스팅 된 것이 총알이면 IsDetect==true
+	}
+}
+
+
+//void AASAIController::On_Updated(TArray<AActor*> const& updated_Actors)
+//{
+//	
+//	for (size_t i = 0; i < updated_Actors.Num(); i++)
+//	{
+//		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("On_Updated , EventOnBySound is %d"), EventOnBySound));
+//		FActorPerceptionBlueprintInfo info;
+//		AIPerComp->GetActorsPerception(updated_Actors[i], info);
+//		for (size_t k = 0; k < info.LastSensedStimuli.Num(); k++)
+//		{
+//			FAIStimulus const stim = info.LastSensedStimuli[k];
+//			if (stim.Tag==tags::lvl1_Sound_tag) //작은 소리는 의심상태 
+//			{
+//				EventOnBySound = true;
+//				SetBB_IsAlert(true);
+//				SetBB_LastKnownPosition(stim.StimulusLocation);
+//			}
+//			else if (stim.Tag == tags::lvl2_Sound_tag) //큰 소리는 공격상태 
+//			{
+//				EventOnBySound = true;
+//				SetBB_IsDetect(true);
+//			}
+//			else
+//			{
+//				EventOnBySound = false;
+//				AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(updated_Actors[i]);
+//				CheckPlayer(CurPlayer);
+//			}
+//
+//		}
+//	}
+//}
+
+
+
+void AASAIController::OnPawnDetected(AActor* DetectedPawn, const  FAIStimulus Stimulus) //적 둘이 마주보면 문제 발생 
+{
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Blue, FString::Printf(TEXT("On_Sight_Updated")));
+	AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(DetectedPawn);
+	//ensure(CurPlayer);
+	CheckPlayer(CurPlayer);
+
+}
+
+//void AASAIController::OnPawnDetected(const TArray<AActor*>& DetectedPawns) //적 둘이 마주보면 문제 발생 
+//{	
+//	for (int32 i = 0; i < DetectedPawns.Num(); ++i)
+//	{
+//		AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(DetectedPawns[i]);
+//		//ensure(CurPlayer);
+//		CheckPlayer(CurPlayer);
+//	}
+//}
+
+
 
 AActor* AASAIController::GetPlayer()
 {	
@@ -213,7 +351,9 @@ AActor* AASAIController::GetPlayer()
 }
 
 void AASAIController::Tick(float DeltaTime)
-{	
+{
+	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT(" EventOnBySound is %d"), EventOnBySound));
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Blue, FString::Printf(TEXT("DetectionLevel : %f"), DetectionLevel));
 	ensure(PlayerRef);
 	if (CurSituation!=CurDetectSituation::NoneInRange)  //StartDetection() 호출 시 -> 동작   ,   StopDetection() 호출 후 UI 사라지면 -> 정지
 	{
@@ -233,38 +373,44 @@ void AASAIController::Tick(float DeltaTime)
 		DistanceDifference_Value = Location_Between_Player_And_Enemy.Length();
 	}
 
-	if (DetectionLevel >= MaxLevel)
-	{
-		CurSituation = CurDetectSituation::PlayerIsDetected;
-		SetBB_IsDetect(true);
-	}
+	//bool SuspicionTrigger=false;
 
 	switch (CurSituation)
 	{
 	case CurDetectSituation::NoneInRange:
 		break;
-	case CurDetectSituation::PlayerInRange:
-		UiRef->IncreasePercent();
+	case CurDetectSituation::TargetInRange:
+		IncreaseDetectionLVL();
 		break;
-	case CurDetectSituation::PlayerGetOutOfRange:
+	case CurDetectSituation::TargetGetOutOfRange:
 		if (DetectionLevel > 0.5f)
-		{
-			SetBB_IsAlert(true);
+		{	
+			DetectionLevel = 0.0f;
+			CurSituation = CurDetectSituation::TargetIsSuspected;
+			//SuspicionTrigger = true;
 		}
-		else
+		else 
 		{
-			UiRef->DecreasePercent();
+			DecreaseDetectionLVL();
 		}
 		break;
-	case CurDetectSituation::PlayerIsDetected:
-		//적들이 추적하는 상황 ( UI 는 사라짐 ) 
+	case CurDetectSituation::TargetIsSuspected:
+		SetBB_IsAlert(false); SetBB_IsAlert(true);
+		LastKnownPosition = PlayerRef->GetActorLocation();
+		UiRef->OffVisible();
+		CurSituation = CurDetectSituation::NoneInRange;
+		break;
+	case CurDetectSituation::TargetIsDetected:
+		SetBB_CanShootTarget(true);
+		SetBB_IsDetect(true);
+		//UiRef->OffVisible();
+		CurSituation = CurDetectSituation::NoneInRange;
 		break;
 	default:
 		break;
 	}
 
 	//의심상태는 PlayerGetOutOfRange 상태에서 한번씩만 발동 
-
 
 }
 
@@ -283,6 +429,7 @@ void AASAIController::BeginPlay()
 
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	PlayerRef = Cast<AASCharacterPlayer>(PlayerPawn);
+
 	//ensure(PlayerRef);
 }
 
@@ -318,22 +465,36 @@ UASDetectWidget* AASAIController::getWidget()
 
 void AASAIController::SetupPerception()
 {
+	AIPerComp = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("AI Perception Component"));
+	
 	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("Sight Config"));
 	if (SightConfig)
 	{
-		SetPerceptionComponent(*CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("Perception Component")));
-
-		SightConfig->SightRadius = 500.f;
-		SightConfig->LoseSightRadius = SightConfig->SightRadius + 25.f;
+		SightConfig->SightRadius = 700.f;
+		SightConfig->LoseSightRadius = SightConfig->SightRadius + 50.f;
 		SightConfig->PeripheralVisionAngleDegrees = 90.f;
 		SightConfig->DetectionByAffiliation.bDetectEnemies = true;
 		SightConfig->DetectionByAffiliation.bDetectFriendlies = true;
 		SightConfig->DetectionByAffiliation.bDetectNeutrals = true;
 
-		GetPerceptionComponent()->SetDominantSense(*SightConfig->GetSenseImplementation());
-		GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &AASAIController::OnPawnDetected);
-		GetPerceptionComponent()->ConfigureSense(*SightConfig);
+		AIPerComp->ConfigureSense(*SightConfig);
+		AIPerComp->SetDominantSense(SightConfig->GetSenseImplementation());
+		//AIPerComp->OnTargetPerceptionUpdated.AddDynamic(this, &AASAIController::OnPawnDetected);
 	}
+	HearingConfig = CreateDefaultSubobject<UAISenseConfig_Hearing>(TEXT("Hearing Config"));
+	if (HearingConfig)
+	{
+		//hearid = HearingConfig->GetSenseID();
+		HearingConfig->HearingRange = 2000.f;
+		HearingConfig->DetectionByAffiliation.bDetectEnemies = true;
+		HearingConfig->DetectionByAffiliation.bDetectFriendlies = true;
+		HearingConfig->DetectionByAffiliation.bDetectNeutrals = true;
+
+		AIPerComp->ConfigureSense(*HearingConfig);
+		AIPerComp->SetDominantSense(HearingConfig->GetSenseImplementation());
+	}
+	AIPerComp->OnTargetPerceptionUpdated.AddDynamic(this, &AASAIController::On_Updated);
+
 }
 
 //ETeamAttitude::Type AASAIController::GetTeamAttitudeTowards(const AActor& Other) const
@@ -348,3 +509,4 @@ void AASAIController::OnPossess(APawn* InPawn)
 	Super::OnPossess(InPawn); //에너미의 소유권은 AIController가 얻게 됨 .
 	RunAI();
 }
+
