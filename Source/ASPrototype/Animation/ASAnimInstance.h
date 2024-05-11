@@ -58,5 +58,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	bool DoSniping;
 
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	//class AASCharacterBase* Actor;
+
 	//trigger Âü°í 
 };
