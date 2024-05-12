@@ -92,8 +92,8 @@ void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
 		ConnectUIwithData();
 		CurMainHUDWidget->AddToViewport();
 		ControllerOwner->InitUIData();
-		SceneCameraViewPlane->SetHiddenInGame(true, false);
-		Scope->SetHiddenInGame(true, false);
+		//SceneCameraViewPlane->SetHiddenInGame(true, false);
+		//Scope->SetHiddenInGame(true, false);
 		break;
 	case AASPlayerController::EscreenMode::Sniping:
 		CurMainHUDWidget->RemoveFromParent();
@@ -101,8 +101,8 @@ void AASPlayerController::SetScreenMode(EscreenMode NewScreenMode)
 		ConnectUIwithData();
 		CurMainHUDWidget->AddToViewport();
 		ControllerOwner->InitUIData();
-		SceneCameraViewPlane->SetHiddenInGame(false, true);
-		Scope->SetHiddenInGame(false, true);
+		//SceneCameraViewPlane->SetHiddenInGame(false, true);
+		//Scope->SetHiddenInGame(false, true);
 		
 		break;
 	}
@@ -132,6 +132,8 @@ void AASPlayerController::UIScreenChange()
 		PlayerCharacter->bUseControllerRotationYaw = true;
 		//bUseControllerRotationYaw = true;
 		MainCam->SetActive(false);
+		SceneCameraViewPlane->SetHiddenInGame(false, true);
+		Scope->SetHiddenInGame(false, true);
 		break;
 	case AASPlayerController::EscreenMode::Sniping:
 		SetScreenMode(EscreenMode::Basic);
@@ -139,13 +141,15 @@ void AASPlayerController::UIScreenChange()
 		//MagnificationCam->SetActive(false);
 		MainCam->SetActive(true);
 		PlayerCharacter->bUseControllerRotationYaw = false;
+		SceneCameraViewPlane->SetHiddenInGame(true, false);
+		Scope->SetHiddenInGame(true, false);
 		break;
 	}
 }
 
 void AASPlayerController::SetZoom()
 {
-	SceneCaptureCam->FOVAngle = 90 - ControllerOwner->GetMagnificationratio() * 50;
+	SceneCaptureCam->FOVAngle = 70 - ControllerOwner->GetMagnificationratio() * 50;
 	//SceneCaptureCam->SetCameraView();
 	//SceneCaptureCam->SetFieldOfView(90 - ControllerOwner->GetMagnificationratio()*50);
 	//MagnificationCam->SetFieldOfView(90 - ControllerOwner->GetMagnificationratio() * 50);
