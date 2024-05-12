@@ -65,6 +65,15 @@ private:
 	class UCameraComponent* SnipCam;
 
 	UPROPERTY()
+	class USceneCaptureComponent2D* SceneCaptureCam;
+
+	UPROPERTY()
+	UStaticMeshComponent* Scope;
+
+	UPROPERTY()
+	UStaticMeshComponent* SceneCameraViewPlane;
+
+	UPROPERTY()
 	class UCameraComponent* MagnificationCam;
 
 	UPROPERTY()

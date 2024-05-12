@@ -63,7 +63,7 @@ AASCharacterBase::AASCharacterBase()
 	Damage = 10;
 	CurState = State::None;
 	MaxMagnification = 16;
-	CurMagnification = MaxMagnification;
+	CurMagnification = 0;
 	
 
 	//static ConstructorHelpers::FClassFinder<AASPlayerController> Controll_C(TEXT("/Script/ASPrototype.ASPlayerController_C"));
