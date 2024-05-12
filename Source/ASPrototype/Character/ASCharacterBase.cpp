@@ -43,11 +43,13 @@ AASCharacterBase::AASCharacterBase()
 		GetMesh()->SetSkeletalMesh(CharaterMeshRef.Object);
 	}
 
-	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C'"));
-	if (AnimInstanceClassRef.Class)
-	{
-		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
-	}
+	//  /Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation'
+	//static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C"));
+	////ensure(AnimInstanceClassRef.Class);
+	//if (AnimInstanceClassRef.Succeeded())
+	//{
+	//	GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
+	//}
 
 	MaxHp = 100;
 	CurHp = MaxHp;
