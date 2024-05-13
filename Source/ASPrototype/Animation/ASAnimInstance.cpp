@@ -76,7 +76,9 @@ void UASAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 		bIsRunning = (Owner->GetCharacterMovement()->MaxWalkSpeed > 500) && !bIsIdle && !bIsJumping;
 
+		OwnerLocation = Owner->GetActorLocation();
 		//bIsHurt = Hp < 50;
+		//UE_LOG(AS, Log, TEXT("Character Location :: %s"), Owner->GetActorLocation().ToString());
 	}
 }
 

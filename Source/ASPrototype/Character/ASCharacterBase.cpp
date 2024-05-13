@@ -43,8 +43,15 @@ AASCharacterBase::AASCharacterBase()
 		GetMesh()->SetSkeletalMesh(CharaterMeshRef.Object);
 	}
 
+<<<<<<< HEAD
 	//static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C'"));
 	//if (AnimInstanceClassRef.Class)
+=======
+	//  /Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation'
+	//static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C"));
+	////ensure(AnimInstanceClassRef.Class);
+	//if (AnimInstanceClassRef.Succeeded())
+>>>>>>> 323ef5a85d585745c0b8ad29abf539cade309df6
 	//{
 	//	GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
 	//}
@@ -61,7 +68,7 @@ AASCharacterBase::AASCharacterBase()
 	Damage = 10;
 	CurState = State::None;
 	MaxMagnification = 16;
-	CurMagnification = MaxMagnification;
+	CurMagnification = 0;
 	
 
 	//static ConstructorHelpers::FClassFinder<AASPlayerController> Controll_C(TEXT("/Script/ASPrototype.ASPlayerController_C"));

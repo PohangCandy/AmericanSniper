@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Game/ASGameMode.h"
 #include "Animation/AnimInstance.h"
 #include "Character/ASCharacterBase.h" //ÀÇÁ¸
 #include "ASAnimInstance.generated.h"
@@ -57,6 +57,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	bool DoSniping;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	FVector OwnerLocation;
 
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
 	//class AASCharacterBase* Actor;
