@@ -8,4 +8,5 @@
 #define BBKEY_IsAlert TEXT("IsAlert")
 #define BBKEY_LastKnownPosition TEXT("LastKnownPosition")
 #define BBKEY_CanShootTarget TEXT("CanShootTarget")
+#define BBKEY_EnableRoaming TEXT("EnableRoaming")
 //#define BBKEY_SoundObject TEXT("SoundObject")

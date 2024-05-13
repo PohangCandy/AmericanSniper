@@ -16,6 +16,5 @@ class ASPROTOTYPE_API UBTDecorator_IsTargetInRange : public UBTDecorator
 public:
 	UBTDecorator_IsTargetInRange();
 protected:
-	virtual bool CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const override;
 	float AttackRange;
 };

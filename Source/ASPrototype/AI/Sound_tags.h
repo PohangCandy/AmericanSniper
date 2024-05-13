@@ -7,4 +7,5 @@ namespace tags
 {
 	static TCHAR * lvl1_Sound_tag = TEXT("lvl1");
 	static TCHAR * lvl2_Sound_tag = TEXT("lvl2");
+	static TCHAR* lvl3_Sound_tag = TEXT("lvl3");
 }

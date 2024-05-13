@@ -4,10 +4,10 @@
 #include "Character/ASCharacterBase.h"
 #include "Player/ASPlayerController.h"
 #include "Character/ASCharacterStatComponent.h"
-//Ãæµ¹,¿òÁ÷ÀÓ Çì´õÆÄÀÏ
+//ï¿½æµ¹,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
-//AnimInstanceÅ¬·¡½º¿Í ¿¬°á
+//AnimInstanceÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #include "Animation/ASAnimInstance.h"
 
 

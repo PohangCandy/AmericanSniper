@@ -58,7 +58,7 @@ void UASDetectWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	{	
 		AiRef = Cast<AASAIController>(Owner);
 		ensure(AiRef); //AI 객체 얻기 성공
-		MaxPercent = AiRef->MaxLevel;
+		MaxPercent = AiRef->MaxValue;
 	}
 }
 

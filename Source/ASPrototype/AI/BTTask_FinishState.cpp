@@ -16,6 +16,8 @@ EBTNodeResult::Type UBTTask_FinishState::ExecuteTask(UBehaviorTreeComponent& Own
 	ensure(AI);
 	AI->SetBB_IsAlert(false);
 	AI->SetBB_IsDetect(false);
+	AI->Alertlvl = AlertLvl::None;
+	AI->SetBB_EnableRoaming(false);
 	//블랙보드 LastKnowPostion값 초기화 하기 
 	UWidgetComponent* UI = Enemy->QuestionMark;
 	UI->SetHiddenInGame(true);

@@ -24,10 +24,10 @@ enum class CurDetectSituation
 
 enum class AlertLvl
 {
-
-	Lvl1, // 적 처음 발견한 경우 ( 의심수치 +1 ) 
-	Lvl2, // 하나의 적 여러 번 발견한 경우, 또는 주변 총기 사운드 인식할 경우 ( 어그로 3번 끌림-> 의심 수치 3 초과할 경우, 주변 로밍 )
-	Lvl3, //  시체 발견한 경우 , 적의 총기 소리를 들을 경우 ( 주변 적들에게 연락 후 로밍, 연락 받은 적들도 로밍 )
+	None,
+	Low, // 기본 의심상태 , 어그로 
+	Medium, // 주변 총기 사운드 인식할 경우 ( 주변 로밍 )
+	High, //  시체 발견한 경우 , 적의 총기 소리를 들을 경우 ( 주변 적들에게 연락 후 로밍, 연락 받은 적들도 로밍 )
 };
 
 
@@ -37,20 +37,34 @@ class ASPROTOTYPE_API AASAIController : public AAIController
 	GENERATED_BODY()
 
 public:
-	CurDetectSituation CurSituation;
-	AActor* GetPlayer();
-	
-	virtual void Tick(float DeltaTime) override;
-	virtual void BeginPlay() override;
-
 	AASAIController();
+
+	//Init
+	virtual void BeginPlay() override;
 	virtual void OnPossess(APawn* InPawn) override;
 	void RunAI();
 	void StopAI();
-	void CheckPlayer(AActor* P);
 
-	void IncreaseDetectionLVL();
-	void DecreaseDetectionLVL();
+
+	//ProgressBar
+	void IncreaseDetectValue();
+	void DecreaseDetectValue();
+
+	//AI 관련
+	UFUNCTION()
+	void On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimulus);
+	UFUNCTION()
+	void CheckPlayer(AActor* P);
+	virtual void Tick(float DeltaTime) override;
+	void FindNearLocation(FVector Loc,float Range);
+
+
+	//Get,Set
+	void SetAlertLvl(AlertLvl NewLVl);
+	AActor* GetPlayer();
+	class UASDetectWidget* getWidget();
+	
+
 
 	//BB 데이터 정보 
 	void SetBB_LastKnownPosition(FVector vector);
@@ -65,6 +79,12 @@ public:
 	void SetBB_IsAlert(bool b);
 	bool GetBB_IsAlert();
 
+	void SetBB_CanShootTarget(bool b);
+	bool GetBB_CanShootTarget();
+
+	void SetBB_EnableRoaming(bool b);
+	bool GetBB_EnableRoaming();
+
 	void SetBB_PatrolLoc(FVector vector);
 	FVector GetBB_PatrolLoc();
 
@@ -74,70 +94,55 @@ public:
 	void SetBB_AttackRange(FVector vector);
 	FVector GetBB_AttackRange();
 
-	void SetBB_CanShootTarget(bool b);
-	bool GetBB_CanShootTarget();
 
-
-
-	void StartDetection();
-	void StopDetection();
-	UFUNCTION()
-	void OnPawnDetected(AActor* DetectedPawn, const  FAIStimulus Stimulus);
-	//void OnSoundDetected(const AActor* Actor, const FAIStimulus Stimulus);
-	UFUNCTION()
-	//void OnTargetPerceptionUpdated_Delegate(AActor* Actor, const  FAIStimulus Stimulus);
-	//void On_Updated(TArray<AActor*> const& updated_Actors);
-	void On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimulus);
-	float AISightRadius = 400.f;
-	float LoseSightRadius = 500.f;
-	float AIFieldOfView = 90.f;
-
+	//SetRangeSize
 	void RangeSizeDown();
 	void RangeSizeUP();
 
+	//UI
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widget)
 	TObjectPtr<class UWidgetComponent> DetectBar;
+	int DetectValue;
+	int MaxValue;
+	
+	//State
+	CurDetectSituation CurSituation;
+	AlertLvl Alertlvl;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = AttackRange);
-	float AttackRange;
-
-	class UASDetectWidget* getWidget();
-
-	float DistanceDifference_Value;
-	//virtual FGenericTeamId GetGenericTeamId() const override { return TeamId; }
-
-	//FInitAIOnChanged AIOnChanged;
-	//AASAIController* ReturnAIRef(AASAIController*ref);
-
-	//전방선언
-	class AASCharacterPlayer* PlayerRef;
-
-	float DetectionLevel;
-	float MaxLevel;
-	float Inc;
-
+	//Location
 	FVector LastKnownPosition;
 
+
+	//virtual FGenericTeamId GetGenericTeamId() const override { return TeamId; }
+	//void OnTargetPerceptionUpdated_Delegate(AActor* Actor, const  FAIStimulus Stimulus);
+	//void On_Updated(TArray<AActor*> const& updated_Actors);
+
+
 private:
-	// AI구현을 위한 AIPerceptionComponent 선언
+	// AI Perception
+	void SetupPerception();
 	UPROPERTY(VisibleDefaultsOnly, Category = Enemy)
 	class UAIPerceptionComponent* AIPerComp;
 	class UAISenseConfig_Sight* SightConfig;
 	class UAISenseConfig_Hearing* HearingConfig;
-	void SetupPerception();
-	
 
+	//BB,BT 
 	UPROPERTY()
 	TObjectPtr<class UBlackboardData> BBAsset;
-
 	UPROPERTY()
 	TObjectPtr<class UBehaviorTree> BTAsset;
 
-	//전방선언
+	//Player, UI, enemy 객체 캐스팅
+	class AASCharacterPlayer* PlayerRef;
 	class UASDetectWidget* UiRef;
 	class AASEnemyCharacter* EnemyRef;
 
-	bool IsTargetInRange;
+	// Sight 이벤트 발생 시 호출
+	void StartDetection();
+	void StopDetection();
+
+	//상태조건
+	bool EventBySound;
 
 protected:
 	//FGenericTeamId TeamId;

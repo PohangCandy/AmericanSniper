@@ -15,7 +15,7 @@ EBTNodeResult::Type UBTTaskNode_FocusOn::ExecuteTask(UBehaviorTreeComponent& Own
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());
 	AASEnemyBase* Enemy = Cast<AASEnemyBase>(ControllingPawn);
-	AASCharacterPlayer* Player = Cast<AASCharacterPlayer>(AI->PlayerRef); ensure(Player);
+	AASCharacterPlayer* Player = Cast<AASCharacterPlayer>(AI->GetPlayer()); ensure(Player);
 
 	if (Player != nullptr)
 	{
