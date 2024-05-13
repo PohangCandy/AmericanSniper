@@ -12,24 +12,4 @@ UBTDecorator_IsTargetInRange::UBTDecorator_IsTargetInRange()
 {
 }
 
-bool UBTDecorator_IsTargetInRange::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
-{
-	Super::CalculateRawConditionValue(OwnerComp, NodeMemory);
-	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
-	AASEnemyBase* Enemy = Cast<AASEnemyBase>(ControllingPawn);
-	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController()); 
-	float Distance;
-	if (AI->PlayerRef!=nullptr)
-	{
-		Distance= Enemy->GetDistanceTo(AI->PlayerRef);
-	}
-	if (Distance <= AI->AttackRange)
-	{	
 
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}

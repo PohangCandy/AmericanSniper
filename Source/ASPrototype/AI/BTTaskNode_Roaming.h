@@ -4,14 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTTaskNode_FocusOn.generated.h"
+#include "BTTaskNode_Roaming.generated.h"
 
 /**
  * 
  */
-
 UCLASS()
-class ASPROTOTYPE_API UBTTaskNode_FocusOn : public UBTTaskNode
+class ASPROTOTYPE_API UBTTaskNode_Roaming : public UBTTaskNode
 {
 	GENERATED_BODY()
 
