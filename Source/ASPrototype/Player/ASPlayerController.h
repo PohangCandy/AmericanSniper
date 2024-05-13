@@ -34,6 +34,8 @@ public:
 
 	void BindZommin();
 
+	FVector GetCamLocation();
+
 protected:
 	
 	virtual void BeginPlay() override;
