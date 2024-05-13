@@ -4,10 +4,10 @@
 #include "Character/ASCharacterBase.h"
 #include "Player/ASPlayerController.h"
 #include "Character/ASCharacterStatComponent.h"
-//Ãæµ¹,¿òÁ÷ÀÓ Çì´õÆÄÀÏ
+//ï¿½æµ¹,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
-//AnimInstanceÅ¬·¡½º¿Í ¿¬°á
+//AnimInstanceÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #include "Animation/ASAnimInstance.h"
 
 
@@ -43,15 +43,10 @@ AASCharacterBase::AASCharacterBase()
 		GetMesh()->SetSkeletalMesh(CharaterMeshRef.Object);
 	}
 
-<<<<<<< HEAD
-	//static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C'"));
-	//if (AnimInstanceClassRef.Class)
-=======
 	//  /Script/Engine.AnimBlueprint'/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation'
 	//static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Game/ASPrototype/Animation/ABP_CharacterAnimation.ABP_CharacterAnimation_C"));
 	////ensure(AnimInstanceClassRef.Class);
 	//if (AnimInstanceClassRef.Succeeded())
->>>>>>> 323ef5a85d585745c0b8ad29abf539cade309df6
 	//{
 	//	GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
 	//}
