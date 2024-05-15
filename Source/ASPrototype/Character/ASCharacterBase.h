@@ -44,6 +44,7 @@ private:
 	int MaxMagnification;
 	int CurMagnification;
 
+
 public:
 	// Sets default values for this character's properties
 	AASCharacterBase();

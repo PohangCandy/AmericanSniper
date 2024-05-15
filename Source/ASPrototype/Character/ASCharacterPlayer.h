@@ -38,6 +38,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sound")
 	class UCapsuleComponent* SoundRangeCapsule;
 
+	UPROPERTY(VisibleAnywhere, Category = Collision)
+	USphereComponent* ItemCheckSphere;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Outfit")
 	class USkeletalMeshComponent* ClothesMesh;
 

@@ -55,6 +55,11 @@ AASCharacterPlayer::AASCharacterPlayer()
 	SoundRangeCapsule->SetCapsuleSize(50.0f, 20.0f); // 크기 설정 (반지름, 높이)
 	SoundRangeCapsule->SetRelativeLocation(FVector(0.0f, 0.0f, -90.0f)); // 상대 위치 설정
 
+	ItemCheckSphere = CreateDefaultSubobject<USphereComponent>(TEXT("ItemCheckSphere"));
+	ItemCheckSphere->SetupAttachment(RootComponent);
+	//ItemCheckSphere->set
+
+
 
 	ClothesMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("ClothesMesh"));
 	ClothesMesh->SetupAttachment(RootComponent);
@@ -287,7 +292,8 @@ void AASCharacterPlayer::AttackCheck()
 	{
 		if (OutHit.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
-		FDamageEvent DamageEvent;
+		FPointDamageEvent DamageEvent;
+		DamageEvent.HitInfo = OutHit;
 		OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
 	}
 }
