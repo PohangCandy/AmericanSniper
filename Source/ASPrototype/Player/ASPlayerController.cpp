@@ -163,6 +163,7 @@ void AASPlayerController::BindZommin()
 FVector AASPlayerController::GetCamLocation()
 {
 	return MainCam->GetComponentLocation();
+
 }
 
 

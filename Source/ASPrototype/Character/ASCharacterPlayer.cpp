@@ -258,15 +258,26 @@ void AASCharacterPlayer::AttackCheck()
 {
 	
 	FHitResult OutHit;
+
+
 	//FVector Start = CurrentWeapon->GetActorForwardVector();
-	FVector Start = playerController->GetCamLocation();
+	//FVector Start = playerController->GetCamLocation();
 	//FVector Start = GetActorLocation();
+
+	FVector Location;
+	FRotator Rotation;
+	playerController->GetPlayerViewPoint(Location, Rotation);
+
+	FVector Start = Location;
+	FVector End = Start + (Rotation.Vector() * 1000);
 
 	//UE_LOG(LogTemp, Log, TEXT("Character Location :: %s"), CurrentWeapon->GetActorForwardVector().ToString());
 	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
 
-	FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
+	//FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
+	//FVector End = ((playerController->GetCamLocation() * 1000.0f) + Start);
 	FCollisionQueryParams CollisionParams(NAME_None,false,this);
+	//FCollisionQueryParams CollisionParams;
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
 
