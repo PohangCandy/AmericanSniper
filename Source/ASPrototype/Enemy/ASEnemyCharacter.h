@@ -16,12 +16,13 @@ class ASPROTOTYPE_API AASEnemyCharacter : public AASEnemyBase, public IASAttackC
 public:
 	AASEnemyCharacter();
 
+	void GetHitResult(FHitResult HitReuslt);
 	bool AttackCheck();
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 	virtual void Tick(float DeltaTime) override;
 
 private:
-
+	FHitResult HitResult;
 
 protected:
 	virtual void BeginPlay() override;
