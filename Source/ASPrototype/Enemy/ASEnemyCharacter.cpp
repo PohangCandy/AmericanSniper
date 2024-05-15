@@ -5,6 +5,7 @@
 #include "AI/ASAIController.h"
 #include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/DamageEvents.h"
 
 AASEnemyCharacter::AASEnemyCharacter()
 {
@@ -42,7 +43,7 @@ void AASEnemyCharacter::Tick(float DeltaTime)
 bool AASEnemyCharacter::AttackCheck()
 {
 	FHitResult OutHit;
-
+	FDamageEvent DamageEvent;
 	FVector Start = Gun->GetComponentLocation();
 	FVector ForwardVector = GetActorForwardVector();
 	FVector End = (Start + (ForwardVector * 1000.0f));
@@ -55,8 +56,10 @@ bool AASEnemyCharacter::AttackCheck()
 
 	if (OutHit.GetActor() == AiRef->GetPlayer())
 	{
+
 		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
 			*OutHit.GetActor()->GetName()));
+		OutHit.GetActor()->TakeDamage(10.0f, DamageEvent,GetController(),this);
 		return true;
 	}
 	else
