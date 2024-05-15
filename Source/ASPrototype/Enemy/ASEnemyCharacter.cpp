@@ -15,21 +15,27 @@ AASEnemyCharacter::AASEnemyCharacter()
 float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 {
 	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	FString BoneName;
-	//switch (UGameplayStatics::GetSurfaceType())
-	//{
-	//case SurfaceType1:
-	//	break;
-	//case SurfaceType2:
-	//	break;
-	//case SurfaceType3:
-	//	break;
-	//default:
-	//	break;
-	//}
-	//BoneName = FString::FromInt(UGameplayStatics::GetSurfaceType(HitResult));
-	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
-	//	*BoneName));
+	if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
+	{
+		const FPointDamageEvent* PointDamageEvent = static_cast<const FPointDamageEvent*>(&DamageEvent);
+		EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(PointDamageEvent->HitInfo);
+		FString BoneName;
+		switch (PhysicalSurface)
+		{
+		case SurfaceType1:
+			break;
+		case SurfaceType2:
+			break;
+		case SurfaceType3:
+			break;
+		default:
+			break;
+		}
+		BoneName = FString::FromInt(UGameplayStatics::GetSurfaceType(PointDamageEvent->HitInfo));
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
+			*BoneName));
+	}
+
 	return DamageAmount;
 }
 
