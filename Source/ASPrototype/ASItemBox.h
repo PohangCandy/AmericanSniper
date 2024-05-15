@@ -44,4 +44,11 @@ private:
 
 	UFUNCTION()
 	void OnEffectFinished(class UParticleSystemComponent* PSystem);
+
+//private:
+//	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = UI)
+//	TSubclassOf<class UDetectItemWidget> ItemWidgetClass;
+//
+//	UPROPERTY()
+//	class UDetectItemWidget* ItemWidget;
 };

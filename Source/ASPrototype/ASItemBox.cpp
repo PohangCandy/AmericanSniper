@@ -3,6 +3,7 @@
 
 #include "ASItemBox.h"
 #include "Character/ASCharacterPlayer.h"
+#include "UI/DetectItemWidget.h"
 
 // Sets default values
 AASItemBox::AASItemBox()
@@ -41,8 +42,9 @@ AASItemBox::AASItemBox()
 		Effect->bAutoActivate = false;
 	}
 
-	//static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
-	//BasicHUDWidgetClass = UI_HUD_C.Class;
+
+	//static ConstructorHelpers::FClassFinder<UDetectItemWidget> UI_Item_C(TEXT("/Game/UI/WB_ItemDetect.WB_ItemDetect"));
+	//ItemWidgetClass = UI_Item_C.Class;
 
 }
 
@@ -50,6 +52,7 @@ AASItemBox::AASItemBox()
 void AASItemBox::BeginPlay()
 {
 	Super::BeginPlay();
+	/*ItemWidget = CreateWidget<UDetectItemWidget>(this, ItemWidgetClass);*/
 	
 }
 
@@ -82,6 +85,7 @@ void AASItemBox::OnCharacterOverlap(UPrimitiveComponent* OverlappedCom, AActor* 
 	{
 			Effect->Activate(true);
 			//Effect->OnSystemFinished.AddDynamic(this, &AASItemBox::OnEffectFinished);
+			//ItemWidget->AddToViewport();
 	}
 }
 
@@ -89,6 +93,7 @@ void AASItemBox::OutCharacterOverlap(UPrimitiveComponent* OverlappedComponent, A
 {
 	UE_LOG(AS, Warning, TEXT("Out from Collision"));
 	Effect->Deactivate();
+	//ItemWidget->RemoveFromParent();
 }
 
 void AASItemBox::OnEffectFinished(UParticleSystemComponent* PSystem)
