@@ -18,6 +18,7 @@
 #include "Components/CapsuleComponent.h"
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
+
 #include "Engine/DamageEvents.h"
 
 
@@ -321,10 +322,14 @@ void AASCharacterPlayer::AttackCheck()
 	{
 		if (OutHit.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
-		FPointDamageEvent DamageEvent;
+
+
 		CollisionParams.bReturnPhysicalMaterial = true;
-		DamageEvent.HitInfo = OutHit;
-		OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
+		FVector ShotDirection = OutHit.ImpactNormal;
+		TSubclassOf<UDamageType> DamageType= UDamageType::StaticClass();
+		FPointDamageEvent PointDamageEvent(float(GetStrength()), OutHit, ShotDirection, DamageType);
+		PointDamageEvent.HitInfo = OutHit;
+		OutHit.GetActor()->TakeDamage(GetStrength(), PointDamageEvent, GetController(), this);
 	}
 }
 

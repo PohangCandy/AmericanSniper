@@ -41,6 +41,9 @@ AASItemBox::AASItemBox()
 		Effect->bAutoActivate = false;
 	}
 
+	//static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
+	//BasicHUDWidgetClass = UI_HUD_C.Class;
+
 }
 
 // Called when the game starts or when spawned
@@ -62,6 +65,11 @@ void AASItemBox::PostInitializeComponents()
 void AASItemBox::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+}
+
+void AASItemBox::SetPlayerCanGripUI()
+{
 
 }
 
