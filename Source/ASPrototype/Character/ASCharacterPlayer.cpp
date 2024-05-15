@@ -55,9 +55,12 @@ AASCharacterPlayer::AASCharacterPlayer()
 	SoundRangeCapsule->SetCapsuleSize(50.0f, 20.0f); // 크기 설정 (반지름, 높이)
 	SoundRangeCapsule->SetRelativeLocation(FVector(0.0f, 0.0f, -90.0f)); // 상대 위치 설정
 
-	ItemCheckSphere = CreateDefaultSubobject<USphereComponent>(TEXT("ItemCheckSphere"));
+	ItemCheckSphere = CreateDefaultSubobject<UCapsuleComponent>(TEXT("ItemCheckSphere"));
 	ItemCheckSphere->SetupAttachment(RootComponent);
-	//ItemCheckSphere->set
+	ItemCheckSphere->SetCollisionProfileName(TEXT("CheckItem"));
+	ItemCheckSphere->SetCapsuleSize(10.0f,10.0f);
+	ItemCheckSphere->SetRelativeLocation(FVector(0.0f, 0.0f, -90.0f));
+	ItemCheckSphere->SetRelativeScale3D(FVector(60.0f, 60.0f, 60.0f));
 
 
 
@@ -293,6 +296,7 @@ void AASCharacterPlayer::AttackCheck()
 		if (OutHit.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
 		FPointDamageEvent DamageEvent;
+		CollisionParams.bReturnPhysicalMaterial = true;
 		DamageEvent.HitInfo = OutHit;
 		OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
 	}
