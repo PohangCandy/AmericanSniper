@@ -21,7 +21,6 @@ class ASPROTOTYPE_API AASCharacterPlayer : public AASCharacterBase
 	
 public:
 	AASCharacterPlayer();
-	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, Category = "Sound")
 	float MinSoundRange;
@@ -51,7 +50,7 @@ public:
 	UStaticMeshComponent* WeaponAttachment;
 
 
-	void AttackCheck();
+
 
 	virtual float TakeDamage(float DamageAmount,struct FDamageEvent const& DamageEvent,class AController* EventInstigator, AActor* DamageCauser) override;
 
@@ -65,10 +64,21 @@ private:
 	void UpdateSoundRange();
 	float CurrentSpeed;
 	void ChangeUI();
+	void AttackCheck();
+	void MakeItemTrace();
+
+private:
+	bool isItemNearby;
+
+public:
+	bool GetBoolItemNearby();
+	void SetBoolItemNearby(bool newboolen);
 
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void PostInitializeComponents() override;
+	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION()
 	virtual void NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
@@ -110,5 +120,10 @@ protected:
 
 private:
 	class AASPlayerController* playerController;
+
+	UFUNCTION()
+	void OnItemOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
+	void OutItemOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 };

@@ -23,6 +23,9 @@
 
 AASCharacterPlayer::AASCharacterPlayer()
 {
+
+	isItemNearby = false;
+
 	//Ä«¸Þ¶ó
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
@@ -150,9 +153,25 @@ void AASCharacterPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+
+	if (GetBoolItemNearby())
+	{
+		MakeItemTrace();
+	}
+
 	CurrentSpeed = GetVelocity().Size();
 
 	UpdateSoundRange();
+}
+
+bool AASCharacterPlayer::GetBoolItemNearby()
+{
+	return isItemNearby;
+}
+
+void AASCharacterPlayer::SetBoolItemNearby(bool newboolen)
+{
+	isItemNearby = newboolen;
 }
 
 void AASCharacterPlayer::BeginPlay()
@@ -230,11 +249,31 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 }
 
+void AASCharacterPlayer::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	ItemCheckSphere->OnComponentBeginOverlap.AddDynamic(this, &AASCharacterPlayer::OnItemOverlap);
+	ItemCheckSphere->OnComponentEndOverlap.AddDynamic(this, &AASCharacterPlayer::OutItemOverlap);
+	//ItemCheckSphere->OnComponentBeginOverlap.AddDynamic(this, OnItemOverlap);
+	UE_LOG(AS, Warning, TEXT("Character Check Item"));
+}
+
 void AASCharacterPlayer::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
 	FString text = FString::Printf(TEXT("Enemy Find You!"));
 	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Yellow, text);
+}
+
+void AASCharacterPlayer::OnItemOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	SetBoolItemNearby(true);
+}
+
+void AASCharacterPlayer::OutItemOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	SetBoolItemNearby(false);
 }
 
 void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
@@ -266,24 +305,11 @@ void AASCharacterPlayer::AttackCheck()
 {
 	
 	FHitResult OutHit;
-
-
 	//FVector Start = CurrentWeapon->GetActorForwardVector();
-	//FVector Start = playerController->GetCamLocation();
-	//FVector Start = GetActorLocation();
-
-	FVector Location;
-	FRotator Rotation;
-	playerController->GetPlayerViewPoint(Location, Rotation);
-
-	FVector Start = Location;
-	FVector End = Start + (Rotation.Vector() * 1000);
-
+	FVector Start = GetActorLocation();
 	//UE_LOG(LogTemp, Log, TEXT("Character Location :: %s"), CurrentWeapon->GetActorForwardVector().ToString());
 	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
-
-	//FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
-	//FVector End = ((playerController->GetCamLocation() * 1000.0f) + Start);
+	FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
 	FCollisionQueryParams CollisionParams(NAME_None,false,this);
 	//FCollisionQueryParams CollisionParams;
 
@@ -300,6 +326,34 @@ void AASCharacterPlayer::AttackCheck()
 		DamageEvent.HitInfo = OutHit;
 		OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
 	}
+}
+
+void AASCharacterPlayer::MakeItemTrace()
+{
+	FHitResult OutHit;
+	FVector Location;
+	FRotator Rotation;
+	playerController->GetPlayerViewPoint(Location, Rotation);
+
+	FVector Start = Location;
+	FVector End = Start + (Rotation.Vector() * 1000);
+
+	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
+
+	FCollisionQueryParams CollisionParams(NAME_None, false, this);
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
+
+	bool isHit = (GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams));
+
+	if (isHit)
+	{
+		if (OutHit.bBlockingHit)
+			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
+		FDamageEvent DamageEvent;
+		//OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
+	}
+
 }
 
 float AASCharacterPlayer::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
