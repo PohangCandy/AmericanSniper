@@ -51,6 +51,7 @@ AASCharacterBase::AASCharacterBase()
 	//	GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
 	//}
 
+	Curstrength = 10;
 	MaxHp = 100;
 	CurHp = MaxHp;
 	MaxBulletNum = 8;
@@ -121,6 +122,11 @@ int AASCharacterBase::GetItemNum()
 	return CurItemNum;
 }
 
+int AASCharacterBase::GetStrength()
+{
+	return Curstrength;
+}
+
 float AASCharacterBase::GetHpratio()
 {
 	if (CurHp <= 0)
@@ -160,6 +166,11 @@ void AASCharacterBase::GetDamaged(int damage)
 	}
 
 	OnHpChanged.Broadcast();
+}
+
+void AASCharacterBase::SetStrength(int newStrength)
+{
+	Curstrength = newStrength;
 }
 
 bool AASCharacterBase::AttackCheck()

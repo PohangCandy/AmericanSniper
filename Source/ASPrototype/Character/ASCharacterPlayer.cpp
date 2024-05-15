@@ -276,7 +276,7 @@ void AASCharacterPlayer::AttackCheck()
 		if (OutHit.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
 		FDamageEvent DamageEvent;
-		OutHit.GetActor()->TakeDamage(50.0f, DamageEvent, GetController(), this);
+		OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
 	}
 }
 
