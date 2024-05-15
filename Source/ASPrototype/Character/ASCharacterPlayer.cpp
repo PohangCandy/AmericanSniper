@@ -253,13 +253,14 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 }
 
 
+
 void AASCharacterPlayer::AttackCheck()
 {
-
+	
 	FHitResult OutHit;
 	//FVector Start = CurrentWeapon->GetActorForwardVector();
-	//FVector Start = GetActorForwardVector();
-	FVector Start = GetActorLocation();
+	FVector Start = playerController->GetCamLocation();
+	//FVector Start = GetActorLocation();
 
 	//UE_LOG(LogTemp, Log, TEXT("Character Location :: %s"), CurrentWeapon->GetActorForwardVector().ToString());
 	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
