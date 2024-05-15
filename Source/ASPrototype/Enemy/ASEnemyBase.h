@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-
 //이동 지점 설정
 //#include "Enemy/PatrolPath.h"
 //각 에너미들을 판별하기 위해 ID값을 넣어줌
 //#include "GenericTeamAgentInterface.h"
 
 #include "ASEnemyBase.generated.h"
+
 UENUM()
 enum class EState
 {
@@ -91,7 +91,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widget)
 	TObjectPtr<class UWidgetComponent> QuestionMark;
 
-	void SetVisible();
 
 protected:
 	class AASAIController* AiRef;

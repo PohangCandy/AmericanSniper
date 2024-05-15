@@ -6,10 +6,7 @@
 #include "AIController.h"
 #include "ASAIController.generated.h"
 
-//DECLARE_MULTICAST_DELEGATE_OneParam(FInitAIOnChanged, AASAIController* ref)
-/**
- * 
- */
+
 UENUM()
 enum class CurDetectSituation
 {
@@ -60,7 +57,7 @@ public:
 
 
 	//Get,Set
-	void SetAlertLvl(AlertLvl NewLVl);
+	bool SetAlertLvl(AlertLvl NewLVl);
 	AActor* GetPlayer();
 	class UASDetectWidget* getWidget();
 	
@@ -131,6 +128,8 @@ private:
 	TObjectPtr<class UBlackboardData> BBAsset;
 	UPROPERTY()
 	TObjectPtr<class UBehaviorTree> BTAsset;
+	UPROPERTY()
+	TObjectPtr<class UBehaviorTree> BT_FinalTargetAsset;
 
 	//Player, UI, enemy 객체 캐스팅
 	class AASCharacterPlayer* PlayerRef;
@@ -141,8 +140,12 @@ private:
 	void StartDetection();
 	void StopDetection();
 
-	//상태조건
+	//체크함수
+	bool CheckisFinalTarget(APawn* InPawn);
+
+	//조건변수
 	bool EventBySound;
+	bool IsTarget;
 
 protected:
 	//FGenericTeamId TeamId;

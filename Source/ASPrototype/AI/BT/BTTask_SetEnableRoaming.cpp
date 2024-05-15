@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTTaskNode_Roaming.h"
-#include "ASAIController.h"
-EBTNodeResult::Type UBTTaskNode_Roaming::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+#include "AI/BT/BTTask_SetEnableRoaming.h"
+#include "AI/ASAIController.h"
+EBTNodeResult::Type UBTTask_SetEnableRoaming::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());

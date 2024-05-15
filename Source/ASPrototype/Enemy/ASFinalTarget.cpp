@@ -1,5 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTTaskNode_OrderToAI.h"
+#include "Enemy/ASFinalTarget.h"
 
+AASFinalTarget::AASFinalTarget()
+{
+
+}

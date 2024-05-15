@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTTask_FindPatrolLocation.h"
-#include "ASAIController.h"
+#include "AI/BT/BTTask_FindPatrolLocation.h"
+#include "AI/ASAIController.h"
 #include "Enemy/ASEnemyBase.h"
 //Enemy의 PatrolPath 객체 캐스팅을 위해
 #include "Enemy/PatrolPath.h"

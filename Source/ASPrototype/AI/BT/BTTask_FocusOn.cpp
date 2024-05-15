@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTTaskNode_FocusOn.h"
-#include "ASAIController.h"
+#include "AI/BT/BTTask_FocusOn.h"
+#include "AI/ASAIController.h"
 #include "Character/ASCharacterPlayer.h"
 #include "Enemy/ASEnemyBase.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Math/UnrealMathUtility.h"
 
-EBTNodeResult::Type UBTTaskNode_FocusOn::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UBTTask_FocusOn::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 
 

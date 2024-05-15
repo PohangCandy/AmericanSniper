@@ -4,26 +4,41 @@
 #include "Enemy/ASEnemyCharacter.h"
 #include "AI/ASAIController.h"
 #include "DrawDebugHelpers.h"
+#include "Kismet/GameplayStatics.h"
 
 AASEnemyCharacter::AASEnemyCharacter()
 {
 	AIControllerClass = AASAIController::StaticClass();
 	
 }
-
-//Tick함수에서의 호출이 아닌, 적을 격발 시에만 호출하기
-void AASEnemyCharacter::Tick(float DeltaTime)
+float AASEnemyCharacter::TakeDamage(float DamageAmount, FHitResult HitResult, AActor* DamageCauser)
 {
-	Super::Tick(DeltaTime);
-	if (CurState==EState::Attack)
+	FString BoneName;
+	switch (UGameplayStatics::GetSurfaceType(HitResult))
 	{
-		CheckShootingTarget();
+	case SurfaceType1:
+		break;
+	case SurfaceType2:
+		break;
+	case SurfaceType3:
+		break;
+	default:
+		break;
 	}
-	
-
+	BoneName = FString::FromInt(UGameplayStatics::GetSurfaceType(HitResult));
+	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
+		*BoneName));
+	return DamageAmount;
 }
 
-bool AASEnemyCharacter::CheckShootingTarget()
+
+void AASEnemyCharacter::Tick(float DeltaTime)
+{
+
+	Super::Tick(DeltaTime);
+}
+
+bool AASEnemyCharacter::AttackCheck()
 {
 	FHitResult OutHit;
 
@@ -34,22 +49,20 @@ bool AASEnemyCharacter::CheckShootingTarget()
 	FCollisionQueryParams CollisionParams;
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
-	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel4, CollisionParams);
+	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel4, CollisionParams); //   EnemyAttack 
 
 
 	if (OutHit.GetActor() == AiRef->GetPlayer())
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("you are hitting: %s"),
-		//	*OutHit.GetActor()->GetName()));
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
+			*OutHit.GetActor()->GetName()));
 		return true;
 	}
 	else
 	{
-		/*GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(TEXT("NO Target")));*/
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT(" hitting: Others ")));
 		return false;
 	}
-
-	//AActor* Target = OutHit.GetActor();
 }
 
 void AASEnemyCharacter::BeginPlay()
@@ -63,36 +76,3 @@ void AASEnemyCharacter::BeginPlay()
 
 
 
-
-
-//void AASEnemyCharacter::Move(const FInputActionValue& Value)
-//{
-//	FVector2D MovementVector = Value.Get<FVector2D>();
-//
-//	const FRotator Rotation = Controller->GetControlRotation();
-//	const FRotator YawRotation(0, Rotation.Yaw, 0);
-//
-//	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-//	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-//
-//	AddMovementInput(ForwardDirection, MovementVector.X);
-//	AddMovementInput(RightDirection, MovementVector.Y);
-//}
-//
-//void AASEnemyCharacter::Look(const FInputActionValue& Value)
-//{
-//	FVector2D LookAxisVector = Value.Get<FVector2D>();
-//
-//	AddControllerYawInput(LookAxisVector.X);
-//	AddControllerPitchInput(LookAxisVector.Y);
-//}
-//
-//void AASCharacterPlayer::SprintStart(const FInputActionValue& Value)
-//{
-//	GetCharacterMovement()->MaxWalkSpeed = 1000;
-//}
-//
-//void AASCharacterPlayer::SprinEnd(const FInputActionValue& Value)
-//{
-//	GetCharacterMovement()->MaxWalkSpeed = 500;
-//}

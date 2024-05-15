@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTTask_FindLastKnownPostion.h"
-#include "ASAIController.h"
+#include "AI/BT/BTTask_FindLastKnownPostion.h"
+#include "AI/ASAIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Enemy/ASEnemyBase.h"
 

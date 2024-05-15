@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTService_CheckForPlayer.h"
-#include "ASAIController.h"
+#include "AI/BT/BTService_CheckForPlayer.h"
+#include "AI/ASAIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Enemy/ASEnemyCharacter.h"
 
@@ -13,7 +13,7 @@ void UBTService_CheckForPlayer::TickNode(UBehaviorTreeComponent& OwnerComp, uint
 	AASAIController* AI = Cast<AASAIController>(ControllingPawn->GetController());
 	AASEnemyCharacter* Enemy = Cast<AASEnemyCharacter>(ControllingPawn);
 
-	bool result = Enemy->CheckShootingTarget();
+	bool result = Enemy->AttackCheck();
 	if (Enemy->CurState==EState::Attack && !result)
 	{
 		AI->SetBB_CanShootTarget(false);
