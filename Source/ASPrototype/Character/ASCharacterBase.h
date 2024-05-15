@@ -28,7 +28,7 @@ class ASPROTOTYPE_API AASCharacterBase : public ACharacter
 	GENERATED_BODY()
 
 private:
-	int strength;
+	int Curstrength;
 	uint32 MaxHp;
 	uint32 CurHp;
 	uint32 MaxBulletNum;
@@ -53,12 +53,14 @@ public:
 	int GetBulletNum();
 	int GetMagazineNum();
 	int GetItemNum();
+	int GetStrength();
 	float GetHpratio();
 	void SetHp(int Hp);
 	void SetBulletNum(int Num);
 	void SetMagazineNum(int Num);
 	void SetItemNum(int Num);
 	void GetDamaged(int damage);
+	void SetStrength(int newStrength);
 	bool AttackCheck();
 
 
