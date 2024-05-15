@@ -11,23 +11,24 @@ AASEnemyCharacter::AASEnemyCharacter()
 	AIControllerClass = AASAIController::StaticClass();
 	
 }
-float AASEnemyCharacter::TakeDamage(float DamageAmount, FHitResult HitResult, AActor* DamageCauser)
+float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 {
+	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	FString BoneName;
-	switch (UGameplayStatics::GetSurfaceType(HitResult))
-	{
-	case SurfaceType1:
-		break;
-	case SurfaceType2:
-		break;
-	case SurfaceType3:
-		break;
-	default:
-		break;
-	}
-	BoneName = FString::FromInt(UGameplayStatics::GetSurfaceType(HitResult));
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
-		*BoneName));
+	//switch (UGameplayStatics::GetSurfaceType())
+	//{
+	//case SurfaceType1:
+	//	break;
+	//case SurfaceType2:
+	//	break;
+	//case SurfaceType3:
+	//	break;
+	//default:
+	//	break;
+	//}
+	//BoneName = FString::FromInt(UGameplayStatics::GetSurfaceType(HitResult));
+	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
+	//	*BoneName));
 	return DamageAmount;
 }
 

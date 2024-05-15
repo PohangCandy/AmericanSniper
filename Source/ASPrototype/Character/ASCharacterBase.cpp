@@ -162,6 +162,12 @@ void AASCharacterBase::GetDamaged(int damage)
 	OnHpChanged.Broadcast();
 }
 
+bool AASCharacterBase::AttackCheck()
+{
+
+	return false;
+}
+
 
 void AASCharacterBase::SetState(State NewState)
 {

@@ -5,7 +5,7 @@
 #include "Components/WidgetComponent.h"
 #include "UI/ASMainGameWidget.h"
 #include "Character/ASCharacterBase.h"
-#include "DrawDebugHelpers.h"
+//#include "DrawDebugHelpers.h"
 #include "Components/SceneCaptureComponent2D.h"
 
 
@@ -158,6 +158,11 @@ void AASPlayerController::SetZoom()
 void AASPlayerController::BindZommin()
 {
 	ControllerOwner->NumMagnificationChanged.AddUObject(this, &AASPlayerController::SetZoom);
+}
+
+FVector AASPlayerController::GetCamLocation()
+{
+	return MainCam->GetComponentLocation();
 }
 
 

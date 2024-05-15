@@ -48,7 +48,9 @@ public:
 	UStaticMeshComponent* WeaponAttachment;
 
 
-	void OnFire();
+	void AttackCheck();
+
+	virtual float TakeDamage(float DamageAmount,struct FDamageEvent const& DamageEvent,class AController* EventInstigator, AActor* DamageCauser) override;
 
 
 private:

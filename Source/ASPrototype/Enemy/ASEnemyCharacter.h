@@ -17,7 +17,7 @@ public:
 	AASEnemyCharacter();
 
 	bool AttackCheck();
-	float TakeDamage(float DamageAmount, FHitResult HitResult , AActor* DamageCauser);
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 	virtual void Tick(float DeltaTime) override;
 
 private:

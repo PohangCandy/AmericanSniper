@@ -18,6 +18,7 @@
 #include "Components/CapsuleComponent.h"
 //소리범위를 위한 수학공식
 #include "Math/UnrealMathUtility.h"
+#include "Engine/DamageEvents.h"
 
 
 AASCharacterPlayer::AASCharacterPlayer()
@@ -192,7 +193,7 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
-	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::OnFire);
+	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::AttackCheck);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, playerController, &AASPlayerController::UIScreenChange);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
 	
@@ -252,7 +253,7 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 }
 
 
-void AASCharacterPlayer::OnFire()
+void AASCharacterPlayer::AttackCheck()
 {
 
 	FHitResult OutHit;
@@ -264,7 +265,7 @@ void AASCharacterPlayer::OnFire()
 	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
 
 	FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
-	FCollisionQueryParams CollisionParams;
+	FCollisionQueryParams CollisionParams(NAME_None,false,this);
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
 
@@ -274,7 +275,16 @@ void AASCharacterPlayer::OnFire()
 	{
 		if (OutHit.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
+		FDamageEvent DamageEvent;
+		OutHit.GetActor()->TakeDamage(50.0f, DamageEvent, GetController(), this);
 	}
+}
+
+float AASCharacterPlayer::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	GetDamaged(FinalDamage);
+	return FinalDamage;
 }
 
 //움직임 구현
