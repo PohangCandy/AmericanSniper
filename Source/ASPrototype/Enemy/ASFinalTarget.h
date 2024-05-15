@@ -3,15 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BehaviorTree/BTTaskNode.h"
-#include "BTTaskNode_OrderToAI.generated.h"
+#include "Enemy/ASEnemyCharacter.h"
+#include "ASFinalTarget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ASPROTOTYPE_API UBTTaskNode_OrderToAI : public UBTTaskNode
+class ASPROTOTYPE_API AASFinalTarget : public AASEnemyCharacter
 {
 	GENERATED_BODY()
 	
+public:
+	AASFinalTarget();
+
 };

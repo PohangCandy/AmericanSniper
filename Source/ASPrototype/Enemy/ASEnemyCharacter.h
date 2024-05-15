@@ -4,19 +4,21 @@
 
 #include "CoreMinimal.h"
 #include "Enemy/ASEnemyBase.h"
+#include "Interface/ASAttackCheckInterface.h"
 #include "ASEnemyCharacter.generated.h"
 /**
  * 
  */
 UCLASS()
-class ASPROTOTYPE_API AASEnemyCharacter : public AASEnemyBase
+class ASPROTOTYPE_API AASEnemyCharacter : public AASEnemyBase, public IASAttackCheckInterface
 {
 	GENERATED_BODY()
 public:
 	AASEnemyCharacter();
 
+	bool AttackCheck();
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 	virtual void Tick(float DeltaTime) override;
-	bool CheckShootingTarget();
 
 private:
 

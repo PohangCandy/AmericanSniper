@@ -4,12 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "EnvironmentQuery/EnvQueryContext.h"
-#include "EnvQueryContext_AttackRange.generated.h"
+#include "EnvQueryContext_Player.generated.h"
 /**
  * 
  */
 UCLASS()
-class ASPROTOTYPE_API UEnvQueryContext_AttackRange : public UEnvQueryContext
+class ASPROTOTYPE_API UEnvQueryContext_Player : public UEnvQueryContext
 {
 	GENERATED_BODY()
 	

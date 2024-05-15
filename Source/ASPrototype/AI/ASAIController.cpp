@@ -30,6 +30,8 @@
 //네비게이션
 #include "NavigationSystem.h"
 
+//최종 타겟
+#include "Enemy/ASFinalTarget.h"
 
 AASAIController::AASAIController()
 {
@@ -42,11 +44,20 @@ AASAIController::AASAIController()
 	{
 		BBAsset = BBAssetRef.Object;
 	}
+	
+
 	static ConstructorHelpers::FObjectFinder<UBehaviorTree> BTAssetRef(TEXT("/Game/ASPrototype/Enemy/AI/BT_Enemy.BT_Enemy"));
 	if (nullptr != BTAssetRef.Object)
 	{
 		BTAsset = BTAssetRef.Object;
 	}
+
+	static ConstructorHelpers::FObjectFinder<UBehaviorTree> BT_FinalTargetAssetRef(TEXT("/Game/ASPrototype/Enemy/AI/BT_FinalTarget.BT_FinalTarget"));
+	if (nullptr != BT_FinalTargetAssetRef.Object)
+	{
+		BT_FinalTargetAsset = BT_FinalTargetAssetRef.Object;
+	}
+
 
 
 	//Detect Widget Component Setting 
@@ -90,17 +101,22 @@ void AASAIController::BeginPlay()
 void AASAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn); //빙의 시작  , 에너미의 소유권은 AIController가 얻게 됨
+	IsTarget = CheckisFinalTarget(InPawn);
 	RunAI();
 }
 void AASAIController::RunAI()
 {
 	UBlackboardComponent* BlackboardPtr = Blackboard.Get();
-	if (UseBlackboard(BBAsset,BlackboardPtr))
-	{	
-		RunBehaviorTree(BTAsset);
-		//bool RunResult = RunBehaviorTree(BTAsset);
-		//ensure(RunResult);
+	if (!UseBlackboard(BBAsset,BlackboardPtr)){	return;}
+	if (IsTarget)
+	{
+		RunBehaviorTree(BT_FinalTargetAsset);
 	}
+	else
+	{
+		RunBehaviorTree(BTAsset);
+	}
+
 }
 void AASAIController::StopAI()
 {
@@ -249,6 +265,15 @@ void AASAIController::StopDetection()
 		CurSituation = CurDetectSituation::TargetGetOutOfRange;
 	}
 }
+bool AASAIController::CheckisFinalTarget(APawn* InPawn)
+{
+	AASFinalTarget* Target = Cast<AASFinalTarget>(InPawn);
+	if (Target == nullptr)
+	{
+		return false;
+	}
+	return true;
+}
 void AASAIController::Tick(float DeltaTime)
 {
 	if (CurSituation !=CurDetectSituation::NoneInRange)  
@@ -285,9 +310,8 @@ void AASAIController::Tick(float DeltaTime)
 		break;
 
 	case CurDetectSituation::TargetIsSuspected:
-		if (!EventBySound)
+		if (!EventBySound && SetAlertLvl(AlertLvl::Low))
 		{
-			SetAlertLvl(AlertLvl::Low);
 			LastKnownPosition = PlayerRef->GetActorLocation();
 		}
 		UiRef->OffVisible();
@@ -409,10 +433,11 @@ UASDetectWidget* AASAIController::getWidget()
 	return UiRef;
 }
 
-void AASAIController::SetAlertLvl(AlertLvl NewLVl)
+bool AASAIController::SetAlertLvl(AlertLvl NewLVl)
 {
-	if (NewLVl < Alertlvl) { return; }
+	if (NewLVl < Alertlvl) { return false; }
 	Alertlvl = NewLVl;
+	return true;
 }
 
 AActor* AASAIController::GetPlayer()

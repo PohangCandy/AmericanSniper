@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BTTask_FinishState.h"
-#include "ASAIController.h"
+#include "AI/BT/BTTask_FinishState.h"
+#include "AI/ASAIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Enemy/ASEnemyCharacter.h"
 #include "Components/WidgetComponent.h"
