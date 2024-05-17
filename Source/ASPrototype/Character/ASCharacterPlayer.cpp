@@ -20,6 +20,9 @@
 #include "Math/UnrealMathUtility.h"
 
 #include "Engine/DamageEvents.h"
+#include "ASItemBox.h"
+
+#include "EngineUtils.h"
 
 
 AASCharacterPlayer::AASCharacterPlayer()
@@ -62,6 +65,7 @@ AASCharacterPlayer::AASCharacterPlayer()
 	ItemCheckSphere = CreateDefaultSubobject<UCapsuleComponent>(TEXT("ItemCheckSphere"));
 	ItemCheckSphere->SetupAttachment(RootComponent);
 	ItemCheckSphere->SetCollisionProfileName(TEXT("CheckItem"));
+	//ItemCheckSphere->SetCollisionProfileName(TEXT("ABCapsule"));
 	ItemCheckSphere->SetCapsuleSize(10.0f,10.0f);
 	ItemCheckSphere->SetRelativeLocation(FVector(0.0f, 0.0f, -90.0f));
 	ItemCheckSphere->SetRelativeScale3D(FVector(60.0f, 60.0f, 60.0f));
@@ -335,7 +339,7 @@ void AASCharacterPlayer::AttackCheck()
 
 void AASCharacterPlayer::MakeItemTrace()
 {
-	FHitResult OutHit;
+	FHitResult HitResult;
 	FVector Location;
 	FRotator Rotation;
 	playerController->GetPlayerViewPoint(Location, Rotation);
@@ -343,20 +347,42 @@ void AASCharacterPlayer::MakeItemTrace()
 	FVector Start = Location;
 	FVector End = Start + (Rotation.Vector() * 1000);
 
-	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
+	//UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
 
 	FCollisionQueryParams CollisionParams(NAME_None, false, this);
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
 
-	bool isHit = (GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams));
+	bool isHit = (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_GameTraceChannel6, CollisionParams));
 
 	if (isHit)
 	{
-		if (OutHit.bBlockingHit)
-			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
-		FDamageEvent DamageEvent;
-		//OutHit.GetActor()->TakeDamage(GetStrength(), DamageEvent, GetController(), this);
+		AActor* HitActor = HitResult.GetActor();
+
+		if (HitResult.bBlockingHit)
+			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("Trace hitting: %s"), *HitResult.GetActor()->GetName()));
+
+		// 감지된 액터가 유효하고, AItemActor 타입인지 확인
+		if (HitActor && HitActor->IsA(AASItemBox::StaticClass()))
+		{
+			// 감지된 액터를 AItemActor 타입으로 캐스팅
+			AASItemBox* ItemActor = Cast<AASItemBox>(HitActor);
+			if (ItemActor)
+			{
+				// 아이템 액터에서 원하는 함수를 호출
+				ItemActor->OnTraceHit();
+				return;
+			}
+		}
+	}
+
+	for (TActorIterator<AASItemBox> It(GetWorld()); It; ++It)
+	{
+		AASItemBox* ItemActor = *It;
+		if (ItemActor)
+		{
+			ItemActor->OutofTrace();
+		}
 	}
 
 }
