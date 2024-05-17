@@ -16,24 +16,23 @@ AASEnemyCharacter::AASEnemyCharacter()
 float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 {
 	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-
-	EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitResult);
-	FString BoneName;
-	switch (PhysicalSurface)
-	{
-	case SurfaceType1:
-		//BoneName = FString::FromInt(PhysicalSurface);
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Head")));
-		break;
-	case SurfaceType2:
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: ArmsAndLimb")));
-		break;
-	case SurfaceType3:
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Body")));
-		break;
-	default:
-		break;
-	}
+	//EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitResult);
+	//FString BoneName;
+	//switch (PhysicalSurface)
+	//{
+	//case SurfaceType1:
+	//	//BoneName = FString::FromInt(PhysicalSurface);
+	//	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Head")));
+	//	break;
+	//case SurfaceType2:
+	//	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: ArmsAndLimb")));
+	//	break;
+	//case SurfaceType3:
+	//	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Body")));
+	//	break;
+	//default:
+	//	break;
+	//}
 
 	return DamageAmount;
 }
