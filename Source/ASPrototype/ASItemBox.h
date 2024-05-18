@@ -14,6 +14,7 @@ struct FItemData : public FTableRowBase
 	GENERATED_BODY()
 
 public:
+	FItemData():ItemName(TEXT(".")), MeshPath(TEXT(".")) {}
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString ItemName;
 
@@ -88,9 +89,13 @@ private:
 
 	FString ItemDataName;
 
+	UPROPERTY()
+	UDataTable* ASItemDataTable;
+
 public:
 	bool GetPlayerCanGrip();
 	void SetPlayerCanGrip(bool checkPlayerCanGrip);
+	void SetItemMesh(FString itemname);
 
 	int GetItemCount();
 	void SetItemCount(int newNum);
@@ -100,5 +105,7 @@ public:
 
 	void OnTraceHit();
 	void OutofTrace();
+
+	bool GetItemData(const FString& ItemName, FItemData& OutItemData) const;
 
 };

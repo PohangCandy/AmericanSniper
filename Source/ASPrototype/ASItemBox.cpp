@@ -9,8 +9,17 @@
 // Sets default values
 AASItemBox::AASItemBox()
 {
+	//아이템 정보 읽는지 테스트 
 	ItemDataName = TEXT("Bullet");
 	ItemDataNum = 5;
+
+	FString ItemDataPath = TEXT("/Game/GameData/ItemData.ItemData");
+	static ConstructorHelpers::FObjectFinder<UDataTable> DT_ASITEM(*ItemDataPath);
+	if (DT_ASITEM.Succeeded())
+	{
+		ASItemDataTable = DT_ASITEM.Object;
+	}
+
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -154,6 +163,11 @@ void AASItemBox::SetPlayerCanGrip(bool checkPlayerCanGrip)
 	canPlayerGrip = checkPlayerCanGrip;
 }
 
+void AASItemBox::SetItemMesh(FString itemname)
+{
+	
+}
+
 int AASItemBox::GetItemCount()
 {
 	return ItemDataNum;
@@ -186,6 +200,24 @@ void AASItemBox::OutofTrace()
 {
 	ItemWidget->RemoveFromParent();
 	SetPlayerCanGrip(false);
+}
+
+bool AASItemBox::GetItemData(const FString& ItemName, FItemData& OutItemData) const
+{
+	//if (!ItemDataTable)
+	//{
+	//	return false;
+	//}
+
+	//// 데이터 테이블에서 아이템을 찾음
+	//FItemData* ItemDataRow = ItemDataTable->FindRow<FItemData>(FName(*ItemName), TEXT("ItemName"));
+	//if (ItemDataRow)
+	//{
+	//	OutItemData = *ItemDataRow;
+	//	return true;
+	//}
+
+	//return false;
 }
 
 
