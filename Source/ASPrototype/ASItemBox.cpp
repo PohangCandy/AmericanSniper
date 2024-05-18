@@ -9,6 +9,8 @@
 // Sets default values
 AASItemBox::AASItemBox()
 {
+	ItemDataName = TEXT("Bullet");
+	ItemDataNum = 5;
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -53,6 +55,7 @@ AASItemBox::AASItemBox()
 
 	canPlayerGrip = false;
 
+
 }
 
 // Called when the game starts or when spawned
@@ -69,8 +72,8 @@ void AASItemBox::PostInitializeComponents()
 	Super::PostInitializeComponents();
 	Trigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnCharacterOverlap);
 	//Trigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnScreenOverlap);
-	ItemTrigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnScreenOverlap);
-	//Trigger->OnComponentEndOverlap.AddDynamic(this, &AASItemBox::OutCharacterOverlap);
+	//ItemTrigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnScreenOverlap);
+	Trigger->OnComponentEndOverlap.AddDynamic(this, &AASItemBox::OutCharacterOverlap);
 	//Trigger->OnComponentHit.AddDynamic(this, &AASItemBox::OnScreenOverlap);
 	UE_LOG(AS, Warning, TEXT("Post Item"));
 }
@@ -127,15 +130,15 @@ void AASItemBox::OutCharacterOverlap(UPrimitiveComponent* OverlappedComponent, A
 //	}
 //}
 
-void AASItemBox::OnScreenOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	ECollisionChannel CollisionChannel = OtherComp->GetCollisionObjectType();
-	if (CollisionChannel == ECC_GameTraceChannel6)
-	{
-		ItemWidget->AddToViewport();
-		UE_LOG(AS, Warning, TEXT("Collision with Item"));
-	}
-}
+//void AASItemBox::OnScreenOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+//{
+//	ECollisionChannel CollisionChannel = OtherComp->GetCollisionObjectType();
+//	if (CollisionChannel == ECC_GameTraceChannel6)
+//	{
+//		ItemWidget->AddToViewport();
+//		UE_LOG(AS, Warning, TEXT("Collision with Item"));
+//	}
+//}
 
 void AASItemBox::OnEffectFinished(UParticleSystemComponent* PSystem)
 {
@@ -151,15 +154,38 @@ void AASItemBox::SetPlayerCanGrip(bool checkPlayerCanGrip)
 	canPlayerGrip = checkPlayerCanGrip;
 }
 
+int AASItemBox::GetItemCount()
+{
+	return ItemDataNum;
+}
+
+void AASItemBox::SetItemCount(int newNum)
+{
+	ItemDataNum = newNum;
+}
+
+FString AASItemBox::GetItemName()
+{
+	return ItemDataName;
+}
+
+void AASItemBox::SetItemName(FString newName)
+{
+	ItemDataName = newName;
+}
+
 void AASItemBox::OnTraceHit()
 {
 	ItemWidget->AddToViewport();
+	SetPlayerCanGrip(true);
+	ItemWidget->UpdateItemName(GetItemName());
 	//UE_LOG(AS, Warning, TEXT("Collision with Item"));
 }
 
 void AASItemBox::OutofTrace()
 {
 	ItemWidget->RemoveFromParent();
+	SetPlayerCanGrip(false);
 }
 
 

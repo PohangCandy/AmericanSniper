@@ -66,6 +66,7 @@ private:
 	void ChangeUI();
 	void AttackCheck();
 	void MakeItemTrace();
+	void GripItem();
 
 private:
 	bool isItemNearby;

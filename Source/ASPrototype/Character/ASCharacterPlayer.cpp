@@ -239,6 +239,8 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Reload);
 	PlayerInputComponent->BindAction(TEXT("Heal"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Heal);
 	PlayerInputComponent->BindAction(TEXT("GetDamage"), EInputEvent::IE_Pressed, this, &AASCharacterBase::TestingGetDamage);
+	PlayerInputComponent->BindAction(TEXT("GetItem"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::GripItem);
+
 
 
 	//향상된 입력 시스템 사용
@@ -362,10 +364,10 @@ void AASCharacterPlayer::MakeItemTrace()
 		if (HitResult.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("Trace hitting: %s"), *HitResult.GetActor()->GetName()));
 
-		// 감지된 액터가 유효하고, AItemActor 타입인지 확인
+		// 감지된 액터가 유효하고, AASItemBox 타입인지 확인
 		if (HitActor && HitActor->IsA(AASItemBox::StaticClass()))
 		{
-			// 감지된 액터를 AItemActor 타입으로 캐스팅
+			// 감지된 액터를 AASItemBox 타입으로 캐스팅
 			AASItemBox* ItemActor = Cast<AASItemBox>(HitActor);
 			if (ItemActor)
 			{
@@ -385,6 +387,44 @@ void AASCharacterPlayer::MakeItemTrace()
 		}
 	}
 
+}
+
+void AASCharacterPlayer::GripItem()
+{
+	// 플레이어 캐릭터가 E 키를 누르면 현재 위치의 아이템을 검사하여 bCanGrip이 true인 아이템의 정보를 가져옴
+	TArray<AActor*> OverlappingActors;
+	GetOverlappingActors(OverlappingActors, AASItemBox::StaticClass());
+
+	for (AActor* Actor : OverlappingActors)
+	{
+		AASItemBox* Item = Cast<AASItemBox>(Actor);
+		if (Item && Item->GetPlayerCanGrip())
+		{
+			FString ItemName = Item->GetItemName();
+
+			// TCHAR 배열로 변환
+			const TCHAR* ItemNamePtr = *ItemName;
+
+			UE_LOG(AS, Warning, TEXT("Gripped Item: %s, Count: %d"), ItemNamePtr, Item->GetItemCount());
+			FItemData ItemData;
+			if (ItemName == "Bullet")
+			{
+				SetBulletNum(GetBulletNum() + Item->GetItemCount());
+				NumBulletChanged.Broadcast();
+			}
+			// 붕대 아이템을 잡았을 때
+			else if (ItemName == "Bandage")
+			{
+				SetItemNum(GetItemNum() + Item->GetItemCount());
+			}
+			//FItemData ItemData;
+			//if (AASItemBox::GetItemData(Item->GetName(), ItemData))
+			//{
+			//	// 아이템의 정보를 출력하거나 사용하는 로직을 여기에 추가
+			//	UE_LOG(LogTemp, Warning, TEXT("Gripped Item: %s, Count: %d"), *Item->GetName(), Item->GetItemCount());
+			//}
+		}
+	}
 }
 
 float AASCharacterPlayer::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)

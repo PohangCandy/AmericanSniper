@@ -34,8 +34,8 @@ protected:
 	void UpdateMagnificationUI();
 
 private:
-	TWeakObjectPtr<class UASCharacterStatComponent> CurrentCharacterStat;
-	TWeakObjectPtr<class AASPlayerState> CurrentPlayerState;
+	//TWeakObjectPtr<class UASCharacterStatComponent> CurrentCharacterStat;
+	//TWeakObjectPtr<class AASPlayerState> CurrentPlayerState;
 	TWeakObjectPtr<class AASCharacterBase> CurrentPlayerBase;
 
 	UPROPERTY()

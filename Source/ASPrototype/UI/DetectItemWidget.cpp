@@ -10,3 +10,8 @@ void UDetectItemWidget::NativeConstruct()
 	PressButtonText = Cast<UEditableTextBox>(GetWidgetFromName(TEXT("TB_ButtonName")));
 	ItemName = Cast<UTextBlock>(GetWidgetFromName(TEXT("Txt_ItemName")));
 }
+
+void UDetectItemWidget::UpdateItemName(FString newName)
+{
+	ItemName->SetText(FText::FromString(newName));
+}

@@ -23,5 +23,10 @@ private:
 
 	UPROPERTY()
 	class UTextBlock* ItemName;
+
+	class AASItemBox* CurItem;
+
+public:
+	void UpdateItemName(FString newName);
 	
 };

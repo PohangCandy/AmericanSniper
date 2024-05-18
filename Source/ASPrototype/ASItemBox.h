@@ -4,7 +4,24 @@
 
 #include "Game/ASGameMode.h"
 #include "GameFramework/Actor.h"
+#include "Engine/DataTable.h"
 #include "ASItemBox.generated.h"
+
+
+USTRUCT(BlueprintType)
+struct FItemData : public FTableRowBase
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString ItemName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString MeshPath;
+
+	// 추가적인 아이템 속성들을 정의할 수 있음
+};
 
 UCLASS()
 class ASPROTOTYPE_API AASItemBox : public AActor
@@ -46,8 +63,8 @@ private:
 	UFUNCTION()
 	void OutCharacterOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-	UFUNCTION()
-	void OnScreenOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	//UFUNCTION()
+	//void OnScreenOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	//void OnScreenOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 
@@ -67,9 +84,19 @@ private:
 
 	bool canPlayerGrip;
 
+	int ItemDataNum;
+
+	FString ItemDataName;
+
 public:
 	bool GetPlayerCanGrip();
 	void SetPlayerCanGrip(bool checkPlayerCanGrip);
+
+	int GetItemCount();
+	void SetItemCount(int newNum);
+
+	FString GetItemName();
+	void SetItemName(FString newName);
 
 	void OnTraceHit();
 	void OutofTrace();
