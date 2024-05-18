@@ -54,7 +54,7 @@ bool AASEnemyCharacter::AttackCheck()
 {
 	FHitResult OutHit;
 	FDamageEvent DamageEvent;
-	FVector Start = Gun->GetComponentLocation();
+	FVector Start = WeaponInfo->WeaponModel->GetComponentLocation();
 	FVector ForwardVector = GetActorForwardVector();
 	FVector End = (Start + (ForwardVector * 1000.0f));
 

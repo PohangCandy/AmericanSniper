@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Tool/ASWeaponBase.h" //무기
 //이동 지점 설정
 //#include "Enemy/PatrolPath.h"
 //각 에너미들을 판별하기 위해 ID값을 넣어줌
@@ -43,7 +44,6 @@ private:
 	uint32 MaxHp;
 	uint32 CurHp;
 	uint8 Damage;
-	
 
 
 public:	
@@ -74,10 +74,20 @@ public:
 	TObjectPtr<class UAnimMontage> AttackMontage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
-	TObjectPtr<class UStaticMeshComponent> Gun;
+	TObjectPtr<class UStaticMeshComponent> CurrentWeapon;
+
+	TObjectPtr<class APistol> Pistol; 
+	TObjectPtr<class AAssultRifle> AssultRifle;
+	UPROPERTY()
+	TObjectPtr<class AASWeaponBase> WeaponInfo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = name)
 	FString Name;
+
+
+
+
+
 
 	void Attack();
 
@@ -90,6 +100,7 @@ public:
 	//virtual FGenericTeamId GetGenericTeamId() const override { return TeamId; }
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widget)
 	TObjectPtr<class UWidgetComponent> QuestionMark;
+
 
 
 protected:

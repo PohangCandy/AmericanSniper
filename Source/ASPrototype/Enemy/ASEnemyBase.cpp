@@ -10,6 +10,10 @@
 
 #include "Components/WidgetComponent.h"
 
+#include "Tool/Pistol.h"
+#include "Tool/AssultRifle.h"
+#include "Tool/Sniper.h"
+
 // Sets default values
 AASEnemyBase::AASEnemyBase()
 {
@@ -76,22 +80,16 @@ AASEnemyBase::AASEnemyBase()
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
 	}
 
-
-
-    //DetectBar->SetRelativeLocation(FVector(0.0f, 0.0f, 200.0f));
-
-
-	//Weapon Setting
-	Gun = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Gun"));
-	Gun->SetupAttachment(GetMesh(), FName(TEXT("Weapon_Socket")));
-
-	//Gun->SetupAttachment(RootComponent);
-
-	//생성자에서 캐스팅 시 문제발생 (원인 모름) <-
-	//AActor* owner = GetOwner();
-	//ensure(owner);
-	//AiRef = Cast<AASAIController>(GetOwner());
-	//ensure(AiRef);
+	//무기 세팅 
+	CurrentWeapon = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CurrentWeapon"));
+	Pistol= CreateDefaultSubobject<APistol>(TEXT("Pistol"));
+	AssultRifle = CreateDefaultSubobject<AAssultRifle>(TEXT("AssultRifle"));
+	ensure(Pistol);
+	ensure(AssultRifle);
+	CurrentWeapon->SetStaticMesh(AssultRifle->WeaponModel->GetStaticMesh());
+	CurrentWeapon->SetupAttachment(GetMesh(), FName(TEXT("Weapon_Socket")));
+	WeaponInfo = AssultRifle;
+	ensure(WeaponInfo);
 
 	WalkSpeed = 300.0f;
 	RunSpeed = 500.0f;
@@ -121,9 +119,10 @@ void AASEnemyBase::BeginPlay()
 {	
 	Super::BeginPlay();
 	AiRef = Cast<AASAIController>(GetOwner());
-	//UiRef = Cast<UASDetectWidget>(AiRef->getWidget());
-	//ensure(UiRef);
-	//UiRef->OnChanged.AddUObject(AiRef, &AASAIController::SetBB_IsDetect);
+	//무기변경 문제, None이 들어옴
+	//WeaponInfo = Pistol;
+	//CurrentWeapon->SetStaticMesh(Pistol->WeaponModel->GetStaticMesh());
+	//CurrentWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepWorldTransform, FName(TEXT("Weapon_Socket")));
 }
 
 // Called every frame
@@ -131,12 +130,6 @@ void AASEnemyBase::Tick(float DeltaTime)
 {
 	
 	Super::Tick(DeltaTime);
-
-	//이 함수는 task에 넣는게 바람직해 보임 . enemy를 식별하지 못했을 때만 동작해야 하므로.
-	//DistanceAlongSpline = (SplineSpeed * DeltaTime) + DistanceAlongSpline;
-	//FVector NewLoc = Spline->GetLocationAtDistanceAlongSpline(DistanceAlongSpline, ESplineCoordinateSpace::Local);
-	//AiRef->SetBB_PathLoc(NewLoc);
-	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("LOCATION: %f"), DistanceAlongSpline));
 }
 
 // Called to bind functionality to input
@@ -175,7 +168,7 @@ void AASEnemyBase::SetStateAnimation(EState NewState)
 	switch (NewState)
 	{	
 	case EState::Idle:
-		Gun->SetHiddenInGame(true);
+		WeaponInfo->WeaponModel->SetHiddenInGame(true);
 		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 		//AiRef->RangeSizeDown();
 		break;
@@ -183,13 +176,13 @@ void AASEnemyBase::SetStateAnimation(EState NewState)
 		GetCharacterMovement()->MaxWalkSpeed = 150.0f;
 		break;
 	case EState::Chasing:
-		Gun->SetHiddenInGame(false);
-		GetCharacterMovement()->MaxWalkSpeed = RunSpeed; //이것만 상태변화에서 가장 의미있어보임.
+		WeaponInfo->WeaponModel->SetHiddenInGame(false);
+		GetCharacterMovement()->MaxWalkSpeed = RunSpeed; // 상태변화에서 가장 의미
 		//AiRef->RangeSizeUP();
 		break;
 
 	case EState::Attack:
-		Gun->SetHiddenInGame(false);
+		WeaponInfo->WeaponModel->SetHiddenInGame(false);
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
 		//AiRef->RangeSizeUP();
 		break;
