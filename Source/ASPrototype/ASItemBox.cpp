@@ -4,6 +4,7 @@
 #include "ASItemBox.h"
 #include "Character/ASCharacterPlayer.h"
 #include "UI/DetectItemWidget.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AASItemBox::AASItemBox()
@@ -12,12 +13,15 @@ AASItemBox::AASItemBox()
 	PrimaryActorTick.bCanEverTick = false;
 
 	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("TRIGGER"));
+	ItemTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("ITEMTRIGGER"));
 	Box = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BOX"));
 
 	RootComponent = Trigger;
+	ItemTrigger->SetupAttachment(RootComponent);
 	Box->SetupAttachment(RootComponent);
 
 	Trigger->SetBoxExtent(FVector(40.0f, 42.0f, 30.0f));
+	ItemTrigger->SetBoxExtent(FVector(40.0f, 42.0f, 30.0f));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> SM_BOX(TEXT("/Game/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/01/SM_Modern_Weapons_Rifle_01.SM_Modern_Weapons_Rifle_01"));
 	if (SM_BOX.Succeeded())
 	{
@@ -27,6 +31,7 @@ AASItemBox::AASItemBox()
 	Box->SetRelativeLocation(FVector(0.0f, -3.5f, -30.0f));
 
 	Trigger->SetCollisionProfileName(TEXT("ItemBox"));
+	ItemTrigger->SetCollisionProfileName(TEXT("CheckPlayer"));
 	Box->SetCollisionProfileName(TEXT("NoCollision"));
 
 	UE_LOG(AS, Warning, TEXT("Make Item"));
@@ -43,8 +48,10 @@ AASItemBox::AASItemBox()
 	}
 
 
-	//static ConstructorHelpers::FClassFinder<UDetectItemWidget> UI_Item_C(TEXT("/Game/UI/WB_ItemDetect.WB_ItemDetect"));
-	//ItemWidgetClass = UI_Item_C.Class;
+	static ConstructorHelpers::FClassFinder<UDetectItemWidget> UI_Item_C(TEXT("/Game/UI/WB_ItemDetect.WB_ItemDetect_C"));
+	ItemWidgetClass = UI_Item_C.Class;
+
+	canPlayerGrip = false;
 
 }
 
@@ -52,7 +59,8 @@ AASItemBox::AASItemBox()
 void AASItemBox::BeginPlay()
 {
 	Super::BeginPlay();
-	/*ItemWidget = CreateWidget<UDetectItemWidget>(this, ItemWidgetClass);*/
+	PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+	ItemWidget = CreateWidget<UDetectItemWidget>(PlayerController, ItemWidgetClass);
 	
 }
 
@@ -60,7 +68,10 @@ void AASItemBox::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	Trigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnCharacterOverlap);
-	Trigger->OnComponentEndOverlap.AddDynamic(this, &AASItemBox::OutCharacterOverlap);
+	//Trigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnScreenOverlap);
+	ItemTrigger->OnComponentBeginOverlap.AddDynamic(this, &AASItemBox::OnScreenOverlap);
+	//Trigger->OnComponentEndOverlap.AddDynamic(this, &AASItemBox::OutCharacterOverlap);
+	//Trigger->OnComponentHit.AddDynamic(this, &AASItemBox::OnScreenOverlap);
 	UE_LOG(AS, Warning, TEXT("Post Item"));
 }
 
@@ -78,26 +89,77 @@ void AASItemBox::SetPlayerCanGripUI()
 
 void AASItemBox::OnCharacterOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(AS, Warning, TEXT("Collision with Item"));
+
+	//ECollisionChannel CollisionChannel = OtherComp->GetCollisionObjectType();
+	//if (CollisionChannel == ECC_GameTraceChannel6)
+	//{
+	//	ItemWidget->AddToViewport();
+	//	UE_LOG(AS, Warning, TEXT("Collision with Item"));
+	//}
 
 	auto ABCharacter = Cast<AASCharacterPlayer>(OtherActor);
 	if (nullptr != ABCharacter )
 	{
 			Effect->Activate(true);
-			//Effect->OnSystemFinished.AddDynamic(this, &AASItemBox::OnEffectFinished);
-			//ItemWidget->AddToViewport();
 	}
 }
 
 void AASItemBox::OutCharacterOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	UE_LOG(AS, Warning, TEXT("Out from Collision"));
+
+	//ECollisionChannel CollisionChannel = OtherComp->GetCollisionObjectType();
+	//if (CollisionChannel == ECC_GameTraceChannel6)
+	//{
+	//	UE_LOG(AS, Warning, TEXT("Out from Collision"));
+	//	ItemWidget->RemoveFromParent();
+	//}
+	
 	Effect->Deactivate();
-	//ItemWidget->RemoveFromParent();
+}
+
+//void AASItemBox::OnScreenOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+//{
+//	ECollisionChannel CollisionChannel = OtherComp->GetCollisionObjectType();
+//	if (CollisionChannel == ECC_GameTraceChannel6)
+//	{
+//		ItemWidget->AddToViewport();
+//		UE_LOG(AS, Warning, TEXT("Collision with Item"));
+//	}
+//}
+
+void AASItemBox::OnScreenOverlap(UPrimitiveComponent* OverlappedCom, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	ECollisionChannel CollisionChannel = OtherComp->GetCollisionObjectType();
+	if (CollisionChannel == ECC_GameTraceChannel6)
+	{
+		ItemWidget->AddToViewport();
+		UE_LOG(AS, Warning, TEXT("Collision with Item"));
+	}
 }
 
 void AASItemBox::OnEffectFinished(UParticleSystemComponent* PSystem)
 {
+}
+
+bool AASItemBox::GetPlayerCanGrip()
+{
+	return canPlayerGrip;
+}
+
+void AASItemBox::SetPlayerCanGrip(bool checkPlayerCanGrip)
+{
+	canPlayerGrip = checkPlayerCanGrip;
+}
+
+void AASItemBox::OnTraceHit()
+{
+	ItemWidget->AddToViewport();
+	//UE_LOG(AS, Warning, TEXT("Collision with Item"));
+}
+
+void AASItemBox::OutofTrace()
+{
+	ItemWidget->RemoveFromParent();
 }
 
 
