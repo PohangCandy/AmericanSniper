@@ -65,4 +65,13 @@ protected:
 	//class AASCharacterBase* Actor;
 
 	//trigger Âü°í 
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	FRotator ControlRotation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	float LookAtPitch;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Character)
+	float LookAtYaw;
 };

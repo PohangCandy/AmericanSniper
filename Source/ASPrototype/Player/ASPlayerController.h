@@ -88,5 +88,8 @@ private:
 	class UCameraComponent* MainCam;
 
 	UPROPERTY()
+	class UCameraComponent* SnipCam2;
+
+	UPROPERTY()
 	class ACharacter* ControlCharacter;
 };
