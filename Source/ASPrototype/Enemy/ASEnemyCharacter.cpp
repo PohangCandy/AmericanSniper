@@ -7,15 +7,38 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/DamageEvents.h"
 #include "Engine/EngineTypes.h"
+#include "Components/SkinnedMeshComponent.h"
 
 AASEnemyCharacter::AASEnemyCharacter()
 {
 	AIControllerClass = AASAIController::StaticClass();
 	
 }
-float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+
+
+void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo)
 {
-	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(HitComponent->GetName()));
+	EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitInfo);
+	switch (PhysicalSurface)
+	{
+	case SurfaceType1:
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Head")));
+		break;
+	case SurfaceType2:
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: ArmsAndLimb")));
+		break;
+	case SurfaceType3:
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Body")));
+		break;
+	default:
+		break;
+	}
+}
+
+//float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+//{
+//	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	//EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitResult);
 	//FString BoneName;
 	//switch (PhysicalSurface)
@@ -34,8 +57,8 @@ float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	//	break;
 	//}
 
-	return DamageAmount;
-}
+//	return DamageAmount;
+//}
 
 
 void AASEnemyCharacter::Tick(float DeltaTime)
@@ -54,7 +77,7 @@ bool AASEnemyCharacter::AttackCheck()
 {
 	FHitResult OutHit;
 	FDamageEvent DamageEvent;
-	FVector Start = WeaponInfo->WeaponModel->GetComponentLocation();
+	FVector Start = GetMesh()->GetBoneLocation(FName(TEXT("Weapon_Socket")), EBoneSpaces::WorldSpace);//aponInfo->WeaponModel->GetComponentLocation();
 	FVector ForwardVector = GetActorForwardVector();
 	FVector End = (Start + (ForwardVector * 1000.0f));
 
@@ -81,7 +104,6 @@ bool AASEnemyCharacter::AttackCheck()
 void AASEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 
