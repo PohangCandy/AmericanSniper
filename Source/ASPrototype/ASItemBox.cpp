@@ -217,7 +217,7 @@ bool AASItemBox::GetItemData(const FString& ItemName, FItemData& OutItemData) co
 	//	return true;
 	//}
 
-	//return false;
+	return false;
 }
 
 

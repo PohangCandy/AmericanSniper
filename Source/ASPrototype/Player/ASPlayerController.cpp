@@ -47,6 +47,7 @@ void AASPlayerController::BeginPlay()
 	PlayerCharacter = Cast<AASCharacterBase>(GetCharacter());
 	SnipSpringArm = Cast<USpringArmComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipSpringArm")));
 	SnipCam = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipCam")));
+	SnipCam2 = Cast<UCameraComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SnipCam2")));
 	SceneCaptureCam = Cast<USceneCaptureComponent2D>(GetCharacter()->GetDefaultSubobjectByName(TEXT("SceneCaptureComponent2D")));
 	SceneCameraViewPlane = Cast<UStaticMeshComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("Plane1")));
 	Scope = Cast<UStaticMeshComponent>(GetCharacter()->GetDefaultSubobjectByName(TEXT("WeaponAttachment")));
@@ -123,17 +124,25 @@ void AASPlayerController::UIScreenChange()
 		SetScreenMode(EscreenMode::Sniping);
 		//SetViewTarget(SnipCam);
 		SnipCam->SetActive(true);
+		//SnipCam2->SetActive(false);
 		//MagnificationCam->SetActive(false);
 		SnipSpringArm->bUsePawnControlRotation = true;
 		SnipSpringArm->bInheritPitch = false;
+		//SnipSpringArm->bInheritPitch = true;
 		SnipSpringArm->bDoCollisionTest = false;
 		//SnipSpringArm->bInheritYaw = true;
 		//SnipSpringArm->bInheritRoll = true;
 		PlayerCharacter->bUseControllerRotationYaw = true;
 		//bUseControllerRotationYaw = true;
 		MainCam->SetActive(false);
+		//SnipSpringArm1->SetActive(false);
 		SceneCameraViewPlane->SetHiddenInGame(false, true);
 		Scope->SetHiddenInGame(false, true);
+
+		// Attach the CameraBoom to the specific bone of the character's skeleton
+		//SnipSpringArm->AttachToComponent(ControllerOwner->GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, FName("Spine_02"));
+		//SnipSpringArm->SetupAttachment(ControllerOwner->GetMesh(), FName("Spine_02"));
+
 		break;
 	case AASPlayerController::EscreenMode::Sniping:
 		SetScreenMode(EscreenMode::Basic);
