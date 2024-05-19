@@ -18,7 +18,7 @@ AASEnemyCharacter::AASEnemyCharacter()
 
 void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(HitComponent->GetName()));
+	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(HitComponent->GetName()));
 	EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitInfo);
 	switch (PhysicalSurface)
 	{
@@ -68,10 +68,6 @@ void AASEnemyCharacter::Tick(float DeltaTime)
 }
 
 
-void AASEnemyCharacter::GetHitResult(FHitResult HitReuslt)
-{
-	this->HitResult = HitReuslt;
-}
 
 bool AASEnemyCharacter::AttackCheck()
 {
@@ -89,14 +85,14 @@ bool AASEnemyCharacter::AttackCheck()
 	if (OutHit.GetActor() == AiRef->GetPlayer())
 	{
 
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
-			*OutHit.GetActor()->GetName()));
+		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
+		//	*OutHit.GetActor()->GetName()));
 		OutHit.GetActor()->TakeDamage(10.0f, DamageEvent,GetController(),this);
 		return true;
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT(" hitting: Others ")));
+		/*GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT(" hitting: Others ")));*/
 		return false;
 	}
 }
