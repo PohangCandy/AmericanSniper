@@ -7,12 +7,9 @@
 //BB정보 얻기 위해 
 #include "AI/ASAIController.h"
 #include "UI/ASDetectWidget.h"
-
+#include "Tool/ASWeaponData.h"
+#include "Tool/ASWeaponItem.h"
 #include "Components/WidgetComponent.h"
-
-#include "Tool/Pistol.h"
-#include "Tool/AssultRifle.h"
-#include "Tool/Sniper.h"
 
 // Sets default values
 AASEnemyBase::AASEnemyBase()
@@ -80,20 +77,42 @@ AASEnemyBase::AASEnemyBase()
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
 	}
 
-	//무기 세팅 
-	CurrentWeapon = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CurrentWeapon"));
-	Pistol= CreateDefaultSubobject<APistol>(TEXT("Pistol"));
-	AssultRifle = CreateDefaultSubobject<AAssultRifle>(TEXT("AssultRifle"));
-	ensure(Pistol);
-	ensure(AssultRifle);
-	CurrentWeapon->SetStaticMesh(AssultRifle->WeaponModel->GetStaticMesh());
-	CurrentWeapon->SetupAttachment(GetMesh(), FName(TEXT("Weapon_Socket")));
-	WeaponInfo = AssultRifle;
-	ensure(WeaponInfo);
 
+
+
+	//Weapon 
+	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CurrentWeapon"));
+	WeaponMesh->SetupAttachment(GetMesh(), FName(TEXT("Weapon_Socket")));
+
+	//무기1 세팅 
+	static ConstructorHelpers::FObjectFinder<UASWeaponData> StartWeaponRef1(TEXT("/Script/ASPrototype.ASWeaponData'/Game/ASPrototype/Weapon/AssultRifle.AssultRifle'"));
+	if (StartWeaponRef1.Object)
+	{
+		Weapon1 = Cast<UASWeaponData>(StartWeaponRef1.Object);
+		
+		EquipWeapon(Weapon1);
+	}
+	//무기2 세팅 
+	static ConstructorHelpers::FObjectFinder<UASWeaponData> StartWeaponRef2(TEXT("/Script/ASPrototype.ASWeaponData'/Game/ASPrototype/Weapon/Sniper.Sniper'"));
+	if (StartWeaponRef2.Object)
+	{
+		Weapon2 = Cast<UASWeaponData>(StartWeaponRef2.Object);
+	}
+
+
+	//Speed
 	WalkSpeed = 300.0f;
 	RunSpeed = 500.0f;
 }
+
+void AASEnemyBase::EquipWeapon(UASWeaponData* NewWeaponData)
+{
+	if (NewWeaponData)
+	{
+		WeaponMesh->SetSkeletalMesh(NewWeaponData->WeaponModel);
+	}
+}
+
 
 void AASEnemyBase::Attack()
 {
@@ -119,10 +138,6 @@ void AASEnemyBase::BeginPlay()
 {	
 	Super::BeginPlay();
 	AiRef = Cast<AASAIController>(GetOwner());
-	//무기변경 문제, None이 들어옴
-	//WeaponInfo = Pistol;
-	//CurrentWeapon->SetStaticMesh(Pistol->WeaponModel->GetStaticMesh());
-	//CurrentWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepWorldTransform, FName(TEXT("Weapon_Socket")));
 }
 
 // Called every frame
@@ -168,22 +183,24 @@ void AASEnemyBase::SetStateAnimation(EState NewState)
 	switch (NewState)
 	{	
 	case EState::Idle:
-		WeaponInfo->WeaponModel->SetHiddenInGame(true);
+		//WeaponInfo->WeaponModel->SetHiddenInGame(true);
 		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 		//AiRef->RangeSizeDown();
 		break;
 	case EState::Alert:
+		EquipWeapon(Weapon2);
 		GetCharacterMovement()->MaxWalkSpeed = 150.0f;
 		break;
 	case EState::Chasing:
-		WeaponInfo->WeaponModel->SetHiddenInGame(false);
+		//WeaponInfo->WeaponModel->SetHiddenInGame(false);
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed; // 상태변화에서 가장 의미
 		//AiRef->RangeSizeUP();
 		break;
 
 	case EState::Attack:
-		WeaponInfo->WeaponModel->SetHiddenInGame(false);
+		//WeaponInfo->WeaponModel->SetHiddenInGame(false);
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
+
 		//AiRef->RangeSizeUP();
 		break;
 

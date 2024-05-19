@@ -4,7 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Tool/ASWeaponBase.h" //무기
+#include "Tool/ASWeaponData.h"
+#include "Tool/ASWeaponItem.h"
 //이동 지점 설정
 //#include "Enemy/PatrolPath.h"
 //각 에너미들을 판별하기 위해 ID값을 넣어줌
@@ -73,17 +74,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> AttackMontage;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
-	TObjectPtr<class UStaticMeshComponent> CurrentWeapon;
 
-	TObjectPtr<class APistol> Pistol; 
-	TObjectPtr<class AAssultRifle> AssultRifle;
-	UPROPERTY()
-	TObjectPtr<class AASWeaponBase> WeaponInfo;
+
+
+	//무기 세팅
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
+	TObjectPtr<class USkeletalMeshComponent> WeaponMesh;
+	TObjectPtr<class UASWeaponData> Weapon1;
+	TObjectPtr<class UASWeaponData> Weapon2;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = name)
 	FString Name;
 
+	void EquipWeapon(UASWeaponData* NewWeaponData);
 
 
 

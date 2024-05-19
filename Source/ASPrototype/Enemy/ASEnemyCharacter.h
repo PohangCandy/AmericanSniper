@@ -16,8 +16,8 @@ class ASPROTOTYPE_API AASEnemyCharacter : public AASEnemyBase, public IASAttackC
 public:
 	AASEnemyCharacter();
 
-	void GetHitResult(FHitResult HitReuslt);
 	bool AttackCheck();
+	virtual void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo);
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 	virtual void Tick(float DeltaTime) override;
 
