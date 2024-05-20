@@ -127,7 +127,7 @@ void AASPlayerController::UIScreenChange()
 		//SnipCam2->SetActive(false);
 		//MagnificationCam->SetActive(false);
 		SnipSpringArm->bUsePawnControlRotation = true;
-		SnipSpringArm->bInheritPitch = false;
+		//SnipSpringArm->bInheritPitch = false;
 		//SnipSpringArm->bInheritPitch = true;
 		SnipSpringArm->bDoCollisionTest = false;
 		//SnipSpringArm->bInheritYaw = true;
