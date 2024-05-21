@@ -142,6 +142,7 @@ void AASPlayerController::UIScreenChange()
 		// Attach the CameraBoom to the specific bone of the character's skeleton
 		//SnipSpringArm->AttachToComponent(ControllerOwner->GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, FName("Spine_02"));
 		//SnipSpringArm->SetupAttachment(ControllerOwner->GetMesh(), FName("Spine_02"));
+		SnipSpringArm->SetupAttachment(ControllerOwner->GetMesh(), FName("HeadSocket"));
 
 		break;
 	case AASPlayerController::EscreenMode::Sniping:

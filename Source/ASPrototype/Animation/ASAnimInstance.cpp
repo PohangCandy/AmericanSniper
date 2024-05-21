@@ -85,7 +85,7 @@ void UASAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		if (OwningController)
 		{
 			ControlRotation = OwningController->GetControlRotation();
-			FRotator ActorRotation = Owner->GetActorRotation();
+			//FRotator ActorRotation = Owner->GetActorRotation();
 
 			//LookAtYaw = FRotator::NormalizeAxis(ControlRotation.Yaw - ActorRotation.Yaw);
 			LookAtPitch = ControlRotation.Pitch - 280.0f;
