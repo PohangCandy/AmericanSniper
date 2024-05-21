@@ -41,6 +41,10 @@ public:
 	float SplineSpeed;
 	float DistanceAlongSpline;
 
+	uint32 GetHp();
+	void SetHp(uint32 Hp);
+	void Dead();
+
 private:
 	uint32 MaxHp;
 	uint32 CurHp;

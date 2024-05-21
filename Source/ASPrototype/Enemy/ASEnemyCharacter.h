@@ -16,11 +16,14 @@ class ASPROTOTYPE_API AASEnemyCharacter : public AASEnemyBase, public IASAttackC
 public:
 	AASEnemyCharacter();
 
-	bool AttackCheck();
-	void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo);
-	/*virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);*/
-	virtual void Tick(float DeltaTime) override;
+	void AttackCheck();
+	bool IsPlayer;
 
+	//void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo);
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+	virtual void Tick(float DeltaTime) override;
+	
+	
 
 protected:
 	virtual void BeginPlay() override;

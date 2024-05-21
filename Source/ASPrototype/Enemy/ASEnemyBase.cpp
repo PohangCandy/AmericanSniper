@@ -59,9 +59,9 @@ AASEnemyBase::AASEnemyBase()
 
 	//Stats
 	MaxHp = 100;
-	CurHp = MaxHp;
+	CurHp = 100;
 	Damage = 10;
-	CurState = EState::Idle;
+	CurState = EState::Idle; 
 
 	//스켈레톤 + 애니메이션 적용 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CharaterMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/ASPrototype/Enemy/Enemy/Meshes/SK_HeavyGSoldier_simple.SK_HeavyGSoldier_simple'"));
@@ -103,6 +103,40 @@ AASEnemyBase::AASEnemyBase()
 	//Speed
 	WalkSpeed = 300.0f;
 	RunSpeed = 500.0f;
+}
+
+uint32 AASEnemyBase::GetHp()
+{
+	return CurHp;
+}
+
+void AASEnemyBase::SetHp(uint32 Hp)
+{
+	if (Hp<=0 && CurState!= EState::Dead)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Black, FString::Printf(TEXT("Enemy Dead")));
+		CurState = EState::Dead;  
+		Dead();
+		return;
+	}
+	CurHp = Hp;
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, FString::Printf(TEXT("EnemyHp : %d"), CurHp));
+}
+
+void AASEnemyBase::Dead()
+{
+	//UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	//AnimInstance->StopAllMontages(0.0f);
+	//const float DelayTime = AnimInstance->Montage_Play(DeadMontage);
+	//GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_None);
+	//SetActorEnableCollision(false);
+	//Deda Animation Start
+	const float DelayTime =PlayAnimMontage(DeadMontage);
+	FTimerHandle myTimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(myTimerHandle, FTimerDelegate::CreateLambda([&]()
+		{
+			Destroy();
+		}), DelayTime-0.5, false);
 }
 
 void AASEnemyBase::EquipWeapon(UASWeaponData* NewWeaponData)
@@ -176,6 +210,7 @@ EState AASEnemyBase::GetState()
 {
 	return EState();
 }
+
 
 void AASEnemyBase::SetStateAnimation(EState NewState)
 {

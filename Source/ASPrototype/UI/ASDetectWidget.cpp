@@ -57,7 +57,7 @@ void UASDetectWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	if (Owner!=nullptr) //이곳에 들어왔다는 건 AI의 Beginplay()가 호출됬음을 의미함 
 	{	
 		AiRef = Cast<AASAIController>(Owner);
-		ensure(AiRef); //AI 객체 얻기 성공
+		//ensure(AiRef); //AI 객체 얻기 성공
 		MaxPercent = AiRef->MaxValue;
 	}
 }

@@ -12,29 +12,35 @@
 AASEnemyCharacter::AASEnemyCharacter()
 {
 	AIControllerClass = AASAIController::StaticClass();
-	
+
 }
 
-
-void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo)
+float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(HitComponent->GetName()));
-	EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitInfo);
-	switch (PhysicalSurface)
-	{
-	case SurfaceType1:
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Head")));
-		break;
-	case SurfaceType2:
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: ArmsAndLimb")));
-		break;
-	case SurfaceType3:
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Body")));
-		break;
-	default:
-		break;
-	}
+	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	SetHp(GetHp()-DamageAmount);
+	return DamageAmount;
 }
+
+//void ReceivePointDamage(float Damage, const class UDamageType* DamageType, FVector HitLocation, FVector HitNormal, class UPrimitiveComponent* HitComponent, FName BoneName, FVector ShotFromDirection, class AController* InstigatedBy, AActor* DamageCauser, const FHitResult& HitInfo)
+//{
+//	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, FString::Printf(HitComponent->GetName()));
+//	EPhysicalSurface PhysicalSurface = UGameplayStatics::GetSurfaceType(HitInfo);
+//	switch (PhysicalSurface)
+//	{
+//	case SurfaceType1:
+//		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Head")));
+//		break;
+//	case SurfaceType2:
+//		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: ArmsAndLimb")));
+//		break;
+//	case SurfaceType3:
+//		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: Body")));
+//		break;
+//	default:
+//		break;
+//	}
+//}
 
 //float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 //{
@@ -69,15 +75,15 @@ void AASEnemyCharacter::Tick(float DeltaTime)
 
 
 
-bool AASEnemyCharacter::AttackCheck()
+void AASEnemyCharacter::AttackCheck()
 {
 	FHitResult OutHit;
 	FDamageEvent DamageEvent;
-	FVector Start = GetMesh()->GetBoneLocation(FName(TEXT("Weapon_Socket")), EBoneSpaces::WorldSpace);//aponInfo->WeaponModel->GetComponentLocation();
+	FVector Start = GetActorLocation();//aponInfo->WeaponModel->GetComponentLocation();
 	FVector ForwardVector = GetActorForwardVector();
 	FVector End = (Start + (ForwardVector * 1000.0f));
 
-	FCollisionQueryParams CollisionParams;
+	FCollisionQueryParams CollisionParams(SCENE_QUERY_STAT(Attack), false, this);
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
 	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel4, CollisionParams); //   EnemyAttack 
@@ -85,15 +91,15 @@ bool AASEnemyCharacter::AttackCheck()
 	if (OutHit.GetActor() == AiRef->GetPlayer())
 	{
 
-		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
-		//	*OutHit.GetActor()->GetName()));
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Blue, FString::Printf(TEXT(" hitting: %s"),
+			*OutHit.GetActor()->GetName()));
 		OutHit.GetActor()->TakeDamage(10.0f, DamageEvent,GetController(),this);
-		return true;
+		IsPlayer = true;
 	}
 	else
 	{
-		/*GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT(" hitting: Others ")));*/
-		return false;
+		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT(" hitting: Others ")));
+		IsPlayer = false;
 	}
 }
 

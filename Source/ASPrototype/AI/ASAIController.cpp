@@ -195,6 +195,8 @@ void AASAIController::SetupPerception()
 }
 void AASAIController::On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimulus)
 {
+	if (EnemyRef->CurState==EState::Dead){return;}
+
 	auto SensedClass = UAIPerceptionSystem::GetSenseClassForStimulus(this, Stimulus);
 
 	//시야 식별인 경우 
@@ -276,6 +278,11 @@ bool AASAIController::CheckisFinalTarget(APawn* InPawn)
 }
 void AASAIController::Tick(float DeltaTime)
 {
+	if (EnemyRef->CurState==EState::Dead)
+	{
+		StopAI();
+	}
+
 	if (CurSituation !=CurDetectSituation::NoneInRange)  
 	{
 		//Calculate Angle Value for UI Rotation
