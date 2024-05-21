@@ -59,7 +59,8 @@ AASItemBox::AASItemBox()
 	}
 
 
-	static ConstructorHelpers::FClassFinder<UDetectItemWidget> UI_Item_C(TEXT("/Game/UI/WB_ItemDetect.WB_ItemDetect_C"));
+	//static ConstructorHelpers::FClassFinder<UDetectItemWidget> UI_Item_C(TEXT("/Game/UI/PlayerView/WB_ItemDetect.WB_ItemDetect_C"));
+	static ConstructorHelpers::FClassFinder<UDetectItemWidget> UI_Item_C(TEXT("/Game/UI/Item/WB_ItemDetect.WB_ItemDetect_C"));
 	ItemWidgetClass = UI_Item_C.Class;
 
 	canPlayerGrip = false;
