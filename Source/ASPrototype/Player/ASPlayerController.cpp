@@ -12,8 +12,10 @@
 AASPlayerController::AASPlayerController()
 {
 	
-	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/WB_GameBase_UI.WB_GameBase_UI_C"));
-	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
+	//static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/WB_GameBase_UI.WB_GameBase_UI_C"));
+	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_HUD_C(TEXT("/Game/UI/PlayerView/WB_GameBase_UI.WB_GameBase_UI_C"));
+	//static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/WB_Sniping_UI.WB_Sniping_UI_C"));
+	static ConstructorHelpers::FClassFinder<UASMainGameWidget> UI_Snip_C(TEXT("/Game/UI/PlayerView/WB_Sniping_UI.WB_Sniping_UI_C"));
 	BasicHUDWidgetClass = UI_HUD_C.Class;
 	SnipHUDWidgetClass = UI_Snip_C.Class;
 	
@@ -127,7 +129,7 @@ void AASPlayerController::UIScreenChange()
 		//SnipCam2->SetActive(false);
 		//MagnificationCam->SetActive(false);
 		SnipSpringArm->bUsePawnControlRotation = true;
-		SnipSpringArm->bInheritPitch = false;
+		//SnipSpringArm->bInheritPitch = false;
 		//SnipSpringArm->bInheritPitch = true;
 		SnipSpringArm->bDoCollisionTest = false;
 		//SnipSpringArm->bInheritYaw = true;
@@ -142,6 +144,7 @@ void AASPlayerController::UIScreenChange()
 		// Attach the CameraBoom to the specific bone of the character's skeleton
 		//SnipSpringArm->AttachToComponent(ControllerOwner->GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, FName("Spine_02"));
 		//SnipSpringArm->SetupAttachment(ControllerOwner->GetMesh(), FName("Spine_02"));
+		SnipSpringArm->SetupAttachment(ControllerOwner->GetMesh(), FName("HeadSocket"));
 
 		break;
 	case AASPlayerController::EscreenMode::Sniping:

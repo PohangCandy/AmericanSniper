@@ -20,7 +20,7 @@
 #include "Math/UnrealMathUtility.h"
 
 #include "Engine/DamageEvents.h"
-#include "ASItemBox.h"
+#include "Item/ASItemBox.h"
 
 #include "EngineUtils.h"
 
@@ -350,9 +350,7 @@ void AASCharacterPlayer::MakeItemTrace()
 	FVector End = Start + (Rotation.Vector() * 1000);
 
 	//UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
-
 	FCollisionQueryParams CollisionParams(NAME_None, false, this);
-
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
 
 	bool isHit = (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_GameTraceChannel6, CollisionParams));
@@ -364,14 +362,14 @@ void AASCharacterPlayer::MakeItemTrace()
 		if (HitResult.bBlockingHit)
 			GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("Trace hitting: %s"), *HitResult.GetActor()->GetName()));
 
-		// 감지된 액터가 유효하고, AASItemBox 타입인지 확인
+		
 		if (HitActor && HitActor->IsA(AASItemBox::StaticClass()))
 		{
-			// 감지된 액터를 AASItemBox 타입으로 캐스팅
+			
 			AASItemBox* ItemActor = Cast<AASItemBox>(HitActor);
 			if (ItemActor)
 			{
-				// 아이템 액터에서 원하는 함수를 호출
+				
 				ItemActor->OnTraceHit();
 				return;
 			}
@@ -410,7 +408,7 @@ void AASCharacterPlayer::GripItem()
 			if (ItemName == "Bullet")
 			{
 				SetBulletNum(GetBulletNum() + Item->GetItemCount());
-				NumBulletChanged.Broadcast();
+				//NumBulletChanged.Broadcast();
 			}
 			// 붕대 아이템을 잡았을 때
 			else if (ItemName == "Bandage")

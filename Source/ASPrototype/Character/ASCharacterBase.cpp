@@ -145,6 +145,7 @@ void AASCharacterBase::SetHp(int Hp)
 void AASCharacterBase::SetBulletNum(int Num)
 {
 	CurBulletNum = Num;
+	NumBulletChanged.Broadcast();
 }
 
 void AASCharacterBase::SetMagazineNum(int Num)
