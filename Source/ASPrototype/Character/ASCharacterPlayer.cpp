@@ -332,10 +332,13 @@ void AASCharacterPlayer::AttackCheck()
 	FRotator Rotation;
 	playerController->GetPlayerViewPoint(Location, Rotation);
 
-	FVector Start = Location;
-	FVector End = Start + (Rotation.Vector() * 1000);
+	FVector ViewStart = Location;
+	FVector End = ViewStart + (Rotation.Vector() * 1000);
 
-
+	//FVector Weapon = CurrentWeapon->GetActorLocation();
+	USkeletalMeshComponent* WeaponMesh = CurrentWeapon->GetWeaponMesh();
+	FVector Start = WeaponMesh->GetSocketLocation("Gun_pointSocket");
+	//FVector Start = Weapon;
 	//FVector Start = GetActorLocation();
 	//UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
 	//FVector End = ((GetActorForwardVector() * 1000.0f) + Start);

@@ -39,3 +39,8 @@ void AASWeapon::Tick(float DeltaTime)
 
 }
 
+USkeletalMeshComponent* AASWeapon::GetWeaponMesh()
+{
+	return Rifle;
+}
+
