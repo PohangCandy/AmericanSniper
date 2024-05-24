@@ -13,7 +13,8 @@
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h" //시야
 #include "Perception/AISenseConfig_Hearing.h" //사운드
-#include "Perception/AISense_Touch.h"//감각
+#include "Perception/AISenseConfig_Touch.h"//감각
+#include "Perception/AISense_Touch.h"
 
 #include "Enemy/ASEnemyCharacter.h"
 #include "Character/ASCharacterPlayer.h" //SetAngle 
@@ -182,7 +183,7 @@ void AASAIController::SetupPerception()
 	HearingConfig = CreateDefaultSubobject<UAISenseConfig_Hearing>(TEXT("Hearing Config"));
 	if (HearingConfig)
 	{
-		HearingConfig->HearingRange = 2000.f;
+		HearingConfig->HearingRange = 1000.f;
 		HearingConfig->DetectionByAffiliation.bDetectEnemies = true;
 		HearingConfig->DetectionByAffiliation.bDetectFriendlies = true;
 		HearingConfig->DetectionByAffiliation.bDetectNeutrals = true;
@@ -190,20 +191,36 @@ void AASAIController::SetupPerception()
 		AIPerComp->ConfigureSense(*HearingConfig);
 		AIPerComp->SetDominantSense(HearingConfig->GetSenseImplementation());
 	}
+
+	TouchConfig = CreateDefaultSubobject<UAISenseConfig_Touch>(TEXT("Touch Config"));
+	if (TouchConfig)
+	{
+		AIPerComp->ConfigureSense(*TouchConfig);
+		AIPerComp->SetDominantSense(TouchConfig->GetSenseImplementation());
+	}
+
+
 	AIPerComp->OnTargetPerceptionUpdated.AddDynamic(this, &AASAIController::On_Updated);
 
 }
 void AASAIController::On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimulus)
 {
 	if (EnemyRef->CurState==EState::Dead){return;}
-
 	auto SensedClass = UAIPerceptionSystem::GetSenseClassForStimulus(this, Stimulus);
 
 	//시야 식별인 경우 
 	if (SensedClass== UAISense_Sight::StaticClass())
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Sight Sense")));
-
+		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Sight Sense")));
+		AASEnemyCharacter* CurEnemy = Cast<AASEnemyCharacter>(DetectedPawn);
+		if (CurEnemy)
+		{
+			if (CurEnemy->CurState == EState::Attack)
+			{
+				SetBB_IsDetect(true);
+				UiRef->OffVisible();
+			}
+		}
 		AASCharacterPlayer* CurPlayer = Cast<AASCharacterPlayer>(DetectedPawn);
 		CheckPlayer(CurPlayer);
 	}
@@ -212,18 +229,20 @@ void AASAIController::On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimul
 	{
 		EventBySound = true;
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Hearing Sense")));
-		if (Stimulus.Tag == tags::lvl1_Sound_tag) // 어그로(ex, 주변 라디오)  + 어그로는 최대 1명만 끌기 
+		if (Stimulus.Tag == tags::lvl1_Sound_tag) // 어그로(ex, 총기 소리, 주변 라디오)  + 어그로는 최대 1명만 끌기 
 		{
 			SetAlertLvl(AlertLvl::Low);
 		}
-		else if (Stimulus.Tag == tags::lvl2_Sound_tag) //Player총기 소리 -> 의심상태(Medium) + 어그로는 제한 없음
+		else if (Stimulus.Tag == tags::lvl2_Sound_tag) //적 총기 소리 -> 의심상태(Medium) + 어그로는 제한 없음
 		{
 			SetAlertLvl(AlertLvl::Medium);
 			//로밍 
 		}
+		//미정
 		else if (Stimulus.Tag == tags::lvl3_Sound_tag) //Enemy총기 소리 -> 의심상태(High)    
 		{
-			SetAlertLvl(AlertLvl::High);
+			SetBB_IsDetect(true);
+			UiRef->OffVisible();
 			//300m반경에 있는 근처 적들 최대 3명에게 사운드위치 전송 후, 의심상태(Medium)로 만듬 
 		}
 		LastKnownPosition = Stimulus.StimulusLocation;
@@ -233,6 +252,8 @@ void AASAIController::On_Updated(AActor* DetectedPawn, const  FAIStimulus Stimul
 	else if (SensedClass == UAISense_Touch::StaticClass())
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Touch Sense"))); 
+		SetBB_IsDetect(true);
+		UiRef->OffVisible();
 		//터치된 상대가 Player 캐스팅 성공 한 경우, 바로 Player에게 Focus On이 됨. ( UI바 상승 스피드 2배 UP )
 		//캐스팅 된 것이 총알이면 IsDetect==true
 	}
@@ -282,6 +303,7 @@ void AASAIController::Tick(float DeltaTime)
 	{
 		StopAI();
 	}
+
 
 	if (CurSituation !=CurDetectSituation::NoneInRange)  
 	{
@@ -406,6 +428,27 @@ FVector AASAIController::GetBB_AttackRange()
 	return GetBlackboardComponent()->GetValueAsVector(BBKEY_AttackRange);
 }
 
+void AASAIController::SetBB_CanVariousActions(bool b)
+{
+	GetBlackboardComponent()->SetValueAsBool(BBKEY_CanVariousActions, b);
+}
+
+bool AASAIController::GetBB_CanVariousActions()
+{
+	return GetBlackboardComponent()->GetValueAsBool(BBKEY_CanVariousActions);
+}
+
+
+void AASAIController::SetBB_IsAttack(bool b)
+{
+		GetBlackboardComponent()->SetValueAsBool(BBKEY_IsAttack, b);
+}
+
+bool AASAIController::GetBB_IsAttack()
+{
+	return  GetBlackboardComponent()->GetValueAsBool(BBKEY_IsAttack);
+}
+
 void AASAIController::SetBB_EnableRoaming(bool b)
 {
 	GetBlackboardComponent()->SetValueAsBool(BBKEY_EnableRoaming, b);
@@ -434,6 +477,8 @@ FVector AASAIController::GetBB_LastKnownPosition()
 }
 
 
+
+
 //GetSet
 UASDetectWidget* AASAIController::getWidget()
 {
@@ -453,6 +498,15 @@ AActor* AASAIController::GetPlayer()
 	return Actor;
 }
 
+bool AASAIController::IsPlayer(AActor* actor)
+{
+	AASCharacterPlayer* player = Cast<AASCharacterPlayer>(actor);
+	if (player)
+	{
+		return true;
+	}
+	return false;
+}
 
 //Setting RangeSize 
 void AASAIController::RangeSizeDown()

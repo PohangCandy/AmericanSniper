@@ -152,19 +152,6 @@ AASCharacterPlayer::AASCharacterPlayer()
 		WeaponAttachment->SetupAttachment(GetMesh(), WeaponAttachmentSocket);
 	}
 	
-
-	//무기1 세팅 
-	static ConstructorHelpers::FObjectFinder<UASWeaponData> StartWeaponRef1(TEXT("/Script/ASPrototype.ASWeaponData'/Game/ASPrototype/Weapon/AssultRifle.AssultRifle'"));
-	if (StartWeaponRef1.Object)
-	{
-		Weapon1 = Cast<UASWeaponData>(StartWeaponRef1.Object);
-	}
-	//무기2 세팅 
-	static ConstructorHelpers::FObjectFinder<UASWeaponData> StartWeaponRef2(TEXT("/Script/ASPrototype.ASWeaponData'/Game/ASPrototype/Weapon/Sniper.Sniper'"));
-	if (StartWeaponRef2.Object)
-	{
-		Weapon2 = Cast<UASWeaponData>(StartWeaponRef2.Object);
-	}
 }
 
 void AASCharacterPlayer::Tick(float DeltaTime)
@@ -254,9 +241,7 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	PlayerInputComponent->BindAction(TEXT("GetDamage"), EInputEvent::IE_Pressed, this, &AASCharacterBase::TestingGetDamage);
 	PlayerInputComponent->BindAction(TEXT("GetItem"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::GripItem);
 
-	PlayerInputComponent->BindAction(TEXT("GetWeapon1"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::ChangeWeapon1);
-	PlayerInputComponent->BindAction(TEXT("GetWeapon2"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::ChangeWeapon2);
-	//PlayerInputComponent->BindAction(TEXT("GetWeapon2"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::ChangeWeapon(1));
+
 
 	//향상된 입력 시스템 사용
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
@@ -327,29 +312,17 @@ void AASCharacterPlayer::AttackCheck()
 {
 	
 	FHitResult OutHit;
-
-	FVector Location;
-	FRotator Rotation;
-	playerController->GetPlayerViewPoint(Location, Rotation);
-
-	FVector ViewStart = Location;
-	FVector End = ViewStart + (Rotation.Vector() * 1000);
-
-	//FVector Weapon = CurrentWeapon->GetActorLocation();
-	USkeletalMeshComponent* WeaponMesh = CurrentWeapon->GetWeaponMesh();
-	FVector Start = WeaponMesh->GetSocketLocation("Gun_pointSocket");
-	//FVector Start = Weapon;
-	//FVector Start = GetActorLocation();
-	//UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
-	//FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
-
+	//FVector Start = CurrentWeapon->GetActorForwardVector();
+	FVector Start = GetActorLocation();
+	//UE_LOG(LogTemp, Log, TEXT("Character Location :: %s"), CurrentWeapon->GetActorForwardVector().ToString());
+	UE_LOG(LogTemp, Error, TEXT("StartVector is %s"), *CurrentWeapon->GetActorForwardVector().ToString());
+	FVector End = ((GetActorForwardVector() * 1000.0f) + Start);
 	FCollisionQueryParams CollisionParams(NAME_None,false,this);
 	//FCollisionQueryParams CollisionParams;
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, true);
 
 	bool isHit = (GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams));
-	//bool isHit = (GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_PhysicsBody, CollisionParams));
 
 	if (isHit)
 	{
@@ -362,14 +335,7 @@ void AASCharacterPlayer::AttackCheck()
 		TSubclassOf<UDamageType> DamageType= UDamageType::StaticClass();
 		FPointDamageEvent PointDamageEvent(float(GetStrength()), OutHit, ShotDirection, DamageType);
 		PointDamageEvent.HitInfo = OutHit;
-		UE_LOG(AS, Warning, TEXT("BoneName: %s"), *OutHit.BoneName.ToString());
-		if (OutHit.BoneName == "head")
-		{
-			OutHit.GetActor()->TakeDamage(100, PointDamageEvent, GetController(), this);
-		}
-		else {
-			OutHit.GetActor()->TakeDamage(GetStrength(), PointDamageEvent, GetController(), this);
-		}
+		OutHit.GetActor()->TakeDamage(GetStrength(), PointDamageEvent, GetController(), this);
 	}
 }
 
@@ -464,38 +430,6 @@ float AASCharacterPlayer::TakeDamage(float DamageAmount, FDamageEvent const& Dam
 	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	GetDamaged(FinalDamage);
 	return FinalDamage;
-}
-
-void AASCharacterPlayer::ChangeWeapon(int weaponindex)
-{
-	switch (weaponindex)
-	{
-	case(1):
-		ChangeWeaponMesh(Weapon1);
-		break;
-	case(2):
-		ChangeWeaponMesh(Weapon2);
-		break;
-	}
-}
-
-void AASCharacterPlayer::ChangeWeapon1()
-{
-	ChangeWeaponMesh(Weapon1);
-}
-
-void AASCharacterPlayer::ChangeWeapon2()
-{
-	ChangeWeaponMesh(Weapon2);
-}
-
-void AASCharacterPlayer::ChangeWeaponMesh(UASWeaponData* NewWeaponData)
-{
-	if (NewWeaponData)
-	{
-		USkeletalMeshComponent* curWeaponMesh = CurrentWeapon->Rifle;
-		curWeaponMesh->SetSkeletalMesh(NewWeaponData->WeaponModel);
-	}
 }
 
 //움직임 구현

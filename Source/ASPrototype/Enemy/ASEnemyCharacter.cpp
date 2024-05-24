@@ -8,16 +8,22 @@
 #include "Engine/DamageEvents.h"
 #include "Engine/EngineTypes.h"
 #include "Components/SkinnedMeshComponent.h"
-
+#include "Perception/AISense_Touch.h"
 AASEnemyCharacter::AASEnemyCharacter()
 {
 	AIControllerClass = AASAIController::StaticClass();
-
 }
 
 float AASEnemyCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 {
 	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	if (GetHp()<=0)
+	{
+		return DamageAmount;
+	}
+	UAISense_Touch::ReportTouchEvent(GetWorld(), this,AiRef->GetPlayer(),GetActorLocation());
+	PlaySound(HitSound);
+	PlayHitReactAnimation();
 	SetHp(GetHp()-DamageAmount);
 	return DamageAmount;
 }
@@ -79,15 +85,14 @@ void AASEnemyCharacter::AttackCheck()
 {
 	FHitResult OutHit;
 	FDamageEvent DamageEvent;
-	FVector Start = GetActorLocation();//aponInfo->WeaponModel->GetComponentLocation();
+	FVector Start = GetActorLocation(); //ÃÑ±â ¼ÒÄÏ 
 	FVector ForwardVector = GetActorForwardVector();
 	FVector End = (Start + (ForwardVector * 1000.0f));
 
 	FCollisionQueryParams CollisionParams(SCENE_QUERY_STAT(Attack), false, this);
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
-	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel4, CollisionParams); //   EnemyAttack 
-
+	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel4, CollisionParams);  
 	if (OutHit.GetActor() == AiRef->GetPlayer())
 	{
 

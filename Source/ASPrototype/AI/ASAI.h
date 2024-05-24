@@ -9,4 +9,5 @@
 #define BBKEY_LastKnownPosition TEXT("LastKnownPosition")
 #define BBKEY_CanShootTarget TEXT("CanShootTarget")
 #define BBKEY_EnableRoaming TEXT("EnableRoaming")
-//#define BBKEY_SoundObject TEXT("SoundObject")
+#define BBKEY_IsAttack TEXT("IsAttack")
+#define BBKEY_CanVariousActions TEXT("CanVariousActions")

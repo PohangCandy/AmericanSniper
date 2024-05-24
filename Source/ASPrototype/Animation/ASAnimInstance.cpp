@@ -89,7 +89,7 @@ void UASAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 			//LookAtYaw = FRotator::NormalizeAxis(ControlRotation.Yaw - ActorRotation.Yaw);
 			LookAtPitch = ControlRotation.Pitch - 280.0f;
-			//UE_LOG(AS, Warning, TEXT("Pitch : %f"), ControlRotation.Pitch);
+			UE_LOG(AS, Warning, TEXT("Pitch : %f"), ControlRotation.Pitch);
 
 		}
 	}

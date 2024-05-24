@@ -26,7 +26,7 @@ enum class EState
 }; 
 
 DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
-
+DECLARE_MULTICAST_DELEGATE(FOnReloadEndDelegate);
 
 UCLASS()
 class ASPROTOTYPE_API AASEnemyBase : public ACharacter//, public IGenericTeamAgentInterface
@@ -37,14 +37,17 @@ public:
 	AASEnemyBase();
 
 	FOnAttackEndDelegate OnAttackEnd;
+	FOnReloadEndDelegate OnReloadEnd;
 
 	float SplineSpeed;
 	float DistanceAlongSpline;
 
 	uint32 GetHp();
 	void SetHp(uint32 Hp);
-	void Dead();
-
+	virtual void SetDead();
+	void RandomActions();
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 private:
 	uint32 MaxHp;
 	uint32 CurHp;
@@ -73,13 +76,22 @@ public:
 	float RunSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> HitReactMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> DeadMontage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> AttackMontage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> ReloadMontage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> AlertMontage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> BackMoveMontage;
 
 	//무기 세팅
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
@@ -93,13 +105,21 @@ public:
 	void EquipWeapon(UASWeaponData* NewWeaponData);
 
 
+	//사운드
+	void PlaySound(USoundBase* sound);
+	class USoundBase* HitSound;
+	class USoundBase* GunSound;
 
+	//애니메이션
+	void PlayHitReactAnimation();
+	void PlayAttackAnimation();
+	void PlayReloadAnimation();
+	void PlayAlertAnimaion();
+	void PlayBackMoveAnimation();
 
-
-	void Attack();
 
 	void AttackEnd(const float InDelyTime);
-
+	void ReloadEnd(const float InDelyTime);
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AI)
 	//int32 ID = 0;
 
