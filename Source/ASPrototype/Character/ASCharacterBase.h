@@ -93,6 +93,8 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	class UAnimInstance* AnimInstance;
+
 	uint8 LowHp; // LowHp ���ϸ� ���ҰŸ� 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> DeadMontage;
@@ -100,9 +102,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
 	TObjectPtr<class UAnimMontage> SearchMontage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> AttackMontage;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animation)
+	TObjectPtr<class UAnimMontage> ReloadMontage;
+
+
 	FTimerHandle DeadTimerHandle;
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Controller)
 	//TSubclassOf<class AASPlayerController> CurplayerControllerClass;
 
 	virtual void Tick(float DeltaTime) override;
+
+	class USkeletalMeshComponent* curWeaponMesh;
 };

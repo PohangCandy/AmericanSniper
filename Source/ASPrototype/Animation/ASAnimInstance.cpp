@@ -10,6 +10,13 @@ UASAnimInstance::UASAnimInstance()
 	MoveThreadshold = 3.0f;
 	JumpeThreadshold = 30.0f;
 	DoSniping = false;
+
+	static ConstructorHelpers::FObjectFinder<UAnimMontage> ATTACK_MONTAGE(TEXT("/Game/ASPrototype/Animation/PlayerAttackMontage.PlayerAttackMontage"));
+	if (ATTACK_MONTAGE.Succeeded())
+	{
+		AttackMontage = ATTACK_MONTAGE.Object;
+	}
+
 }
 
 void UASAnimInstance::StateHandler(State NewState)
@@ -41,6 +48,14 @@ void UASAnimInstance::SwitchSnipAnim()
 		DoSniping = false;
 	}
 	else DoSniping = true;
+}
+
+void UASAnimInstance::PlayAttackMontage()
+{
+	if (!Montage_IsPlaying(AttackMontage))
+	{
+		Montage_Play(AttackMontage,1.0f);
+	}
 }
 
 //임시 함수

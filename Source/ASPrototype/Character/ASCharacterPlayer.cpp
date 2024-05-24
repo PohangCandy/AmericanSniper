@@ -195,7 +195,7 @@ void AASCharacterPlayer::SetBoolItemNearby(bool newboolen)
 void AASCharacterPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-
+	AnimInstance = GetMesh()->GetAnimInstance();
 	FName WeaponSocket(TEXT("hand_rSocket"));
 	auto CurWeapon = GetWorld()->SpawnActor<AASWeapon>(FVector::ZeroVector, FRotator::ZeroRotator);
 	if (CurWeapon != nullptr)
@@ -237,8 +237,8 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	UE_LOG(LogTemp,Warning,TEXT("SetUPInput"));
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
-	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
-	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::AttackCheck);
+	//PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Shoot);
+	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::PlayShootAnimation);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, playerController, &AASPlayerController::UIScreenChange);
 	//PlayerInputComponent->BindAction(TEXT("SceneChange"), EInputEvent::IE_Pressed, this, &AASPlayerController::UIScreenChange);
 	
@@ -249,7 +249,7 @@ void AASCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 
 
-	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Reload);
+	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::PlayReloadAnimation);
 	PlayerInputComponent->BindAction(TEXT("Heal"), EInputEvent::IE_Pressed, this, &AASCharacterBase::Heal);
 	PlayerInputComponent->BindAction(TEXT("GetDamage"), EInputEvent::IE_Pressed, this, &AASCharacterBase::TestingGetDamage);
 	PlayerInputComponent->BindAction(TEXT("GetItem"), EInputEvent::IE_Pressed, this, &AASCharacterPlayer::GripItem);
@@ -325,7 +325,6 @@ void AASCharacterPlayer::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, U
 
 void AASCharacterPlayer::AttackCheck()
 {
-	
 	FHitResult OutHit;
 
 	FVector Location;
@@ -333,7 +332,7 @@ void AASCharacterPlayer::AttackCheck()
 	playerController->GetPlayerViewPoint(Location, Rotation);
 
 	FVector ViewStart = Location;
-	FVector End = ViewStart + (Rotation.Vector() * 1000);
+	FVector End = ViewStart + (Rotation.Vector() * BulletRange);
 
 	//FVector Weapon = CurrentWeapon->GetActorLocation();
 	USkeletalMeshComponent* WeaponMesh = CurrentWeapon->GetWeaponMesh();
@@ -371,6 +370,8 @@ void AASCharacterPlayer::AttackCheck()
 			OutHit.GetActor()->TakeDamage(GetStrength(), PointDamageEvent, GetController(), this);
 		}
 	}
+
+
 }
 
 void AASCharacterPlayer::MakeItemTrace()
@@ -493,8 +494,29 @@ void AASCharacterPlayer::ChangeWeaponMesh(UASWeaponData* NewWeaponData)
 {
 	if (NewWeaponData)
 	{
-		USkeletalMeshComponent* curWeaponMesh = CurrentWeapon->Rifle;
+		curWeaponMesh = CurrentWeapon->Rifle;
 		curWeaponMesh->SetSkeletalMesh(NewWeaponData->WeaponModel);
+		SetStrength(GetStrength() * NewWeaponData->DamageMultiplier);
+		BulletRange = int(NewWeaponData->Range);
+	}
+}
+
+void AASCharacterPlayer::PlayShootAnimation()
+{
+	if (!AnimInstance->Montage_IsPlaying(AttackMontage))
+	{
+		Shoot();
+		AttackCheck();
+		AnimInstance->Montage_Play(AttackMontage);
+	}
+}
+
+void AASCharacterPlayer::PlayReloadAnimation()
+{
+	if (!AnimInstance->Montage_IsPlaying(ReloadMontage))
+	{
+		Reload();
+		AnimInstance->Montage_Play(ReloadMontage);
 	}
 }
 
@@ -536,7 +558,6 @@ void AASCharacterPlayer::SprinEnd(const FInputActionValue& Value)
 
 void AASCharacterPlayer::Wear(const FInputActionValue& Value)	
 {	
-	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	AnimInstance->Montage_Play(SearchMontage);
 
 	static const FString OutfitPath = TEXT("/Game/ASPrototype/Mesh/AS_Pullover.AS_Pullover");
@@ -580,9 +601,9 @@ void AASCharacterPlayer::UpdateSoundRange()
 void AASCharacterPlayer::ChangeUI()
 {
 	playerController->UIScreenChange();
-	auto AnimInstance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
-	if (nullptr == AnimInstance) return;
-	AnimInstance->SwitchSnipAnim();
+	auto Anim_Instance = Cast<UASAnimInstance>(GetMesh()->GetAnimInstance());
+	if (nullptr == Anim_Instance) return;
+	Anim_Instance->SwitchSnipAnim();
 	//SwitchSnip.Broadcast();
 }
 

@@ -89,7 +89,6 @@ void AASCharacterBase::SetDead()
 	SetActorEnableCollision(false);
 
 	//Dead Animation
-	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	AnimInstance->StopAllMontages(0.0f);
 	AnimInstance->Montage_Play(DeadMontage);
 
@@ -310,6 +309,8 @@ void AASCharacterBase::BeginPlay()
 	Super::BeginPlay();
 	InitUIData();
 }
+
+
 
 void AASCharacterBase::Tick(float DeltaTime)
 {

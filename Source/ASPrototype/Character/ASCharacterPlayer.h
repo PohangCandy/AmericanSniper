@@ -23,6 +23,8 @@ class ASPROTOTYPE_API AASCharacterPlayer : public AASCharacterBase
 public:
 	AASCharacterPlayer();
 
+
+
 	UPROPERTY(EditAnywhere, Category = "Sound")
 	float MinSoundRange;
 
@@ -61,10 +63,11 @@ private:
 	void ChangeWeapon2();
 	TObjectPtr<class UASWeaponData> Weapon1;
 	TObjectPtr<class UASWeaponData> Weapon2;
-
+	int BulletRange;
 public:
 	void ChangeWeaponMesh(UASWeaponData* NewWeaponData);
-
+	void PlayShootAnimation();
+	void PlayReloadAnimation();
 private:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);

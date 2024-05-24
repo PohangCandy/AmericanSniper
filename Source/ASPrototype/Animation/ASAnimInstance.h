@@ -21,6 +21,12 @@ public:
 
 	void SwitchSnipAnim();
 
+	void PlayAttackMontage();
+
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Player,Meta = (AllowPrivateAccess = true))
+	UAnimMontage* AttackMontage;
+
 protected:
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
