@@ -1,0 +1,2052 @@
+﻿Log file open, 05/24/24 10:49:36
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogProfilingDebugging: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogWindows: Started CrashReportClient (pid=17100)
+LogWindows: Custom abort handler registered for crash reporting.
+LogInit: Display: Running engine for game: ASPrototype
+LogCore: UnrealTraceServer: Trace store launch successful
+LogCore: Initializing trace...
+LogCore: Display: Requested channels: 'cpu,gpu,frame,log,bookmark,screenshot'
+LogCore: Finished trace initialization.
+LogCsvProfiler: Display: Metadata set : platform="Windows"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.2-CL-26001984"
+LogCsvProfiler: Display: Metadata set : engineversion="5.2.1-26001984+++UE5+Release-5.2"
+LogCsvProfiler: Display: Metadata set : os="Windows 11 (23H2) [10.0.22631.3593] "
+LogCsvProfiler: Display: Metadata set : cpu="AuthenticAMD|AMD Ryzen 7 6800H with Radeon Graphics"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : asan="0"
+LogCsvProfiler: Display: Metadata set : commandline="" D:\ASProject\AmericanSniper\ASPrototype.uproject -skipcompile""
+LogCsvProfiler: Display: Metadata set : loginid="74d4b25948c60a2961a9199788791863"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogStats: Stats thread started at 0.582204
+LogPluginManager: Adding extension module BinkMediaPlayer from BinkMedia_HoloLens to BinkMedia
+
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +9:00, Platform Override: ''
+LogInit: Session CrashGUID >====================================================
+         Session CrashGUID >   UECC-Windows-C573C33F416C9F053256CD8F58247E7E
+         Session CrashGUID >====================================================
+LogConfig: Display: Loading Mac ini files took 0.05 seconds
+LogConfig: Display: Loading IOS ini files took 0.05 seconds
+LogConfig: Display: Loading VulkanPC ini files took 0.05 seconds
+LogConfig: Display: Loading HoloLens ini files took 0.05 seconds
+LogConfig: Display: Loading Android ini files took 0.05 seconds
+LogConfig: Display: Loading Unix ini files took 0.06 seconds
+LogConfig: Display: Loading TVOS ini files took 0.06 seconds
+LogConfig: Display: Loading Windows ini files took 0.06 seconds
+LogConfig: Display: Loading Linux ini files took 0.06 seconds
+LogConfig: Display: Loading LinuxArm64 ini files took 0.06 seconds
+LogPluginManager: Mounting Engine plugin Bridge
+LogPluginManager: Mounting Engine plugin EnhancedInput
+LogPluginManager: Found config from plugin[EnhancedInput] Input
+LogPluginManager: Mounting Engine plugin FastBuildController
+LogPluginManager: Mounting Engine plugin MeshPainting
+LogPluginManager: Mounting Engine plugin TraceUtilities
+LogPluginManager: Mounting Engine plugin XGEController
+LogPluginManager: Mounting Engine plugin AndroidMedia
+LogPluginManager: Mounting Engine plugin AvfMedia
+LogPluginManager: Mounting Engine plugin Paper2D
+LogPluginManager: Mounting Engine plugin MediaCompositing
+LogPluginManager: Mounting Engine plugin ImgMedia
+LogPluginManager: Mounting Engine plugin MediaPlayerEditor
+LogPluginManager: Mounting Engine plugin MediaPlate
+LogPluginManager: Mounting Engine plugin WebMMedia
+LogPluginManager: Mounting Engine plugin AnimationModifierLibrary
+LogPluginManager: Mounting Engine plugin BlendSpaceMotionAnalysis
+LogPluginManager: Mounting Engine plugin WmfMedia
+LogPluginManager: Mounting Engine plugin ControlRig
+LogPluginManager: Mounting Engine plugin AnimationData
+LogPluginManager: Mounting Engine plugin ControlRigSpline
+LogPluginManager: Mounting Engine plugin IKRig
+LogPluginManager: Mounting Engine plugin InterchangeEditor
+LogPluginManager: Mounting Engine plugin Interchange
+LogPluginManager: Mounting Engine plugin AISupport
+LogPluginManager: Mounting Engine plugin EnvironmentQueryEditor
+LogPluginManager: Mounting Engine plugin DatasmithContent
+LogPluginManager: Mounting Engine plugin GLTFExporter
+LogPluginManager: Mounting Engine plugin VariantManager
+LogPluginManager: Mounting Engine plugin VariantManagerContent
+LogPluginManager: Mounting Engine plugin ActorLayerUtilities
+LogPluginManager: Mounting Engine plugin AndroidMoviePlayer
+LogPluginManager: Mounting Engine plugin AndroidFileServer
+LogPluginManager: Mounting Engine plugin AppleImageUtils
+LogPluginManager: Mounting Engine plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin AppleMoviePlayer
+LogPluginManager: Mounting Engine plugin ArchVisCharacter
+LogPluginManager: Mounting Engine plugin AssetTags
+LogPluginManager: Mounting Engine plugin AndroidPermission
+LogPluginManager: Mounting Engine plugin AudioCapture
+LogPluginManager: Mounting Engine plugin CableComponent
+LogPluginManager: Mounting Engine plugin AudioSynesthesia
+LogPluginManager: Mounting Engine plugin CustomMeshComponent
+LogPluginManager: Mounting Engine plugin ChunkDownloader
+LogPluginManager: Mounting Engine plugin AudioWidgets
+LogPluginManager: Mounting Engine plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin GeometryCache
+LogPluginManager: Mounting Engine plugin GoogleCloudMessaging
+LogPluginManager: Mounting Engine plugin GooglePAD
+LogPluginManager: Mounting Engine plugin GeometryProcessing
+LogPluginManager: Mounting Engine plugin InputDebugging
+LogPluginManager: Found config from plugin[InputDebugging] Input
+LogPluginManager: Mounting Engine plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LocationServicesBPLibrary
+LogPluginManager: Mounting Engine plugin MeshModelingToolset
+LogPluginManager: Mounting Engine plugin Metasound
+LogPluginManager: Mounting Engine plugin MobilePatchingUtils
+LogPluginManager: Mounting Engine plugin ProceduralMeshComponent
+LogPluginManager: Mounting Engine plugin PropertyAccessEditor
+LogPluginManager: Mounting Engine plugin ResonanceAudio
+LogPluginManager: Mounting Engine plugin SignificanceManager
+LogPluginManager: Mounting Engine plugin SoundFields
+LogPluginManager: Mounting Engine plugin WaveTable
+LogPluginManager: Mounting Engine plugin Synthesis
+LogPluginManager: Mounting Engine plugin WebMMoviePlayer
+LogPluginManager: Mounting Engine plugin WindowsDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin WindowsMoviePlayer
+LogPluginManager: Mounting Engine plugin CameraShakePreviewer
+LogPluginManager: Mounting Engine plugin UdpMessaging
+LogPluginManager: Mounting Engine plugin InterchangeTests
+LogPluginManager: Mounting Engine plugin TcpMessaging
+LogPluginManager: Mounting Engine plugin GameplayCameras
+LogPluginManager: Mounting Engine plugin OodleNetwork
+LogPluginManager: Mounting Engine plugin AnimationSharing
+LogPluginManager: Mounting Engine plugin CLionSourceCodeAccess
+LogPluginManager: Mounting Engine plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting Engine plugin DumpGPUServices
+LogPluginManager: Mounting Engine plugin GitSourceControl
+LogPluginManager: Mounting Engine plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting Engine plugin NullSourceCodeAccess
+LogPluginManager: Mounting Engine plugin PerforceSourceControl
+LogPluginManager: Mounting Engine plugin PixWinPlugin
+LogPluginManager: Mounting Engine plugin PluginUtils
+LogPluginManager: Mounting Engine plugin PlasticSourceControl
+LogPluginManager: Mounting Engine plugin RenderDocPlugin
+LogPluginManager: Mounting Engine plugin PropertyAccessNode
+LogPluginManager: Mounting Engine plugin SubversionSourceControl
+LogPluginManager: Mounting Engine plugin TextureFormatOodle
+LogPluginManager: Mounting Engine plugin TraceDataFilters
+LogPluginManager: Mounting Engine plugin UObjectPlugin
+LogPluginManager: Mounting Engine plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin RiderSourceCodeAccess
+LogPluginManager: Mounting Engine plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting Engine plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin AssetManagerEditor
+LogPluginManager: Mounting Engine plugin BlueprintHeaderView
+LogPluginManager: Mounting Engine plugin ChangelistReview
+LogPluginManager: Mounting Engine plugin CurveEditorTools
+LogPluginManager: Mounting Engine plugin CryptoKeys
+LogPluginManager: Mounting Engine plugin DataValidation
+LogPluginManager: Mounting Engine plugin EditorDebugTools
+LogPluginManager: Mounting Engine plugin EditorScriptingUtilities
+LogPluginManager: Mounting Engine plugin FacialAnimation
+LogPluginManager: Mounting Engine plugin EngineAssetDefinitions
+LogPluginManager: Mounting Engine plugin GameplayTagsEditor
+LogPluginManager: Mounting Engine plugin MacGraphicsSwitching
+LogPluginManager: Mounting Engine plugin MaterialAnalyzer
+LogPluginManager: Mounting Engine plugin GeometryMode
+LogPluginManager: Mounting Engine plugin GLTFImporter
+LogPluginManager: Mounting Engine plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting Engine plugin PluginBrowser
+LogPluginManager: Mounting Engine plugin SequencerAnimTools
+LogPluginManager: Mounting Engine plugin ModelingToolsEditorMode
+LogPluginManager: Mounting Engine plugin SpeedTreeImporter
+LogPluginManager: Mounting Engine plugin StylusInput
+LogPluginManager: Mounting Engine plugin LauncherChunkInstaller
+LogPluginManager: Mounting Engine plugin WorldPartitionHLODUtilities
+LogPluginManager: Mounting Engine plugin ActorSequence
+LogPluginManager: Mounting Engine plugin LevelSequenceEditor
+LogPluginManager: Mounting Engine plugin SequencerScripting
+LogPluginManager: Mounting Engine plugin TemplateSequence
+LogPluginManager: Mounting Engine plugin Takes
+LogPluginManager: Mounting Engine plugin AutomationUtils
+LogPluginManager: Mounting Engine plugin BackChannel
+LogPluginManager: Mounting Engine plugin ChaosCaching
+LogPluginManager: Mounting Engine plugin ChaosCloth
+LogPluginManager: Mounting Engine plugin ChaosEditor
+LogPluginManager: Mounting Engine plugin ChaosClothEditor
+LogPluginManager: Mounting Engine plugin ChaosNiagara
+LogPluginManager: Mounting Engine plugin ChaosSolverPlugin
+LogPluginManager: Mounting Engine plugin ChaosUserDataPT
+LogPluginManager: Mounting Engine plugin CharacterAI
+LogPluginManager: Mounting Engine plugin Fracture
+LogPluginManager: Mounting Engine plugin Dataflow
+LogPluginManager: Mounting Engine plugin FullBodyIK
+LogPluginManager: Mounting Engine plugin GeometryCollectionPlugin
+LogPluginManager: Mounting Engine plugin GeometryFlow
+LogPluginManager: Mounting Engine plugin MeshLODToolset
+LogPluginManager: Mounting Engine plugin MeshModelingToolsetExp
+LogPluginManager: Mounting Engine plugin OpenImageDenoise
+LogPluginManager: Mounting Engine plugin PlatformCrypto
+LogPluginManager: Mounting Engine plugin PlanarCut
+LogPluginManager: Mounting Engine plugin ProxyLODPlugin
+LogPluginManager: Mounting Engine plugin PythonScriptPlugin
+LogPluginManager: Mounting Engine plugin SkeletalReduction
+LogPluginManager: Mounting Engine plugin ToolPresets
+LogPluginManager: Mounting Engine plugin UVEditor
+LogPluginManager: Mounting Engine plugin Niagara
+LogPluginManager: Mounting Engine plugin AlembicImporter
+LogPluginManager: Mounting Engine plugin OnlineBase
+LogPluginManager: Mounting Engine plugin OnlineServices
+LogPluginManager: Mounting Engine plugin OnlineSubsystem
+LogPluginManager: Mounting Engine plugin OnlineSubsystemNull
+LogPluginManager: Mounting Engine plugin OnlineSubsystemUtils
+LogPluginManager: Mounting Engine plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting Engine plugin LightMixer
+LogPluginManager: Mounting Engine plugin ObjectMixer
+LogPluginManager: Mounting Engine plugin ContentBrowserAssetDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserClassDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserFileDataSource
+LogPluginManager: Mounting Engine plugin OnlineSubsystemIOS
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Bridge/Content/' mounted to '/Bridge/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/TraceUtilities/Content/' mounted to '/TraceUtilities/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/2D/Paper2D/Content/' mounted to '/Paper2D/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Media/MediaCompositing/Content/' mounted to '/MediaCompositing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Media/MediaPlate/Content/' mounted to '/MediaPlate/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/ControlRig/Content/' mounted to '/ControlRig/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/ControlRigSpline/Content/' mounted to '/ControlRigSpline/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/IKRig/Content/' mounted to '/IKRig/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Interchange/Runtime/Content/' mounted to '/Interchange/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Enterprise/DatasmithContent/Content/' mounted to '/DatasmithContent/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Enterprise/GLTFExporter/Content/' mounted to '/GLTFExporter/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/AudioSynesthesia/Content/' mounted to '/AudioSynesthesia/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/AudioWidgets/Content/' mounted to '/AudioWidgets/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/GeometryProcessing/Content/' mounted to '/GeometryProcessing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/MeshModelingToolset/Content/' mounted to '/MeshModelingToolset/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/Metasound/Content/' mounted to '/Metasound/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/ResonanceAudio/Content/' mounted to '/ResonanceAudio/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/WaveTable/Content/' mounted to '/WaveTable/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/Synthesis/Content/' mounted to '/Synthesis/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Developer/AnimationSharing/Content/' mounted to '/AnimationSharing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/BlueprintHeaderView/Content/' mounted to '/BlueprintHeaderView/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/GeometryMode/Content/' mounted to '/GeometryMode/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/GLTFImporter/Content/' mounted to '/GLTFImporter/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/ModelingToolsEditorMode/Content/' mounted to '/ModelingToolsEditorMode/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/SpeedTreeImporter/Content/' mounted to '/SpeedTreeImporter/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/MovieScene/SequencerScripting/Content/' mounted to '/SequencerScripting/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/VirtualProduction/Takes/Content/' mounted to '/Takes/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosCaching/Content/' mounted to '/ChaosCaching/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosClothEditor/Content/' mounted to '/ChaosClothEditor/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosNiagara/Content/' mounted to '/ChaosNiagara/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosSolverPlugin/Content/' mounted to '/ChaosSolverPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/Dataflow/Content/' mounted to '/Dataflow/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/FullBodyIK/Content/' mounted to '/FullBodyIK/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/GeometryCollectionPlugin/Content/' mounted to '/GeometryCollectionPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/GeometryFlow/Content/' mounted to '/GeometryFlow/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/MeshLODToolset/Content/' mounted to '/MeshLODToolset/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/MeshModelingToolsetExp/Content/' mounted to '/MeshModelingToolsetExp/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/PythonScriptPlugin/Content/' mounted to '/PythonScriptPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/UVEditor/Content/' mounted to '/UVEditor/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/FX/Niagara/Content/' mounted to '/Niagara/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/ObjectMixer/LightMixer/Content/' mounted to '/LightMixer/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/ObjectMixer/ObjectMixer/Content/' mounted to '/ObjectMixer/'
+SourceControl: Revision control is disabled
+SourceControl: Revision control is disabled
+SourceControl: Revision control is disabled
+LogWindows: Failed to load 'WinPixGpuCapturer.dll' (GetLastError=126)
+LogWindows: File 'WinPixGpuCapturer.dll' does not exist
+PixWinPlugin: PIX capture plugin failed to initialize! Check that the process is launched from PIX.
+LogConfig: Applying CVar settings from Section [/Script/RenderDocPlugin.RenderDocPluginSettings] File [Engine]
+RenderDocPlugin: Display: RenderDoc plugin will not be loaded. Use '-AttachRenderDoc' on the cmd line or enable 'renderdoc.AutoAttach' in the plugin settings.
+LogInit: Using libcurl 7.83.1
+LogInit:  - built for Windows
+LogInit:  - supports SSL with OpenSSL/1.1.1n
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.12
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: Created online subsystem instance for: NULL
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+LogInit: ExecutableName: UnrealEditor.exe
+LogInit: Build: ++UE5+Release-5.2-CL-26001984
+LogInit: Engine Version: 5.2.1-26001984+++UE5+Release-5.2
+LogInit: Compatible Engine Version: 5.2.0-25360045+++UE5+Release-5.2
+LogInit: Net CL: 25360045
+LogInit: OS: Windows 11 (23H2) [10.0.22631.3593] (), CPU: AMD Ryzen 7 6800H with Radeon Graphics         , GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+LogInit: Compiled (64-bit): Jun 15 2023 04:29:42
+LogInit: Architecture: x64
+LogInit: Compiled with Visual C++: 19.29.30151.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE5+Release-5.2
+LogInit: Command Line: -skipcompile
+LogInit: Base Directory: C:/Program Files/Epic Games/UE_5.2/Engine/Binaries/Win64/
+LogInit: Allocator: Mimalloc
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 35
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 20
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 45
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 13
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 83
+LogDevObjectVersion:   FortniteNC (5B4C06B7-2463-4AF8-805B-BF70CDF5D0DD): 10
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 6
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 10
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 41
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   UE5-Main (697DD581-E64F-41AB-AA4A-51ECBEB7B628): 104
+LogDevObjectVersion:   UE5-Release (D89B5E42-24BD-4D46-8412-ACA8DF641779): 41
+LogDevObjectVersion:   UE5-PrivateFrosty (59DA5D52-1232-4948-B878-597870B8E98B): 8
+LogDevObjectVersion:   UE5-Dev-Cooker (26075A32-730F-4708-88E9-8C32F1599D05): 0
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogDevObjectVersion:   UE5-Dev-LWCRendering (30D58BE3-95EA-4282-A6E3-B159D8EBB06A): 1
+LogInit: Presizing for max 25165824 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: Set CVar [[con.DebugEarlyDefault:1]]
+LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+LogConfig: Set CVar [[r.setres:1280x720]]
+LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+LogConfig: CVar [[fx.NiagaraAllowRuntimeScalabilityChanges:1]] deferred - dummy variable created
+LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+LogConfig: Set CVar [[r.Occlusion.SingleRHIThreadStall:1]]
+LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
+[2024.05.24-01.49.37:288][  0]LogConfig: Set CVar [[r.VSync:0]]
+[2024.05.24-01.49.37:288][  0]LogConfig: Set CVar [[r.RHICmdBypass:0]]
+[2024.05.24-01.49.37:289][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [Engine]
+[2024.05.24-01.49.37:289][  0]LogConfig: CVar [[VisualizeCalibrationColorMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationColor.PPM_DefaultCalibrationColor]] deferred - dummy variable created
+[2024.05.24-01.49.37:289][  0]LogConfig: CVar [[VisualizeCalibrationGrayscaleMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationGrayscale.PPM_DefaultCalibrationGrayscale]] deferred - dummy variable created
+[2024.05.24-01.49.37:289][  0]LogConfig: Set CVar [[r.GPUCrashDebugging:0]]
+[2024.05.24-01.49.37:289][  0]LogConfig: CVar [[MaxSkinBones:(Default=65536,PerPlatform=(("Mobile", 256)))]] deferred - dummy variable created
+[2024.05.24-01.49.37:289][  0]LogConfig: Set CVar [[r.GenerateMeshDistanceFields:1]]
+[2024.05.24-01.49.37:289][  0]LogConfig: Set CVar [[r.DynamicGlobalIlluminationMethod:1]]
+[2024.05.24-01.49.37:289][  0]LogConfig: Set CVar [[r.ReflectionMethod:1]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[r.Shadow.Virtual.Enable:1]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange:1]]
+[2024.05.24-01.49.37:290][  0]LogConfig: CVar [[r.DefaultFeature.LocalExposure.HighlightContrastScale:0.8]] deferred - dummy variable created
+[2024.05.24-01.49.37:290][  0]LogConfig: CVar [[r.DefaultFeature.LocalExposure.ShadowContrastScale:0.8]] deferred - dummy variable created
+[2024.05.24-01.49.37:290][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [Engine]
+[2024.05.24-01.49.37:290][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [Engine]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[s.AsyncLoadingThreadEnabled:1]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[s.EventDrivenLoaderEnabled:1]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2024.05.24-01.49.37:290][  0]LogConfig: Set CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.UseBackgroundLevelStreaming:1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2024.05.24-01.49.37:291][  0]LogConfig: CVar [[s.MaxPackageSummarySize:16384]] deferred - dummy variable created
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[s.FlushStreamingOnExit:1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__SoundBase]] deferred - dummy variable created
+[2024.05.24-01.49.37:291][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__MaterialInterface]] deferred - dummy variable created
+[2024.05.24-01.49.37:291][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__DeviceProfileManager]] deferred - dummy variable created
+[2024.05.24-01.49.37:291][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [Engine]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.SizeOfPermanentObjectPool:0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.FlushStreamingOnGC:0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.AllowParallelGC:1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.MaxObjectsInEditor:25165824]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.CreateGCClusters:1]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.MinGCClusterSize:5]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.AssetClustreringEnabled:0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.ActorClusteringEnabled:0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.BlueprintClusteringEnabled:0]]
+[2024.05.24-01.49.37:291][  0]LogConfig: Set CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+[2024.05.24-01.49.37:292][  0]LogConfig: Set CVar [[gc.MultithreadedDestructionEnabled:1]]
+[2024.05.24-01.49.37:292][  0]LogConfig: Set CVar [[gc.VerifyGCObjectNames:1]]
+[2024.05.24-01.49.37:292][  0]LogConfig: Set CVar [[gc.VerifyUObjectsAreNotFGCObjects:0]]
+[2024.05.24-01.49.37:292][  0]LogConfig: Set CVar [[gc.PendingKillEnabled:1]]
+[2024.05.24-01.49.37:292][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [Engine]
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Average",ToolTip="Simulates average internet conditions")]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Bad",ToolTip="Simulates laggy internet conditions")]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [Engine]
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[DefaultPVRTCQuality:1]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[DefaultASTCQualityBySpeed:1]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[DefaultASTCQualityBySize:3]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:WidgetBlueprint]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GroupActor]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MetaData]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ObjectRedirector]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NavMeshRenderingComponent]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ReflectionCaptureComponent]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:TextRenderComponent]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:Font]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:InterpCurveEdSetup]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MaterialExpression]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraEmitter]] deferred - dummy variable created
+[2024.05.24-01.49.37:292][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraScript]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleEmitter]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleLODLevel]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleModule]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SubUVAnimation]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SoundNode]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GameplayEffectUIData]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:WidgetBlueprint]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:GroupActor]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:MetaData]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:ObjectRedirector]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:InterpCurveEdSetup]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.AllowStaticLighting]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.MaterialEditor.LWCTruncateMode]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.GBuffer]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.VelocityOutputPass]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.SelectiveBasePassOutputs]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.DBuffer]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Symbols]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.GenerateSymbols]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.WriteSymbols]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.AllowUniqueSymbols]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.ExtraData]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Optimize]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.CompileShadersForDevelopment]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.MobileHDR]] deferred - dummy variable created
+[2024.05.24-01.49.37:293][  0]LogConfig: CVar [[VersionedIntRValues:r.UsePreExposure]] deferred - dummy variable created
+[2024.05.24-01.49.37:302][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [Scalability]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.SkeletalMeshLODBias:0]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.ViewDistanceScale:1.0]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [Scalability]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.FXAA.Quality:4]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TemporalAA.Quality:2]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TSR.History.R11G11B10:1]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TSR.History.ScreenPercentage:200]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TSR.History.UpdateQuality:3]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TSR.History.GrandReprojection:0]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TSR.ShadingRejection.Flickering:1]]
+[2024.05.24-01.49.37:302][  0]LogConfig: CVar [[r.TSR.Velocity.Extrapolation:1]] deferred - dummy variable created
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.TSR.RejectionAntiAliasingQuality:2]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [Scalability]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.LightFunctionQuality:1]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.ShadowQuality:5]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.Shadow.MaxResolution:2048]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2024.05.24-01.49.37:302][  0]LogConfig: Set CVar [[r.Shadow.DistanceScale:1.0]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.DistanceFieldShadowing:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.VolumetricFog:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.LightMaxDrawDistanceScale:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.CapsuleShadows:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.MaxPhysicalPages:4096]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasDirectional:-1.5]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasLocal:0.0]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.RayCountDirectional:8]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.SamplesPerRayDirectional:4]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.RayCountLocal:8]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.SamplesPerRayLocal:4]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Applying CVar settings from Section [GlobalIlluminationQuality@3] File [Scalability]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.DistanceFieldAO:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.AOQuality:2]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.DiffuseIndirect.Allow:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.ProbeSpacing:4]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.HemisphereProbeResolution:4]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.TraceMeshSDFs.Allow:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.RadianceCache.ProbeResolution:32]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.RadianceCache.NumProbesToTraceBudget:300]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.DownsampleFactor:16]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.TracingOctahedronResolution:8]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.IrradianceFormat:0]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.StochasticInterpolation:0]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.FullResolutionJitterWidth:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.TwoSidedFoliageBackfaceDiffuse:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ScreenTraces.HZBTraversal.FullResDepth:1]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.Reflections.MaxRoughnessToTraceForFoliage:0.4]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.GridPixelSize:32]]
+[2024.05.24-01.49.37:303][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.TraceFromVolume:1]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.TracingOctahedronResolution:3]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.RadianceCache.ProbeResolution:8]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.RadianceCache.NumProbesToTraceBudget:200]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Applying CVar settings from Section [ReflectionQuality@3] File [Scalability]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.SSR.Quality:3]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.SSR.HalfResSceneColor:0]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.Reflections.Allow:1]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.Reflections.DownsampleFactor:1]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyReflections.FrontLayer.Allow:1]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyReflections.FrontLayer.Enable:0]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [Scalability]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.MotionBlurQuality:4]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.MotionBlur.HalfResGather:0]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.AmbientOcclusionLevels:-1]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.DepthOfFieldQuality:2]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.RenderTargetPoolMin:400]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.LensFlareQuality:2]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.SceneColorFringeQuality:1]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.EyeAdaptationQuality:2]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.BloomQuality:5]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.Bloom.ScreenPercentage:70.711]]
+[2024.05.24-01.49.37:304][  0]LogConfig: Set CVar [[r.FastBlurThreshold:100]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Upscale.Quality:3]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Tonemapper.GrainQuantization:1]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.LightShaftQuality:1]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Filter.SizeScale:1]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Tonemapper.Quality:5]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [Scalability]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Streaming.MipBias:0]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Streaming.Boost:1]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.MaxAnisotropy:8]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.VT.MaxAnisotropy:8]]
+[2024.05.24-01.49.37:305][  0]LogConfig: Set CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.Streaming.PoolSize:1000]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [Scalability]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.RefractionQuality:2]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SceneColorFormat:4]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.DetailMode:2]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.TranslucencyVolumeBlur:1]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SSS.Scale:1]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SSS.SampleSet:2]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SSS.Quality:1]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SSS.HalfRes:0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SSGI.Quality:3]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.EmitterSpawnRateScale:1.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.ParticleLightQuality:2]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+[2024.05.24-01.49.37:306][  0]LogConfig: Set CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[r.SkyLight.RealTimeReflectionCapture:1]]
+[2024.05.24-01.49.37:307][  0]LogConfig: CVar [[fx.Niagara.QualityLevel:3]] deferred - dummy variable created
+[2024.05.24-01.49.37:307][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [Scalability]
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[foliage.DensityScale:1.0]]
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[grass.DensityScale:1.0]]
+[2024.05.24-01.49.37:307][  0]LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [Scalability]
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+[2024.05.24-01.49.37:307][  0]LogConfig: CVar [[r.HairStrands.Interpolation.UseSingleGuide:0]] deferred - dummy variable created
+[2024.05.24-01.49.37:307][  0]LogConfig: Set CVar [[r.AnisotropicMaterials:1]]
+[2024.05.24-01.49.37:314][  0]LogRHI: Using Default RHI: D3D12
+[2024.05.24-01.49.37:314][  0]LogRHI: Using Highest Feature Level of D3D12: SM6
+[2024.05.24-01.49.37:314][  0]LogRHI: Loading RHI module D3D12RHI
+[2024.05.24-01.49.37:345][  0]LogD3D12RHI: Aftermath initialized
+[2024.05.24-01.49.37:345][  0]LogD3D12RHI: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+[2024.05.24-01.49.37:346][  0]LogRHI: Checking if RHI D3D12 with Feature Level SM6 is supported by your system.
+[2024.05.24-01.49.37:629][  0]LogD3D12RHI: Found D3D12 adapter 0: NVIDIA GeForce RTX 3060 Laptop GPU (VendorId: 10de, DeviceId: 2560, SubSysId: 3b0717aa, Revision: 00a1
+[2024.05.24-01.49.37:629][  0]LogD3D12RHI:   Max supported Feature Level 12_2, shader model 6.7, binding tier 3, wave ops supported, atomic64 supported
+[2024.05.24-01.49.37:629][  0]LogD3D12RHI:   Adapter has 6009MB of dedicated video memory, 0MB of dedicated system memory, and 7778MB of shared system memory, 1 output[s]
+[2024.05.24-01.49.37:629][  0]LogD3D12RHI:   Driver Version: 537.32 (internal:31.0.15.3732, unified:537.32)
+[2024.05.24-01.49.37:629][  0]LogD3D12RHI:      Driver Date: 8-30-2023
+[2024.05.24-01.49.37:825][  0]LogD3D12RHI: Found D3D12 adapter 1: AMD Radeon(TM) Graphics (VendorId: 1002, DeviceId: 1681, SubSysId: 3b0717aa, Revision: 00c8
+[2024.05.24-01.49.37:825][  0]LogD3D12RHI:   Max supported Feature Level 12_1, shader model 6.7, binding tier 3, wave ops supported, atomic64 supported
+[2024.05.24-01.49.37:825][  0]LogD3D12RHI:   Adapter has 485MB of dedicated video memory, 0MB of dedicated system memory, and 7778MB of shared system memory, 0 output[s]
+[2024.05.24-01.49.37:825][  0]LogD3D12RHI:   Driver Version: AMD Software: Adrenalin Edition 22.20.46.13 (internal:31.0.12046.13002, unified:31.0.12046.13002)
+[2024.05.24-01.49.37:825][  0]LogD3D12RHI:      Driver Date: 7-10-2023
+[2024.05.24-01.49.37:862][  0]LogD3D12RHI: Found D3D12 adapter 2: Microsoft Basic Render Driver (VendorId: 1414, DeviceId: 008c, SubSysId: 0000, Revision: 0000
+[2024.05.24-01.49.37:862][  0]LogD3D12RHI:   Max supported Feature Level 12_1, shader model 6.2, binding tier 3, wave ops supported, atomic64 unsupported
+[2024.05.24-01.49.37:862][  0]LogD3D12RHI:   Adapter has 0MB of dedicated video memory, 0MB of dedicated system memory, and 7778MB of shared system memory, 0 output[s]
+[2024.05.24-01.49.37:863][  0]LogD3D12RHI: DirectX Agility SDK runtime found.
+[2024.05.24-01.49.37:863][  0]LogD3D12RHI: Chosen D3D12 Adapter Id = 0
+[2024.05.24-01.49.37:864][  0]LogRHI: RHI D3D12 with Feature Level SM6 is supported and will be used.
+[2024.05.24-01.49.37:864][  0]LogInit: Selected Device Profile: [WindowsEditor]
+[2024.05.24-01.49.37:864][  0]LogHAL: Display: Platform has ~ 16 GB [16312393728 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2024.05.24-01.49.37:864][  0]LogDeviceProfileManager: Going up to parent DeviceProfile [Windows]
+[2024.05.24-01.49.37:864][  0]LogDeviceProfileManager: Going up to parent DeviceProfile []
+[2024.05.24-01.49.37:866][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2024.05.24-01.49.37:866][  0]LogConfig: Set CVar [[r.DumpShaderDebugInfo:2]]
+[2024.05.24-01.49.37:866][  0]LogConfig: Set CVar [[p.chaos.AllowCreatePhysxBodies:1]]
+[2024.05.24-01.49.37:866][  0]LogConfig: Set CVar [[fx.SkipVectorVMBackendOptimizations:1]]
+[2024.05.24-01.49.37:866][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [Engine]
+[2024.05.24-01.49.37:867][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [D:/ASProject/AmericanSniper/Saved/Config/WindowsEditor/Editor.ini]
+[2024.05.24-01.49.37:867][  0]LogInit: Computer: DESKTOP-675TN1F
+[2024.05.24-01.49.37:867][  0]LogInit: User: kobg
+[2024.05.24-01.49.37:867][  0]LogInit: CPU Page size=4096, Cores=8
+[2024.05.24-01.49.37:867][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2024.05.24-01.49.37:867][  0]LogMemory: Memory total: Physical=15.2GB (16GB approx)
+[2024.05.24-01.49.37:867][  0]LogMemory: Platform Memory Stats for WindowsEditor
+[2024.05.24-01.49.37:867][  0]LogMemory: Process Physical Memory: 494.09 MB used, 526.49 MB peak
+[2024.05.24-01.49.37:867][  0]LogMemory: Process Virtual Memory: 516.48 MB used, 516.48 MB peak
+[2024.05.24-01.49.37:867][  0]LogMemory: Physical Memory: 12635.34 MB used,  2921.38 MB free, 15556.71 MB total
+[2024.05.24-01.49.37:867][  0]LogMemory: Virtual Memory: 29148.61 MB used,  18408.10 MB free, 47556.71 MB total
+[2024.05.24-01.49.37:867][  0]LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+[2024.05.24-01.49.37:879][  0]LogWindows: WindowsPlatformFeatures enabled
+[2024.05.24-01.49.37:908][  0]LogInit: Physics initialised using underlying interface: Chaos
+[2024.05.24-01.49.37:910][  0]LogInit: Overriding language with editor language configuration option (en).
+[2024.05.24-01.49.37:910][  0]LogInit: Using OS detected locale (ko-KR).
+[2024.05.24-01.49.38:095][  0]LogInit: Setting process to per monitor DPI aware
+[2024.05.24-01.49.38:124][  0]LogWindowsTextInputMethodSystem: Available input methods:
+[2024.05.24-01.49.38:125][  0]LogWindowsTextInputMethodSystem:   - 한국어(대한민국) - Microsoft 입력기 (TSF IME).
+[2024.05.24-01.49.38:125][  0]LogWindowsTextInputMethodSystem: Activated input method: 한국어(대한민국) - Microsoft 입력기 (TSF IME).
+[2024.05.24-01.49.38:168][  0]LogSlate: New Slate User Created. Platform User Id 0, User Index 0, Is Virtual User: 0
+[2024.05.24-01.49.38:168][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2024.05.24-01.49.38:538][  0]LogRHI: Using Default RHI: D3D12
+[2024.05.24-01.49.38:538][  0]LogRHI: Using Highest Feature Level of D3D12: SM6
+[2024.05.24-01.49.38:538][  0]LogRHI: Loading RHI module D3D12RHI
+[2024.05.24-01.49.38:538][  0]LogRHI: Checking if RHI D3D12 with Feature Level SM6 is supported by your system.
+[2024.05.24-01.49.38:538][  0]LogRHI: RHI D3D12 with Feature Level SM6 is supported and will be used.
+[2024.05.24-01.49.38:539][  0]LogD3D12RHI: Display: Creating D3D12 RHI with Max Feature Level SM6
+[2024.05.24-01.49.38:540][  0]LogWindows: Attached monitors:
+[2024.05.24-01.49.38:540][  0]LogWindows:     resolution: 2560x1600, work area: (0, 0) -> (2560, 1528), device: '\\.\DISPLAY1' [PRIMARY]
+[2024.05.24-01.49.38:540][  0]LogWindows: Found 1 attached monitors.
+[2024.05.24-01.49.38:540][  0]LogWindows: Gathering driver information using Windows Setup API
+[2024.05.24-01.49.38:541][  0]LogRHI: RHI Adapter Info:
+[2024.05.24-01.49.38:541][  0]LogRHI:             Name: NVIDIA GeForce RTX 3060 Laptop GPU
+[2024.05.24-01.49.38:541][  0]LogRHI:   Driver Version: 537.32 (internal:31.0.15.3732, unified:537.32)
+[2024.05.24-01.49.38:541][  0]LogRHI:      Driver Date: 8-30-2023
+[2024.05.24-01.49.38:542][  0]LogD3D12RHI:     GPU DeviceId: 0x2560 (for the marketing name, search the web for "GPU Device Id")
+[2024.05.24-01.49.38:542][  0]LogD3D12RHI: InitD3DDevice: -D3DDebug = off -D3D12GPUValidation = off
+[2024.05.24-01.49.38:564][  0]LogD3D12RHI: [Aftermath] Aftermath crash dumping enabled
+[2024.05.24-01.49.38:564][  0]LogD3D12RHI: Emitting draw events for PIX profiling.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: [Aftermath] Aftermath enabled and primed
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: [Aftermath] Aftermath resource tracking enabled
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device1 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device2 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device3 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device4 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device5 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device6 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device7 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device8 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device9 is supported.
+[2024.05.24-01.49.38:678][  0]LogD3D12RHI: ID3D12Device10 is supported.
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: Bindless resources are supported
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: Stencil ref from pixel shader is not supported
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: Wave Operations are supported (wave size: min=32 max=32).
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: D3D12 ray tracing tier 1.1 and bindless resources are supported.
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: Mesh shader tier 1.0 is supported
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: AtomicInt64OnTypedResource is supported
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: AtomicInt64OnGroupShared is supported
+[2024.05.24-01.49.38:681][  0]LogD3D12RHI: AtomicInt64OnDescriptorHeapResource is supported
+[2024.05.24-01.49.38:682][  0]LogD3D12RHI: Shader Model 6.6 atomic64 is supported
+[2024.05.24-01.49.38:779][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for DiagnosticBuffer (3D)
+[2024.05.24-01.49.38:779][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for DiagnosticBuffer (Copy)
+[2024.05.24-01.49.38:780][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for DiagnosticBuffer (Compute)
+[2024.05.24-01.49.38:798][  0]LogD3D12RHI: Display: Not using pipeline state disk cache per r.D3D12.PSO.DiskCache=0
+[2024.05.24-01.49.38:798][  0]LogD3D12RHI: Display: Not using driver-optimized pipeline state disk cache per r.D3D12.PSO.DriverOptimizedDiskCache=0
+[2024.05.24-01.49.38:799][  0]LogRHI: Texture pool is 3301 MB (70% of 4716 MB)
+[2024.05.24-01.49.38:800][  0]LogD3D12RHI: Async texture creation enabled
+[2024.05.24-01.49.38:800][  0]LogD3D12RHI: RHI has support for 64 bit atomics
+[2024.05.24-01.49.38:904][  0]LogTurnkeySupport: Running Turnkey SDK detection: ' -ScriptsForProject="D:/ASProject/AmericanSniper/ASPrototype.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="D:/ASProject/AmericanSniper/Intermediate/TurnkeyReport_0.log" -log="D:/ASProject/AmericanSniper/Intermediate/TurnkeyLog_0.log" -project="D:/ASProject/AmericanSniper/ASPrototype.uproject"  -platform=all'
+[2024.05.24-01.49.38:905][  0]LogMonitoredProcess: Running Serialized UAT: [ cmd.exe /c ""C:/Program Files/Epic Games/UE_5.2/Engine/Build/BatchFiles/RunUAT.bat"  -ScriptsForProject="D:/ASProject/AmericanSniper/ASPrototype.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="D:/ASProject/AmericanSniper/Intermediate/TurnkeyReport_0.log" -log="D:/ASProject/AmericanSniper/Intermediate/TurnkeyLog_0.log" -project="D:/ASProject/AmericanSniper/ASPrototype.uproject"  -platform=all" ]
+[2024.05.24-01.49.38:968][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatASTC
+[2024.05.24-01.49.38:968][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatDXT
+[2024.05.24-01.49.38:968][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatETC2
+[2024.05.24-01.49.38:968][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatIntelISPCTexComp
+[2024.05.24-01.49.38:968][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatUncompressed
+[2024.05.24-01.49.38:968][  0]LogTextureFormatOodle: Display: Oodle Texture TFO init; latest sdk version = 2.9.8
+[2024.05.24-01.49.38:969][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.5.dll
+[2024.05.24-01.49.38:973][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.6.dll
+[2024.05.24-01.49.38:976][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.7.dll
+[2024.05.24-01.49.38:980][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.8.dll
+[2024.05.24-01.49.38:983][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatOodle
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+[2024.05.24-01.49.39:039][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+[2024.05.24-01.49.39:082][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'HoloLens'
+[2024.05.24-01.49.39:082][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'HoloLensClient'
+[2024.05.24-01.49.39:092][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+[2024.05.24-01.49.39:092][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+[2024.05.24-01.49.39:101][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+[2024.05.24-01.49.39:101][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxEditor'
+[2024.05.24-01.49.39:101][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+[2024.05.24-01.49.39:101][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+[2024.05.24-01.49.39:108][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64'
+[2024.05.24-01.49.39:109][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64Server'
+[2024.05.24-01.49.39:109][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64Client'
+[2024.05.24-01.49.39:116][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+[2024.05.24-01.49.39:116][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+[2024.05.24-01.49.39:133][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+[2024.05.24-01.49.39:133][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsEditor'
+[2024.05.24-01.49.39:133][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+[2024.05.24-01.49.39:133][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+[2024.05.24-01.49.39:133][  0]LogTargetPlatformManager: Display: Building Assets For WindowsEditor
+[2024.05.24-01.49.39:159][  0]LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+[2024.05.24-01.49.39:165][  0]LogTargetPlatformManager: Unable to find audio format BINKA from hinted modules, loading all potential format modules to find it
+[2024.05.24-01.49.39:166][  0]LogTargetPlatformManager: Loaded format module AudioFormatADPCM
+[2024.05.24-01.49.39:166][  0]LogTargetPlatformManager:   ADPCM
+[2024.05.24-01.49.39:166][  0]LogTargetPlatformManager:   PCM
+[2024.05.24-01.49.39:174][  0]LogTargetPlatformManager: Loaded format module AudioFormatBink
+[2024.05.24-01.49.39:174][  0]LogTargetPlatformManager:   BINKA
+[2024.05.24-01.49.39:174][  0]LogTargetPlatformManager: Loaded format module AudioFormatOgg
+[2024.05.24-01.49.39:174][  0]LogTargetPlatformManager:   OGG
+[2024.05.24-01.49.39:174][  0]LogTargetPlatformManager: Loaded format module AudioFormatOpus
+[2024.05.24-01.49.39:174][  0]LogTargetPlatformManager:   OPUS
+[2024.05.24-01.49.39:402][  0]LogTargetPlatformManager: Unable to find shader format SF_METAL from hinted modules, loading all potential format modules to find it
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager: Loaded format module MetalShaderFormat
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager:   SF_METAL
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager:   SF_METAL_MRT
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager:   SF_METAL_TVOS
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager:   SF_METAL_MRT_TVOS
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager:   SF_METAL_SM5
+[2024.05.24-01.49.39:427][  0]LogTargetPlatformManager:   SF_METAL_MACES3_1
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   SF_METAL_MRT_MAC
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager: Loaded format module ShaderFormatD3D
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   PCD3D_SM6
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   PCD3D_SM5
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   PCD3D_ES31
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   D3D_ES3_1_HOLOLENS
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager: Loaded format module ShaderFormatOpenGL
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   GLSL_150_ES31
+[2024.05.24-01.49.39:428][  0]LogTargetPlatformManager:   GLSL_ES3_1_ANDROID
+[2024.05.24-01.49.39:473][  0]LogTargetPlatformManager: Loaded format module ShaderFormatVectorVM
+[2024.05.24-01.49.39:474][  0]LogTargetPlatformManager:   VVM_1_0
+[2024.05.24-01.49.39:474][  0]LogTargetPlatformManager: Loaded format module VulkanShaderFormat
+[2024.05.24-01.49.39:474][  0]LogTargetPlatformManager:   SF_VULKAN_SM5
+[2024.05.24-01.49.39:474][  0]LogTargetPlatformManager:   SF_VULKAN_ES31_ANDROID
+[2024.05.24-01.49.39:474][  0]LogTargetPlatformManager:   SF_VULKAN_ES31
+[2024.05.24-01.49.39:474][  0]LogTargetPlatformManager:   SF_VULKAN_SM5_ANDROID
+[2024.05.24-01.49.39:474][  0]LogRendererCore: Ray tracing is disabled. Reason: disabled through project setting (r.RayTracing=0).
+[2024.05.24-01.49.39:484][  0]LogDerivedDataCache: FDerivedDataBackendGraph: Pak pak cache file D:/ASProject/AmericanSniper/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2024.05.24-01.49.39:484][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchy Hierarchy.
+[2024.05.24-01.49.39:484][  0]LogDerivedDataCache: FDerivedDataBackendGraph: CompressedPak pak cache file D:/ASProject/AmericanSniper/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2024.05.24-01.49.39:484][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchy Hierarchy.
+[2024.05.24-01.49.39:512][  0]LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (2145 MiB)
+[2024.05.24-01.49.39:513][  0]LogDerivedDataCache: FDerivedDataBackendGraph: EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2024.05.24-01.49.39:513][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchy Hierarchy.
+[2024.05.24-01.49.39:541][  0]LogDerivedDataCache: Speed tests for C:/Users/kobg/AppData/Local/UnrealEngine/Common/DerivedDataCache took 0.03 seconds
+[2024.05.24-01.49.39:541][  0]LogDerivedDataCache: Display: Performance to C:/Users/kobg/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.05ms. RandomReadSpeed=126.66MBs, RandomWriteSpeed=49.79MBs. Assigned SpeedClass 'Local'
+[2024.05.24-01.49.39:547][  0]LogDerivedDataCache: Using Local data cache path C:/Users/kobg/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2024.05.24-01.49.39:547][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2024.05.24-01.49.39:547][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchy Hierarchy.
+[2024.05.24-01.49.39:547][  0]LogDerivedDataCache: Cloud: Disabled because Host is set to 'None'
+[2024.05.24-01.49.39:547][  0]LogDerivedDataCache: Unable to find inner node Cloud for hierarchy Hierarchy.
+[2024.05.24-01.49.39:549][  0]LogVirtualization: Display: VirtualizationSystem name found in ini file: None
+[2024.05.24-01.49.39:549][  0]LogVirtualization: Display: FNullVirtualizationSystem mounted, virtualization will be disabled
+[2024.05.24-01.49.39:560][  0]LogShaderCompilers: Guid format shader working directory is 18 characters bigger than the processId version (D:/ASProject/AmericanSniper/Intermediate/Shaders/WorkingDirectory/2840/).
+[2024.05.24-01.49.39:562][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/kobg/AppData/Local/Temp/UnrealShaderWorkingDir/B4CF0F5F4851F7DDF08693B556F4C26B/'.
+[2024.05.24-01.49.39:564][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2024.05.24-01.49.39:564][  0]LogShaderCompilers: Display: Using Local Shader Compiler with 8 workers.
+[2024.05.24-01.49.40:642][  0]LogShaderCompilers: Display: Compiling shader autogen file: D:/ASProject/AmericanSniper/Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush
+[2024.05.24-01.49.40:642][  0]LogTurnkeySupport: Completed SDK detection: ExitCode = 0
+[2024.05.24-01.49.40:642][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2024.05.24-01.49.41:063][  0]LogSlate: Using FreeType 2.10.0
+[2024.05.24-01.49.41:067][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2024.05.24-01.49.41:156][  0]LogAssetRegistry: FAssetRegistry took 0.0069 seconds to start up
+[2024.05.24-01.49.41:163][  0]LogEditorDomain: Display: EditorDomain is Disabled
+[2024.05.24-01.49.41:169][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/LVL1.umap has newer custom version of Dev-Rendering
+[2024.05.24-01.49.41:216][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/ANI_Modern_Weapons_Rifle_05_Fire.uasset has newer custom version of FortniteMain
+[2024.05.24-01.49.41:216][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/ANI_Modern_Weapons_Rifle_05_Reload.uasset has newer custom version of FortniteMain
+[2024.05.24-01.49.41:216][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/SK_Modern_Weapons_Rifle_05.uasset has newer custom version of UE5-Main
+[2024.05.24-01.49.41:216][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/PA_Modern_Weapons_Rifle_05.uasset has newer custom version of FortniteMain
+[2024.05.24-01.49.41:216][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/SKM_Modern_Weapons_Rifle_05.uasset has newer custom version of Dev-Rendering
+[2024.05.24-01.49.41:216][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/SM_Modern_Weapons_Rifle_05.uasset has newer custom version of Dev-Rendering
+[2024.05.24-01.49.41:217][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/Textures/T_Modern_Weapons_Rifle_05_N.uasset has newer custom version of UE5-Main
+[2024.05.24-01.49.41:217][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/Textures/T_Modern_Weapons_Rifle_05_D.uasset has newer custom version of UE5-Main
+[2024.05.24-01.49.41:217][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/Textures/T_Modern_Weapons_Rifle_05_M.uasset has newer custom version of UE5-Main
+[2024.05.24-01.49.41:217][  0]LogAssetRegistry: Error: Package D:/ASProject/AmericanSniper/Content/MarketplaceBlockout/Modern/Weapons/Assets/Rifles/05/Materials/MI_Modern_Weapons_Rifle_05.uasset has newer custom version of Dev-Rendering
+[2024.05.24-01.49.41:520][  0]LogTexture: Display: Texture Encode Speed: FinalIfAvailable (editor).
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: Available device profiles:
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A93200][000008DD10E2D800 52] GlobalDefaults, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A93800][000008DD0AFE0000 52] Windows, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A93A00][000008DD0AFE7800 52] WindowsEditor, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A94000][000008DCF25D0000 52] WindowsServer, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A94200][000008DD10DEC800 52] WindowsClient, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A94400][000008DD052B0000 52] IOS, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A94600][000008DD14E30000 52] iPadAir2, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A94800][000008DD14E32800 52] IPadPro, 
+[2024.05.24-01.49.41:612][  0]LogDeviceProfileManager: 	[000008DD14A94A00][000008DD14E35000 52] iPadAir3, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A94C00][000008DD14E37800 52] iPadAir4, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A94E00][000008DD14E3A000 52] iPadAir5, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95000][000008DD14E3C800 52] iPadMini4, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95200][000008DD14E40000 52] iPadMini5, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95400][000008DD14E42800 52] iPadMini6, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95600][000008DD14E45000 52] iPhone6S, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95800][000008DD14E47800 52] iPhone7, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95A00][000008DD14E4A000 52] iPodTouch7, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95C00][000008DD14E4C800 52] iPhone6SPlus, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A95E00][000008DD14E50000 52] iPhone7Plus, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96000][000008DD14E52800 52] iPhoneSE, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96200][000008DD14E55000 52] iPhone8, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96400][000008DD14E57800 52] iPhone8Plus, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96600][000008DD14E5A000 52] iPhoneX, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96800][000008DD14E5C800 52] iPhoneXS, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96A00][000008DD15010000 52] iPhoneXSMax, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96C00][000008DD15012800 52] iPhoneXR, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A96E00][000008DD15015000 52] iPhone11, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A97000][000008DD15017800 52] iPhone11Pro, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A97200][000008DD1501A000 52] iPhone11ProMax, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A97400][000008DD1501C800 52] iPhoneSE2, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A97600][000008DD15020000 52] iPhone12Mini, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A97800][000008DD15022800 52] iPhone12, 
+[2024.05.24-01.49.41:613][  0]LogDeviceProfileManager: 	[000008DD14A97A00][000008DD15025000 52] iPhone12Pro, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A97C00][000008DD15027800 52] iPhone12ProMax, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A97E00][000008DD1502A000 52] iPhone13Mini, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98000][000008DD1502C800 52] iPhone13, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98200][000008DD15030000 52] iPhone13Pro, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98400][000008DD15032800 52] iPhone13ProMax, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98600][000008DD15035000 52] iPhoneSE3, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98800][000008DD15037800 52] iPhone14, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98A00][000008DD1503A000 52] iPhone14Plus, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98C00][000008DD1503C800 52] iPhone14Pro, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A98E00][000008DD15040000 52] iPhone14ProMax, 
+[2024.05.24-01.49.41:614][  0]LogDeviceProfileManager: 	[000008DD14A99000][000008DD15042800 52] iPadPro105, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99200][000008DD15045000 52] iPadPro129, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99400][000008DD15047800 52] iPadPro97, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99600][000008DD1504A000 52] iPadPro2_129, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99800][000008DD1504C800 52] iPad5, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99A00][000008DD15050000 52] iPad6, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99C00][000008DD15052800 52] iPad7, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A99E00][000008DD15055000 52] iPad8, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9A000][000008DD15057800 52] iPad9, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9A200][000008DD1505A000 52] iPad10, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9A400][000008DD1505C800 52] iPadPro11, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9A600][000008DD15060000 52] iPadPro2_11, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9A800][000008DD15062800 52] iPadPro3_11, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9AA00][000008DD15065000 52] iPadPro4_11, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9AC00][000008DD15067800 52] iPadPro3_129, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9AE00][000008DD1506A000 52] iPadPro4_129, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9B000][000008DD1506C800 52] iPadPro5_129, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9B200][000008DD15070000 52] iPadPro6_129, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9B400][000008DD15072800 52] AppleTV, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9B600][000008DD15075000 52] AppleTV4K, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9B800][000008DD15077800 52] AppleTV2_4K, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9BA00][000008DD1507A000 52] TVOS, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9BC00][000008DD1507C800 52] Mac, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9BE00][000008DD15080000 52] MacEditor, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9C000][000008DD15082800 52] MacClient, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9C200][000008DD15085000 52] MacServer, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9C400][000008DD15087800 52] Linux, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9C600][000008DD1508A000 52] LinuxEditor, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9C800][000008DD1508C800 52] LinuxArm64Editor, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9CA00][000008DD15090000 52] LinuxArm64, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9CC00][000008DD15092800 52] LinuxClient, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9CE00][000008DD15095000 52] LinuxArm64Client, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9D000][000008DD15097800 52] LinuxServer, 
+[2024.05.24-01.49.41:615][  0]LogDeviceProfileManager: 	[000008DD14A9D200][000008DD1509A000 52] LinuxArm64Server, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9D400][000008DD1509C800 52] Android, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9D600][000008DD150A0000 52] Android_Preview_OpenGL, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9D800][000008DD150A2800 52] Android_Preview_Vulkan, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9DA00][000008DD150A5000 52] Android_Low, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9DC00][000008DD150A7800 52] Android_Mid, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9DE00][000008DD150AA000 52] Android_High, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9E000][000008DD150AC800 52] Android_Default, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9E200][000008DD150C0000 52] Android_Adreno4xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9E400][000008DD150C2800 52] Android_Adreno5xx_Low, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9E600][000008DD150C5000 52] Android_Adreno5xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9E800][000008DD150C7800 52] Android_Adreno6xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9EA00][000008DD150CA000 52] Android_Adreno6xx_Vulkan, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9EC00][000008DD150CC800 52] Android_Adreno7xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9EE00][000008DD150D0000 52] Android_Adreno7xx_Vulkan, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9F000][000008DD150D2800 52] Android_Mali_T6xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9F200][000008DD150D5000 52] Android_Mali_T7xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9F400][000008DD150D7800 52] Android_Mali_T8xx, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9F600][000008DD150DA000 52] Android_Mali_G71, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9F800][000008DD150DC800 52] Android_Mali_G72, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9FA00][000008DD150E0000 52] Android_Mali_G72_Vulkan, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9FC00][000008DD150E2800 52] Android_Mali_G76, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD14A9FE00][000008DD150E5000 52] Android_Mali_G76_Vulkan, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD1455F600][000008DD150E7800 52] Android_Mali_G77, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD03F44800][000008DD150EA000 52] Android_Mali_G77_Vulkan, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD150F0000][000008DD150EC800 52] Android_Mali_G78, 
+[2024.05.24-01.49.41:616][  0]LogDeviceProfileManager: 	[000008DD150F0200][000008DD15100000 52] Android_Mali_G78_Vulkan, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F0400][000008DD15102800 52] Android_Mali_G710, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F0600][000008DD15105000 52] Android_Mali_G710_Vulkan, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F0800][000008DD15107800 52] Android_Mali_G7xx, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F0A00][000008DD1510A000 52] Android_Mali_G7xx_Vulkan, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F0C00][000008DD1510C800 52] Android_Xclipse_920, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F0E00][000008DD15110000 52] Android_Xclipse_920_Vulkan, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F1000][000008DD15112800 52] Android_Vulkan_SM5, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F1200][000008DD15115000 52] Android_PowerVR_G6xxx, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F1600][000008DD15117800 52] Android_PowerVR_GT7xxx, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F1800][000008DD1511A000 52] Android_PowerVR_GE8xxx, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F1C00][000008DD1511C800 52] Android_PowerVR_GM9xxx, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F1E00][000008DD15120000 52] Android_PowerVR_GM9xxx_Vulkan, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F2000][000008DD15122800 52] Android_TegraK1, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F2200][000008DD15125000 52] Android_Unknown_Vulkan, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F2400][000008DD15127800 52] Oculus_Quest, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F2600][000008DD1512A000 52] Oculus_Quest2, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: 	[000008DD150F2800][000008DD1512C800 52] HoloLens, 
+[2024.05.24-01.49.41:618][  0]LogDeviceProfileManager: Active device profile: [000008DD14A93A00][000008DD0AFE7800 52] WindowsEditor
+[2024.05.24-01.49.41:618][  0]LogCsvProfiler: Display: Metadata set : deviceprofile="WindowsEditor"
+[2024.05.24-01.49.41:619][  0]LogShaderCompilers: Display: Compiling shader autogen file: D:/ASProject/AmericanSniper/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
+[2024.05.24-01.49.41:629][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2024.05.24-01.49.41:629][  0]LogShaderCompilers: Display: Compiling shader autogen file: D:/ASProject/AmericanSniper/Intermediate/ShaderAutogen/PCD3D_ES3_1/AutogenShaderHeaders.ush
+[2024.05.24-01.49.41:630][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2024.05.24-01.49.41:635][  0]LogTurnkeySupport: Turnkey Platform: Android: (Status=Invalid, Allowed_Sdk=r25b, Current_Sdk=, Allowed_AutoSdk=r25b, Current_AutoSdk=, Flags="Platform_InvalidHostPrerequisites", Error="Android Studio is not installed correctly.")
+[2024.05.24-01.49.41:636][  0]LogTurnkeySupport: Turnkey Platform: IOS: (Status=Invalid, MinAllowed_Sdk=1100.0.0.0, MaxAllowed_Sdk=8999.0, Current_Sdk=, Allowed_AutoSdk=14.1, Current_AutoSdk=, Flags="Platform_ValidHostPrerequisites")
+[2024.05.24-01.49.41:636][  0]LogTurnkeySupport: Turnkey Platform: Linux: (Status=Invalid, Allowed_Sdk=v21_clang-15.0.1-centos7, Current_Sdk=, Allowed_AutoSdk=v21_clang-15.0.1-centos7, Current_AutoSdk=, Flags="Platform_ValidHostPrerequisites")
+[2024.05.24-01.49.41:636][  0]LogTurnkeySupport: Turnkey Platform: LinuxArm64: (Status=Invalid, Allowed_Sdk=v21_clang-15.0.1-centos7, Current_Sdk=, Allowed_AutoSdk=v21_clang-15.0.1-centos7, Current_AutoSdk=, Flags="Platform_ValidHostPrerequisites")
+[2024.05.24-01.49.41:636][  0]LogTurnkeySupport: Turnkey Platform: Win64: (Status=Valid, MinAllowed_Sdk=10.0.00000.0, MaxAllowed_Sdk=10.9.99999.0, Current_Sdk=10.0.22621.0, Allowed_AutoSdk=10.0.18362.0, Current_AutoSdk=, Flags="InstalledSdk_ValidVersionExists")
+[2024.05.24-01.49.41:644][  0]LogTurnkeySupport: Running Turnkey device detection: ' -ScriptsForProject="D:/ASProject/AmericanSniper/ASPrototype.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="D:/ASProject/AmericanSniper/Intermediate/TurnkeyReport_1.log" -log="D:/ASProject/AmericanSniper/Intermediate/TurnkeyLog_1.log" -project="D:/ASProject/AmericanSniper/ASPrototype.uproject"  -Device=Win64@DESKTOP-675TN1F'
+[2024.05.24-01.49.41:644][  0]LogMonitoredProcess: Running Serialized UAT: [ cmd.exe /c ""C:/Program Files/Epic Games/UE_5.2/Engine/Build/BatchFiles/RunUAT.bat"  -ScriptsForProject="D:/ASProject/AmericanSniper/ASPrototype.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="D:/ASProject/AmericanSniper/Intermediate/TurnkeyReport_1.log" -log="D:/ASProject/AmericanSniper/Intermediate/TurnkeyLog_1.log" -project="D:/ASProject/AmericanSniper/ASPrototype.uproject"  -Device=Win64@DESKTOP-675TN1F" -nocompile -nocompileuat ]
+[2024.05.24-01.49.41:706][  0]LogTexture: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal
+[2024.05.24-01.49.41:830][  0]LogMaterial: WorldGridMaterial-SM6-Default: MATSM_D2BE6101BBDD464FA4DA4FFD062CBE0E_PCD3D_SM6_-268646912__BC5N_NoCCBN_NoIris_DEV_SL_LWC2_GV_PreExp_DBuf_UnInt_DXC0_VFO_SKYATM_SKYHF_SLWSMDLT_gs1_sdct_VT-0-0-1-0_DF_MS_T0_MS_T1_VED_Aniso-1_ComprOodle_Compr2_Lev6_ExclNonPipSh-1_LWC-2097152_2344159978DB6FCC63A5C44EA751315CBC3EF5DDED_Num_SM6_FL_0000000d_MFA_00000008_V_B6A0A753ED62499D8F30931E61FCAB05_0_DB3E993F4E2E98B305AD13B92D8C5DA5_62D973BDAB765EDE016625C5C0BF9591CD7A109D___TShadowDepthPSPixelShadowDepth_PerspectiveCorrect0_0_02264C743B4EBE09D6337834B4862EF42B9C3268972C96EE55043153763054472F92891367BC849EC_FLumenCardPS<false>0_0_02457D1263C836FFF498424DB4AF9A4C3EB4958A4B4AFBC835B0E8511B596BB98C6C375E96F613E4D_TShadowDepthPSPixelShadowDepth_NonPerspectiveCorrect0_0_02264C743B4EBE09D6337834B4862EF42B9C326895D9003A07122BE7BD2876C98DF8D858F5E00365D_TShadowDepthVSVertexShadowDepth_OutputDepthPositionOnly0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F5FCFDE4884D635EDF4F18BD3392801DB627240626_FMicropolyRasterizeCS0_0_0DEAC3C3E46DF2BDB82DD06A935E2CAE2930A820F38D66192BF0D34515EC5AD2CDACFA24FFB6B4CAC_TLightMapDensityPSTLightMapPolicyHQ0_0_058A251A7FBD282E0BF98A401EA3BC4C40863562629E8E0F5F6FD2EDF413A1250AA7BE6E52C951D64_TBasePassPSFPrecomputedVolumetricLightmapLightingPolicySkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E72C399F00EA0D8E90CF7BA4C61EF5A3EF74973E9_TBasePassPSTLightMapPolicyLQSkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E2E4EA8FEEED7EE52C208FC54424FEDB2CB987C3B_FLandscapeGrassWeightVS0_0_02C102A4737D12FEDAA3D47C3B3BA7F1EA99B0714A469FA5FCF448A131F926D214995E53915A18256_TLightMapDensityVSFNoLightMapPolicy0_0_058A251A7FBD282E0BF98A401EA3BC4C408635626891C1124EC1B5DB941DF1BA5FABB4BBFA352223F_TBasePassPSTDistanceFieldShadowsAndLightMapPolicyHQ0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E69888500E07A0F62E3747DCAFAE5FAC8F032AD04_FHWRasterizeVS0_0_0DEAC3C3E46DF2BDB82DD06A935E2CAE2930A820F48C83E6C6E5EB20B8752F7226BE8C1194A6F8F77_FHitProxyVS0_0_031CD4BEC083EC5AABC92B5D6C0EACFBA46742582B282128ADBC0C8F2E22B2C5B575EEDED30A8B7B8_FHitProxyPS0_0_0C2B820604C8DF7757F83EC0CC67790418915B0DE2A74A59EB00EA821209C26349094BBB03F4D6ED5_FLandscapeGrassWeightPS0_0_02C102A4737D12FEDAA3D47C3B3BA7F1EA99B0714106C943CF2E5C6D33DAE5FDC4A4E9B8232B7C78A_TBasePassPSFNoLightMapPolicy0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E6C8686026B054D9BD961D4C440F5FDD54CA38C07_FHWRasterizePS0_0_0DEAC3C3E46DF2BDB82DD06A935E2CAE2930A820F48C028453BCF70A104115FCB364BA6A5C3C4AAA0_TShadowDepthVSVertexShadowDepth_OutputDepth0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F55C128A2F6D1507D174ED09775E1D5BB050F02683_TDepthOnlyVS<true>0_0_06E7993E54659C6E3E6E5A80B2A1CF73C4A3862492A9A9EB6F6AEC78D04ED0798341235919F1C7EA3_FLandscapePhysicalMaterialPS0_0_0C2A232BA5DD2CD1C1E3E5716E1EB7803D8C4BBA9BD4AAA5E1E701CB0F79C3E8D450BEF8AC937258A_TLightMapDensityVSFDummyLightMapPolicy0_0_058A251A7FBD282E0BF98A401EA3BC4C408635626A8D01D556A2A6347711968CC5B2C44E20848E17B_FLumenCardVS0_0_0784500B7211961E566D3530A8C3C9B5D176CCD8F617646237FDC69FB38D590AA0B687E0FB01A281E_TShadowDepthPSPixelShadowDepth_VirtualShadowMap0_0_02264C743B4EBE09D6337834B4862EF42B9C32689DFFF0B5EA8BD51A79796C1533647D79F12B2FEBD_TBasePassVSFPrecomputedVolumetricLightmapLightingPolicy0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D300FB996F0BE2BDCDA243D4A21F958EA439EF10418F_TBasePassPSTDistanceFieldShadowsAndLightMapPolicyHQSkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737EE098E06E3A7ED4E7D0AE384D374798EAC9E671FB_TBasePassPSFPrecomputedVolumetricLightmapLightingPolicy0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E1BF2DD414CE38D1A46E8BD153A9AAA4080A3ED8A_TBasePassPSTLightMapPolicyHQ0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E26BD9FE44090B7A8EDCBBA02B66941E951A0847F_FLumenCardPS<true>0_0_02457D1263C836FFF498424DB4AF9A4C3EB4958A410BC213CA7B98C6BDB504A3A124DF8170F9D2A6B_TLightMapDensityPSFDummyLightMapPolicy0_0_058A251A7FBD282E0BF98A401EA3BC4C408635626696F9EC07D698191FA845F9186A9C2C14B87D692_TBasePassPSFCachedPointIndirectLightingPolicySkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737EEA781543209A66E56FAA33319B50428AB09B65E2_FTranslucentLightingInjectPS0_0_001D4B88ABA15B4C2F4AEE80A20DDD85F91BFBAAE70CF5C264EEE993F300F770C1E5D8BD55181BC8A_TBasePassVSFCachedPointIndirectLightingPolicy0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D300D1726533EF0C3E687EA7E3E99D89F6645873B5F6_FHWRasterizeMS0_0_0DEAC3C3E46DF2BDB82DD06A935E2CAE2930A820F82A55489FBDC4449CDA421AFD89E7C8F3ED6A32B_TBasePassPSFCachedPointIndirectLightingPolicy0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E233B673B73AD5C3DA45AB58558A2FEAF1AB5A7AA_FVelocityPS0_0_0EFD1E5AC7AC6021B8CC5706AB190C11D424A9665CC98E6311AC1581B96A09EEE8AE8F6960285B5A2_TBasePassPSFCachedVolumeIndirectLightingPolicy0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E80D0A4694439F865D3CC508893BCA55969638F38_TShadowDepthVSVertexShadowDepth_PerspectiveCorrect0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F5C004ABA017AA57991204B7B624FFD889C3B24A57_TBasePassPSFCachedVolumeIndirectLightingPolicySkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E588D69EC55B53A1F6EF1FDFE007D13A68C0DD945_TLightMapDensityPSFNoLightMapPolicy0_0_058A251A7FBD282E0BF98A401EA3BC4C4086356260E6A1E8C16C0AF9964CF3FEFC1B82F1F3B567770_TLightMapDensityVSTLightMapPolicyLQ0_0_058A251A7FBD282E0BF98A401EA3BC4C408635626436509D3C31F9011DB1B52E8E02F2100F14082F9_TBasePassVSTLightMapPolicyHQ0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D300CE573C2FA544614368F38DB987E943642455C304_FLandscapePhysicalMaterialVS0_0_0C2A232BA5DD2CD1C1E3E5716E1EB7803D8C4BBA9DE0D5BCEA7EC56FCFAF6FE24C7902B1E6C1A2354_TBasePassPSFNoLightMapPolicySkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E3C0FD33120C8575A512698C01E1EBF84CB90BE73_TBasePassVSFCachedVolumeIndirectLightingPolicy0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D30052DA8047FE3873ACFEEB67FCFF3AF5DF1AA7C5C8_TShadowDepthPSPixelShadowDepth_OnePassPointLight0_0_02264C743B4EBE09D6337834B4862EF42B9C326891C20FE0F6421C3566B37C59CBA77F6639400AC09_TShadowDepthVSVertexShadowDepth_PerspectiveCorrectPositionOnly0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F5860900EDBECB877A088A2E4A829C4D0BA92DB982_TBasePassVSTDistanceFieldShadowsAndLightMapPolicyHQ0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D30060D5E6FFDE96A687BE1C1A2ED9EDE815F8E41839_TShadowDepthVSVertexShadowDepth_VirtualShadowMap0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F5B4ECC9EA8AA550391078AD8904E08901E177AD2E_TShadowDepthVSVertexShadowDepth_OnePassPointLight0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F556E359529EA5F920092BA8DF37812C451EC3EEF6_TBasePassPSTLightMapPolicyLQ0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E94FC918ED25A4366478C0CE664DD0F431FB434A6_TLightMapDensityPSTLightMapPolicyLQ0_0_058A251A7FBD282E0BF98A401EA3BC4C4086356260B66239385DAE6F5050046365A9D116D80E52224_TBasePassVSTLightMapPolicyLQ0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D300BFC5C974DD65E6DA17A7D3C21BFBF250BA30283F_TLightMapDensityVSTLightMapPolicyHQ0_0_058A251A7FBD282E0BF98A401EA3BC4C408635626B0E82574BC7F5C377B8E738E24BDE3D732363B44_TShadowDepthVSVertexShadowDepth_VirtualShadowMapPositionOnly0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F52206E6F09C16C096D9488323D49A0F7639FE2E34_FDebugViewModePS0_0_0CACE037AF02FBF14C63D82D2287C8D03A9166DC5E177622259CDB9DC1140CF61335F5353997EC8B6_TBasePassPSTLightMapPolicyHQSkylight0_0_0023E536FBB054B5BF34ECC48168B8360A3B4737E25C2A51F6B76462E73EA9720145CE5233C11211C_TDepthOnlyVS<false>0_0_0E4BEC3AC2ABE0283BB1952B71FCE27DADCCE69C4ACA14F90957AEBF5BC1C2C3E6DB6BC750BA01CCD_FVelocityVS0_0_0EFD1E5AC7AC6021B8CC5706AB190C11D424A9665C043BB9FD7164B6E8DBD4123FD00693BC9B4513E_FDebugViewModeVS0_0_0A6C9E974D11AD18A56FCFC2CE273D736752B24FF809CB80A6A7260721600DBFAB6C1E0001BD9B8AE_TShadowDepthVSVertexShadowDepth_OnePassPointLightPositionOnly0_0_0E0AE3AEA3BE08ADCA99972F4085945CD97CCC6F56EB2AEF0350E0D6AC5867CF6F9990BDA65424641_TBasePassVSFNoLightMapPolicy0_0_09B25FBD4528C4BB8CC5944C0C133099CCD98D3002677AEB94C74F9DCEF44AB17F94D82839B020A23_DepthPosOnlyNoPixelPipeline6E7993E54659C6E3E6E5A80B2A1CF73C4A386249_VelocityPipeline18600EF5498F16C26DBD4EC5E6B65ECB6A44FBB4_DepthNoPixelPipelineE4BEC3AC2ABE0283BB1952B71FCE27DADCCE69C4_FGPUSpriteVertexFactory2EC19AA1FCACAB5E3FFF7C3B92D7EE33950DA20B5C5BE91DA01DC2B25B1018F3EDA7A6FC7D1D30AEB9CA513CCBA4F1E3AF7D9556DD0F2FF45E951E1A_FNiagaraRibbonVertexFactoryDFD49820B64BDFF3363FD262485BA53288126071A5C2BD7C8E1CB8C2C0438E13767AF67A0D5B5966DE03DD13CEAD2D60503F2AAC85D4762994EF4025A5C2BD7C8E1CB8C2C0438E13767AF67A0D5B5966A5C2BD7C8E1CB8C2C0438E13767AF67A0D5B5966_TGPUSkinAPEXClothVertexFactoryDefault9CBED93CCA0581CDDDD24ADBFD13B151E3395A47BBEDF5F2F99060D3A4E705A02AFC0D4CFF550703_FParticleSpriteVertexFactoryDCA06453589255A235A7AAD69084C253138EF6D5F99E1B0FB635933CEEAC41CF9441DF5EA4A994CA9DAE5A7C55936FD50BC3B20BD063C1832A4D4247_TGPUSkinVertexFactoryUnlimited9CBED93CCA0581CDDDD24ADBFD13B151E3395A47180376A7171B50BD465E9983F32BCB5A07542FE7_FVectorFieldVisualizationVertexFactoryCFD3B515B6C14C9CD5C34E7E8B03F8B7520AA2DFCC854D8E74FEAEF90804D69AF6B78BD07A141ACC_FNiagaraMeshVertexFactory63D3EAFE5AE508DBE8CB051B8533DAF6714E54A04B3A20E0CA93D5CA5A60C16EF2EB14EA073FC9571BD81B2CBA1F364F28A837532353718EB814537B4B3A20E0CA93D5CA5A60C16EF2EB14EA073FC9574B3A20E0CA93D5CA5A60C16EF2EB14EA073FC957_FParticleBeamTrailVertexFactory2875CB210252C4C77BA5FAD78D572C04DBDBDA41378BBDDEC2CEAC35A309C357B38D702E7981D5D3_TGPUSkinVertexFactoryDefault9CBED93CCA0581CDDDD24ADBFD13B151E3395A47180376A7171B50BD465E9983F32BCB5A07542FE7_TGPUSkinAPEXClothVertexFactoryUnlimited9CBED93CCA0581CDDDD24ADBFD13B151E3395A47BBEDF5F2F99060D3A4E705A02AFC0D4CFF550703_FGeometryCollectionVertexFactory356502C20F6757ADCAC398AFC3C94EA8E7B4F71D49D716CAD02F0AC031CC93ACB2AFCB9C42E7DC4149D716CAD02F0AC031CC93ACB2AFCB9C42E7DC4149D716CAD02F0AC031CC93ACB2AFCB9C42E7DC41_FLandscapeXYOffsetVertexFactoryE72F6DAAC067D804DA322F3F9260CA0C8002EDDBB1684FBEF19B946A8709F4309D7CC4E5FC6044ADEBA49461CECB1EA5D21E2BF8918B91C7C3994DCEB1684FBEF19B946A8709F4309D7CC4E5FC6044ADB1684FBEF19B946A8709F4309D7CC4E5FC6044AD_FMeshParticleVertexFactory74550A1FCF843D14286CB9E10BAE4687997D5E63F773920348F231C490A74B1A551F8CE3ABF04791_FInstancedStaticMeshVertexFactoryE80F5991FB4AFA1D421CB5E23A292E1A7A727040A163AB24C1DAF4D0703BC40B6B0C866D318AC9F8A163AB24C1DAF4D0703BC40B6B0C866D318AC9F8A163AB24C1DAF4D0703BC40B6B0C866D318AC9F8A163AB24C1DAF4D0703BC40B6B0C866D318AC9F8_FSplineMeshVertexFactoryE80F5991FB4AFA1D421CB5E23A292E1A7A727040A747D67BD07743C1BEA1DE549F682B82EB7B9965A747D67BD07743C1BEA1DE549F682B82EB7B9965A747D67BD07743C1BEA1DE549F682B82EB7B9965_FLocalVertexFactoryE80F5991FB4AFA1D421CB5E23A292E1A7A72704081418F8992AC49B8E2AFD31AF3B57530A23E085E81418F8992AC49B8E2AFD31AF3B57530A23E085E81418F8992AC49B8E2AFD31AF3B57530A23E085E_FLandscapeVertexFactoryE72F6DAAC067D804DA322F3F9260CA0C8002EDDBB1684FBEF19B946A8709F4309D7CC4E5FC6044ADEBA49461CECB1EA5D21E2BF8918B91C7C3994DCEB1684FBEF19B946A8709F4309D7CC4E5FC6044ADB1684FBEF19B946A8709F4309D7CC4E5FC6044AD_FNiagaraSpriteVertexFactory05E75C4923C709A92F1BD2524FB377F477139BD35957CFEE095AEFFBA7F83F09F020F15CF6555718EFF166204144512228FF7A163011544EEF3FD2265957CFEE095AEFFBA7F83F09F020F15CF65557185957CFEE095AEFFBA7F83F09F020F15CF6555718_Nanite::FVertexFactory058CA062179EAAD8F076E0F78F3C900C4DA897FB_FGeometryCacheVertexVertexFactory9F70D4DD6E443DD08CA62EEA5897D914FD739EB076143182082C57C6F98756E7AE927ED26DD4479A76143182082C57C6F98756E7AE927ED26DD4479A_FLandscapeFixedGridVertexFactoryE72F6DAAC067D804DA322F3F9260CA0C8002EDDB3F5F45F5620EF6411E27211E3D675CEA50B38DFBEBA49461CECB1EA5D21E2BF8918B91C7C3994DCE3F5F45F5620EF6411E27211E3D675CEA50B38DFB3F5F45F5620EF6411E27211E3D675CEA50B38DFB258810141414444414441444141414141444447401010101010131454444143314010134010101424464512141414142402414141414141313304444443724144444444404444444444444444444434141414142404444444444442434141414141510100031313131233131434341434131423121444044444131313131444031010101510101010113161656434343434116161616161666243161616161303434344414444444441415151510103001013115161616160240404040404040404040404040404040434343434344444444444444444040404040404044444444404040404444444444443444444444444221414144444442414141444144414141414131313131313141414443444444444141414141414141414141414343434444444444444344404441414141444141414141414341414144414141414444414441413141432444444444414121434341414131414141414122414343424241434343414341414441313131313144424441214144313131414444434121212121243134414114222212164421022121212121314444444444444440510151015101331414304341011640444414150051515151616161616101010101015151401212131616161636316161121010014714131313143304410101010101010101510101010101010143141500010101010101010101010101010101010101011600044414040424243131314144010101016101010101010131010101401213131314161606016161612444313131212121212121212141414144444444442140444414121212121212121212121212121312121212121212121212141212121212121212324414130431313131616161616161616121104344444434144414141414242414121212121212121212121312121212121212121212121212121242442424243434341414441414141414444444444444444414421402313131313131616161616110101012101010101510120044444444404342404442315101404444444444444303313131214331404040404043414443314331444331433143414341433143314331432142413141314411144246444444044464444444444044401410101510151015000101010101010101010101010110000444140404141210101000010101010101014444424231310101404444444444444444444444444444444444444444444444444444444444444444444444444404444444444444434144414141414342101313131312121323222222121010101010000101010101444442424121010101010101010141410101510101010101004444441415151040404043410004040404040404040404040404040434343434343434444434343434040404040404043434343404040404444424244444444344444424241412144444442414141434141414141414141413131313131314443444444444141414141414141414141414343434444444444444344404441414141444141414141414341414144414141414444414141414141334144244444414141432341414141413141414142412343424241434343414341414441414131313134324441414124414131313444434141412121242121313141410101515151515151515151510101010101010101015151515151015101510151015101510101010101010151016161616161510151015101510151015101510151015101313151515151015101015101646141415401415101016161716163634043131313131313131442222314141410101010101000011000000130000001300000013000000130000001300000013000000140000000C00000013000000130000000D00000009000000140000000F0000001000000008000000090000000800000024000000100000001000000013000000090000000800000008000000100000001000000010000000100000000800000008000000080000001000000010000000CF00000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000140000001000000008000000080000000800000014000000140000001300000008000000100000000800000008000000080000000800000008000000080000001300000010000000140000001100000013000000130000001300000013000000130000001300000013000000130000000800000010000000110000000900000008000000090000000800000008000000130000000900000008000000090000000800000009000000080000000C000000090000000800000009000000090000000900000009000000090000000800000008000000080000000800000008000000130000001000000010000000100000001600000010000000100000001000000010000000090000000900000009000000090000000900000010000000100000001000000010000000080000001A00000014000000290000000D000000440000000B0000000B00000013000000130000000900000009000000090000001400000008000000100000000D0000000C00000010000000080000000800000029000000100000001000000010000000100000001000000010000000100000000900000009000000080000000800000008000000080000000D00000009000000090000000900000009000000090000000900000009000000090000000900000009000000090000000C000000080000000C00000013000000100000001000000010000000100000001000000010000000100000000D0000000F00000009000000080000000900000008000000090000000C000000080000001300000013000000260000000F000000120000000900000009000000090000000900000009000000100000001D0000001300000013000000130000001300000013000000090000000800000009000000080000000900000008000000090000000800000014000000140000000800000010000000090000000800000013000000080000001000000008000000080000001000000010000000310100001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000080000000800000008000000140000001000000010000000100000001000000009000000433AFC833894B7681A1D3DDBA35F7F5A9509A8990000000000000000000000000000000000000000EFE2B2BFD689FE76C1B7EF7C7E404AB24393F749_101_101_5;
+[2024.05.24-01.49.42:015][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2024.05.24-01.49.42:015][  0]LogMeshReduction: Using SkeletalMeshReduction for automatic skeletal mesh reduction
+[2024.05.24-01.49.42:015][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2024.05.24-01.49.42:015][  0]LogMeshReduction: No distributed automatic mesh merging module available
+[2024.05.24-01.49.42:016][  0]LogMeshMerging: No distributed automatic mesh merging module available
+[2024.05.24-01.49.42:902][  0]LogUObjectArray: 21525 objects as part of root set at end of initial load.
+[2024.05.24-01.49.42:903][  0]LogUObjectAllocator: 5884648 out of 0 bytes used by permanent object pool.
+[2024.05.24-01.49.42:903][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2024.05.24-01.49.42:974][  0]LogSlate: Border
+[2024.05.24-01.49.42:974][  0]LogSlate: BreadcrumbButton
+[2024.05.24-01.49.42:974][  0]LogSlate: Brushes.Title
+[2024.05.24-01.49.42:974][  0]LogSlate: Default
+[2024.05.24-01.49.42:974][  0]LogSlate: Icons.Save
+[2024.05.24-01.49.42:974][  0]LogSlate: Icons.Toolbar.Settings
+[2024.05.24-01.49.42:975][  0]LogSlate: ListView
+[2024.05.24-01.49.42:975][  0]LogSlate: SoftwareCursor_CardinalCross
+[2024.05.24-01.49.42:975][  0]LogSlate: SoftwareCursor_Grab
+[2024.05.24-01.49.42:975][  0]LogSlate: TableView.DarkRow
+[2024.05.24-01.49.42:975][  0]LogSlate: TableView.Row
+[2024.05.24-01.49.42:975][  0]LogSlate: TreeView
+[2024.05.24-01.49.43:038][  0]LogTurnkeySupport: Completed device detection: Code = 0
+[2024.05.24-01.49.43:303][  0]LogInit: XR: Instanced Stereo Rendering is Disabled
+[2024.05.24-01.49.43:303][  0]LogInit: XR: MultiViewport is Disabled
+[2024.05.24-01.49.43:303][  0]LogInit: XR: Mobile Multiview is Disabled
+[2024.05.24-01.49.43:304][  0]LogTurnkeySupport: Turnkey Device: Win64@DESKTOP-675TN1F: (Name=DESKTOP-675TN1F, Type=Computer, Status=Valid, , Flags="Device_InstallSoftwareValid")
+[2024.05.24-01.49.43:947][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...
+[2024.05.24-01.49.43:975][  0]LogMetasoundEngine: MetaSound Engine Initialized
+[2024.05.24-01.49.44:108][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2024.05.24-01.49.44:116][  0]LogUdpMessaging: Display: Added local interface '172.16.70.199' to multicast group '230.0.0.1:6666'
+[2024.05.24-01.49.44:117][  0]LogUdpMessaging: Display: Added local interface '172.28.128.1' to multicast group '230.0.0.1:6666'
+[2024.05.24-01.49.44:133][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2024.05.24-01.49.44:645][  0]LogPython: Using Python 3.9.7
+[2024.05.24-01.49.45:472][  0]LogNiagaraDebuggerClient: Niagara Debugger Client Initialized | Session: 9896A1CE4A97CF66545E5B9E817376E1 | Instance: 2CFDFD2F486B2EE558AC32B768BF8D1C (DESKTOP-675TN1F-2840).
+[2024.05.24-01.49.45:752][  0]LogDeviceProfileManager: Going up to parent DeviceProfile []
+[2024.05.24-01.49.45:769][  0]LogSkeletalMesh: Display: Waiting for skinned assets to be ready 0/1 (SK_Mannequin) ...
+[2024.05.24-01.49.45:957][  0]LogSkeletalMesh: Display: Waiting for skinned assets to be ready 0/1 (SK_HeavyGSoldier_simple) ...
+[2024.05.24-01.49.45:982][  0]LogLinker: Warning: Failed to load '/Game/ASPrototype/Enemy/Enemy/ABP_TempEnemy': Can't find file.
+[2024.05.24-01.49.45:982][  0]LogLinker: Warning: Failed to load '/Game/ASPrototype/Enemy/Enemy/ABP_TempEnemy': Can't find file.
+[2024.05.24-01.49.45:982][  0]LogUObjectGlobals: Warning: Failed to find object 'Class /Game/ASPrototype/Enemy/Enemy/ABP_TempEnemy.ABP_TempEnemy_C'
+[2024.05.24-01.49.45:983][  0]Error: CDO Constructor (ASEnemyBase): Failed to find /Game/ASPrototype/Enemy/Enemy/ABP_TempEnemy.ABP_TempEnemy_C
+
+[2024.05.24-01.49.46:003][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:005][  0]LogLinker: Warning: [AssetLog] D:\ASProject\AmericanSniper\Content\MarketplaceBlockout\Modern\Weapons\Assets\Rifles\03\PA_Modern_Weapons_Rifle_03.uasset: VerifyImport: Failed to load package for import object 'Package /Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings'
+[2024.05.24-01.49.46:005][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:009][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:041][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:043][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:045][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:064][  0]LogLinker: Warning: Failed to load '/Game/GameData/PlayerData': Can't find file.
+[2024.05.24-01.49.46:064][  0]LogLinker: Warning: Failed to load '/Game/GameData/PlayerData': Can't find file.
+[2024.05.24-01.49.46:064][  0]LogUObjectGlobals: Warning: Failed to find object 'DataTable /Game/GameData/PlayerData.PlayerData'
+[2024.05.24-01.49.46:064][  0]Error: CDO Constructor (ASGameInstance): Failed to find /Game/GameData/PlayerData.PlayerData
+
+[2024.05.24-01.49.46:197][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/AnimStarterPack/Idle_Rifle_Hip.Idle_Rifle_Hip
+[2024.05.24-01.49.46:200][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/AnimStarterPack/Idle_Rifle_Ironsights.Idle_Rifle_Ironsights
+[2024.05.24-01.49.46:205][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/AnimStarterPack/Walk_Fwd_Rifle_Ironsights.Walk_Fwd_Rifle_Ironsights
+[2024.05.24-01.49.46:213][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/AnimStarterPack/Death_1.Death_1
+[2024.05.24-01.49.46:222][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Animation/AS_Research.AS_Research
+[2024.05.24-01.49.46:224][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Animation/AS_Injured_Walk.AS_Injured_Walk
+[2024.05.24-01.49.46:224][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/AnimStarterPack/Jump_From_Jog.Jump_From_Jog
+[2024.05.24-01.49.46:227][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Animation/AS_Run.AS_Run
+[2024.05.24-01.49.46:235][  0]AS: Warning: Make Item
+[2024.05.24-01.49.46:293][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:294][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:295][  0]LoadErrors: Warning: Package '/Game/MarketplaceBlockout/Modern/Weapons/Assets/PM_WeaponPhysicsSettings' has been saved with a newer engine version and can't be loaded. Current EngineVersion: 5.2.1-26001984+++UE5+Release-5.2 (Licensee=0). Package EngineVersion: 5.3.0-27405482+++UE5+Release-5.3 (Licensee=0)
+[2024.05.24-01.49.46:932][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2024.05.24-01.49.46:949][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2024.05.24-01.49.46:949][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2024.05.24-01.49.47:237][  0]SourceControl: Revision control is disabled
+[2024.05.24-01.49.47:254][  0]SourceControl: Revision control is disabled
+[2024.05.24-01.49.47:270][  0]LogUProjectInfo: Found projects:
+[2024.05.24-01.49.48:041][  0]LogOpenImageDenoise: OIDN starting up
+[2024.05.24-01.49.48:214][  0]LogCollectionManager: Loaded 0 collections in 0.002590 seconds
+[2024.05.24-01.49.48:218][  0]LogFileCache: Scanning file cache for directory 'D:/ASProject/AmericanSniper/Saved/Collections/' took 0.00s
+[2024.05.24-01.49.48:223][  0]LogFileCache: Scanning file cache for directory 'D:/ASProject/AmericanSniper/Content/Developers/kobg/Collections/' took 0.00s
+[2024.05.24-01.49.48:226][  0]LogFileCache: Scanning file cache for directory 'D:/ASProject/AmericanSniper/Content/Collections/' took 0.00s
+[2024.05.24-01.49.48:873][  0]LogClass: Warning: Property ArrayProperty UPresetSettingsProperties::ActivePresetCollectionsPaths defines MetaData key "MetaClass" which contains short type name "InteractiveToolsPresetCollectionAsset". Suggested pathname: "/Script/PresetAsset.InteractiveToolsPresetCollectionAsset". Module:ModelingToolsEditorMode File:Public/ModelingToolsEditorModeToolkit.h
+[2024.05.24-01.49.48:884][  0]LogClass: Display: 1 short type names in reflected types' MetaData
+[2024.05.24-01.49.48:890][  0]LogAutomationTest: Warning: LogClass: Property ArrayProperty UPresetSettingsProperties::ActivePresetCollectionsPaths defines MetaData key "MetaClass" which contains short type name "InteractiveToolsPresetCollectionAsset". Suggested pathname: "/Script/PresetAsset.InteractiveToolsPresetCollectionAsset". Module:ModelingToolsEditorMode File:Public/ModelingToolsEditorModeToolkit.h
+[2024.05.24-01.49.48:893][  0]LogEngine: Initializing Engine...
+[2024.05.24-01.49.48:911][  0]LogStylusInput: Initializing StylusInput subsystem.
+[2024.05.24-01.49.48:919][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.001 s
+[2024.05.24-01.49.49:163][  0]LogInit: Initializing FReadOnlyCVARCache
+[2024.05.24-01.49.49:196][  0]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2024.05.24-01.49.49:201][  0]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2024.05.24-01.49.49:242][  0]LogAIModule: Creating AISystem for world Untitled
+[2024.05.24-01.49.49:253][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2024.05.24-01.49.49:253][  0]LogInit: Texture streaming: Enabled
+[2024.05.24-01.49.49:298][  0]LogAnalytics: Display: [UEEditor.Rocket.Release] APIServer = https://datarouter.ol.epicgames.com/. AppVersion = 5.2.1-26001984+++UE5+Release-5.2
+[2024.05.24-01.49.49:318][  0]LogAudio: Display: Initializing Audio Device Manager...
+[2024.05.24-01.49.49:339][  0]LogAudio: Display: Loading Default Audio Settings Objects...
+[2024.05.24-01.49.49:341][  0]LogAudio: Display: No default SoundConcurrencyObject specified (or failed to load).
+[2024.05.24-01.49.49:341][  0]LogAudio: Display: AudioInfo: 'BINKA' Registered
+[2024.05.24-01.49.49:344][  0]LogAudio: Display: AudioInfo: 'PCM' Registered
+[2024.05.24-01.49.49:344][  0]LogAudio: Display: AudioInfo: 'ADPCM' Registered
+[2024.05.24-01.49.49:344][  0]LogAudio: Display: AudioInfo: 'OGG' Registered
+[2024.05.24-01.49.49:344][  0]LogAudio: Display: AudioInfo: 'OPUS' Registered
+[2024.05.24-01.49.49:346][  0]LogAudio: Display: Audio Device Manager Initialized
+[2024.05.24-01.49.49:346][  0]LogAudio: Display: Creating Audio Device:                 Id: 1, Scope: Shared, Realtime: True
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2024.05.24-01.49.49:347][  0]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2024.05.24-01.49.49:347][  0]LogAudio: Display: AudioDevice MaxSources: 32
+[2024.05.24-01.49.49:348][  0]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2024.05.24-01.49.49:348][  0]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2024.05.24-01.49.49:348][  0]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2024.05.24-01.49.49:372][  0]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2024.05.24-01.49.49:630][  0]LogAudioMixer: Display: Using Audio Hardware Device 헤드폰(TONE-T60Q)
+[2024.05.24-01.49.49:633][  0]LogAudioMixer: Display: Initializing Sound Submixes...
+[2024.05.24-01.49.49:638][  0]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2024.05.24-01.49.49:638][  0]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2024.05.24-01.49.49:641][  0]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=1
+[2024.05.24-01.49.49:641][  0]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=1
+[2024.05.24-01.49.49:646][  0]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=1
+[2024.05.24-01.49.49:646][  0]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=1
+[2024.05.24-01.49.49:646][  0]LogInit: FAudioDevice initialized with ID 1.
+[2024.05.24-01.49.49:646][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled'.
+[2024.05.24-01.49.49:647][  0]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 1
+[2024.05.24-01.49.49:682][  0]LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+[2024.05.24-01.49.49:695][  0]LogLiveCoding: Display: Starting LiveCoding
+[2024.05.24-01.49.49:695][  0]LogLiveCoding: Display: LiveCodingConsole Arguments: ASPrototypeEditor Win64 Development
+[2024.05.24-01.49.49:698][  0]LogLiveCoding: Display: First instance in process group "UE_ASPrototype_0x8924109d", spawning console
+[2024.05.24-01.49.49:709][  0]LogInit: Undo buffer set to 32 MB
+[2024.05.24-01.49.49:710][  0]LogInit: Transaction tracking system initialized
+[2024.05.24-01.49.49:710][  0]LogLiveCoding: Display: Waiting for server
+[2024.05.24-01.49.49:767][  0]LogSourceControl: Display: Uncontrolled Changelist persistency file loaded D:/ASProject/AmericanSniper/Saved/SourceControl/UncontrolledChangelists.json
+[2024.05.24-01.49.49:767][  0]LogSourceControl: Uncontrolled asset enumeration started...
+[2024.05.24-01.49.49:780][  0]LogSourceControl: Uncontrolled asset enumeration finished in 0.013576 seconds (Found 187 uncontrolled assets)
+[2024.05.24-01.49.49:819][  0]BlueprintLog: New page: Editor Load
+[2024.05.24-01.49.50:042][  0]LocalizationService: Localization service is disabled
+[2024.05.24-01.49.50:089][  0]TimingProfiler: Initialize
+[2024.05.24-01.49.50:091][  0]TimingProfiler: OnSessionChanged
+[2024.05.24-01.49.50:091][  0]LoadingProfiler: Initialize
+[2024.05.24-01.49.50:091][  0]LoadingProfiler: OnSessionChanged
+[2024.05.24-01.49.50:092][  0]NetworkingProfiler: Initialize
+[2024.05.24-01.49.50:093][  0]NetworkingProfiler: OnSessionChanged
+[2024.05.24-01.49.50:093][  0]MemoryProfiler: Initialize
+[2024.05.24-01.49.50:093][  0]MemoryProfiler: OnSessionChanged
+[2024.05.24-01.49.50:501][  0]LogFileCache: Scanning file cache for directory 'D:/ASProject/AmericanSniper/Content/' took 0.03s
+[2024.05.24-01.49.50:519][  0]LogLiveCoding: Display: Successfully initialized, removing startup thread
+[2024.05.24-01.49.50:969][  0]LogLevelSequenceEditor: LevelSequenceEditor subsystem initialized.
+[2024.05.24-01.49.51:032][  0]LogInit: Display: Engine is initialized. Leaving FEngineLoop::Init()
+[2024.05.24-01.49.51:041][  0]SourceControl: Revision control is disabled
+[2024.05.24-01.49.51:041][  0]LogUnrealEdMisc: Loading editor; pre map load, took 15.657
+[2024.05.24-01.49.51:043][  0]Cmd: MAP LOAD FILE="D:/ASProject/AmericanSniper/Content/Maps/NewMap1.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=4
+[2024.05.24-01.49.51:046][  0]LightingResults: New page: Lighting Build
+[2024.05.24-01.49.51:057][  0]LogWorld: UWorld::CleanupWorld for Untitled, bSessionEnded=true, bCleanupResources=true
+[2024.05.24-01.49.51:062][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2024.05.24-01.49.51:066][  0]MapCheck: New page: Map Check
+[2024.05.24-01.49.51:066][  0]LightingResults: New page: Lighting Build
+[2024.05.24-01.49.51:085][  0]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2024.05.24-01.49.51:114][  0]LogUObjectHash: Compacting FUObjectHashTables data took   1.71ms
+[2024.05.24-01.49.51:350][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/Animations/InPlace/Idle.Idle
+[2024.05.24-01.49.51:353][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/Animations/Update15/InPlace/ThrowEndFar.ThrowEndFar
+[2024.05.24-01.49.51:359][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/Animations/InPlace/Jump_place_ALL.Jump_place_ALL
+[2024.05.24-01.49.51:394][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/AS_HitReact.AS_HitReact
+[2024.05.24-01.49.51:394][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/ASEnemyReload.ASEnemyReload
+[2024.05.24-01.49.51:394][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/Assets/Death_5.Death_5
+[2024.05.24-01.49.51:394][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/ASEnemyDeath.ASEnemyDeath
+[2024.05.24-01.49.51:394][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/ASEnemyBwd.ASEnemyBwd
+[2024.05.24-01.49.51:396][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/Assets/EnemyShoot.EnemyShoot
+[2024.05.24-01.49.51:396][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/ASAlert.ASAlert
+[2024.05.24-01.49.51:396][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/Assets/WalkFwdLoop.WalkFwdLoop
+[2024.05.24-01.49.51:396][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/Assets/Sprint_Fwd_Rifle.Sprint_Fwd_Rifle
+[2024.05.24-01.49.51:397][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'NewMap1'.
+[2024.05.24-01.49.51:397][  0]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2024.05.24-01.49.51:397][  0]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2024.05.24-01.49.51:398][  0]LogAIModule: Creating AISystem for world NewMap1
+[2024.05.24-01.49.51:398][  0]LogAnimationCompression: Display: Fetched compressed animation data for AnimSequence /Game/ASPrototype/Enemy/Animation/Assets/Idle.Idle
+[2024.05.24-01.49.51:459][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2024.05.24-01.49.51:473][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.46ms
+[2024.05.24-01.49.51:474][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2024.05.24-01.49.51:475][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.441ms to complete.
+[2024.05.24-01.49.51:475][  0]LogFileHelpers: Loading map 'NewMap1' took 0.434
+[2024.05.24-01.49.51:520][  0]LogUnrealEdMisc: Total Editor Startup Time, took 16.135
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: ================================================
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: Total job queries 0, among them cache hits 0 (0.00%)
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: Tracking 0 distinct input hashes that result in 0 distinct outputs (0.00%)
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: RAM used: 240.00 B of 819.20 MiB budget. Usage: 0.00%
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: Shaders Compiled: 0
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: Jobs assigned 0, completed 0 (0.00%)
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.00 s
+[2024.05.24-01.49.51:520][  0]LogShaderCompilers: Display: ================================================
+[2024.05.24-01.49.51:624][  0]LogWindowsTextInputMethodSystem: Activated input method: 한국어(대한민국) - Microsoft 입력기 (TSF IME).
+[2024.05.24-01.49.51:695][  0]LogSlate: The tab "LevelEditorToolBar" attempted to spawn in layout 'LevelEditor_Layout_v1.8' but failed for some reason. It will not be displayed.
+[2024.05.24-01.49.51:727][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2024.05.24-01.49.51:734][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2024.05.24-01.49.51:740][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2024.05.24-01.49.51:745][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2024.05.24-01.49.51:966][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/StarterContent.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:970][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_FirstPerson.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:972][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_FirstPersonBP.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:973][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_HandheldARBP.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:974][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_ThirdPerson.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:976][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_ThirdPersonBP.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:978][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_TopDown.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:979][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_TopDownBP.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:980][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_VehicleAdvBP.upack', mount point: 'root:/'
+[2024.05.24-01.49.51:980][  0]LogPakFile: Display: Mounted Pak file 'C:/Program Files/Epic Games/UE_5.2/FeaturePacks/TP_VirtualRealityBP.upack', mount point: 'root:/'
+[2024.05.24-01.49.52:194][  0]LogStall: Startup...
+[2024.05.24-01.49.52:198][  0]LogStall: Startup complete.
+[2024.05.24-01.49.52:213][  0]LogLoad: (Engine Initialization) Total time: 16.83 seconds
+[2024.05.24-01.49.52:213][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2024.05.24-01.49.52:274][  0]LogAssetRegistry: AssetRegistryGather time 0.2304s: AssetDataDiscovery 0.0585s, AssetDataGather 0.1358s, StoreResults 0.0361s.
+[2024.05.24-01.49.52:301][  0]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000172 seconds (updated 0 objects)
+[2024.05.24-01.49.52:698][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2024.05.24-01.49.52:774][  0]LogSlate: Took 0.001486 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2024.05.24-01.49.52:782][  0]LogSlate: Took 0.001085 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2024.05.24-01.49.52:794][  0]LogSlate: Took 0.001336 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2024.05.24-01.49.52:798][  0]LogSlate: Took 0.001119 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/DroidSansMono.ttf' (77K)
+[2024.05.24-01.49.52:860][  0]LogViewport: Scene viewport resized to 1269x1051, mode Windowed.
+[2024.05.24-01.49.52:909][  0]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.52:910][  0]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.52:911][  0]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.52:912][  0]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.54:871][123]LogSlate: Window 'Message Log' being destroyed
+[2024.05.24-01.49.54:876][123]LogSlate: Window 'Message Log' being destroyed
+[2024.05.24-01.49.55:837][207]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2024.05.24-01.49.55:849][207]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2024.05.24-01.49.55:852][207]PIE: New page: PIE session: NewMap1 (2024. 5. 24. 오후 7:49:55)
+[2024.05.24-01.49.55:861][207]LogOnline: OSS: Created online subsystem instance for: NULL
+[2024.05.24-01.49.55:862][207]LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+[2024.05.24-01.49.55:862][207]LogPlayLevel: Creating play world package: /Game/Maps/UEDPIE_0_NewMap1
+[2024.05.24-01.49.55:873][207]LogPlayLevel: PIE: StaticDuplicateObject took: (0.010393s)
+[2024.05.24-01.49.55:873][207]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Maps/NewMap1.NewMap1 to /Game/Maps/UEDPIE_0_NewMap1.NewMap1 (0.010703s)
+[2024.05.24-01.49.55:874][207]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2024.05.24-01.49.55:874][207]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2024.05.24-01.49.55:874][207]LogAIModule: Creating AISystem for world NewMap1
+[2024.05.24-01.49.55:875][207]LogPlayLevel: PIE: World Init took: (0.002804s)
+[2024.05.24-01.49.55:884][207]LogUObjectHash: Compacting FUObjectHashTables data took   0.44ms
+[2024.05.24-01.49.55:885][207]LogAudio: Display: Creating Audio Device:                 Id: 2, Scope: Unique, Realtime: True
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2024.05.24-01.49.55:886][207]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2024.05.24-01.49.55:886][207]LogAudio: Display: AudioDevice MaxSources: 32
+[2024.05.24-01.49.55:887][207]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2024.05.24-01.49.55:887][207]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2024.05.24-01.49.55:887][207]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2024.05.24-01.49.55:890][207]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2024.05.24-01.49.55:917][207]LogAudioMixer: Display: Using Audio Hardware Device 헤드폰(TONE-T60Q)
+[2024.05.24-01.49.55:919][207]LogAudioMixer: Display: Initializing Sound Submixes...
+[2024.05.24-01.49.55:919][207]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2024.05.24-01.49.55:919][207]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2024.05.24-01.49.55:919][207]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=2
+[2024.05.24-01.49.55:919][207]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=2
+[2024.05.24-01.49.55:922][207]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=2
+[2024.05.24-01.49.55:922][207]LogInit: FAudioDevice initialized with ID 2.
+[2024.05.24-01.49.55:922][207]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=2
+[2024.05.24-01.49.55:922][207]LogAudio: Display: Audio Device (ID: 2) registered with world 'NewMap1'.
+[2024.05.24-01.49.55:922][207]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 2
+[2024.05.24-01.49.55:929][207]LogLoad: Game class is 'ASGameMode'
+[2024.05.24-01.49.55:937][207]LogWorld: Bringing World /Game/Maps/UEDPIE_0_NewMap1.NewMap1 up for play (max tick rate 0) at 2024.05.24-10.49.55
+[2024.05.24-01.49.55:956][207]LogWorld: Bringing up level for play took: 0.026657
+[2024.05.24-01.49.55:961][207]LogOnline: OSS: Created online subsystem instance for: :Context_1
+[2024.05.24-01.49.55:979][207]AS: Warning: Character Check Item
+[2024.05.24-01.49.55:979][207]LogTemp: Warning: SetUPInput
+[2024.05.24-01.49.55:992][207]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CapturePermanently
+[2024.05.24-01.49.55:996][207]AS: Warning: GetBulletNumFunc Act
+[2024.05.24-01.49.55:996][207]AS: Warning: GetMagazineNumFunc Act
+[2024.05.24-01.49.55:997][207]LogTemp: Warning: GetController
+[2024.05.24-01.49.56:000][207]PIE: Server logged in
+[2024.05.24-01.49.56:001][207]PIE: Play in editor total start time 0.155 seconds.
+[2024.05.24-01.49.56:009][207]AS: Warning: Pitch : -19.725003
+[2024.05.24-01.49.56:073][207]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.56:074][207]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.56:076][207]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.56:079][207]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.49.56:099][208]AS: Warning: Pitch : -19.725003
+[2024.05.24-01.49.56:213][209]AS: Warning: Pitch : -19.725003
+[2024.05.24-01.49.56:292][210]AS: Warning: Pitch : 337.999997
+[2024.05.24-01.49.56:300][211]AS: Warning: Pitch : 337.824997
+[2024.05.24-01.49.56:309][212]AS: Warning: Pitch : 337.649997
+[2024.05.24-01.49.56:318][213]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.49.56:330][214]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.49.56:339][215]AS: Warning: Pitch : 337.299997
+[2024.05.24-01.49.56:351][216]AS: Warning: Pitch : 337.124997
+[2024.05.24-01.49.56:365][217]AS: Warning: Pitch : 337.124997
+[2024.05.24-01.49.56:377][218]AS: Warning: Pitch : 337.124997
+[2024.05.24-01.49.56:390][219]AS: Warning: Pitch : 336.949997
+[2024.05.24-01.49.56:407][220]AS: Warning: Pitch : 336.599997
+[2024.05.24-01.49.56:420][221]AS: Warning: Pitch : 335.899997
+[2024.05.24-01.49.56:432][222]AS: Warning: Pitch : 335.899997
+[2024.05.24-01.49.56:444][223]AS: Warning: Pitch : 335.374997
+[2024.05.24-01.49.56:454][224]AS: Warning: Pitch : 335.024997
+[2024.05.24-01.49.56:467][225]AS: Warning: Pitch : 334.674997
+[2024.05.24-01.49.56:479][226]AS: Warning: Pitch : 334.499997
+[2024.05.24-01.49.56:494][227]AS: Warning: Pitch : 334.499997
+[2024.05.24-01.49.56:521][228]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:531][229]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:547][230]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:554][231]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:569][232]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:579][233]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:592][234]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:607][235]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:619][236]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:633][237]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:646][238]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:659][239]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:671][240]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:685][241]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:699][242]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:714][243]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:726][244]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:737][245]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:750][246]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:764][247]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:777][248]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:791][249]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:805][250]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:818][251]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:832][252]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:844][253]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:858][254]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:872][255]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:885][256]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:903][257]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:917][258]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:932][259]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:947][260]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:959][261]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:973][262]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.56:985][263]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:000][264]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:013][265]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:024][266]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:037][267]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:049][268]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:062][269]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:075][270]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:092][271]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:103][272]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:117][273]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:131][274]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:144][275]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:156][276]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:171][277]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:185][278]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:198][279]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:211][280]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:223][281]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:236][282]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:249][283]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:261][284]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:276][285]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:291][286]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:305][287]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:316][288]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:330][289]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:341][290]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:353][291]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:366][292]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:383][293]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:401][294]AS: Warning: Pitch : 334.324997
+[2024.05.24-01.49.57:414][295]AS: Warning: Pitch : 334.499997
+[2024.05.24-01.49.57:425][296]AS: Warning: Pitch : 334.674997
+[2024.05.24-01.49.57:435][297]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:448][298]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:461][299]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:475][300]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:491][301]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:508][302]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:520][303]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:530][304]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:541][305]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:554][306]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:566][307]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:580][308]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:594][309]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:607][310]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:620][311]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:634][312]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:646][313]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:657][314]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:669][315]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:682][316]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:694][317]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:706][318]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:719][319]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:732][320]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:745][321]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:757][322]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:771][323]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:785][324]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:797][325]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:812][326]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:824][327]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:835][328]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:846][329]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:858][330]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:869][331]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:881][332]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:895][333]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:909][334]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:922][335]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:937][336]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:949][337]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:960][338]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:970][339]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:983][340]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.57:994][341]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:008][342]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:020][343]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:032][344]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:047][345]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:058][346]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:070][347]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:084][348]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:097][349]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:110][350]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:120][351]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:130][352]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:143][353]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:154][354]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:167][355]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:181][356]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:197][357]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:207][358]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:220][359]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:232][360]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:242][361]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:254][362]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:267][363]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:279][364]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:291][365]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:302][366]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:314][367]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:327][368]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:340][369]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:354][370]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:367][371]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:380][372]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:391][373]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:403][374]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:414][375]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:426][376]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:437][377]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:450][378]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:463][379]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:475][380]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:486][381]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:500][382]AS: Warning: Pitch : 334.849997
+[2024.05.24-01.49.58:513][383]AS: Warning: Pitch : 334.674997
+[2024.05.24-01.49.58:525][384]AS: Warning: Pitch : 333.974997
+[2024.05.24-01.49.58:536][385]AS: Warning: Pitch : 333.974997
+[2024.05.24-01.49.58:549][386]AS: Warning: Pitch : 333.624997
+[2024.05.24-01.49.58:561][387]AS: Warning: Pitch : 333.274997
+[2024.05.24-01.49.58:572][388]AS: Warning: Pitch : 332.749997
+[2024.05.24-01.49.58:584][389]AS: Warning: Pitch : 332.574997
+[2024.05.24-01.49.58:596][390]AS: Warning: Pitch : 332.224997
+[2024.05.24-01.49.58:609][391]AS: Warning: Pitch : 331.874997
+[2024.05.24-01.49.58:620][392]AS: Warning: Pitch : 330.824997
+[2024.05.24-01.49.58:633][393]AS: Warning: Pitch : 330.299997
+[2024.05.24-01.49.58:646][394]AS: Warning: Pitch : 328.899997
+[2024.05.24-01.49.58:659][395]AS: Warning: Pitch : 327.674997
+[2024.05.24-01.49.58:673][396]AS: Warning: Pitch : 327.149997
+[2024.05.24-01.49.58:685][397]AS: Warning: Pitch : 326.449997
+[2024.05.24-01.49.58:697][398]AS: Warning: Pitch : 325.924997
+[2024.05.24-01.49.58:707][399]AS: Warning: Pitch : 325.399997
+[2024.05.24-01.49.58:719][400]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:731][401]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:742][402]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:753][403]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:766][404]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:777][405]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:790][406]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:803][407]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:816][408]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:827][409]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:837][410]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:848][411]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:859][412]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:871][413]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:885][414]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:900][415]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:912][416]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:924][417]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:935][418]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:945][419]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:955][420]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:966][421]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:977][422]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.58:998][423]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:017][424]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:025][425]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:033][426]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:042][427]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:051][428]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:060][429]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:072][430]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:085][431]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:097][432]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:110][433]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:123][434]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:134][435]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:145][436]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:155][437]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:166][438]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:179][439]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:190][440]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:203][441]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:214][442]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:227][443]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:240][444]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:251][445]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:262][446]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:273][447]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:286][448]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:297][449]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:310][450]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:324][451]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:336][452]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:347][453]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:359][454]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:371][455]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:382][456]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:397][457]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:407][458]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:420][459]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:431][460]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:443][461]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:457][462]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:470][463]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:484][464]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:497][465]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:509][466]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:519][467]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:530][468]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:542][469]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:555][470]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:567][471]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:580][472]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:594][473]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:607][474]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:621][475]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:633][476]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:643][477]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:655][478]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:667][479]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:678][480]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:691][481]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:703][482]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:717][483]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:730][484]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:745][485]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:754][486]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:766][487]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:778][488]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:790][489]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:803][490]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:815][491]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:829][492]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:842][493]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:856][494]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:867][495]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:878][496]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:889][497]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:902][498]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:916][499]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:930][500]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:942][501]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:953][502]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:965][503]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:977][504]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.49.59:989][505]AS: Warning: Pitch : 325.224997
+[2024.05.24-01.50.00:003][506]AS: Warning: Pitch : 325.399997
+[2024.05.24-01.50.00:016][507]AS: Warning: Pitch : 327.149997
+[2024.05.24-01.50.00:031][508]AS: Warning: Pitch : 329.249997
+[2024.05.24-01.50.00:046][509]AS: Warning: Pitch : 331.699997
+[2024.05.24-01.50.00:058][510]AS: Warning: Pitch : 333.099997
+[2024.05.24-01.50.00:070][511]AS: Warning: Pitch : 335.024997
+[2024.05.24-01.50.00:081][512]AS: Warning: Pitch : 335.199997
+[2024.05.24-01.50.00:092][513]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:106][514]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:119][515]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:131][516]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:144][517]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:157][518]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:168][519]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:180][520]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:191][521]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:203][522]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:216][523]AS: Warning: Pitch : 335.549997
+[2024.05.24-01.50.00:230][524]AS: Warning: Pitch : 335.899997
+[2024.05.24-01.50.00:242][525]AS: Warning: Pitch : 336.074997
+[2024.05.24-01.50.00:256][526]AS: Warning: Pitch : 336.774997
+[2024.05.24-01.50.00:267][527]AS: Warning: Pitch : 337.124997
+[2024.05.24-01.50.00:280][528]AS: Warning: Pitch : 337.824997
+[2024.05.24-01.50.00:291][529]AS: Warning: Pitch : 337.999997
+[2024.05.24-01.50.00:304][530]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:316][531]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:329][532]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:342][533]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:352][534]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:365][535]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:376][536]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:388][537]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:401][538]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:414][539]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:427][540]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:439][541]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:450][542]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:462][543]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:474][544]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:487][545]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:499][546]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:513][547]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:525][548]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:537][549]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:547][550]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:560][551]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:573][552]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:585][553]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:597][554]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:609][555]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:622][556]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:633][557]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:643][558]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:654][559]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:667][560]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:680][561]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:692][562]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:705][563]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:717][564]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:729][565]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:739][566]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:751][567]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:765][568]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:777][569]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.00:790][570]AS: Warning: Pitch : 338.524997
+[2024.05.24-01.50.00:801][571]AS: Warning: Pitch : 338.699997
+[2024.05.24-01.50.00:813][572]AS: Warning: Pitch : 339.399997
+[2024.05.24-01.50.00:825][573]AS: Warning: Pitch : 339.924997
+[2024.05.24-01.50.00:838][574]AS: Warning: Pitch : 340.624997
+[2024.05.24-01.50.00:850][575]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:863][576]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:875][577]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:886][578]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:899][579]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:910][580]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:924][581]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:938][582]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:950][583]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:961][584]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:973][585]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:985][586]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.00:997][587]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:007][588]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:019][589]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:032][590]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:045][591]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:057][592]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:068][593]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:080][594]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:092][595]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:103][596]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:117][597]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:127][598]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:139][599]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:152][600]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:166][601]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:177][602]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:189][603]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:200][604]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:212][605]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:224][606]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:236][607]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:249][608]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:260][609]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:272][610]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:283][611]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:295][612]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:307][613]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:319][614]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:332][615]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:344][616]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:356][617]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:368][618]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:380][619]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:391][620]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:403][621]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:415][622]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:426][623]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:440][624]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:452][625]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:463][626]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:474][627]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:486][628]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:498][629]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:510][630]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:523][631]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:535][632]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:547][633]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:561][634]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:573][635]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:586][636]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:596][637]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:608][638]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:620][639]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:633][640]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:646][641]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:659][642]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:670][643]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:681][644]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:692][645]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:704][646]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:717][647]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:729][648]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:742][649]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:752][650]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:763][651]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:775][652]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:788][653]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:800][654]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:813][655]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:823][656]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:835][657]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:847][658]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:859][659]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:871][660]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:882][661]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:895][662]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:907][663]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:919][664]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:931][665]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:943][666]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:953][667]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:965][668]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:978][669]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.01:991][670]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:002][671]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:016][672]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:026][673]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:038][674]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:049][675]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:059][676]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:071][677]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:083][678]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:096][679]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:109][680]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:122][681]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:135][682]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:147][683]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:159][684]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:169][685]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:180][686]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:192][687]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:204][688]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:216][689]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:237][690]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:245][691]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:253][692]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:267][693]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:279][694]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:290][695]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:301][696]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:313][697]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:325][698]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:338][699]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:350][700]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:361][701]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:374][702]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:385][703]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:397][704]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:409][705]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:421][706]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:432][707]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:445][708]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:458][709]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:469][710]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:480][711]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:491][712]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:504][713]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:516][714]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:529][715]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:540][716]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:553][717]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:565][718]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:578][719]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:589][720]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:600][721]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:613][722]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:627][723]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:639][724]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:650][725]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:662][726]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:673][727]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:683][728]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:695][729]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:709][730]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:721][731]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:734][732]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:746][733]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:758][734]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:768][735]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:779][736]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:792][737]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:805][738]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:817][739]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:830][740]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:841][741]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:853][742]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:863][743]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:875][744]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:887][745]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:900][746]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:911][747]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:923][748]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:935][749]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:948][750]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:960][751]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:972][752]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:983][753]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.02:997][754]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:009][755]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:020][756]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:032][757]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:043][758]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:055][759]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:067][760]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:080][761]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:091][762]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:104][763]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:117][764]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:128][765]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:139][766]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:151][767]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:162][768]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:174][769]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:186][770]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:197][771]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:211][772]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:223][773]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:236][774]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:248][775]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:260][776]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:271][777]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:281][778]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:294][779]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:305][780]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:318][781]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:330][782]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:342][783]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:355][784]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:369][785]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:379][786]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:391][787]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:402][788]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:415][789]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:427][790]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:440][791]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:452][792]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:463][793]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:475][794]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:485][795]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:499][796]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:511][797]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:524][798]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:536][799]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:546][800]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:558][801]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:570][802]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:582][803]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:595][804]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:607][805]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:620][806]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:630][807]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:643][808]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:655][809]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:666][810]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:677][811]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:689][812]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:701][813]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:713][814]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:726][815]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:740][816]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:752][817]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:763][818]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:775][819]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:786][820]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:797][821]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:810][822]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:821][823]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:833][824]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:847][825]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:860][826]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:870][827]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:882][828]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:892][829]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:905][830]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:916][831]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:930][832]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:943][833]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:953][834]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:966][835]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:977][836]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.03:988][837]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:001][838]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:015][839]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:026][840]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:038][841]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:050][842]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:062][843]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:073][844]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:084][845]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:096][846]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:109][847]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:121][848]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:133][849]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:145][850]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:157][851]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:169][852]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:180][853]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:193][854]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:204][855]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:216][856]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:227][857]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:242][858]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:253][859]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:265][860]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:276][861]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:287][862]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:300][863]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:313][864]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:326][865]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:337][866]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:350][867]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:361][868]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:373][869]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:385][870]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:398][871]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:409][872]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:422][873]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:432][874]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:444][875]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:458][876]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:470][877]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:483][878]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:493][879]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:505][880]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:518][881]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:530][882]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:542][883]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:555][884]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:569][885]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:579][886]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:591][887]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:604][888]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:615][889]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:627][890]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:640][891]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:652][892]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:664][893]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:677][894]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:690][895]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:702][896]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:712][897]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:725][898]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:739][899]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:752][900]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:764][901]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:777][902]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:790][903]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:802][904]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:816][905]AS: Warning: Pitch : 340.799997
+[2024.05.24-01.50.04:827][906]AS: Warning: Pitch : 340.274997
+[2024.05.24-01.50.04:839][907]AS: Warning: Pitch : 339.924997
+[2024.05.24-01.50.04:852][908]AS: Warning: Pitch : 339.049997
+[2024.05.24-01.50.04:866][909]AS: Warning: Pitch : 338.349997
+[2024.05.24-01.50.04:877][910]AS: Warning: Pitch : 338.174997
+[2024.05.24-01.50.04:892][911]AS: Warning: Pitch : 337.824997
+[2024.05.24-01.50.04:904][912]AS: Warning: Pitch : 337.649997
+[2024.05.24-01.50.04:918][913]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.04:929][914]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.04:940][915]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.04:953][916]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.04:963][917]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.04:975][918]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.04:988][919]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:000][920]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:013][921]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:027][922]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:040][923]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:052][924]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:065][925]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:079][926]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:091][927]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:103][928]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:114][929]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:126][930]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:137][931]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:149][932]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:161][933]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:173][934]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:186][935]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:199][936]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:213][937]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:225][938]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:235][939]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:247][940]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:261][941]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:273][942]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:286][943]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:300][944]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:313][945]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:325][946]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:337][947]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:347][948]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:360][949]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:372][950]AS: Warning: Pitch : 337.474997
+[2024.05.24-01.50.05:385][951]AS: Warning: Pitch : 337.649997
+[2024.05.24-01.50.05:399][952]AS: Warning: Pitch : 338.174997
+[2024.05.24-01.50.05:411][953]AS: Warning: Pitch : 338.524997
+[2024.05.24-01.50.05:424][954]AS: Warning: Pitch : 338.699997
+[2024.05.24-01.50.05:437][955]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:449][956]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:462][957]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:472][958]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:486][959]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:499][960]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:513][961]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:525][962]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:537][963]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:549][964]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:562][965]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:574][966]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:589][967]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:600][968]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:611][969]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:625][970]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:638][971]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:650][972]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:663][973]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:675][974]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:687][975]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:699][976]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:712][977]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:724][978]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:737][979]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:749][980]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:760][981]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:772][982]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:789][983]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:802][984]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:813][985]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:826][986]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:838][987]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:851][988]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:863][989]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:876][990]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:889][991]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:899][992]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:911][993]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:923][994]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:936][995]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:948][996]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:962][997]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:980][998]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.05:993][999]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:007][  0]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:019][  1]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:031][  2]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:042][  3]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:055][  4]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:066][  5]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:079][  6]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:091][  7]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:105][  8]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:115][  9]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:127][ 10]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:139][ 11]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:151][ 12]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:163][ 13]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:177][ 14]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:191][ 15]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:203][ 16]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:213][ 17]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:224][ 18]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:236][ 19]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:249][ 20]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:261][ 21]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:274][ 22]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:287][ 23]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:299][ 24]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:309][ 25]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:322][ 26]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:333][ 27]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:345][ 28]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:357][ 29]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:370][ 30]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:383][ 31]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:396][ 32]AS: Warning: Pitch : 338.874997
+[2024.05.24-01.50.06:446][ 32]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2024.05.24-01.50.06:446][ 32]LogWorld: BeginTearingDown for /Game/Maps/UEDPIE_0_NewMap1
+[2024.05.24-01.50.06:449][ 32]LogWorld: UWorld::CleanupWorld for NewMap1, bSessionEnded=true, bCleanupResources=true
+[2024.05.24-01.50.06:451][ 32]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2024.05.24-01.50.06:457][ 32]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2024.05.24-01.50.06:460][ 32]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2024.05.24-01.50.06:467][ 32]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2024.05.24-01.50.06:469][ 32]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 2
+[2024.05.24-01.50.06:469][ 32]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2024.05.24-01.50.06:472][ 32]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2024.05.24-01.50.06:479][ 32]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2024.05.24-01.50.06:489][ 32]LogUObjectHash: Compacting FUObjectHashTables data took   0.78ms
+[2024.05.24-01.50.06:514][ 32]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.50.06:514][ 32]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.50.06:515][ 32]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.50.06:515][ 32]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.05.24-01.50.06:517][ 33]LogPlayLevel: Display: Destroying online subsystem :Context_1

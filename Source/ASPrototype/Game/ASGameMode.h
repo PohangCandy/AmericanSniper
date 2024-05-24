@@ -23,12 +23,25 @@ public:
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 
+	bool IsEscape;
+
+	class AASCharacterPlayer* Player;
+	class AASFinalTarget* Target;
+	void EscapeTimerStart(); // ≈∏∞Ÿ ªÁ∏¡Ω√ πŸ∑Œ »£√‚
+	void View_WinWidget();
+	void View_LoseWidget();
+	void GameOver();
+	class TSubclassOf<UUserWidget> CountDownWidgetClass;
+
+	class UASCountDownWidget* CountDownWidget;
+
 protected:
 	virtual void BeginPlay() override;
-
+	virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UMG_Game")
 	TSubclassOf<UUserWidget> StartingWidgetClass;
 
 	UPROPERTY()
 	UUserWidget* CurrentWidget;
+
 };

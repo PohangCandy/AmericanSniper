@@ -26,7 +26,7 @@ EBTNodeResult::Type UBTTask_Combat::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 		return EBTNodeResult::Failed;
 	}
 	
-	Enemy->Attack();
+	Enemy->PlayAttackAnimation();
 	Enemy->CurState = EState::Attack;
 	IsPlaying = true;
 
@@ -49,6 +49,9 @@ void UBTTask_Combat::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemo
 	if (!(IsPlaying && Enemy->CurState == EState::Attack))
 	{	
 		AI->SetBB_CanShootTarget(Enemy->IsPlayer);
+		int RandomNumber = rand() % 10;
+		bool result = (1 >= RandomNumber);
+		AI->SetBB_CanVariousActions(result);
 		FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 	}
 }

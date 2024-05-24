@@ -8,8 +8,11 @@
 #include "AI/ASAIController.h"
 #include "UI/ASDetectWidget.h"
 #include "Tool/ASWeaponData.h"
-#include "Tool/ASWeaponItem.h"
+#include "Perception/AISense_Touch.h"
 #include "Components/WidgetComponent.h"
+#include "Components/PrimitiveComponent.h"
+#include "Components/AudioComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AASEnemyBase::AASEnemyBase()
@@ -38,7 +41,8 @@ AASEnemyBase::AASEnemyBase()
 	//Mesh
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -100.0f), FRotator(0.0f, -90.f, 0.0f));
 	GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
-	GetMesh()->SetCollisionProfileName(TEXT("NoCollision"));
+	GetMesh()->SetCollisionProfileName(TEXT("ASEnemyMesh"));
+	GetCapsuleComponent()->OnComponentHit.AddDynamic(this, &AASEnemyBase::OnHit);
 
 	//Widget
 	QuestionMark = CreateDefaultSubobject<UWidgetComponent>(TEXT("QuestionMarkWidget"));
@@ -103,6 +107,22 @@ AASEnemyBase::AASEnemyBase()
 	//Speed
 	WalkSpeed = 300.0f;
 	RunSpeed = 500.0f;
+
+	//Gun Sound 
+	static ConstructorHelpers::FObjectFinder<USoundBase> GunSoundRef(TEXT("/Script/Engine.SoundCue'/Game/ASPrototype/Sound/AssultRifleSound_Cue.AssultRifleSound_Cue'"));
+	if (GunSoundRef.Object)
+	{
+		GunSound = GunSoundRef.Object;
+		ensure(GunSound);
+	}
+
+	//Hit Sound 
+	static ConstructorHelpers::FObjectFinder<USoundBase> HitSoundRef(TEXT("/Script/Engine.SoundCue'/Game/ASPrototype/Sound/HitMaker_Cue.HitMaker_Cue'"));
+	if (HitSoundRef.Object)
+	{
+		HitSound = HitSoundRef.Object;
+		ensure(HitSound);
+	}
 }
 
 uint32 AASEnemyBase::GetHp()
@@ -116,14 +136,14 @@ void AASEnemyBase::SetHp(uint32 Hp)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Black, FString::Printf(TEXT("Enemy Dead")));
 		CurState = EState::Dead;  
-		Dead();
+		SetDead();
 		return;
 	}
 	CurHp = Hp;
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, FString::Printf(TEXT("EnemyHp : %d"), CurHp));
 }
 
-void AASEnemyBase::Dead()
+void AASEnemyBase::SetDead()
 {
 	//UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	//AnimInstance->StopAllMontages(0.0f);
@@ -139,6 +159,50 @@ void AASEnemyBase::Dead()
 		}), DelayTime-0.5, false);
 }
 
+void AASEnemyBase::RandomActions()
+{
+	/*
+	result[0] , 30프로 확률 -> 
+	result[1] , 50프로 확률 -> 재장전 
+	result[2] , 70프로 확률 -> 
+	*/
+	bool result[3];
+	for (int i = 3; i <= 7; i++)
+	{
+		int RandomNumber = rand() % 10;
+		result[i] = i > RandomNumber;
+		i = +2;
+	}
+	
+	if (result[2]==true)
+	{
+		PlayAlertAnimaion();
+		return;
+	}
+	else if (result[1] == true)
+	{
+		PlayReloadAnimation();
+		return;
+	}
+	else
+	{
+		PlayBackMoveAnimation();
+		return;
+	}
+	PlayAlertAnimaion();
+
+}
+
+void AASEnemyBase::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{
+	if (CurState == EState::Attack) { return; }
+	bool result = AiRef->IsPlayer(OtherActor);
+	if (result)
+	{
+		UAISense_Touch::ReportTouchEvent(GetWorld(), this, OtherActor, NormalImpulse);
+	}
+}
+
 void AASEnemyBase::EquipWeapon(UASWeaponData* NewWeaponData)
 {
 	if (NewWeaponData)
@@ -148,10 +212,36 @@ void AASEnemyBase::EquipWeapon(UASWeaponData* NewWeaponData)
 }
 
 
-void AASEnemyBase::Attack()
+void AASEnemyBase::PlaySound(USoundBase* sound)
+{
+	UGameplayStatics::PlaySoundAtLocation(this, sound,GetActorLocation());
+}
+
+void AASEnemyBase::PlayHitReactAnimation()
+{
+	PlayAnimMontage(HitReactMontage);
+}
+
+void AASEnemyBase::PlayAttackAnimation()
 {
 	const float DelayTime = PlayAnimMontage(AttackMontage);
 	AttackEnd(DelayTime);
+}
+
+void AASEnemyBase::PlayReloadAnimation()
+{
+	const float DelayTime = PlayAnimMontage(ReloadMontage);
+	ReloadEnd(DelayTime);
+}
+
+void AASEnemyBase::PlayAlertAnimaion()
+{
+	PlayAnimMontage(AlertMontage);
+}
+
+void AASEnemyBase::PlayBackMoveAnimation()
+{
+	PlayAnimMontage(BackMoveMontage);
 }
 
 void AASEnemyBase::AttackEnd(const float InDelayTime)
@@ -163,6 +253,17 @@ void AASEnemyBase::AttackEnd(const float InDelayTime)
 			// 타이머 초기화
 			GetWorld()->GetTimerManager().ClearTimer(myTimerHandle);
 		}), InDelayTime, false);
+}
+
+void AASEnemyBase::ReloadEnd(const float InDelyTime)
+{
+	FTimerHandle myTimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(myTimerHandle, FTimerDelegate::CreateLambda([&]()
+		{
+			OnReloadEnd.Broadcast();
+			// 타이머 초기화
+			GetWorld()->GetTimerManager().ClearTimer(myTimerHandle);
+		}), InDelyTime, false);
 }
 
 

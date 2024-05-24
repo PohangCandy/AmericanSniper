@@ -5,7 +5,7 @@
 #include "Perception/AISenseConfig_Hearing.h" 
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
-
+#include "Character/ASCharacterPlayer.h" 
 // Sets default values
 AASTestSoundBlock::AASTestSoundBlock()
 {
@@ -22,8 +22,11 @@ void AASTestSoundBlock::BeginPlay()
 
 void AASTestSoundBlock::NoiseCheck(FVector loc, TCHAR* tag)
 {
-	UGameplayStatics::PlaySoundAtLocation(GetWorld(), _sound, loc);
-	UAISense_Hearing::ReportNoiseEvent(GetWorld(), loc, 1.0f, this, 0.0f, tag);
+	Player = Cast<AASCharacterPlayer>(UGameplayStatics::GetActorOfClass(GetWorld(), AASCharacterPlayer::StaticClass()));
+	ensure(Player);
+	FVector LOC = Player->GetActorLocation();
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), _sound, LOC);
+	UAISense_Hearing::ReportNoiseEvent(Player->GetWorld(), LOC, 1.0f, Player, 0.0f, tag);
 }
 
 // Called every frame
